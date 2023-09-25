@@ -1,4 +1,4 @@
-Cours présenté par Thomas Alazard, CNRS et ENS Paris-Saclay.
+Cours présenté par Jean-Marie Mirebeau, CNRS et ENS Paris-Saclay, d'après un cours de Thomas Alazard CNRS et ENS Paris-Saclay.
 
 Prise de note : Félix Yvonnet
 
