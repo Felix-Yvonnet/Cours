@@ -1,0 +1,253 @@
+\section{Complétude}
+\subsection{Critère de Cauchy}
+Une suite $(x_{n})$ dans un espace métrique $(X,d)$ est de Cauchy ssi $\forall \varepsilon >0,\ \exists N\in \mathbb{N} ,\ \forall p,q\ge N,\ d(x_p,x_q)\le \varepsilon $. De manière équivalente : $d(x_p,x_q)\le \varepsilon _{\min p,q}$ avec $\varepsilon _n \xrightarrow[n\to +\infty]{} 0$.\\
+
+Une suite de Cauchy :
+\begin{itemize}
+    \item est toujours bornée : $d(x_0,x_n)\le \varepsilon _0$
+    \item admet au plus une valeur d'adhérence
+    \item si elle a une valet d'adhérence alors elle converge vers celle ci
+\end{itemize}
+Toutes suites convergente est de Cauchy.
+
+\begin{definition}
+    $(X,d)$ est complet ssi toutes suites de Cauchy converge
+\end{definition}
+\begin{lemme}
+    Soit $(X,d)$ complet, ACX alors $(A,d_{|A\times A}$ est complet ssi $A$ est borné
+\end{lemme}
+
+
+\begin{remarque}
+\begin{itemize}
+    \item un evn complet est appelé un Banach.
+    \item un evtlc complet pour la distance associée est appelé un Frichet.
+\end{itemize}
+\end{remarque}
+
+\begin{lemme}
+    (Série dans un Banach) : Soit $E$ evn, sont équivalents :
+    \begin{itemize}
+        \item $E$ est complet
+        \item toutes série $(y_n)$ absolument convergente (ie $\sum\limits_{n=1}^{\infty} \|y_n\|<\infty $) est convergente.
+    \end{itemize}
+\end{lemme}
+\begin{proof}
+    Supp $E$ complet, soit $(y_n)$ le terme général d'une série absolument convergente. $x_N:=\sum\limits_{n\le N}^{} y_n$, $\varepsilon _n:=\sum\limits_{n>N}^{} \|y_n\|$. Alors $\varepsilon _n \xrightarrow[n\to +\infty]{} 0$ comme reste d'une série sommable, et $\forall p\le q,\ \|x_p-x_q\|=\|\sum\limits_{r=p+1}^{q} y_r\|\le \sum\limits_{r=p+1}^{q} \|y_r\|\le \varepsilon _p $ donc les sommes partielles satisfont le critère de Cauchy donc convergent.\\
+    \textbf{Réciproquement :} si $(x_{n})$ de Cauchy, $\|x_p-x_q\|\le \varepsilon _{\min p,q}$ où $\varepsilon _N\to 0$. Soit $(N_k)$ strict croissante tq $\varepsilon _{N_k}\le 2^{-k}$. Posons $y_k:=x_{N_{k+1}}-x_{N_k}$. La série des $y_k$ est sommable donc converge par hypothèse donc $\sum\limits_{k<K}^{} y_k=x_{N_k}-x_{N_0}$ converge. Donc $x_{n}$ est une suite de Cauchy admettant une valeur d'adhérence donc converge.
+\end{proof}
+
+
+\subsection{Exemple d'espaces fonctionnels complets}
+\begin{ex}
+    (Fonctions bornées) : soit $(X,d)$ espace métrique $E$ de Banach. Alors $C^0_b(X,E)$ est complet pour norme $\infty $.
+\end{ex}
+\begin{proof}
+    Soit $(f_n)$ de Cauchy. $|f_p(x)-f_q(x)|\le \|f_p-f_q\|_\infty \le \varepsilon _{\min p,q}$. Donc $(f_n(x))$ de Cauchy et admet une limite $f_\infty (x)$. De plus $\|f_p-f_\infty \|\le \varepsilon _p$. Enfin $f_\infty $est continue (resp bornée) comme limite d'une suite de fonction continues.
+\end{proof}
+
+\begin{ex}
+    (Espaces $L^p$) : soit $\in [1,\infty ]$, $(X,d)$ espace mesuré, alors $L^p$ est complet.
+\end{ex}
+\begin{proof}
+    $\exists $ classes d'équivalences modulo égalité pp. Soit $(f_n)$ une série sommable. Posons $S_N(x):=\sum\limits_{n\le N}^{} |f_n(x)|$ et $S_\infty $ la limite (possiblement $\infty $). Alors $\left( \int_XS_N(x)^pdx \right) ^{\frac{1}{p}}=\|S_N\|_p\le \sum\limits_{nn\le N}^{} \|f_n\|_p\le C<\infty$. D'où $\int_XS_\infty (x)^pd\mu(x)=\lim\limits_{} \int_XS_N(x)^pd\mu(x)\le C^p<\infty $. Par le th de convergence monotone (Boffo Levi) car $S_N(x)\searrow S_oo(x)$. Donc $S_\infty <\infty $ pour $\mu pp\ x$. On pose alors $g_\infty (x):=\sum\limits_{n\in \mathbb{N} }^{} f_n(x)$ qui est convergente $\mu pp\ x$. On pose aussi $g_N(x)$ la somme partielle. Alors $|g_\infty(x) -g_N(x)|\le \sum\limits_{n>N}^{} |f_n(x)|$ donc $\|g_\infty -g_N\|_p\to 0$.
+\end{proof}
+
+\begin{ex}
+    (Fonctions bornées) : soit $k\in \mathbb{N} $, $\Omega\subset \mathbb{R} ^d$ ouvert, alors $C^k_b(\Omega)$ est un Banach pour la norme $\|f\|:=\sum\limits_{|\alpha |\le k}^{} \|\partial_{\alpha }f\|_\infty $.
+\end{ex}
+\begin{proof}
+    Soit $(f_n)$ de Cauchy et $(f_n^\alpha)=\partial_\alpha f_n$. Alors c'est aussi de Cauchy dans $C^0_b(X)$ donc cv vers $f^\alpha $. Soit $\alpha \in \mathbb{N} ^d$ avec $|\alpha |< k$ $x\in \Omega,\ 1\le i\le d$. Justifions que $\partial/\partial_{x_i}f^\alpha (x)=f^{\alpha+e_i}(x) $ avec $e_i$ la base canonique. Soit $p>0$ tq $[x,x+pe_i]\subset \Omega$, alors $f^\alpha _n(x+pe_i)-f^\alpha _n(x)=\int_0^pf_n^{\alpha +e_i}(x+te_i)dt$ car $\frac{\partial}{\partial_{x_i}}f_n^\alpha =f_n^{\alpha +e_i}$.\\
+    Par cv uniforme, on a pareil mais sans $f^\alpha(x+pe_i)-f^\alpha(x)=\int_0^pf^{\alpha}(x+te_i)dt$ continument dérivable / p.\\
+    Finalement $\|f_n-f^0\|=\sum\limits_{|\alpha |\le k}^{} \|\partial_\alpha f_n-\partial_\alpha f^0\|=\sum\limits_{}^{} \|f_n^\alpha -f^\alpha \| \xrightarrow[n\to +\infty]{} 0$ car $\partial _\alpha f^0=f^\alpha $.
+\end{proof}
+
+\begin{ex}
+    Soit $\Omega$ ouvert et $(\Omega_n\neq \emptyset )$ tq $\bigcup\limits_{n\in \mathbb{N} } \Omega_n=\Omega$ et $\overline{\Omega}\subset _C\Omega_{n+1}$. Soit $k\in \mathbb{N} \cup \{\infty \} $, alors $\left( C^k(\Omega),(|.|_{n,\alpha })_{n\in \mathbb{N} }^{|\alpha |\le k} \right) $ est un Fréchet.
+\end{ex}
+\begin{proof}
+    (cas $k=\infty $). Soit $(f_n)$ de Cauchy. Soit $k'\in \mathbb{N} $ arbitraire (on prendrait $k'\le k$ dans le cas $k<\infty $). Alors $(f_{n|\Omega_n}$ est une suite de Cauchy de $C_b$. Or elle admet une limite $g'^k_n$sur $\Omega_n$.
+\end{proof}
+
+
+\begin{ex}
+    $C^\infty _b(\Omega)$ muni de $(\|.\|_n)_n$   où $\|f\|_n:=\max_{|\alpha |\le n}\|\partial _\alpha f\|_{\infty }$ est Fruchet.
+\end{ex}
+\begin{proposition}
+    $\mathcal{D}_k(\Omega)$   où $k\subset _C\Omega$, compact et $\Omega$  ouvert. $\mathcal{D}_K(\Omega):=\{f\in \mathcal{D}(\Omega)|supp(f)\subset K\} $  est un espace fermé de l'ensemble initial. De plus la topologie induite sur $\mathcal{D}_K(\Omega)$ par $(\mathcal{D}(\Omega),(|.|_{w, \eta}$) et $(C^\infty _b(\Omega),\cdots)$ est la même.
+\end{proposition}
+\begin{proof}
+    Fermeture : Si $f_n \xrightarrow[n\to +\infty]{} f$ avec $f_n\in \mathcal{D}_\alpha (\Omega)$ pour la topo $C^\infty _c$ alors en particulier $f_n \xrightarrow[n\to +\infty]{} f$ uniformément donc $supp(f)\subset K$.\\
+    Posons $supp(f):=\overline{\{x\in \Omega|f(x)\neq 0\}}$.\\
+    Mêmes topologies suivantes : $\|f\|_n\le |f_{w, \eta}|$ en prenant $w=1, \eta=n$. $|f|_{w, \eta}|\le C\|f\|_n, \forall f\in \mathcal{D}_K(\Omega),$ en prenant $C=\max_{x\in K}w(x)$, on peut borner les semi normes d'une famille par une cte $x$ un max d'un nombre fini de semi normes de l'autre donc les mêmes topos.
+\end{proof}
+\begin{proposition}
+    Soit $\varphi $  une forme linéaire sur $\mathcal{D}(\Omega)$. Sont équivalent :
+    \begin{itemize}
+        \item $\varphi $  est continue sur $\mathcal{D}(\Omega)$, ie $\exists w, \eta\in C^\infty (\Omega,\mathbb{R} ^+),\ \forall f\in \mathcal{D}(\Omega),\ |\varphi (f)|\le |f|_{w, \eta} $
+        \item $\varphi $  est continue sur $D_K(\Omega)$  ie $\forall K\subset _C\Omega,\ \exists w_k, \eta_K\in \mathbb{R} ^+\times \mathbb{N} ,\ \forall f\in \mathcal{D}_K(\Omega),\ |\varphi (f)|\le w_K\|f\|_{\eta_K}  $
+    \end{itemize}
+    De plus, $\varphi $  est d'ordre fini $k\in \mathbb{N} $  ssi on peut choisir $\eta=k$, de manière équivalente, $\eta_K=k,\forall K\subset _C\Omega $.
+\end{proposition}
+\begin{remarque}
+    On dit que $\mathcal{D}(\Omega)$ est la limite inductive des $\mathcal{D}_K(\omega)$
+\end{remarque}
+
+\begin{lemme}
+    (Quelques fonctions $C^\infty $)
+    \begin{enumerate}
+        \item La fonction $\psi_0:
+            \begin{aligned}
+                \mathbb{R} &\to \mathbb{R} \\
+                x&\mapsto 0 \text{ si } x<0, e^{-\frac{1}{x}} \text{ sinon}
+            \end{aligned}$
+        \item La fonction $\psi_1x\mapsto \int_0^x\psi_0(t)\psi_0(1-t)dt$ est $C^\infty $, vaut 0 sur $]-\infty ,0]$  vaut une constante sur $[1,\infty [$. $H:=\frac{\psi_1}{\psi_1(1)} $  est une application de la fonction de Heaviside
+        \item La fonction $\psi_2:x\in \mathbb{R} ^d\mapsto \psi_0(1-\|x\|^2)$ est $C^\infty $  positive, radiale, à support égal à $B'_{\mathbb{R} ^d}(0,1)$. Souvent utilisée comme noyau de convolution pour régulariser les filtres.
+        \item Soit $K\subset_CU$, $K$ compact, $U\subset \mathbb{R} ^d$ ouvert. Alors $\exists \psi\in C^\infty (\mathbb{R} ^d),$, $\psi=1$ sur $K$et $supp(f)\subset U$
+    \end{enumerate}
+\end{lemme}
+\begin{proof}
+    \begin{enumerate}
+        \item Classique
+        \item facile
+        \item facile
+        \item $\forall x\in K, $  soit $r_x>0$ tq $B(x,r_x)\subset U$. On extrait un sous recouvrement fini de $K\subset \bigcup\limits_{x\in K} B(x,\frac{r_x}{3})$, noté $K\subset \bigcup\limits_{1\le i\le I} B(x_i, \frac{r_i}{3})$. Posons $\varphi (x):=\sum\limits_{1\le i\le I}^{} \psi_2(\frac{x-x_i}{r_i /2})$. Alors $\psi_2(\frac{x-x_i}{r_i /2})>0$ sur $B(x_i,\frac{r_i}{3})$ et son support (supp) sur $B'(\cdots)$. Donc $\varphi >0$  sur $\bigcup\limits_{1\le i\le I} B(x_i,\frac{r_i}{3})\supset K$. $supp(\varphi )=\bigcup\limits_{1\le i\le I} B'(x_i,\frac{r_i}{3})\subset _CU$.\\
+            Par compacité, $\varepsilon :=\min_{x\in K}\varphi (x)$  est strictement positif. On considère finalement $\psi:=H\circ \varphi $. Où $H\in C^\infty (\mathbb{R} ,\mathbb{R} ), H=0$ sur $]-\infty ,0],$ $H=1$ sur $[\varepsilon ,\infty [$ satisfait $supp(\psi)\subset supp(\varphi )\subset _CU$ et $\psi^{-1}([\varepsilon ,\infty [)\supset \varphi ^{-1} ([\varepsilon ,\infty [$.
+    \end{enumerate}
+\end{proof}
+
+\begin{lemme}
+Soit $f,g\in C^\infty (\mathbb{R} ^d), \alpha \in \mathbb{N} ^d$  alors $\partial_\alpha (fg)=\sum\limits_{\beta\le \alpha }^{} {\alpha \choose \beta} \partial_\beta f\partial_{\alpha -\beta}g$ où ${\alpha \choose \beta}:=\prod\limits_{1\le i\le d}^{} {\alpha _i \choose \beta_i}$
+\end{lemme}
+\begin{proof}
+    Cas où $\alpha =(n,0,\cdots,0)$ alors $\frac{\partial^n}{\partial x_1^^n}(fg)=\sum\limits_{0\le k\le n}^{} {n \choose k} \frac{\partial^k}{\partial x_i^k}f\frac{\partial^{n-k}}{\partial x_i^{n-k}}g$ par récurrence immédiate.\\
+    Passage de $(\alpha _1,\cdots, \alpha _{k-1},0\cdots,0)=\alpha _*$ à $(\alpha _1,\cdots\,a_k,0\cdots,0)$. Récurrence sur $k$.\\
+    $\partial_{\alpha }(fg)=\frac{\partial^{\alpha _k}}{\partial x_k^{\alpha _k}}=\sum\limits_{\beta_*\le \alpha _*}^{} {\alpha _* \choose \beta_*}\cdots$ Par HR et linéarité de la dérivation. \\
+    Puis on utilise ${\alpha _0 \choose \beta_0}{\alpha _k \choose \beta_k}={\alpha \choose\beta}$ et le résultat tombe.
+\end{proof}
+\begin{proof}
+    (Critère de continuité des distributions) : Soit $(\Omega_n)$  tq $\overline{\Omega_n}\subset _C\Omega_{n+1}$, tous ouvert et formant une partition de $\Omega$. Soit $(\gamma_n)$  tq $\gamma_n\in C^\infty , \gamma_n=1$ sur [?,?] et $supp(\gamma_n)\subset \Omega_n$. Supp (ii : $\mathcal{D}_K(\Omega)\cdots$  ). Soit $w_n, \eta_n$
+    tq $\forall f\in \mathcal{D}(\Omega),\ supp(f)\subset \overline{\Omega}\Rightarrow |\varphi (f)|\le w_n\|f\|_{\eta_n}. $  Soit $f\in \mathcal{D}(\Omega).$  Alors $f=\sum\limits_{n\in \mathbb{N} }^{=} f(\gamma_n-\gamma_{n+1}:=\beta_n)$ avec $\gamma_{-1}=0$. De plus cette somme a un nombre fini de termes non nuls.
+    En effet, $\exists N,\ \forall n\ge N,\ supp(f)\subset \Omega_n, $ par compacité de supp(f). Donc $\forall n\ge N+1,f(\underbrace{\gamma_n-\gamma_{n-1}}_{\text{nul sur }\overline{\Omega_{n-1}}})=0$
+    Par linéarité, $|\varphi (f)|\le \sum\limits_{n\in \mathbb{N} }^{} |\varphi (f_{\beta_n})|\le \sum\limits_{n\in \mathbb{N} }^{} w_n\|f\beta_n\|_{\eta_n}$
+    (car $supp(\beta_n)\subset \Omega_{n+1}\backslash \Omega_{n-1})\le \sum\limits_{n\in \mathbb{N} }^{} w_{n+1}$
+$\sup_{\alpha \le  \eta_{n+1}, x\in \Omega_{n+1}\backslash \Omega_{n-1}}|\partial_\alpha (f\beta_n)(x)|\le \sum\limits_{n\in \mathbb{N} }^{}$
+$\underbrace{\tilde{w_{n+1}}}_{\text{dépend des }\|\partial_{\alpha , \beta_n}\|}\sup\cdots(paseuletempsd'ecrire)\le \sup_{n\in \mathbb{N}, \alpha \le \eta_{n+1},x\in \Omega_{+1}\backslash \Omega_{n-1} }\hat{w_{n+1}}|\partial_\alpha f(x)|$
+    avec $\hat{w_{+1}}:=C_\alpha (1+n)^\alpha \tilde{w_{n+1}}$ \\
+$\le |f|_{w, \eta}$  où $w, \eta$  vérifient $w(x)\ge w_n$ si $x\not\in \Omega_{n-2}, \eta(x)\ge \eta_n$ si de même.\\
+Par ex $w(x)=\sum\limits_{n\in \mathbb{N} }^{\infty} w_n(\underbrace{1-\gamma_{n-3}}_{\text{vaut 1 hors de $\Omega_{n-2}$}})$
+\end{proof}
+
+
+
+\begin{ex}
+    Soit $(X,d)$ un espace métrique, $w$ un module de continuité strictement positif hors de 0. Posons $\forall f\in C^\infty _b(X),\\ |f|_w=\sup_{x,y\in X}\frac{|f(x)-f(y)|}{w(d(x,y))},\|f\|_w:=|f|_w+\|f\|_\infty $. \\
+    Alors $\{f\in C^0_b(X)|\|f\|_w<\infty \} $ est un Banach.\\
+    Cas particulier : fct Lipschitziennes bornées / Hölderienne bornées.
+\end{ex}
+
+\subsection{Prolongements :}
+\begin{propriete}
+    (Prolongement des fcts uniformément continues) : Soit $X,Y$ des espaces métriques complets, $A\subset X$ une partie dense, $f:A\to Y$ uniformément continue. Alors $f$ admet une unique extension continue $F:X\to Y$ (qui se trouve être uniformément continue).
+\end{propriete}
+\begin{proof}
+    \textbf{Construction} : on def $f(x):=\lim f(x_n)$ où $x_{n}\in A$ et $x_{n}\to x$. $(x_{n})cv\Rightarrow (x_{n})$ est de Cauchy $\Rightarrow f(xn)$ est de Cauchy $\Rightarrow f(x_{n})cv$ \\
+    \textbf{Bonne définition} : Si $x_{n},y_n \to x,x$ alors $d(x_{n},y_n)\to 0$ donc \\$d(f(x_{n}),f(y_n))\to 0$ par uniforme continuité de $f$. Finalement \\$\lim f(x_{n})=\lim f(y_n).$ \\
+\textbf{Continuité uniforme} : supposons $x_{n}\to x, y_n\to y$ alors $d(\lim f(x_{n}), \lim f(y_n))=\lim d(f(x_{n}),f(y_n))\le \lim w(d(x_{n},y_n))=w(d(x,y))$. On peut supposer $w$ continue donc le résultat tombe.\\
+    Unicité : parmi les fct continues, découle de la construction.
+\end{proof}
+\begin{remarque}
+    (Extension de Tietze) : Si $f$ uniformément continue sur $A\subset X$ qcq, on a toujours une extension à priori pas unique. OPS(on peut supposer) $w$ croissant et sous additif. $F(x):=\inf_{y\in A}f(y)w(d(x,y))$
+\end{remarque}
+\begin{remarque}
+    En pratique $X$ et $Y$ sont souvent des Banach, $f$ est une application linéaire continue de $A\subset X$ dense dans $Y$.
+\end{remarque}
+\begin{propriete}
+    (Complété d'un espace) : Soit $(A,d)$ un espace métrique. Alors il existe $(X,d)$ métrique, complet et une injection isométrique $i_A:A\to X$ tq $Im(i_A)$ est dense dans $X$. De plus $X$ est unique à isométrie près.
+\end{propriete}
+\begin{proof}
+    Existence : $X=\{\text{suites de Cauchy de }A\} /\sim$ où $(x_{n})\sim(y_n)\Leftrightarrow d(x_n,y_n)\to 0$. \\
+    Unicité : découle du résultat d'extension précédent :
+    % https://q.uiver.app/#q=WzAsMyxbMCwxLCJBIl0sWzIsMCwiWCJdLFsyLDIsIlgiXSxbMCwxLCJpX0EiXSxbMCwyLCJcXHRpbGRle2lfQX0iLDJdXQ==
+$\begin{tikzcd}
+    A && X\\
+        && \tilde{X}
+        \arrow["{i_A}", from=1-1, to=1-3]
+        \arrow["{\tilde{i_A}}"', from=1-1, to=2-3]
+    \arrow["\varphi", dotted, from=1-3, to=2-3]
+\end{tikzcd}$
+Alors $\varphi :\begin{aligned}Im(i_A)&\longrightarrow Im(\tilde{i_A}) \\ x&\longmapsto \tilde{i_A}(i_A^{-1} (x))\end{aligned}$ est une isométrie sur une partie dense de $X$ donc s'étend uniquement en une isométrie de $X\to \tilde{X}$
+\end{proof}
+
+\subsection{Point fixes de Picard}
+\begin{propriete}
+    Soit $(X,d)$ métrique complet, $f:X\to X$, $K$-lipschitzienne avec $K<1$ (ie contractante). Alors $f$ a un unique point fixe $x_*$. De plus $\forall x_0\in X,\ d(x_0,x_*)\le \frac{d(x_0,f(x_0))}{1-K}.$
+\end{propriete}
+\begin{proof}
+    Unicité : Si $x_*$ et $\tilde{x_*}$ sont des points fixes, $d(x_*,\tilde{x_*})=d(f(x_*),f(\tilde{x_*}))\le K\cdots<d(x_*,\tilde{x_*})$ donc $d(x_*,\tilde{x_*})=0$.\\
+    Extension et estimation : soit $x_0\in K$ puis $x_{n+1}=f(x_{n})$ alors $d(x_{n}, x_{n+1})\le Kd(x_{n-1},x_{n})\le K^nd(x_0,x_1)$. Ainsi pour $p\le q\cdots$
+    Donc $(x_{n})$ satisfait le critère de Cauchy donc cv vers une limite $x_*.$ $d(x_N,x_*)\le K^N\frac{d(x_0,x_1)}{1-K}$. Ainsi $d(x_*,f(x_*))=\lim d(x_{n},x_{n+1)})=0$.
+\end{proof}
+\begin{remarque}
+    (Stabilité) : Si $f$ est $K-$lipschitzienne avec $K<1$, si $\|f-g\|_\infty \le \varepsilon $ et si $x_\varepsilon $ est un point fixe de $g$, alors $d(\underbrace{x_\varepsilon }_{\text{pt fixe de }g},\underbrace{x_*}_{\text{pt fixe de }f})\le \frac{d(x_\varepsilon ,f(x_\varepsilon ))}{1-K}\le \frac{\varepsilon}{1-K}$
+\end{remarque}
+\begin{theoreme}
+    (Cauchy Lipschitz) : Soit $\Omega\subset \mathbb{R} ^d$ ouvert. Soit $f:\mathbb{R} ^+\times \Omega\to \mathbb{R} ^d$ continue et localement lipschitzienne en sa seconde variable ie $\forall T\ge 0,\ \forall K\subset _C\Omega,\ \exists C=C(T,K),\ \forall t\in [0,T],\ \forall x,y\in K,\  \|f(t,x)-f(t,y)\|\le C\|x-y\|$. Alors $\forall x\in \mathbb{R} , $ il existe $t_*>0$ et $u:[0,t_*]\to \Omega$ tq $u(0)=x_0$ et $u'(t)=f(t,u(t))$.
+\end{theoreme}
+\begin{remarque}
+    Une propriété $P:\mathcal{P}(\Omega)\to \{\text{Vrai, Faux}\} $ est satisfaite localement ssi tout point $x\in \Omega$ admet un voisinage $V\in \mathcal{V}_x$ tq $P(V)$ est vrai. \\Si $\Omega$ est localement compact (vrai si $\Omega\subset \mathbb{R} ^d$), (tt pt admet une base de voisinage compact) et $(P(A)\wedge P(B))\Rightarrow P(A\cup B)$, $(P(A)\wedge  B\subset A))\Rightarrow P(B)$ alors $P$ est satisfaite localement ssi elle est satisfaite sur tout compact.
+\end{remarque}
+\begin{proof}
+    Preuve de l'existence dans CL : Soit $r_0>0$ tq $B'(x_0,r_0)\subset \Omega$. Soit $t0>0$ alors $f$ est bornée par $C^\infty $ sur $[0,t_*]\times B'(x_0,r_0)$ et $f$ est $C_{lip}$ lipschitzienne sur le même intervalle.\\
+    Définissions $t_1>0$ tq $C_\infty t_1<r_0$ et $C_{lip}t_1<1$. Posons $X=C^0([0,t_1],B'(x_0,r_0))$ complet. $F:X\to X$ tq $F(u)=F_u:[0,t_1]\to B'(x_0,r_0)$ avec $F_u(t)=x_0+\int_0^{t_1}C_\infty ds\le t_1C_\infty \le r_0.$ \\
+    Caractère contractant : $\forall u,v\in X,\ \|F_u(t)-F_v(t)\|\le \int_0^{t_1} \|f(s,u(s))-f(s,v(s))\|ds\le \int_0^{t_1}C_{lip}\|u(s)-v(s)\|ds\le C_{lip}t_1\|u-v\|_\infty .$ Donc les conditions du point fixe de Picard sont réunies. $F$ admet un point fixe qui est par contraction $C^1$ et par dérivation est solution du pb de Cauchy :)
+\end{proof}
+\begin{remarque}
+    Le pt fixe de Picard implique aussi la stabilité par rapport aux conditions initiales. Cependant on le montre en général en utilisant le lemme de Gronwall, un peu plus précis
+\end{remarque}
+
+\begin{lemme}
+    Gronwall : Soit $f\in C^0([0,T],\mathbb{R} ^+)$ et $A,B\ge 0$ tq $\forall t\in [0,T],\ f(t)\le A\underbrace{\int_0^tf(s)ds}_{=:F(t)}+B $. Alors $f(t)\le Be^{-At}$.
+\end{lemme}
+\begin{proof}
+    On a $F'(t)=Af(t)\le AF(t)$ donc $\left( F(t)e^{-At} \right)'=\left( F'-AF \right) e^{-At}\le 0$. Donc $F(t)e^{-At}$ est décroissante en $t$. Donc $F(t)e^{-At}\le F(0)=B$. Donc $f(t)\le F(t)\le Be^{-At}$
+\end{proof}
+\begin{propriete}
+    (Stabilité dans CL) : Sous les hypothèses $f:R\times \Omega\to \mathbb{R} ^d$ continue, localement lipschitzienne selon la seconde variable. Soit $u,v\in C^1([0,T],K)$ solution de $u'(t)=f(t,u(t))$ où $K\subset _C\Omega.$ Alors $\|u(t)-v(t)\|\le e^{Ct}\|u(0)-v(0)\|$ avec $C=C(T,K)$ constante de Lipschitz.\\
+\end{propriete}
+\begin{proof}
+    $\|u(t)-v(t)\|=\|\int_0^t(u'(s)-v'(s))ds+(u(0)-v(0)\|$ car $u(t)=u(0)+\int_0^tu'(s)ds$. Donc $\le \|\int^t_0(f(s,u(s))-f(s,v(s)))ds\|+\underbrace{\|u(0)-v(0)\|}_{=:B}$ $\le \overbrace{C}^A\int_0^t\|u(s)-v(s)\|ds+B$ le résultat s'obtient par Gronwall appliqué à $u-v$.
+\end{proof}
+\begin{ex}
+    (EDO avec retard) : Il existe une unique solution $\nu\in C^1([0,1],\mathbb{R} )$ de $\left\{
+        \begin{tabular}{c c}
+            $\nu(0)=1$\\
+            $\nu'(t)=\nu(t-t^2)$
+\end{tabular}\right.$
+\end{ex}
+\begin{proof}
+On cherche un point fixe de $F:X\to X$ définit comme avant.  $|F_u(t)|\le 1+\int_0^{\frac{1}{2}}4=3$ donc $F$ bien def et $F_u$ positive.\\
+$|F_u(t)-F_v(t)|\le \int_0^{\frac{1}{2}}|u(t-t^2)-v(t-t^2)|dt\le \frac{1}{2}\|u-v\|_\infty $
+\end{proof}
+\begin{ex}
+    Soit $k\in C^0([0,1]^2,]-1,1[)$ et  $\varphi \in C^0([0,1],\mathbb{R} )$ alors il existe une unique sol de $u(t)=\underbrace{\int_0^1\underbrace{k(s,t)}_{\le K<1}\underbrace{\frac{u(s)}{1+u^2(s)}}_{r\mapsto \frac{r}{1+r^2}\text{ est lipschitzienne}}ds}_{F_u(t)}$. D'où $|F_u(t)-F_v(t)|\le K\|u-v\|_\infty $ et $F$ est contractante sur cette topologique.
+\end{ex}
+
+\subsection{Théorème de Baire}
+\begin{lemme}
+    (fermés emboités) : Soit $(X,d)$ un espace métrique complet et $(F_n)$ une suite de fermés de $X$ tq $F_{n+1}\subset F_n$ et $diam(F_n)\to 0.$ $diam(F_n):=\sup_{x,y\in F_n}d(x,y)$. Alors $\bigcap\limits_{n\in \mathbb{N} } F_n=\{x_*\} $ pour un certain $x_*\in X.$
+\end{lemme}
+\begin{proof}
+    Soit $x_{n}\in F_n$ arbitraire. Alors $\forall N,\ \forall p,q\ge N,\ d(x_p,x_q)\le diam(F_N).  $ donc $(x_{n})$ est de Cauchy. Sa limite $x_*$ appartient à chaque disque $F_n$ par fermeture donc $x_*\in \cap F_n.$ De plus si $y_*\in \cap F_n$ alors $\forall n,\ d(x_{n},y_*)\le diam(F_n)\to 0 $ donc $x_*=y_*$.
+\end{proof}
+\begin{theoreme}
+    Baire : Soit $(X,d)$ mesuré et $(U_n)$ une suite d'ouverts denses. Alors $\bigcap\limits_{n\in \mathbb{N} } U_n$ est dense.
+\end{theoreme}
+\begin{proof}
+    Soit $x_0\in X, \varepsilon _0 >0$ arbitraire. $B(x_0,\varepsilon _0),$ rencontre $U_0$ par densité en un point $x_1.$ Soit $\varepsilon _1$ tq $\varepsilon _1\le \varepsilon _0 /2$ et $B'(x_1,\varepsilon _1)\subset U_0\cap B(x_0,\varepsilon _0)$ qui est ouvert.\\
+    On construit alors par récurrence $x_{n+1}\in B(x_n,\varepsilon _n)\cap U_n$ vérifiant $\varepsilon _{n+1}\le \varepsilon _n /2$ et $B'(x_{n+1},\varepsilon _{n+1})\subset U_n\cap B(x_{n},\varepsilon _n)$. Or $B'(x_{n+1},\varepsilon _{n+1})$ suite de fermés emboités de diamètre $\le 2\varepsilon _n\to 0$.\\
+    Soit $x_*\in \bigcap\limits_{n\in \mathbb{N} } B'(x_n,\varepsilon _n)$ par th des fermés emboités, alors $\forall n\in \mathbb{N} ,\ x_*\in B'(x_{n+1},\varepsilon _{n+1})\subset U_n $. Donc on a bien la densité de $\cap U_n$.
+\end{proof}
+\begin{ex}
+    Soit $(q_k)$ une énumération de $\mathcal{O}$ posons $U_x:=\cup ]q_k-\frac{1}{nk^2},q_k+\frac{1}{nk^2}[$ Alors $Leb(U_n)\le \sum\limits_{k\ge 1}^{} \frac{2}{nk^2}=\frac{\pi^2}{3n}$. Ainsi $\cap U_n$ est une intersection d'ouverts denses mais de mesure nulle.
+\end{ex}
