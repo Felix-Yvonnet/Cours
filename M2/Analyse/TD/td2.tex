@@ -1,0 +1,106 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[french]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{proof}
+
+% figure support
+\usepackage{import}
+\usepackage{pgfplots}
+\usepackage{xifthen}
+\pdfminorversion=7
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+\title{TD2}
+\author{Félix Yvonnet}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+    
+
+\section*{Ex 1 : continuité de quelques distributions}
+\begin{enumerate}
+    \item On a $\int_Xfd\mu=\int_X\frac{f}{g}gd\mu= \int_X |\frac{f}{g}|gd\mu\le \int_X \|\frac{f}{g}\|_\infty gd\mu\le \|\frac{f}{g}\|_\infty \int_X gd\mu$. CQFD.
+
+    \item On va choisir les bonnes fonctions afin d'appliquer le lemme d'avant. Soit $\alpha >1$ et $(x_{n})$ une suite positive. $X=\mathbb{N} $ et $\mu$ la mesure de comptage. $f:
+            \begin{cases}
+                \mathbb{N} &\to \mathbb{R} _+\\
+                n &\mapsto x_n
+            \end{cases}$ 
+
+
+
+
+
+    \item Soit $f:\mathbb{R} ^d\to \mathbb{R} $ mesurable et $g:
+        \begin{cases}
+            \mathbb{R} ^d\to \mathbb{R} \\
+            x\mapsto \frac{1}{(1+\|x\|^2)^{\frac{\alpha}{2}}}
+        \end{cases}$ mesurable.\\
+        Intégrabilité de $(1+\|x\|^2)^{-\frac{\alpha}{2}}$, $\alpha >d$ sur $\mathbb{R} ^d$.
+        \begin{itemize}
+            \item Par Fubini : Montrer que $(1+|x|^2)^{-\alpha /2}\le \prod\limits_{n=1}^{d} (1+|x_i|^2)^{-\frac{d}{2d}} $. L'inégalité est équivalente à $\prod\limits_{i=1}^{d} (1+|x_i|^2)\le (1+|x|^2)^d .$ Ce qui est vrai car $\forall i\in [\![1;d]\!],\ x_i^2\le \|x\|^2=x_1^2+\cdots+x_d^2 $. \\
+                On a alors $\int_{\mathbb{R}^d}(1+\|x\|^2)^{-\frac{\alpha}{2d}}d\lambda_1(x_1)\cdots d\lambda_d(x_d) \overset{Fub}{\le }\prod\limits_{i=1}^{d} \int_\mathbb{R} (1+|x_i|^2)^{\frac{\alpha}{2d}}dx_i<\infty  \sim |x_i|$ donc intégrable.
+
+            \item Par le passage en polaire : So $f:\mathbb{R} ^d\to \mathbb{R} $ mesurable alors on a $\int_{\mathbb{R} ^d}f(x)dx = \int_{r=0}^\infty \int_{\theta\in S^{d-1}}f(r\theta)d\theta r^{d-1}dr$. Avec le $S$ la sphère unité. Alors \\
+                $\int_{\mathbb{R} ^d}\frac{1}{(1+|x|^2)^{\frac{\alpha}{2}}}dx=\int_0^\infty \int_{S^{d-1}}\frac{r^{\alpha -1}}{(1+|x|^2)^{\frac{\alpha}{2}}}d\theta dr=\lambda(S^{d-1})\int_0^\infty \frac{r^{d-1}}{(1+|x|^2)^{\alpha /2}} $ intégrable
+        \end{itemize}
+
+    \item $\varphi $ linéaire clair (NB $\sum$ cv vers sup f compact $\to \sum$ finie). Soit $f\in D(\mathbb{R} )$, $|\varphi (f)|\underset{\Delta}{\le }\sum\limits_{n\in \mathbb{N} }^{} |f^{(n)}(n)| \underset{Q_2)}{\le }C_2\sup_{n\in \mathbb{N} }(1+n)^2|f^{(n)}(n)|\le C_2\sup_{x\in \mathbb{R} }\sup_{n\le |x|(=\eta(x))}(1+|x|)^2|f^{(n)}(x)|=C_2|f|_{w, \eta}$.
+
+    \item $\varphi (f)=\int_\mathbb{R} f(t)g(t)dt=[f(t\int_0^tg(x)dx]_{-\infty }^\infty -\int_\mathbb{R} f'\int_0^\infty g(x)dx$. Posons $g:t\mapsto \int_0^tg(x)dx$ on a :\\
+        $\varphi (f)=\int_\mathbb{R} f'(t)G(t)dt$ donc $|\varphi (f)|\le \int_\mathbb{R} |f'(t)G(t)|dt$ puis par la question 3 $|\varphi (f)|C_{\alpha }\sup_{x\in \mathbb{R} }\underbrace{(1+|x|^2)^{\alpha /2}|G(x)|}_{w(x)} |f'(x)|$. $w$ est continue car $g\in L^1(\mathbb{R} )$ et on prend $\eta=1$.
+
+
+\end{enumerate}
+
+
+\section*{Ex2 : prolongement de Tietze, preuve constructive}
+\begin{enumerate}
+    \item $f$ est lipschitzienne $\Leftrightarrow \exists C,\ \forall x,y\in X,\ |f(x)-f(y)|\le Cd(x,y) $. \\
+        $\alpha \in ]0,1[, f$ est $\alpha -Holder\Leftrightarrow \exists C,\ \forall x,y\in X,\ |f(x)-f(y)|\le \underbrace{Cd(x,y)^2}_{w(s)=cs^2} $.\\
+        Tout d'abord remarquons que $w$ est concave (oui, dérivée seconde neg) Soir $s,t\in \mathbb{R} _+$ avec $s\ge t$. $w$ concave donc $w(s+t)\le w'(s)(s+t-s)+w(s)$ donc $w(s+t)\le \underbrace{\alpha}_{<1}\underbrace{s^{\alpha -1}}_{\le t^{\alpha -1}}t+s^{\alpha }\le t^\alpha +s^\alpha  $.
+
+        \item Justifier que $w$ est continue. On sait que croissant, ss aditif et tend vers 0 en $0^+$. Soit $s>0$ on veut mq $w(s+t)\xrightarrow[t\to +\infty]{} w(s)$ mais $w(s)\le w(s+t)\le <(s)+w(t)\to w(s)+w(0)=w(s)$ et on fait de même pour $0^-$ avec $w(s)-w(t)\le w(s-t)\le w(s)$.
+
+        \item On sait que $|f(x)-f(y)|\le w(d(x,y))$ donc soit $x\in A$, on a d'une part $F(x)\le f(x)$ car on peut prendre $y=x$ et c'est bon et $F(x)\ge f(x)$ car $F(x)-f(x)=\inf_{y\in A}\underbrace{f(y)-f(x)+w(d(x,y))}_{\ge 0}$.
+
+    \item Spot $x_0,x_1\in X $ $F(x_1)\le \inf f(y)+w(d(x_1,x_0)+d(x_0,y))\le F(x_0)+w(d(x_1,x_0))$. Donc (par sym) $|F(x_1)-F(x_0)|\le w(d(x_1,x_0))$.
+
+    \item Soit $\alpha , \beta\in \mathbb{R} $ Alors $\varphi :t\in \mathbb{R} \mapsto \max(\alpha , \min (\beta,t))$ est 1-Lipschitzienne. Donc $|\varphi \circ F(x)-\varphi \circ F(y)|\le |F(x)-F(y)|\le w(d(x,y))$.
+    \item 
+        $\varphi\circ F$  convient avec $\alpha =\inf_Af, \beta=\sup_Af$ et les conventions usuelles si $\alpha =-\infty $ et / ou $\beta=+\infty $.
+
+    \item $\forall s\ge 0,\ w_f(s):=\sup_{d(x,y)\le s}|f(x)-f(y)| $ croissant, borné et tend vers 0 en 0 car $f$ c0 sur un compact donc bornée et eps + croissance => tend vers 0.
+
+    \item jsp lis les notes de Corentin : "jsp lis les notes de Julien" et procède par récurrence sur les notes. Ce procédé termine car il y a un nombre fini d'élèves à l'ENS.
+
+    \item 
+
+\end{enumerate}
+
+
+\section*{Ex4 : Preuve constructive du th de Banach-Steinhauss}
+    \begin{enumerate}
+        \item Soit $T:E\to F$ et $x, \xi\in E$ alors $T(x+\xi)+T(x-\xi)=2Tx$ donc $\|T(x+\xi)+T(x-\xi)\|=2\|Tx\|\le \|T(x+\xi)\|+\|T(x-\xi)\|$ and the rest\ldots is History !
+    \end{enumerate}
+
+
+
+
+
+
+
+\end{document}

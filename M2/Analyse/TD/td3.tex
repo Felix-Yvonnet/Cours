@@ -1,0 +1,102 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[french]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{proof}
+
+% figure support
+\usepackage{import}
+\usepackage{pgfplots}
+\usepackage{xifthen}
+\pdfminorversion=7
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{hyperref}
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+\title{TD3 analyse}
+\author{Félix Yvonnet}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Ex1 : Espaces de Baire}
+\begin{enumerate}
+    \item Soit $\mathcal{O}$ un ouvert d'un espace de Baire $E$ . Montrons que $\mathcal{O}$ est un espace de Baire. Soit $(U_n)$ une suite d'ouverts de $\mathcal{O}$ dense dans $\mathcal{O}$ et $D=\bigcap\limits_{n\in \mathbb{N} } U_n$. Alors la suite $U_n'=U_n\cup \overline{\mathcal{O}}^c$  est dense dans $E$. De plus c'est bien une suite d'ouverts car ouvert d'un ouvert. Ainsi $D'=\bigcap\limits_{n\in \mathbb{N} } U_n'$ dense dans $E$ et $D=D'\cap \mathcal{O}$ dense dans $\mathcal{O}.$ 
+    \item\label{q2} Soit $E$ un espace topologique localement compact et $(U_n)$ une suite d'ouverts dense dans $E$ avec $D=\bigcap\limits_{n\in \mathbb{N} } U_n.$  On fait les compact emboités avec la preuve usuelle de Baire pour avoir la suite qui converge comme il faut. \\
+        On fixe donc un voisinage $V\neq \emptyset $de $E.$ Alors $V\cap U_0\neq \emptyset $ par densité de $U_0.$ On pose donc $x_0\in V\cap U_0.$ Or $U_0\cap V\in \mathcal{V}(x_0)$ donc ($E$ localement compact) il existe $K_0$ compact avec $K_0\subset U_0\cap V.$ En particulier $\mathring{K_0}$ ouvert non vide. On peut donc prendre par récurrence $x_{n+1}\in U_{n+1}\cup \mathring{K_{n}}$. La suite $(K_n)$ ainsi construite est une suite $\drarrow$ de compact car $K_n\subset U_n\cap V$. Ainsi :
+        \begin{align*}
+            \bigcap\limits_{n\in \mathbb{N} } K_n \text{ est non vide} &\Rightarrow \exists x\in K_n,\ \forall n\in \mathbb{N}  \\
+                &\Rightarrow \exists x\in U_n,\ \forall n\in \mathbb{N} \text{ et } x\in V\\
+                &\Rightarrow \exists x\in D\cap V. 
+        \end{align*}
+\end{enumerate}
+
+
+\section*{Ex2 : Autour du th de Baire}
+
+
+\begin{enumerate}
+    \item Soit $(e_n)$ une base (infinie dénombrable) de $E$ un evn. Soit $F_n=Vect(e_0,\cdots, e_n).$ L'ensemble $F_n$ est fermé (car evn de dim finie)donc $\mathring{F_n}=\emptyset $ car sinon il contiendrait $B(0,r)$ et donc $E$ par linéarité. $E=\bigcup\limits_{n\in \mathbb{N} } F_n$ donc si $E$ est complet alors par th de Baire $E$ est d'intérieur vide ce qui est absurde. Ainsi $E$ n'est pas complet. \\
+        Par exemple $\mathbb{R} [X]$ n'est jamais complet T\_T
+
+    \item Soit $\varepsilon >0,$ l'espace $]0,+\infty [$ est de Baire (car localement compact, voir \ref{q2}). Soit $n\in \mathbb{N} $. Posons $F_n=\{x>0|\forall p\ge n,\ |f(px)|\le \varepsilon  \} .$ L'ensemble $F_n$ est fermé car il s'écrit $F_n=\bigcap\limits_{p\ge n} \underbrace{\{x>0| |f(px)|\le \varepsilon \}}_{\text{fermé car $f$ continue}} $. Par th de Baire, il existe $N\ge 0$ tq $F_n$ n'est pas d'intérieur vide. Ainsi il existe $]a,b[\subset F_N$. Soit $y\in E.$ On souhaite se ramener à $f(y)=f(\frac{py}{p})$ pour appliquer le résultat. Pour ça il existe $P\ge N$ tq $]Pa,+\infty [ =\bigcup\limits_{k\ge P} ]k_a,k_b[$. Alors $P>\max(N,\frac{a}{b-a})$. Choisissons $y>Pa,$ alors il existe $k\ge P$ tq $\frac{y}{k}\in ]a,b[.$ Ainsi $\frac{y}{k}\in F_N$ et donc $|f(y)|=|f(p\frac{y}{p})|\le \varepsilon .$  
+\end{enumerate}
+
+\section*{Ex3 : Dans un métrique complet, un $G_\delta$-dense n'est pas dénombrable }
+\begin{enumerate}
+    \item\label{q1} $x_0\in E,$ $\mathcal{O}\backslash \{x\} ,$ $x\in E,$ $r>0.$ $\mathcal{O}\cap B(x,r)\neq \emptyset $ ouvert $\Rightarrow \exists x_1\in \mathcal{O}\cap B(x,r) $ et $\exists r'$ tq $B(x_1)\subset \mathcal{O}\cap B(x,r)$. \\
+    Si $x_0\not\in B(x_1,r')$ alors $B(x,r)\cap (\mathcal{O}\backslash \{x_0\} )\neq \emptyset $. \\
+    Si $x_0\not\in B(x_1,r'),$ comme $x_1$ n'est pas isolé, on a $B(x_1,r')\backslash \{x_0\} \neq \emptyset $ donc $B(x,r)\cap (\mathcal{O}\backslash \{x_0\}) \neq \emptyset $ donc $\mathcal{O}\backslash \{x\} $ est dense.
+\item $(U_n)$ ouverts denses et $D=\bigcap\limits_{n\in \mathbb{N} } U_n$ $(x_n)$ les éléments de $D$ dénombrable. $\mathcal{O}_n=U_n\backslash \{x_{n}\} $ par \ref{q1}) $\mathcal{O}_n$ dense et ouvert. Donc $\bigcap\limits_{n\in \mathbb{N}}\mathcal{O}_n=\emptyset $ Ce qui contredit Baire !
+\end{enumerate}
+
+\section*{Ex4 : Un espace métrique non complet n'est pas de Baire}
+
+pas vu pas fait
+
+\section*{Ex 6 : Point de continuité d'une limite simple de fonctions continue}
+\begin{enumerate}
+    \item 
+    \begin{enumerate}
+        \item\label{q11} $G=\left( {\bigcup\limits_{n\in \mathbb{N} } \mathring{F_n}} \right) ^c$ est un fermé. $G\cap \mathring{F_n}=\emptyset \Rightarrow F\cap F_n$ est d'intérieur vide et fermé. Par Baire $\bigcup\limits_{n\in \mathbb{N} } \left( G\cap F_n \right) $ est d'intérieur vide. Or $\bigcup\limits_{n\in \mathbb{N} } \left( G\cap F_n \right) =G\cap \bigcup\limits_{n\in \mathbb{N} } F_n=G\cap E=G$. D'où $G^c=\bigcup\limits_{n\in \mathbb{N} } \mathring{F_n}$ est dense. 
+
+        \item $F_{n,\varepsilon }=\{x\in E| \forall p\ge n,\ d(f_n(x),f_p(x))<\varepsilon  \} $. Alors $\Omega_\varepsilon =\bigcup\limits_{n\in \mathbb{N} } \mathring{F_{n,\varepsilon }}$ ouvert car union d'ouverts. De plus $E=\bigcup\limits_{n\in \mathbb{N} } F_{n,\varepsilon }$ car $f_n$ converge simplement vers $f$ et $F_{n,\varepsilon }=\bigcap\limits_{p\ge n} \{x\in E| d(f_n(x),f_p(x))\le \varepsilon \} $ est une intersection de fermés (car $f$ $c^0$) donc un fermé. Ainsi par \ref{q11}, $\Omega_\varepsilon $ est dense dans $E.$ 
+
+        \item $D=\bigcap\limits_{\varepsilon >0} \Omega_\varepsilon $ dense dans $E$ par Baire. $x_0\in \Omega_\varepsilon ,\ \exists n $ tq $x_0\in \mathring{F_{n,\varepsilon }} \Rightarrow \exists v\in \mathcal{V}(x_0)$ tq $\forall x\in V,\ \forall p\ge n,\ d(f_n(x),f_p(x))\le \varepsilon $ en faisant tendre $p$ vers $+\infty $ on obtient $\forall x\in V,\ d(f_n(x),f(x))\le \varepsilon  $. Or $f_n$ est continue donc $\exists w\in \mathcal{V}(x_0) $ tq $\forall x\in w,\ d(f_n(x_0),f_n(x))\le \varepsilon  $. Pour $x\in V\cap w\in \mathcal{V}(x_0),$ on a $d(f(x),f(x_0))\le d(f(x),f_n(x))+d(f_n(x),f_n(x_0))+d(f_n(x_0), f(x_0))\le 3\varepsilon .$ Si $x_0\in D,$ alors c'est vrai pour tout $\varepsilon $ rationnel $\Rightarrow f$ est continue sur $D\Rightarrow f$ est continue sur une partie dense de $E\Rightarrow f$ est continue sur $E.$ 
+
+     \end{enumerate}
+     \item $f'(x)=\lim\limits_{n \to \infty} \frac{f(x+\frac{1}{n})-f(x)}{\frac{1}{n}}$  donc idem.
+\end{enumerate}
+
+
+\section*{Ex7 (TD1): A propos de Banach-Steinhaus}
+    $\Rightarrow $ OK\\
+        $\Leftarrow$ $\tau$ topologique sur $E$ pour laquelle $E$ est un evt qui admet une base de voisinage de 0 convexe. $S=\{\text{semi-normes sur $E$ continues pour }\tau\} $ et $\tau'$ topologique engendrée par $S.$ $\tau'\subset \tau$ par def de la topologique initiale. On doit montrer que $\tau\subset \tau'.$ \\
+        Soit $x\in E$ on montre que tout voisinage pour $\tau$ est un voisinage pour $\tau'.$ \\
+        On peut se concentrer sur des voisinages de $0.$ Soit $v\in \mathcal{V}(0)$.  L'application multiplication pat un scalaire est continue. (Jauges) on introduit $\eta>0,\ w$ un $\tau-$voisinage de 0 tq si $|\lambda|<\eta$ et $v\in w$ alors $\lambda v\in V$. On peut toujours prendre $w$ convexe. Ainsi $\Omega=\bigcup\limits_{|\lambda|<\eta} \lambda w$ convexe.\\
+        $\forall x\in E,\ p(x)=\inf \{\lambda>0| x\in \lambda \Omega\}  $ on vérifie que $p$ est bien une semi norme :
+        \begin{itemize}
+            \item positivement homogène : $p(tx)=tp(x)\forall t>0 $. $tx\in \lambda\Omega\Leftrightarrow x\in \frac{\lambda}{t}\Omega$.
+            \item homogène : $\Omega$ symétrique ie si $x\in \Omega$ alors $-x\in \Omega$ et donc $p(-x)= p(x)$ 
+            \item inégalité triangulaire : $x=ta\in t\Omega,$ $y=sh\in s\Omega,$ alors $x+y\in (s+t)\Omega$ par convexité de $\Omega.$ 
+            \item $p$ est continue : $u\in V,\varepsilon >0.$ $v\in E$ tq $v-u\in \varepsilon \Omega.$ $u+\varepsilon \Omega$ voisinage de $u$ et $|p(u)-p(v)|\le p(u-v)\le \varepsilon .$ Ainsi  $u+\varepsilon \Omega\subset \p^{-1} (]p(v)-\varepsilon ,p(v)+\varepsilon [)$ 
+        \end{itemize}
+        On en déduit que la $p-$boule de centre 0 et de rayon $\frac{1}{2}$ est un voisinage de 0 pour $\tau'.$ Cette boule est incluse dans $V$ donc $V$ est $\tau'-$voisinage de 0.
+
+Idée : localement convexe $\simeq $ avoir une base de semi norme.
+
+
+
+
+
+\end{document}

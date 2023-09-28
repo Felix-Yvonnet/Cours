@@ -1,0 +1,124 @@
+\documentclass[a4paper, twosides]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[french]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{proof}
+\input{mathtemplate}
+% figure support
+\usepackage{import}
+\usepackage{pgfplots}
+\usepackage{xifthen}
+\pdfminorversion=7
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+\title{TD ana}
+\author{Félix Yvonnet}
+\date{\today}
+
+\def\oldsec\section*
+\renewcommand{\section*}[1]{
+\addcontentsline{toc}{section}{#1}
+\oldsec{#1}
+}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\section*{Ex1 : Espaces de Arens-Fort}
+    
+\begin{enumerate}
+    \item 
+Soit $\mathbb{U}\in AF$. On a :
+\begin{itemize}
+    \item $\emptyset , \mathbb{N} ^2\in AF$ trivialement.
+    \item $\forall u,v\in AF,\ u\cap v\in AF$ (car on a au plus l'union des éléments qui n'étaient pas dans chaque colonne et si contient pas 0 c'est bon).
+    \item Soit $ u_i\in AF^I$. Si tous ont 0 ok. Si un n'a pas 0 il a un nombre fini de colonnes libres et le reste a un nombre fini de vide. Par l'union ce nombre de vide ne peut que réduire donc on aura la même chose au final et on sera toujours dans $AF$ ie $\cup u_i\in AF$.
+\end{itemize}
+Ainsi on a bien une topo
+
+    \item 
+        Soit $x_{n}\to x\in AF$. Si $x\neq 0$ alors on prend pour ouvert $\{x\} $. Sinon, si elle n'est pas stationnaire, on peut en extraire une sous suite où tous les éléments sont $\neq (0,0)$. Alors :
+        \begin{itemize}
+            \item Soit $x_{n}\in $ nb fini de colonnes alors $AF\backslash \{x_{n}\}$ vérifie 2)
+            \item $(x_{n})$ a nb infini de colonnes. On peut choisir au plus un $x_{n}$ par colonne alors $x_{\varphi (n)}$ vérifie 2). 
+        \end{itemize}
+        Dans ces deux cas on ne peut pas avoir $x_{n} \xrightarrow[n\to +\infty]{} (0,0)$ car les ouverts définis ont des $x_{n}$ qui sortent de cet ouvert pour une infinité de $n$ donc $(x_{n})$ est stationnaire.
+
+    \item $(x_{n})$ suite exhaustive, $AF\backslash \{(0,0)\} $ vérifie la caractérisation séquentielle des fermés mais n'est pas fermé\ldots
+
+
+\end{enumerate}
+
+
+
+\section*{Ex4 : Une métrique rendant $\mathbb{R}$ non complet}
+
+$u_n$ suite de cauchy ie $\lim\limits_{p,q \to \infty} d(u_p-u_q)=0 = \lim\limits_{p,q \to \infty} |Arctan(u_p)-Arctan(u_q)|$. Donc par exemple si on prend $x_{n}=n$ on a $Arctan(x_{n})\xrightarrow[n\to +\infty]{} \frac{\pi}{2}$ donc $x_{n}$de Cauchy pour $d$ mais pas convergent donc $\mathbb{R} $ pas complet pour ça.
+
+\section*{Ex5 : Fonction distance et séparation fermée}
+\begin{enumerate}
+    \item 
+        \begin{enumerate}
+            \item Soit $x\in E,$ on a $d(x,y)-d(x,z)\le d(x,z)+d(z,y)-d(x,z)\le 1\cdot d(y,z)$. Par symétrie on en déduit $d(x,y)-d(x,z)\le 1d(y,z)$ 
+        \end{enumerate}
+\end{enumerate}
+
+\section*{Ex8 : Prolongement et applications uniformément continues}
+
+\begin{enumerate}
+    \item 
+    Soit $\psi_1$ et $\psi_2$ deux prolongements continue de $\varphi$ sur $E$. $D$ dense donc $\exists (x_{n})\in D^\mathbb{N}\to x\in E ,\ \psi_1(x_{n})=\psi_2(x_{n}) $ donc par continuité $\psi_1=\psi_2$.
+
+    \item 
+    \begin{enumerate}
+        \item $\varphi $ uniformément continue $\Rightarrow $ de Cauchy $\Rightarrow $(F complet) $\varphi (x_{n})$ converge.\\
+            De plus si $(x_{n}),(y_n)$ deux suites tendant vers $x$ alors $\varphi (x_{n})$ et $\varphi (y_n)$ convergent vers l et l'. $z_n$ tq $z_{2n}=x_{n}$ et $z_{2n+1}=y_{n}$ donne $\varphi (z_n)$ converge donc l=l'.
+        \item $\psi$ prolonge bien $\varphi $ car $\varphi (x_n=x\in D)=\varphi (x)=\psi(x)$. De plus, pour $\varepsilon >0$, on a $\eta>0$ tq $\forall x,y\in D,\ d(x,y)<\eta\Rightarrow d(\varphi (x),\varphi (y))<\varepsilon $. $x_{n}\to x, y_n\to y\Rightarrow $ ça marche tkt fréro\ldots 
+    \end{enumerate}
+\end{enumerate}
+
+\section*{Ex9 : Complété d'un espace métrique}
+
+\begin{enumerate}
+    \item On a $i_x(y)=d(x,y)-d(a,y)\le d(a,y)+d(a,x)-d(a,y)=d(a,x)$ puis par symétrie $i_x\in \mathcal{C}_b$. Considérons $i:x\mapsto i_x$. C'est une isométrie car $\|i_x-i_y \|=\sup\|i_x(z)-i_y(z)\|=\sup|d(x,z)-d(y,z)|=d(x,y)$.\\
+     $\hat{E}=\overline{i(E)}$ convient cat $i(E)$ bien dense dedans et c'est complet car fermé dans un espace complet (appelé plongement de Kuratowski)
+    \item 
+    iso $\Rightarrow $ inj donc $j_2\circ j_1^{-1} $ est une bijection. Prolongement uniformément continue isométrie bijective :)
+
+\end{enumerate}
+
+
+\section*{Ex10 : Un exemple de topo non métrisable}
+\begin{enumerate}
+    \item Une base de décomposition est $E\times E\cdots B(0,\varepsilon )\times E\cdots$.\\
+        $f_n\to f$ means $\forall x\in E,\ f(x)\to f(x) $.
+    \item 
+        Tout ouvert contient une fonction simple (regarder les indicatrices) et si $\overline{D}$ pas un ouvert (ie tout l'ensemble) alors $E\backslash \overline{D}$ contient une fonction simple absurde !
+    \item 
+        Les limites de fonctions simples $f$ $fn\to f$ et $A=\{fn(x)\neq 0\} $ en dehors de $A$ $fn=0$ donc $f$ = 0 et les A sont dénombrables. Les limites s'annulent sur un espace non dénombrable donc $\mathcal{1}$ n'est pas limite de f simples continues.
+        \item 
+            $E$ pas métrisable car dense mais 3) 
+\end{enumerate}
+
+\section*{Ex7 : espaces localement convexe}
+
+$\Rightarrow $ $E$ encapsule la topo $\tau$ $p_\Omega(x):=\inf \{y|x\in y\Omega\} $ a valeur dans $[0,\infty ]$ avec $\Omega$ convexe, contient 0, symétrique et absorbant sur $E$ topo la plus grossière pour laquelle toutes les semi normes continues pour $\tau$sont continues.
+
+
+
+$\Leftarrow$ base de voisinage est donnée par les intersections finies de "semi boules". On a semi norme convexe $\Rightarrow $ semi boules convexes.
+
+
+\end{document}
