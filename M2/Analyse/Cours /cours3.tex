@@ -1,0 +1,95 @@
+\section{Compacité}
+\subsection{Caractérisation topologique}
+\begin{definition}[Axiome de Borel-Lebesgue]
+    Un espace topologique $(X,\mathbb{U})$ est dit compact si il est \underline{séparé} et pour tout $\mathcal{U}\subset \mathbb{U}$ ensemble d'ouverts tel que $\bigcup\limits_{} \mathcal{U}=X,$ il existe $\mathcal{U}_0\subset \mathcal{U}$ fini tel que $\bigcup\limits_{} \mathcal{U}_0=X$. (De toute couverture de $X$ par des ouverts, on peut extraire une sous couverture finie).
+\end{definition}
+\begin{remarque}
+    \begin{align*}
+        \bigcup\limits_{} \mathcal{U}&=\{x\in X\ |\ \exists A\in \mathcal{U},\ x\in A\}\\
+                                     &=\bigcup\limits_{A\in \mathcal{U}} A
+     \end{align*}
+\end{remarque}
+\begin{remarque}
+    On pouvait considérer les familles d'ouverts. Si $X=\bigcup\limits_{i\in I} U_i$ avec $U_i$ ouvert alors $\exists I_0\subset I,\ I_0 $ fini et tq $\bigcup\limits_{i\in I_0} U_i=X$.
+\end{remarque}
+\begin{remarque}[Intersection de fermés]
+   Soit $(X,\mathbb{U})$ compact. Si $(F_i)_{i\in I}$ est une famille de fermés de $X$ tq $\bigcap\limits_{i\in I} F_i=\emptyset ,$ alors $\exists I_0\subset I,\ I_0$ fini et $\bigcap\limits_{i\in I_0} F_i=\emptyset $.\\
+   En particulier, si $(F_n)$ est une suite de fermés emboités non vides alors $\bigcap\limits_{n\in \mathbb{N} } F_n\neq \emptyset .$
+\end{remarque}
+\begin{lemme}
+    Soit $(X,\mathbb{U})$ espace topologique séparé et $F\subset X$ complet. Alors $F$ est fermé.
+\end{lemme}
+\begin{proof}
+    Par contraposée, on suppose $F$ non fermé et on va montrer qu'il n'est pas compact.\\
+    Comme $F$ non fermé, il existe $x\in \overline{F}\backslash F.$ Soit $y\in F,$ $V_y$ et $W_y$ des ouverts disjoints tq $x\in V_y$ et $y\in W_y.$ On a $F=\bigcup\limits_{y\in F} W_y$. Si par l'absurde il existe $F_0\subset F$ fini tel que $F=\bigcup\limits_{y\in F_0} W_y$, alors l'ensemble $V_*=\bigcap\limits_{y\in F_0} V_y$ est un ouvert (comme intersection \textbf{finie} d'ouverts) qui continent $x$ et n'intersecte aucun $W_y$ pour $y\in F_0.$ \\
+    On a donc trouvé $V$ ouvert tq $x\in V$ et $V\cap F=\emptyset $. Cela contredit l'hypothèse que $x\in \overline{F}\backslash F$ (tout ouvert contenant $x$ doit rencontrer $F$).
+\end{proof}
+\begin{corollaire}
+    Soit $(X,\mathbb{U})$ compact et $F\subset X$. $F$ fermé $\Leftrightarrow $ $F$ compact.
+\end{corollaire}
+\begin{proof}
+    \begin{itemize}
+        \item[$\Leftarrow$] Voir la preuve précédente (note que compact $\Rightarrow $ séparé).
+        \item[$\Rightarrow $] Soit $(U_i)_{i\in I}$ une couverture de $F$ par des ouverts. Alors $X=\left( \bigcup\limits_{i \in  I} U_i \right) \cup \left( \underbrace{X\backslash F}_{\text{ouvert}} \right) $. Donc $\exists I_0\subset I,\ I_0$ fini et $X=\left( \bigcup\limits_{i \in  I_0} U_i \right) \cup \left(X\backslash F \right)$. Donc $F\subset \bigcup\limits_{i\in I_0} U_i.$
+    \end{itemize}
+\end{proof}
+\begin{lemme}
+    Soit $(X,\mathbb{U}),(Y\mathbb{V})$ des espaces topologiques séparés. Alors $\forall K\subset _CX,\ f(K) $ est un complet.
+\end{lemme}
+\begin{proof}
+    Soit $(U_i)$ tq $f(K)\subset U_{i\in I}U_i$. Alors $K\subset \bigcup\limits_{i \in} \underbrace{f^{-1} (U_i)}_{ \mathclap{\text{ouvert car $f$ continue }}}$. Donc $K\subset \bigcup\limits_{i\in I_0} f^{-1} (U_i)$ avec $I_0$ fini. Donc $f(K)\subset \bigcup\limits_{i\in I_0} f(U_i)$, donc $K$ est compact ($K$ est séparé car $Y$ l'est).
+\end{proof}
+\begin{corollaire}
+    Soit $(X,\mathbb{U}),(Y\mathbb{V})$ des compacts et $f:X\to Y$ continue bijective. Alors $f^{-1} $ est continue.
+\end{corollaire}
+\begin{proof}
+    Soit $F\subset X$ fermé. Alors $F$ est compact, donc $f(F)$ et compact puis $f(F)$ est fermé. Ainsi $\left( f^{-1}  \right) ^{-1} (F)$ est fermé. Ainsi l'image réciproque d'un fermé par $f^{-1} $ est un fermé donc $f^{-1} $ est continue.
+\end{proof}
+\begin{definition}[Espace localement compact]
+    $(X,\mathbb{U})$ un espace topologique séparé est dit localement compact ssi
+   \begin{enumerate}
+       \item tout point admet un voisinage compact
+        \item tout point admet une base de voisinages compact
+   \end{enumerate}
+   (Ces conditions sont équivalentes)
+\end{definition}
+\begin{proof}.
+    \begin{itemize}
+        \item $2\Rightarrow 1$ est clair
+        \item Supposons $1,$ soit $x\in X,K\subset X$ un voisinage compact de $x$ et $V\subset X$ un voisinage ouvert de $x.$ \\
+            Posons $\forall y\in K\backslash \{x\} ,\ V_y $ et $W_y$ ouverts disjoint tq $x\in V_y$ et $y\in W_y.$ Alors $K\subset \left( \bigcup\limits_{y\in K\backslash \{x\} }W_y  \right)\cup V $. Par compacité $\exists K_0\subset K\backslash \{x\} ,\ K\subset \left( \bigcup\limits_{y\in K_0} W_y \right) \cup V.$ Alors $K_*:=K\backslash \left( \bigcup\limits_{y\in K_0} W_y \right) $ est un fermé de $K$, donc un compact. De plus $K_*\subset V$ et $\underbrace{\bigcap\limits_{y\in K_0} V_y}_{\mathclap{\text{ouvert contenant $x$ }}}\subset K_*$
+    \end{itemize}
+\end{proof}
+\begin{definition}[Compactifié d'Alexandroff]
+    Soit $(X,\mathbb{U})$ un espace localement compact séparé. On pose $\hat{X}:=X\sqcup \{\infty \} ,$ où $\infty $ est un symbole supplémentaire arbitraire. $\hat{\mathbb{U}}:=\mathbb{U}\cup \{\hat{X}\backslash K\ |\ K\subset _CX\}  $. Alors $(\hat{X},\hat{\mathbb{U}})$ est un espace topologique compact qui induit la topologie sur $\mathbb{U}.$ (Idée : $X$ un segment ouvert qu'on relie sur lui même pour former un cercle).
+\end{definition}
+\subsection{Compacts métriques}
+\begin{definition}
+    $(X,d)$ est précompact $\Leftrightarrow \forall \varepsilon >0,\ \exists X_0\subset X $ fini, $X=\bigcup\limits_{x\in X_0} B(x,\varepsilon ).$
+\end{definition}
+\begin{theoreme}
+    Soit $(X,d)$ un espace métrique. Sont équivalent :
+    \begin{enumerate}
+        \item $X$ est un compact (au sens de l'axiome de Borel-Lebesgue)
+        \item Toute suite à valeur dans $X$ admet une sous suite convergente (Axiome de Bolzano-Weiestrass)
+        \item $X$ est précompact et complet.
+    \end{enumerate}
+\end{theoreme}
+\begin{proof}
+    On note que $X$ est métrique donc séparé.
+    \begin{itemize}
+    \item[$1\Rightarrow 2$] Soit $(x_n)$ une suite à valeur dans $X.$ On note $F_n:=\overline{\{x_n\ |\ n\ge N\}} $. Alors $Adh((x_n))=\bigcap\limits_{n\in \mathbb{N} } F_n$ est une intersection $\searrow$ de fermés non vides donc est non vide. Donc $(x_{n})$ edmet une valeur d'adhérence. Comme $(X,d)$ est métrique, c'est la limite d'une suite extraite.
+    \item[ $2\Rightarrow 3$] Preuve de la complétude. Soit $(x_{n})$ une suite de Cauchy. Par Bolzano-Weierstrass, elle admet une sous suite convergente. Comme elle est de Cauchy, elle converge.\\
+        Preuve de la précompacité. Soit $x_0\in X,$ on construit par récurrence tant que c'est possible, $x_{n}\in X\backslash \bigcup\limits_{k<n} B(x_{n},\varepsilon $. Si la construction s'arrête à l'indice $N$ alors $X=\bigcup\limits_{n<N} B(x_{n},\varepsilon )$ comme souhaité. Sinon, on remarque que $\forall m<n,\ x_{n}\not\in B(x_m,\varepsilon ) $, donc $d(x_{n},x_m)\ge \varepsilon .$ Alors la suite $(x_{n})$ ne peut pas avoir de sous suite convergente (sinon $d(x _{\varphi (n)},x_{\varphi (m)})\to 0.$) Contradiction avec la précompacité.
+    \item[$3\Rightarrow 1$] Soit $(x_{n})$ une suite de points de $X$ et $A=\{x_{n}\} $. On construit pour  $k\in \mathbb{N} ,$ $X=\bigcup\limits_{r\le R(k)} B(y_r^k,2^{-k}$ une couverture de $X$ par $R(k)$ boules de diamètre $2^{-k}$ et $\sigma(k)\in [\![1,;R(k)]\!]$ tq $A_k=A\cap B(y^0_{\sigma(0)},2^ ) \cap \cdots\cap B(y^k_{\sigma(k)},2^{-k})$ est infini. (Note : $\underbrace{A_{k+1}}_{\text{infini}}=A_{k-1}\cap \bigcup\limits_{r\le R(k)} B(y^k_r,2^{-k}=\underbrace{\bigcup\limits_{r\le R(k)}}_{\text{réunion finie}}\underbrace{A_{k-1}\cap B(y^k_r, 2^{-k})}_{\mathclap{\substack{\text{l'un doit être infini}\\\text{d'indice } r=\sigma(k)}}} $.\\
+        Soit $\varphi $ une extractrice tq $x_{\varphi (n)}\in A_n$ pour tout $n\in \mathbb{N} .$ Alors $\forall q\ge p\ge N$
+        \begin{align*}
+            d(x_{\varphi (p)},x_{\varphi (q)}) &\le diam(A_N)\\
+                                               &\le 2\times 2^N.
+        \end{align*}
+        Donc $x_{\varphi (n)}$ converge par complétude.
+    \item[$2\Rightarrow 1$] Soit $X=\bigcup\limits_{i \in  I} U_i$ une couverture par des ouverts. On affirme qu'il existe $r>0$ tq $\forall x\in X,\ \exists i\in I,\ B(x,r)\subset U_i $ (nombre de Lebesgue). Par l'absurde, soit $(x_{n})$ tq $B(x_{n},2^n)\not\subset U_i$ pour tout $i\in I.$ Par Bolzano-Weiestrass, $\exists \varphi +\nearrow,\ x_{\varphi (n)}\to x_*\in X.$\\
+        Soit $i\in I$ tq $x\in U_i,$ et $r>0$ tq $B(x,r)\subset U_i.$ Alors en se rapprochant assez de $x$ avec $\varphi $ on entre dans la boule et donc dans $U_i$ absurde !\\
+Soit $(U_i)$ une couverture d’ouverts et $r>0$ le nombre de Lebesgue associé. Soit $X=\bigcup\limits_{x\in  X_0} B(x,r)$ avec $X_0$ fini, par précompacité. Pour tout $x\in X_0$, soit $i(x)\in  I$ tq $B(x,r)\subset  U_{i(x)}$. Alors $X=\bigcup\limits_{x\in  X_0} B(x,r)\subset  \bigcup \limits_{x∈ X_0} U_{i(x)}$ réunion finie comme annoncé !
+    \end{itemize}
+\end{proof}
