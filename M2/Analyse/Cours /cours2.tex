@@ -251,3 +251,133 @@ $|F_u(t)-F_v(t)|\le \int_0^{\frac{1}{2}}|u(t-t^2)-v(t-t^2)|dt\le \frac{1}{2}\|u-
 \begin{ex}
     Soit $(q_k)$ une énumération de $\mathcal{O}$ posons $U_x:=\cup ]q_k-\frac{1}{nk^2},q_k+\frac{1}{nk^2}[$ Alors $Leb(U_n)\le \sum\limits_{k\ge 1}^{} \frac{2}{nk^2}=\frac{\pi^2}{3n}$. Ainsi $\cap U_n$ est une intersection d'ouverts denses mais de mesure nulle.
 \end{ex}
+
+\begin{corollaire}
+    Soit $(\gamma,d)$ un espace métrique complet et $(F_n)$ une suite de fermé d'intérieur vide. Alors $\bigcup\limits_{n\in \mathbb{N} } F_n$ est d'intérieur vide.
+\end{corollaire}
+
+Terminologie de Baire
+\begin{itemize}
+    \item Une intersection dénombrable d'ouverts est un $G_{\delta}$
+    \item Une union dénombrable de germés est un $F_\sigma$
+    \item Un ensemble qui contient un $G_{\delta}$ dense est dit gras
+    \item Un ensemble contenu dans un $F_\sigma$ d'intérieur vide est dit maigre
+\end{itemize}
+
+\begin{remarque}
+    Soit $(X,d)$ un espace métrique complet et sans points isolés. Alors tout ensemble $A$ gras est indénombrable.
+\end{remarque}
+\begin{proof}
+    Soit $x\in X$. Alors $\{x\} $ est fermé et d'intérieur vide. Donc $X\backslash \{x\} $ est un ouvert dense. Si par l'absurde $A$ est dénombrable, alors $A\cap \left( \bigcap\limits_{x\in A} X\backslash \{x\}  \right) $ contient une intersection dénombrable d'ouvert denses donc est dense par Baire. Contradiction !
+\end{proof}
+
+\subsection{Applications de Baire aux opérateurs linéaires continus.}
+\begin{theoreme}[Banach-Starhauss]
+    Soit $E$ un Banach, $F$ un evn et $A\subset L(E,F)$ un ensemble d'applications linaires continues. Si $A$ est simplement borné (ie $\forall x\in E,\ \sup_{u\in A}\|u(x)\|_F<\infty ) $ alors $A$ est uniformément borné (ie $\sup_{u\in A}\vertiii{u}<\infty $, ie on peut choisir $C(x):=\sup_{u\in A}\vertiii{u}\|x\|_E$) .
+\end{theoreme}
+\begin{proof}
+    (via Baire) Pour tout $k\in \mathbb{N} ,$ posons $E_k:=\{x\in E\ |\ \forall u\in A,\ \|u(x)\|_F\le k \} $. C'est un fermé, comme intersection de fermés. Par hypothèse, $\bigcup\limits_{k\in \mathbb{N} } E_k=\underbrace{E}_{\mathclap{\text{intérieur non vide}}}$, car $x\in E_k$ dès que $k\ge C(x).$ Donc par Baire, l'un au moins des $E_k$ est d'intérieur non vide. Disons $B(x,r)\subset E_k,$ pour un certain $x\in E,k\in \mathbb{N} .$  ar symétrie, $B(-x,r)\subset E_k.$ Par continuité, $B(0,r)\subset E$ (car $\|u(k)\|\le \frac{\|u(x+k)\|+\|u(-x+k)\|}{2}$).On en déduit $\forall y\in B(0,x),\ \forall u\in A,\ \|u(y)\|\le k.  $ Donc $\forall u\in A,\ \vertiii{u}\le \frac{k}{r}. $ Comme annoncé.
+\end{proof}
+\begin{corollaire}
+    Soit $E,F$ des Banach et $u_n\in L(E,F).$ On suppose $u_n(x)\xrightarrow[n\to +\infty]{} u(x)$ pour tout $x\in E.$ Alors $u$ est linéaire continue. (ie Une limite simple de fonctions linéaire continues est linéaire continue.)
+\end{corollaire}
+\begin{proof}
+    La linéarité de $u$ découle de la limite simple : $u(\lambda x+y)=\lim u_n(\lambda x+y)=\lim \lambda u_n(x)+u_n(y)=\lambda u(x)+u(y)$.\\
+    La suite $(u_n)$ est simplement bornée, en effet $\forall x\in E,\ (u_n(x)) $ est convergente donc bornée. Par Banach-Steinhaus $\vertiii{u_n}\le C_*\|x\|.$ Donc $\|u(x)\|=\lim_{n\to \infty }\underbrace{\|u_n(x)\|}_{\mathclap{\substack{\le \vertiii{u_n}\|x\|}}}\le C_*\|x\|$ donc $u$ est continue.
+\end{proof}
+\begin{corollaire}
+    Soit $E$ un Banach et $A\subset E^*$ simplement borné (ie $\forall x\in E,\ |l(x)|_{l\in A} $ est borné) "faiblement borné". Alors $A$ est uniformément borné (ie $(\|l\|_{E^*})$ est borné)
+\end{corollaire}
+
+\begin{proof}
+    Prendre $F=\mathbb{K}$ le corps de base $(\mathbb{K}=\mathbb{R} $ ou $\mathbb{C}$) et appliquer Banach-Steinhaus
+\end{proof}
+\begin{remarque}
+    Il y a une version duale de ce résultat mais les preuves nécessitent le th de Halm-Banach (??)
+\end{remarque}
+\begin{ex}
+    Il existe $f\in C^ (\Pi,\mathbb{C})$ donc la série de Fourier diverge en 0. $\Pi:=\mathbb{R} /_{2\pi\mathbb{Z} }=[0,2\pi[$. On a $L_N(f):=\frac{1}{2\pi}\sum\limits_{|n|\le N}^{} \int_0^{2\pi}f(t)e^{-int}dt$, alors $\exists f\in C^0,\ \exists \varphi $ exhaustive tq $|L_{\varphi (n)}(f)|\to \infty $.
+\end{ex}
+\begin{proof}
+    On a
+     \begin{align*}
+         L_N(f)&=\int_0^{2\pi}f(t)\underbrace{\sum\limits_{|n|\le N}^{} e^{-i nt}}_{\mathclap{D_n(t)}}dt\\
+         D_n(t)&=e^{-i Nt}\frac{1-e^{i(2N+1)t}}{1-e^{it}}\\
+               &=\frac{\sin \left( \frac{1}{2}(2N+1)t \right) }{\sin\left( \frac{1}{2}t \right) }
+     \end{align*}.
+     On munit $C^0$ de $\|\|_\infty $ qui en fait un complet. Donc $\vertiii{D_n}=\sup_{\|f\|_\infty \le 1}\int_0^{2\pi}f(t)D_n(t)dt=\int_0^{2\pi}|D_n(t)|dt$ en appliquant le sugne de $D_n$.\\
+      \begin{align*}
+          \vertiii{L_N}&=\int_{-\pi}^\pi\frac{/|\sin\left( \frac{1}{2}(2N+1)t \right) }{|\sin \frac{t}{2}|}dt\\
+                       &\ge \int_{-\pi}^\pi |\sin(2N+1)\frac{t}{2}|\frac{dt}{t} &\text{car $|\sin t|\le |t|$ }\\
+                       &= 2\int_0^{2N+1)\frac{\pi}{2}}|\sin s|\frac{ds}{s} &\text{par symétrie}
+     \end{align*}.
+     Diverge car $\int _0^\infty \frac{|\sin s|}{s}ds=\infty .$ (découper l'intégrale selon $\bigcup\limits_{k\in \mathbb{N} } [k\pi,(k+1)\pi[.$ \\
+     Ainsi $(\vertiii{L_n}$ est bien bornée. Donc par contraposée de Banach-Steinhaus $\exists f\in E=(C^0(\Pi,\mathbb{C}),\|.\|_\infty ),\ \sup_{n\in \mathbb{N} }|L_n(f)|=\infty .$
+\end{proof}
+
+\begin{theoreme}[Banach-Seinhaus dans les Frochets]
+    Soit $(E,(|.|_n))$ et $(F,(|.|'_n))$ des Frochets et $A\subset L(E,F)$ une famille d'applications linéaires continues. Si $A$ est simplement borné, ie $\forall x\in E,\ \forall m\in \mathbb{N} ,\ \sup_{u\in A}|u(x)|_m<\infty . $ Alors $A$ est (un mot que je n'arrive pas à lire) ie $\exists w,$ module de continuité $\forall x,y\in E,\ f_F(u(x),u(y))\le w(d_E(x,y)). $
+\end{theoreme}
+\begin{proof}
+    Soit $m\in \mathbb{N} $ fixé. Posons $E_k:=\{x\in E\ |\ \forall u\in A,\ |u(x)|'_m\le k \}  $. Alors $E_k$ est fermé et comme avant on a l'union fait l'ensemble non vide. Par Baire il y a un $E_k$ non d'intérieur vide. Par symétrie et continuité il continent un voisinage de 0. Donc $\exists N(m), r>0,\ \{x\in E\ |\ \forall n\le N(m),\ |x|_n<r \} \subset E_k.$ On en déduit $|u(x)|_m'\le \frac{k}{r}\max_{n\le N(m)}|x|_m.$ Noter que $\frac{k}{r}$ et $N(m)$ sont indépendant de $u\in A.$ On en déduit l'équicontinuité (c'est peut être ça le mot que je n'arrivais pas à lire) en 0 puis en tout point par linéarité. Rappelons $d_F(x,y)=\max_{m\in \mathbb{N} }\min(2^{-m},|x-y|_m')$ et $d_E(x,y)=\max_{m\in \mathbb{N} }\min(2^{-m},|x-y|_m)$.
+\end{proof}
+\begin{theoreme}[Application ouverte, Banach]
+    Soit $E,F$ Banach et $u\in L(E,F)$ surjective. Alors $u$ est ouverte, ie $\underbrace{u(O) \text{est un ouvert}}_{\mathclap{\text{1}}}$ dans $F$ pour tout ouvert $O$ de $E$.\\
+    Ou, de manière équivalente :
+    \begin{enumerate} \setcounter{enumi}{1}
+        \item $\exists C,\ \forall y\in F,\ \exists x\in E,\ y=u(x) $ et $\|x\|\le C\|y\|$
+        \item $\exists r>0,\ B_F(0,r)\subset u(B_E(0,1))$.
+    \end{enumerate}
+\end{theoreme}
+\begin{proof}
+\begin{itemize}
+    \item[$1\Rightarrow 3$] $u(B_E(0,1))$ est un ouvert car image d'un ouvert et continent 0 donc continent un voisinage de 0 dans $F$.
+    \item[$3\Rightarrow 1$] Soit $U$ ouvert de $E$ et $x\in U.$ Soit $\varepsilon >0$ tq $B_E(x,\varepsilon )\subset U.$ Alors $u(U)\supset u(B_E(x,\varepsilon ))=u(x)+\varepsilon u(B_E(0,1))\supset u(x)+\varepsilon B_F(0,r)=B_F(u(x),\varepsilon r)$
+    \item[$3\Rightarrow 2$] Soit $y\in E\backslash \{0\} ,$ alors $\frac{y}{\|y\|}\frac{r}{2}\in B(0,r).$ Donc $\frac{y}{\|y\|}\frac{r}{2}=u(x_*)$ pour un $x_*\in B(0,1).$ Donc $y=u(\underbrace{\frac{2}{r}\|y\|x_*}_{\mathclap{x}})$ et $\|x\|\le \frac{2}{r}\|y\|.$
+    \item[$2\Rightarrow 3$] Soit $r=\frac{1}{C},$ si $y\in B(0,r),$ alors $\exists x\in B(0,1),\ y=u(x).$
+\end{itemize}.
+
+Preuve du point 2 à partir des hypothèses. Par surjectivité, $\bigcup\limits_{n\in \mathbb{N} } \overline{u(B_E(0,n))}=F.$ Par Baire, $\exists n,\ \overline{u(B_E(0,n))}$ est d'intérieur non vide. Par symétrie et continuité, $\exists r>0,\ B_F(0,r)\subset \overline{u(B_E(0,n))}.$ Donc $\forall y\in B_F(0,r),\ \forall \varepsilon >0,\ \exists x\in B_E(0,n),\ \|y-u(x)\|<\varepsilon .$ Par homogénéité $\forall y\in  F,\ \forall \varepsilon >0,\ \exists x\in E,\ \|y-u(x)\|<\varepsilon $ et $\|x\|_E\le C\|y\|_F$ pour $C=\frac{2n}{r}$.\\
+Soit $y_0\in F\backslash \{0\} $ dont on veut construire un antécédent. On choisit $x_0\in E$ tq $\|x_0\|\le C\|y_0\|$ et $\|y_0-u(x_0)\|\le \frac{\|y_0\|}{2}.$ On pose $y_1=y_0-u(x_0).$ OPS $y_1\neq 0$ sinon on a bien un antécédent. Par récurrence on construit $(y_n),(x_n)$ tq $\|x_n\|\le C\|y_n\|$ et $\|y_n-u(x_n)\|\le \|y_n\|/2.$ On a $y_{n+1}=y_n-u(x_n).$ Alors $\|y_n\|\le 2^{-n}\|y_0\|$ par récurrence et $\|x_n\|\le C_2^{-n}\|y_0\|.$ Or $\sum\limits_{n=0}^{N} x_n\to x_*$ par complétude de $E.$ Par ailleur
+\begin{align*}
+    y_n&=y_{n-1}-u(x_{n-1})\\
+       &=y_{n-2}-u(x_{n-1}+x_{n-2})\\
+       &\cdots\\
+       &=y_0-u(\sum\limits_{k<n}^{} x_k).
+\end{align*}
+Donc $\|y_0-u(\sum\limits_{k<n}^{} x_k)\|=\|y_n\|\to 0$ et $\to \|y_0-u(x_*)\|$. On en conclut $y_0=u(x_*)$ et $x_*\le \sum\limits_{n=0}^{\infty} \|x_n\|\le \sum\limits_{n=0}^{\infty} C_2^{-n}\|y_0\|\le 2C\|y_0\|.$
+\end{proof}
+
+\begin{corollaire}[Isomorphisme de Banach]
+    Si $E,F$ est de Banach et $u\in L(E,F)$ bijective, alors $u^{-1} \in L(F,E)$
+\end{corollaire}
+\begin{proof}
+    $u^{-1} $ est linéaire comme inverse d'une application linéaire. Montrons qu'elle est continue. Si $U\subset E$ est ouvert alors $(u^{-1})^{-1} (U)=u(U) $ est ouvert par th de l'application ouverte, ce qui conclut ($u$ est bijective donc surjective).
+\end{proof}
+\begin{corollaire}
+    Soit $E$ un espace vectoriel muni de $\|.\|$ et $\|.\|'$ tq $(E,\|.\|)$ et $(E,\|.\|')$ sont complets. Supposons $\exists C,\ \forall x\in E,\ \|x\|'\le C\|x\|. $ Alors $\exists c>0,\ \forall x\in E,\ \|x\|'\ge  c\|x\| $ (équivalence des normes).
+\end{corollaire}
+\begin{proof}
+    L'application $Id:(E,\|.\|)\to (E,\|.\|')$ est continue car $\|Id(x)\|'=\|x\|'\le C\|x\|$ pour tout $x\in E$ et bijective. Par le corollaire isomorphisme de Banach, $Id^{-1} : (E,\|.\|')\to (E,\|.\|)$ est continue ie $\|Id^{-1} (x)\|=\|x\|\le \tilde{C}\|x\|'.$ On pose $c=\frac{1}{\tilde{C}}$.
+\end{proof}
+\begin{theoreme}[Graphe fermé]
+    Soit $E,F$ de Banach et $u:E\to F$ linéaire. Sont équivalent :
+    \begin{itemize}
+        \item $u$ est continue
+        \item $\mathcal{G}(u):=\{(x,u(x))\in E\times F\ |\ x\in E\} $ est fermé
+    \end{itemize}
+\end{theoreme}
+\begin{proof}
+    On rappel que $E\times F$ est un Banach pour la norme $\|(x,f)\|_{E\times F}:=\|x\|_E+\|y\|_F.$
+    \begin{itemize}
+        \item[$1\Rightarrow 2$] $\mathcal{G}(u)=\{(x,y)\in E\times F\ |\ y-u(x)=0\} $. Or $\varphi  :\begin{aligned}
+            E\times F &\longrightarrow F \\
+            (x,y) &\longmapsto y-u(x)
+        \end{aligned}$ est continue donc $\mathcal{G}(u)=\varphi ^{-1} (\{O_F)\} $ est fermé.
+    \item[$2\Rightarrow 1$] $\mathcal{G}(u)$ est un sous espace vectoriel fermé de $E\times F$ donc c'est un Banach pour la norme $\|.\|_{E\times F}.$ De plus l'application $\varphi : \begin{aligned}
+         \mathcal{G}(u)\times F&\longrightarrow E \\
+         (x,u(x))&\longmapsto x
+    \end{aligned}$ est linéaire, continue et bijective. (on aurait aussi pu faire avec équivalence des normes) Par l'isomorphisme de Banach, $\varphi ^{-1} $ est continue. Donc $\|x\|+\|u(x)\|=\|\varphi ^{-1}  (x)\|\le C\|x\|.$ Finalement $\|u(x)\|\le (C+1)\|x\|.$
+    \end{itemize}
+
+\end{proof}
