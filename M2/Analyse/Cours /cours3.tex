@@ -1,7 +1,13 @@
 \section{Compacité}
 \subsection{Caractérisation topologique}
 \begin{definition}[Axiome de Borel-Lebesgue]
-    Un espace topologique $(X,\mathbb{U})$ est dit compact si il est \underline{séparé} et pour tout $\mathcal{U}\subset \mathbb{U}$ ensemble d'ouverts tel que $\bigcup\limits_{} \mathcal{U}=X,$ il existe $\mathcal{U}_0\subset \mathcal{U}$ fini tel que $\bigcup\limits_{} \mathcal{U}_0=X$. (De toute couverture de $X$ par des ouverts, on peut extraire une sous couverture finie).
+    Un espace topologique $(X,\mathbb{U})$ est dit compact si :
+    \begin{itemize}
+        \item $X$ est \underline{séparé}
+        \item Pour tout $\mathcal{U}\subset \mathbb{U}$ tel que $\bigcup_{U \in \mathcal{U}}U=X$, il existe $\mathcal{U}_0 \in \mathcal{P}_f(\mathcal{U})$ 
+ tel que $\bigcup\limits_{} \mathcal{U}_0=X$. (De toute couverture de $X$ par des ouverts, on peut extraire une sous couverture finie).
+    \end{itemize}
+    il est \underline{séparé} et 
 \end{definition}
 \begin{remarque}
     \begin{align*}
@@ -17,7 +23,7 @@
    En particulier, si $(F_n)$ est une suite de fermés emboités non vides alors $\bigcap\limits_{n\in \mathbb{N} } F_n\neq \emptyset .$
 \end{remarque}
 \begin{lemme}
-    Soit $(X,\mathbb{U})$ espace topologique séparé et $F\subset X$ complet. Alors $F$ est fermé.
+    Soit $(X,\mathbb{U})$ espace topologique séparé et $F\subset X$ compact. Alors $F$ est fermé.
 \end{lemme}
 \begin{proof}
     Par contraposée, on suppose $F$ non fermé et on va montrer qu'il n'est pas compact.\\
@@ -30,14 +36,16 @@
 \begin{proof}
     \begin{itemize}
         \item[$\Leftarrow$] Voir la preuve précédente (note que compact $\Rightarrow $ séparé).
-        \item[$\Rightarrow $] Soit $(U_i)_{i\in I}$ une couverture de $F$ par des ouverts. Alors $X=\left( \bigcup\limits_{i \in  I} U_i \right) \cup \left( \underbrace{X\backslash F}_{\text{ouvert}} \right) $. Donc $\exists I_0\subset I,\ I_0$ fini et $X=\left( \bigcup\limits_{i \in  I_0} U_i \right) \cup \left(X\backslash F \right)$. Donc $F\subset \bigcup\limits_{i\in I_0} U_i.$
+        \item[$\Rightarrow $] Soit $(U_i)_{i\in I}$ une couverture de $F$ par des ouverts. Alors \\
+        $X=\left( \bigcup\limits_{i \in  I} U_i \right) \cup \underbrace{\left( X\backslash F\right)}_{\text{ouvert}}  $. Donc $\exists I_0\subset I,\ I_0$ fini et $X=\left( \bigcup\limits_{i \in  I_0} U_i \right) \cup \left(X\backslash F \right)$. Donc $F\subset \bigcup\limits_{i\in I_0} U_i.$
     \end{itemize}
 \end{proof}
 \begin{lemme}
-    Soit $(X,\mathbb{U}),(Y\mathbb{V})$ des espaces topologiques séparés. Alors $\forall K\subset _CX,\ f(K) $ est un complet.
+    Soit $(X,\mathbb{U}),(Y,\mathbb{V})$ des espaces topologiques séparés. Alors pour $f : X \to Y$ continue, et $K\subset _CX$, $f(K)$ est un compact.
 \end{lemme}
 \begin{proof}
-    Soit $(U_i)$ tq $f(K)\subset U_{i\in I}U_i$. Alors $K\subset \bigcup\limits_{i \in} \underbrace{f^{-1} (U_i)}_{ \mathclap{\text{ouvert car $f$ continue }}}$. Donc $K\subset \bigcup\limits_{i\in I_0} f^{-1} (U_i)$ avec $I_0$ fini. Donc $f(K)\subset \bigcup\limits_{i\in I_0} f(U_i)$, donc $K$ est compact ($K$ est séparé car $Y$ l'est).
+    Soit $(U_i)_{i \in I}$ tq $f(K)\subset \bigcup_{i\in I}U_i$. Alors $K\subset \bigcup\limits_{i \in I} \underbrace{f^{-1} (U_i)}_{ \mathclap{\substack{\text{ouvert car}\\\text{$f$ continue }}}}$. Donc \\
+    $K\subset \bigcup\limits_{i\in I_0} f^{-1} (U_i)$ avec $I_0 \in \mathcal{P}_f(I)$. Donc $f(K)\subset \bigcup\limits_{i\in I_0} f(U_i)$, donc $K$ vérifie la propriété de Borel-Lebesgue, et est séparé car $Y$ est séparé.
 \end{proof}
 \begin{corollaire}
     Soit $(X,\mathbb{U}),(Y\mathbb{V})$ des compacts et $f:X\to Y$ continue bijective. Alors $f^{-1} $ est continue.
@@ -78,7 +86,10 @@
 \begin{proof}
     On note que $X$ est métrique donc séparé.
     \begin{itemize}
-    \item[$1\Rightarrow 2$] Soit $(x_n)$ une suite à valeur dans $X.$ On note $F_n:=\overline{\{x_n\ |\ n\ge N\}} $. Alors $Adh((x_n))=\bigcap\limits_{n\in \mathbb{N} } F_n$ est une intersection $\searrow$ de fermés non vides donc est non vide. Donc $(x_{n})$ edmet une valeur d'adhérence. Comme $(X,d)$ est métrique, c'est la limite d'une suite extraite.
+    \item[$1\Rightarrow 2$] Soit $(x_n)$ une suite à valeur dans $X.$ On note $F_n:=\overline{\{x_n\ |\ n\ge N\}} $.
+    Alors $Adh((x_n))=\bigcap\limits_{n\in \mathbb{N} } F_n$ est une intersection $\searrow$ de fermés non vides donc est non vide. 
+        Donc $(x_{n})$ admet une valeur d'adhérence. 
+        Comme $(X,d)$ est métrique, c'est la limite d'une suite extraite.
     \item[ $2\Rightarrow 3$] Preuve de la complétude. Soit $(x_{n})$ une suite de Cauchy. Par Bolzano-Weierstrass, elle admet une sous suite convergente. Comme elle est de Cauchy, elle converge.\\
         Preuve de la précompacité. Soit $x_0\in X,$ on construit par récurrence tant que c'est possible, $x_{n}\in X\backslash \bigcup\limits_{k<n} B(x_{n},\varepsilon $. Si la construction s'arrête à l'indice $N$ alors $X=\bigcup\limits_{n<N} B(x_{n},\varepsilon )$ comme souhaité. Sinon, on remarque que $\forall m<n,\ x_{n}\not\in B(x_m,\varepsilon ) $, donc $d(x_{n},x_m)\ge \varepsilon .$ Alors la suite $(x_{n})$ ne peut pas avoir de sous suite convergente (sinon $d(x _{\varphi (n)},x_{\varphi (m)})\to 0.$) Contradiction avec la précompacité.
     \item[$3\Rightarrow 1$] Soit $(x_{n})$ une suite de points de $X$ et $A=\{x_{n}\} $. On construit pour  $k\in \mathbb{N} ,$ $X=\bigcup\limits_{r\le R(k)} B(y_r^k,2^{-k}$ une couverture de $X$ par $R(k)$ boules de diamètre $2^{-k}$ et $\sigma(k)\in [\![1,;R(k)]\!]$ tq $A_k=A\cap B(y^0_{\sigma(0)},2^ ) \cap \cdots\cap B(y^k_{\sigma(k)},2^{-k})$ est infini. (Note : $\underbrace{A_{k+1}}_{\text{infini}}=A_{k-1}\cap \bigcup\limits_{r\le R(k)} B(y^k_r,2^{-k}=\underbrace{\bigcup\limits_{r\le R(k)}}_{\text{réunion finie}}\underbrace{A_{k-1}\cap B(y^k_r, 2^{-k})}_{\mathclap{\substack{\text{l'un doit être infini}\\\text{d'indice } r=\sigma(k)}}} $.\\
@@ -90,6 +101,194 @@
         Donc $x_{\varphi (n)}$ converge par complétude.
     \item[$2\Rightarrow 1$] Soit $X=\bigcup\limits_{i \in  I} U_i$ une couverture par des ouverts. On affirme qu'il existe $r>0$ tq $\forall x\in X,\ \exists i\in I,\ B(x,r)\subset U_i $ (nombre de Lebesgue). Par l'absurde, soit $(x_{n})$ tq $B(x_{n},2^n)\not\subset U_i$ pour tout $i\in I.$ Par Bolzano-Weiestrass, $\exists \varphi +\nearrow,\ x_{\varphi (n)}\to x_*\in X.$\\
         Soit $i\in I$ tq $x\in U_i,$ et $r>0$ tq $B(x,r)\subset U_i.$ Alors en se rapprochant assez de $x$ avec $\varphi $ on entre dans la boule et donc dans $U_i$ absurde !\\
-Soit $(U_i)$ une couverture d’ouverts et $r>0$ le nombre de Lebesgue associé. Soit $X=\bigcup\limits_{x\in  X_0} B(x,r)$ avec $X_0$ fini, par précompacité. Pour tout $x\in X_0$, soit $i(x)\in  I$ tq $B(x,r)\subset  U_{i(x)}$. Alors $X=\bigcup\limits_{x\in  X_0} B(x,r)\subset  \bigcup \limits_{x∈ X_0} U_{i(x)}$ réunion finie comme annoncé !
+Soit $(U_i)$ une couverture d’ouverts et $r>0$ le nombre de Lebesgue associé. Soit $X=\bigcup\limits_{x\in  X_0} B(x,r)$ avec $X_0$ fini, par précompacité. Pour tout $x\in X_0$, soit $i(x)\in  I$ tq $B(x,r)\subset  U_{i(x)}$. Alors $X=\bigcup\limits_{x\in  X_0} B(x,r)\subset  \bigcup \limits_{x \in X_0} U_{i(x)}$ réunion finie comme annoncé !
     \end{itemize}
 \end{proof}
+
+\begin{theoreme}{Heine}
+    Soit $((X,d)$ compact et $(Y,d)$ métrique.
+    \begin{enumerate}
+        \item Si $f:X\to Y$ est continue alors selle est uniformément continue.\\
+            $[\forall x\in X,\exists w_x,$ module de continuité, $\forall y\in X,\ d(f(x),f(y)))<w_x(d(x,y))]\Rightarrow [\exists w,$ module de continuité, $\forall x,y\in X,\ d(f(x),f(y))\le w(d(x,y))] $.
+
+        \item Si $(f_i)_{i\in I}, f_i: X\to Y$ est equi continue, alors elle est uniformément equi continue.\\
+            $[-------, \forall i\in I,\ d(f_i(x),f_i(y))\le w_x(d(x,y))]\Rightarrow\\-------, \forall i\in I,\ d(f_i(x),f_i(y))] $.
+    \end{enumerate}
+\end{theoreme}
+\begin{proof}
+    \begin{enumerate}
+        \item Par l'absurde, si $f$ n'est pas uniformément continue, alors$\exists \varepsilon >0,\ \exists (x_n),(y_n),\ d(x_n,y_n)\underset{n\to +\infty}{\longrightarrow} 0$ et $d(f(x_{n}),f(y_n))\ge \varepsilon .$ Par continuité, $\exists \varphi $ extractrice, $x_{\varphi (n)}\underset{n\to +\infty}{\longrightarrow} x_*.$ On a de plus $y_{\varphi (n)}\underset{n\to +\infty}{\longrightarrow} x_*$ et $\max(d(f(y_{\varphi n)}),f(x_*)),d(f(x_{\varphi (n)}),f(x_*)))\ge (d\frac{f(x_{\varphi n)},f(y_{\varphi (n)})}{2}\ge \frac{\varepsilon}{2}$. Contredit la continuité en $x_*.$
+        \item Posons $F :\begin{aligned}
+            X &\longrightarrow Y^I \\
+            x &\longmapsto \left(f_i(x)\right)_{i\in I}.
+        \end{aligned}$ On munit $Y^I$ de la distance de la convergence uniforme : $d_{Y^I}\left( (u_i), (v_i) \right) =\max_{i\in I}\underbrace{\min}_{\mathclap{\text{Pour prendre des vals finies}}}(1,d_Y(u_i,v_i))\neq $ topologie produit. \\
+        Alors $(f_i)$ equicontinue $\Leftrightarrow F$ continue. Or $\left( f_i \right) $ uniformément continue $\Leftrightarrow F$ uniformément continue et $F$ uniformément continue $\Leftrightarrow F$ continue par th de Heine !
+    \end{enumerate}
+\end{proof}
+
+\subsection{Compacité en dimension finie.}
+\begin{propriete}
+    Une partie $A\subset \mathbb{R} ^d$ est ssi elle est fermée et bornée.
+\end{propriete}
+
+\begin{proof}
+    \begin{itemize}
+        \item[$\Rightarrow$] Trivial
+        \item[$\Leftarrow$] On a montré que $(X,d)$ est compact $\Leftrightarrow (X,d)$ est précompact complet.
+            \begin{itemize}
+                \item $A\subset \mathbb{R} ^d$ est complet car ferlé dans un complet.
+                \item On peut inclure $A$ dans $[-R,R]^d $ pour un $R>0$ car $A$ est borné. On peut recouvrir $[-R,R]^d$ d'un nombre fini de boules de rayon $\varepsilon >0$ donné, disposés en grille : $[-R,R]^d\subset \bigcup\limits_{1\le i\le I} B(x_i,\varepsilon )$ pour $x_i\in [-R,R]^d.$ Posons $J=\{1\le i\le I\ |\ B(x_i,\varepsilon )\cap A\neq \emptyset \} ,$ et soit $y_j\in B(x,\varepsilon )\cap A,\ \forall j\in J.$ \\
+                Alors $A\subset \bigcup\limits_{j\in J} B(y_j,2\varepsilon ),$ car $B(x_j, \varepsilon )\subset B(y_j, 2\varepsilon ).$
+            \end{itemize}
+    \end{itemize}
+\end{proof}
+\begin{corollaire}
+    Soit $f\in C^0(X,\mathbb{R} ),$ avec $X$ compact. Alors $f$ est bornée et atteint ses bornes.
+\end{corollaire}
+\begin{proof}
+    $f(X)\subset \mathbb{R} $ est l'image d'un compact donc compact, donc fermé borné, donc admet une borne sup et inf.
+\end{proof}
+\begin{corollaire}
+    (équivalence des normes en dim finie) : Soit $E$ un espace vectoriel de dim finie, $\|.\|$ et $\|.\|'$ des normes sur $E.$ Alors $\exists C,c>0,\ \forall x\in E,\ c\|x\|\le \|x\|'\le C\|x\|. $
+\end{corollaire}
+\begin{proof}
+    On peut supposer $E=\mathbb{R} ^d$ (quitte à choisir une base) et $\|x\|=\sum\limits_{i=1}^{d} |x_i| $ (car l'équivalence des normes est une relation d'équivalence). \\
+    On a $\|x\|'=\|\sum\limits_{i=1}^{d} x_ie_i\|'\le \sum\limits_{i=1}^{d} |x_i| \|e_i\|'C\|x\|$ où $C=\max_{1\le i\le d}\|e_i\|'$ en notant $(e_i)$ la base canonique. On en déduit la borne supérieure $\|x\|'\le C\|x\|,$ et $|\|x\|'-\|y\|'| \le \|x-y\|'\le C\|x-y\|$ donc $\|.\|'$ est $C-$Lipschitz. On pose $c=\inf \{\underbrace{\|x\|'}_{\substack{>0\text{ car}\\x\neq 0}}\ |\ \underbrace{x\in E,\|x\|=1}_{\mathclap{\substack{\text{compact car}\\ \text{fermé borné}}}}\} $  Comme $c$ est atteint on a $c>0$ et $\|x\|'\ge c$ si $\|x\|=1$. Par homogénéité $\|x\|'\le c\|x\|.$
+\end{proof}
+\begin{theoreme}{compacité de Rietz}
+    Soit $E$ un evn. Sont equivalent :
+    \begin{enumerate}
+        \item $E$ de dim finie
+        \item $B'_E(0,1)$ est complet
+        \item $\exists I\in \mathbb{N} ^*,\ x_1,\cdots.x_I\in E,\ B'_E(0,1)\subset \bigcup\limits_{1\le i\le I} B_E(x_i,1).$
+    \end{enumerate}
+\end{theoreme}
+\begin{proof}
+    Clairement $1)\Rightarrow 2)$ et $2\Rightarrow 3).$ Rester à montrer $3)\Rightarrow 1).$
+    \begin{lemme}{de Riez}
+        Soit $E$ un evn, $F\subset E$ un sous espace propre ($F\neq E$) et fermé, $p<1.$ Alors $\exists x\in B'_E(0,1), \ p\le d(x,F):=\inf \{\|x-v\|\ |\ v\in F\} $. Si $E$ est de dimension finie, alors on peut prendre $p=1.$
+    \end{lemme}
+    \begin{proof}
+        Soit $u\in E\backslash F$ ($u$ existe car $F$ propre). On a $d(u,F)>0$ car $F$ est fermé. Il existe $v\in F$ tq $\|u-v\|\le \frac{1}{p}d(u,F):=\inf \{\|u-v'\|v'\in F\ |\ \} $
+        \begin{itemize}
+            \item Par définition de l'inf en dimension quelconque.
+            \item En dimension finie, on note que $d(u,F)=\inf \{\underbrace{\|u-v'\|}_{\mathclap{\substack{v'\in F\mapsto \|u-v'\|\\\text{est continue}}}}\ |\ \underbrace{v'\in F,\ \|u-v'\|\le d(u,F)+1}_{\mathclap{\substack{\text{fermé borné de $F$}\\\text{qui est de dim finie}}}} \} $
+        \end{itemize}
+    \end{proof}
+    On suppose alors $3)$. On pose $F=Vect \{x_i\ |\ i\in [\![1;I]\!]\} $. $F$ est de dimension finie et $F\subset E.$ Donc $F$ est fermé. Si $F=E$ alors $1)$ est prouvé. Sinon $\exists x\in B'_E(0,1),\ d(x,F)=1.$ En particulier, $x\not\in B(y,1)$ pour tout $y\in F.$ Donc $x\not\in \bigcup\limits_{1\le i\le I} B(x_i,1)$ contradiction !
+\end{proof}
+\subsection{Produit de compact.}
+\begin{theoreme}{Tychonov}
+    Soit $(X_i,U_i)$ une famille d'espace topologique compact. Alors $\prod\limits_{i\in I}^{} X_i $ est compact pour la topologie produit.
+\end{theoreme}
+\begin{proof}
+    Dans le cas métrique dénombrable, $(X_n,d_n)$ une famille de compacts métriques. $X_*=\prod\limits_{n\in \mathbb{N} }^{} X_n $ est muni de la distance $d_*((x_{n}),(y_n)):=\max_{n\in \mathbb{N} }\min\left( 2^{-n},d_n(x_n,y_n) \right) $ topologie de la convergence simple.
+\end{proof}
+\begin{proof}
+    Compacité par le critère de Bolzano Weierstrass. On considère $(x^k)_{k\in \mathbb{N} }\in X_*.$ On utilise le "\textit{procédé d'extraction diagonal}".  \\
+    Soit $\varphi _0$ extractrice tq $x_0^{\varphi _0(k)}\underset{k\to +\infty}{\longrightarrow} \hat{x_0}\in X_0.$ \\
+    $\vdots$\\
+    Soit $\varphi _n$ extractrice tq $x_n^{\varphi _0\circ\cdots\circ\varphi _n(k)}\underset{k\to +\infty}{\longrightarrow} \hat{x_n}\in X_n.$
+    On pose $\varphi _*(k):=\varphi _0\circ\cdots\circ\varphi _k(k)$. Alors $x_n^{\varphi _*(k)}\underset{k\to +\infty}{\longrightarrow} \hat{x_n}$. Posons $\hat{x}:=(\hat{x_n})\in X_*.$ On a $d(x^{\varphi _*(k)},\hat{x})=\max_{n\in \mathbb{N} }\min(2^{-n}, \underbrace{d_n(x_n^{\varphi _*(k)},\hat{x_n})}_{\underset{k\to +\infty}{\longrightarrow} 0})$.
+\end{proof}
+\begin{ex}
+    (Satisfiability des familles de formules logiques) : Une formule logique est une application $f: \{0,1\} ^\mathbb{N} \to \{0,1\} ,$ qui ne dépend que d'un nombre fini de variables : $f(x_0,x_1,\cdots) = f(x_0,\cdots,x_{N(f)},0,\cdots)$. \\
+    Soit $\mathcal{F}$ un ensemble de formules logiques. Sont équivalent :
+    \begin{enumerate}
+        \item $\mathcal{F}$ est satisfiable ($\exists x\in \{0,1\} ^\mathbb{N} ,\ \forall Af\in \mathcal{F},\ f(x)=1$)
+        \item Toute partie finie de $\mathcal{F}$ est satisfiable.
+    \end{enumerate}
+\end{ex}
+\begin{proof}
+    Clairement $1)\Rightarrow 2).$ Supposons non $1).$ \\
+    Alors $\bigcap\limits_{f\in \mathcal{F}} f^{-1} \{1\} \neq \emptyset .$ Or $X=  \{0,1\} ^\mathbb{N} $ est compact et une formule logique $f:X\to \{0,1\} $ est une application continue. $d_*\left( (u_n),(v_n) \right) =\max(2^{-n}, |u_n,v_n| ).$ Si $d_*\left( (u_n),(v_n) \right)<2^{-N(f)}$ Alors $f\left( (u_n) \right) =f\left( (v_n) \right) .$  Donc par la propriété de Borel Lebesgue appliqué aux fermés, $\exists \mathcal{F_0}\subset \mathcal{F},\ \mathcal{F_0}$ fini et $\bigcap\limits_{f\in \mathcal{F_0}} f^{-1} (\{1\})=\emptyset . $ Donc $\mathcal{F}$ n'est pas finiment satisfiable ie non $2)$.
+\end{proof}
+\begin{theoreme}{Banach Alaoglu}
+    Soit $E$ un Banach, $B:=B'_{E^*}(0,1)$ la boule unité fermée de son dual. Alors $B$ est compacte pour la topologie * faible.
+\end{theoreme}
+\begin{proof}
+    Dans le cas où $E$ est séparable. Soit $D\subset E$ une partie dénombrable dense. Soit $(f_n)\in B.$ On note que $|f_n(x)| \le \|x\|_E,$ car $\vertiii{f_n}\le 1$. Alors $\exists \varphi $ extractrice tq $f_{\varphi (n)}(x)\underset{n\to +\infty}{\longrightarrow} f_*(x)$. On obtient $\varphi $ par compacité de $\prod\limits_{x\in D}^{} [-\|x\|,\|x\|] ,$ ou directement par procédé d'extraction diagonal (équivalent).\\
+    On définit $f_*:D\to \mathbb{R} .$ On note que
+    \begin{align*}
+        |f_*(x)-f_*(y)| &=\lim\limits_{n \to \infty} |f_n(x)-f_n(y)| \\
+                        &=\lim\limits_{n \to \infty} \underbrace{|f_n(x-y)|}_{\mathclap{\le \|x-y\| \text{ car } \|f_n\|_{E^*}\le 1}}\\
+                        &\le \lim\limits_{n \to \infty} \|x-y\|\\
+                        &=\|x-y\|
+    .\end{align*}
+    Donc $f_*:D\to \mathbb{R} $ est 1-Lipschitzienne donc uniformément continue. Donc elle se prolonge en $f_*:E\to \mathbb{R} $ également 1-Lipschitz.\\
+    Enfin, soit $x\in E, \varepsilon >0, y\in D$ tq $\|x-y\|\le \varepsilon .$ Alors $|f_{\varphi (n)}(x)-f_n(x)| \le \underbrace{|f_{\varphi n}(x)-f_{\varphi n}(y)|}_{\le \|x-y\| \text{ car } \|f_{\varphi n}\|_{E^*}\le 1} + \underbrace{|f_{\varphi n}(y)-f_*(y)|}_{\underset{n\to +\infty}{\longrightarrow} 0 \text{ car }y\in D} +\underbrace{|f_*(y)-f_-(x)| }_{\substack{\le \|x-y\|\text{ car }f_*\\\text{est 1-Lipschitz}}}\le 3\varepsilon $ pour $n$ assez grand.\\
+    Ainsi $|f_{\varphi n}(x)-f_*(x)| \to 0$ pour tout $x\in E$ (convergence simple $f_{\varphi n}\to f_*)$. On en déduit que $f_*$ est linéaire $f_*(\lambda x+y)=\lim\limits_{n \to \infty} f_{\varphi n}(\lambda x+y)=\lambda \lim\limits_{n \to \infty} f_{\varphi n}(x)+\lim\limits_{n \to \infty} f_{\varphi n}(y)=\lambda f_*(x)+f_*(y).$ Alors $f_*\in B'_{E^*}(0,1)$ car elle est linéaire et 1-Lip. Donc $f_{\varphi n}\to f_*$ convergence * faible.\\
+    $E$ evn, $x_{n}\in E\to ($faible)$x\Leftrightarrow \forall \varphi \in E^*,\ \varphi (x_{n})\to \varphi (n).$\\
+    $\varphi _n\in E^*\to ($* faible) $\varphi \Leftrightarrow \forall x\in E,\ \varphi _n(x)\to \varphi (x). $ Topologie qio rend continue $E^*\to \mathbb{K},$ $\varphi \mapsto \varphi (x)$ semi norme $|\varphi | _*=|\varphi (x)| $  pour tout $x\in E.$
+\end{proof}
+
+\begin{theoreme}{Ascoli}
+    Soit $(X,d),(Y,d)$ des espaces métriques compacts. Alors $Lip_1(X,Y):=\{f:X\to Y\ |\ f \text{ est 1-Lipschitz}\} $ muni de $d(f,g):=\max_{x\in X}d(f(x),f(y))$ est métrique compact.
+\end{theoreme}
+\begin{proof}
+    Soit $D\subset X$ une partie dénombrable dense. Soit $(f_n)\in Lip_1(X,Y)^\mathbb{N} .$ Par le procédé d'extraction diagonal ou par compacité de $Y^D=\prod\limits_{x\in D}^{} Y$, il existe $f_*:D\to Y$ et $\varphi $ une extractrice tq $f_{\varphi n}(x)\underset{n\to +\infty}{\longrightarrow} f_*(x).$ On remarque que $\forall x,y\in D,\ d(f_*(x),f_*(y))=\lim\limits_{n \to \infty} d(f_{\varphi n}(x),f_{\varphi n}(y))\le \limsup\limits_{n \to \infty} d(x,y)=d(x,y)$. Donc $f_*:D\to Y$ est 1-Lip. Donc elle s'étend en $f_*:X\to Y$ aussi 1-Lip. Montrons $d(f_{\varphi n},f_*)\underset{n\to +\infty}{\longrightarrow}  0$ (ie on passe de la cv simple à la cv uniforme).\\
+    Soit $\varepsilon >0,D_\varepsilon \subset D$ fini tq $X=\bigcup\limits_{x\in D_\varepsilon } B(x,\varepsilon ),$ obtenu par compacité et densité de $D.$ Soit $N\in \mathbb{N} $ tq $\forall n\ge N,\ \forall x\in D_\varepsilon ,\ d(f_{\varphi n}(x),f_{\varphi n}(y))\le \varepsilon .  $ \\
+    Alors, $\forall n\ge N,\ \forall x\in X,  $ choisissons $y\in D_\varepsilon $ tq $x\in B(y,\varepsilon )$. On a
+    \begin{align*}
+        d(f_{\varphi n}(x),f_{\varphi n}(y)) &\le \underbrace{d(f_{\varphi n}(x), f_{\varphi n}(y))}_{\mathclap{\substack{\le d(x,y)\le \varepsilon \\\text{car $f_{\varphi n}$ est 1-Lip}}}} + \underbrace{d(f_{\varphi n}(y),f_*(y))}_{\mathclap{\substack{\le \varepsilon  \text{ car }n\ge N\\\text{et }y\in D_\varepsilon }}} + \underbrace{d(f_*(x),f_*(y))}_{\mathclap{\substack{\le d(x,y)\le \varepsilon \\\text{ car $f_*$ est 1-Lip}}}} \\
+                                &\le 3\varepsilon .
+   \end{align*}
+    Ainsi $(f_{\varphi n},f_*)\underset{n\to +\infty}{\longrightarrow} 0,$ donc $Lip_1(X,Y)$ est compact.
+\end{proof}
+\begin{theoreme}{Ascoli équicontinue}
+    Soit $(X,d)$ compact, $(Y,d)$ métrique et $(f_i)_{\in I}$ avec $f_i:X\to Y.$ On suppose :
+    \begin{itemize}
+        \item $(f_i)$ équicontinue ($\forall x,\ \exists w_x$ module de continuité, $\forall y\in X,\ \forall i\in I,\ d(f_i(x),f_i(y))\le w_x(d(x,y))  $
+        \item  $\forall x\in X,\ \overline{\{f_i(x)\ |\ i\in I\} } $ est compact.
+    \end{itemize}
+    Alors $\overline{\{f_i\ |\ i\in I\} }$ est une partie compact de $C^0(X,Y)$  pour $d(f,g)=\max_{x\in X}d(f(x),g(x))$
+\end{theoreme}
+\begin{proof}
+    Par le théorème de Heine, $(f_i)$ équicontinue sur $(X,d)$ compact $\Rightarrow (f_i)$ uniformément équicontinue. OPS $w\le 1,$ quitte ) remplacer $d_Y$ par $min(1,d_Y).$ On a vu que l'on peut construire $\tilde{w}$ module de continuité tq $\tilde{w}\ge w$ et $\tilde{w}$ est sous additif et croissant. OPS $\tilde{w}\neq 0$ sinon le résultat est prouvé. \\
+    Alors $\tilde{d}_Y(u,v):=\tilde{w}(\min(1,d_Y(u,v)))$ est une distance sur $Y,$ définissant la même topologie que $d_Y$.\\
+    Par construction, $\forall i\in I,\ f_i(X,d_Y)\to (Y,\tilde{d_{Y}}) $ est 1-Lip. La preuve d'Ascoli dans le cas 1-Lip s'applique. ($\prod\limits_{x\in D}^{}Y_x$ compact comme produit de compact avec $D\subset X$ dense). On obtient  que $\overline{\{f_i\ |\ i\in I\} }$ est compact pour $\tilde{d}(f,g)=\max_{x\in X}\tilde{d_Y}(f(x),g(x)).$ donc aussi pour  $d(f,g)=\max_{x\in X}d_Y(f(x),g(x)).$
+\end{proof}
+\begin{propriete}
+    Soit $E$ un Banach, $K\subset E.$ Si $\overline{K}$ est compact alors $\overline{Hull(K)}$ est compact. On a noté $Hull(K):=\{\sum\limits_{1\le i\le I}^{} \lambda_ix_i\ |\ I\in \mathbb{N} ^*,\ \lambda_1,\cdots\lambda_I\ge 0,\ \sum\limits_{i=1}^{I} \lambda_i=1\} $ l'enveloppe convexe.
+\end{propriete}
+\begin{proof}
+    Pour tout $\varepsilon \ge 0,$ soit $D_\varepsilon \subset K$ fini tq $\overline{K}\subset \bigcup\limits_{x\in D_\varepsilon } B(x,\varepsilon )$ (existe par compacité de $\overline{K}$ et car $\overline{K}\subset \bigcup\limits_{x\in K} B(x,\varepsilon )$). Posons $H_\varepsilon =Hull(D_\varepsilon )=\{\underbrace{\sum\limits_{x\in D_\varepsilon }^{} \lambda(x)x}_{\substack{\text{fct continue}\\\text{de }\lambda\in \mathbb{R} ^{D_\varepsilon }}}\ |\ \underbrace{\lambda:D_\varepsilon \to \mathbb{R} _+,\ \sum\limits_{x\in D_\varepsilon }^{} \lambda(x)=1}_{\substack{\text{définie une partie}\\\text{compacte de }\mathbb{R} ^{D_\varepsilon }}}\} $. On note que $H_\varepsilon $ est compact. De plus soit $x\in Hull(K)$, $x=\sum\limits_{1\le i\le I}^{} \lambda_ix_i$ avec $x_i\in K, \lambda_i\ge 0$ et de somme 1. Choisissons $y_i\in D_\varepsilon $ tq $\|x_i-y_i\|\le \varepsilon .$ Posons $y=\sum\limits_{i=1}^{I} \lambda_iy_i\in Hull(D_\varepsilon ).$ On a $\|x-y\|\le \sum\limits_{i=1}^{I} \lambda_i\|x_i-y_i\|\le \varepsilon .$ \\
+    Soit $(x^k)$ une suite à valeur dans $Hull(K).$ Pour tout $n\in \mathbb{N} ^*,$ soit $x_n^k\in H_{\frac{1}{n}}=Hull(D_{\frac{1}{n}})$ tq $\|x^k-x^k_n\|\le \frac{1}{n}.$ Par compacité de $\prod\limits_{n\in \mathbb{N} }^{} H_{\frac{1}{n}},$ ou par procédé d'extraction diagonal, il existe $\varphi $ extractrice tq $x_n^{\varphi k}\underset{k\to +\infty}{\longrightarrow} \hat{x_n}\in H_{\frac{1}{n}}.$ \\
+    On a
+    \begin{align*}
+        \|x_n^k-x_m^k\|&\le \|x_n^k-x^k\|+\|x^k-x_m^k\|\\
+                       &\le \frac{1}{n}+\frac{1}{m}.
+    \end{align*}
+    Donc $\|\hat{x_n}-\hat{x_m}\|\le \lim\limits_{k \to \infty} \|x_n^k-x_m^k\|\le \frac{1}{n}+\frac{1}{m} \to 0$. Donc $(\hat{x_n})$ est de Cauchy et admet une limite $\hat{x}\in E$ qui est un Banach et $\|\hat{x_n}-\hat{x}\|=\lim\limits_{m \to \infty} \|\hat{x_n}-\hat{x_m}\|\le \limsup_{m\to \infty }\frac{1}{n}+\frac{1}{m}=\frac{1}{n}.$\\
+    Reste à montrer que $x^{\varphi k}\underset{k\to +\infty}{\longrightarrow} \hat{x}.$ Soit $\varepsilon >0, n\in \mathbb{N} ^*$ tq $\frac{1}{n}\le \varepsilon .$ Alors $\|x^{\varphi k}-\hat{x}\|\le \underbrace{\|x^{\varphi k}-x^{\varphi k}_n\|}_{\le \frac{1}{n}</\varepsilon } + \underbrace{\|x^{\varphi k}_n-\hat{x}_n\|}_{\underset{k\to +\infty}{\longrightarrow} 0} + \underbrace{\|\hat{x}_n-\hat{x}\|}_{\le \frac{1}{n\le \varepsilon }}\le 3\varepsilon \text{ pour $n$ assez grand.}$
+    Donc $(x^{\varphi k})$ converge vers $\hat{x}.$
+\end{proof}
+\begin{remarque}
+    (Th de Carathéodory) : Soit $A\subset \mathbb{R} ^d,$ alors $Hull(A)=\{\overbrace{\sum\limits_{i=0}^{d} \lambda_ix_i}^{\mathclap{d+1 \text{termes en dim }d}}\ |\ x_0,\cdots x_d\in A, \ \lambda_0,\cdots, \lambda_d\ge 0, \text{ de somme 1}\} .$\\
+    En particulier, si $K\subset \mathbb{R} ^d$ est compact alors $Hull(K)$ est compact.
+\end{remarque}
+\begin{proof}
+    Soit $x\in Hull(A).$ On écrit $x=\sum\limits_{i=0}^{n} \lambda_ix_i$ selon les conditions habituelles. On suppose $n$ minimal. Si par l'absurde $n\ge d+1,$ alors $(x_1-x_0,\cdots, x_n-x_0)$ est une famille de $n\ge d+1$ vecteurs qui admet donc une une relation de liaison. On a donc $0=\sum\limits_{i=1}^{n} \mu_i(x_i-x_0),$ avec les $\mu_i$ non tous nuls. Alors avec $\mu_0=-\sum\limits_{i=1}^{n} \mu_i$ on a $\sum\limits_{i=0}^{n} \mu_i=0$. Par minimalité de $n,$  on a $\lambda _i>0$ posons donc $\rho=\max \{\frac{\lambda_i}{\mu_i}\ |\ \mu_i>0\} $ alors $(\lambda_0-\rho\mu_0)x_0+\cdots+(\lambda_n-\rho\mu_n)x_n=x$. De plus, après un peu de trucs moches que je n'ai pas envie de copier, il existe $i_0$ tq $\rho=\frac{\lambda_{i_0}}{\mu_{i_0}}$ donc $\lambda_{i_0}-\rho\mu_{i_0}=0$ Contradiction avec la minimalité de $n$ !\\
+    Finalement c'est compact comme image d'un compact par une application continue (celle qui associe la somme au couple de $d+1-$uplet de $x_i$ et $\lambda_i.$
+\end{proof}
+\subsection{Point fixe de Brouwer.}
+\begin{theoreme}{Brouwer}
+    Soit $B:=B'_{\mathbb{R} ^d}(0,1)$ la boule unité fermée de $\mathbb{R} ^d$ et soit $f\in C^0(B,B).$ Alors $f$ admet un point fixe.
+\end{theoreme}
+\begin{proof}
+    (De Peter Lax, cf livre de T.Alazard basée sur une formule de changement de variable non difféomorphique).\\
+    Rappel (changement de variable dans une intégrale générale) : Soit $u,v$ des ouverts de $\mathbb{R} ^d,$ $\varphi :u\to v$ un difféomorphisme et $f:v\to \mathbb{R} $ intégrable. Alors $\int_vf(x)dx=\int_uf(\varphi (x))|det(D\varphi (x)|dx. $\\
+    Note : $D\varphi (x)=\left( \frac{\partial \varphi _i}{\partial x_j}(x) \right)_{i,j\in [\![1;d]\!]}\in \mathbb{R} ^{d\times d} $ est la matrice jacobienne de $\varphi .$ \\
+    Par hypothèse $\varphi $ est bijective et $D\varphi $ est continue et inversible en tout point.
+    \begin{lemme}
+        (Peter Lax) : Soit $\varphi \in C^2(\mathbb{R} ^d,\mathbb{R} ^d)$ tq $\varphi (x)=x\forall x\not\in B.$ soit $f\in C^1(\mathbb{R} ^d)$ à support compact. Alors $\int_{\mathbb{R} ^d}f(x)dx=\int_{\mathbb{R} ^d}f(\varphi (x))det(D\varphi (x))dx.$
+    \end{lemme}
+    \begin{remarque}
+        .
+        \begin{itemize}
+            \item Pas d'hypothèse "$\varphi$ différentiable" et pas de valeur absolue sur le $det(D\varphi )$.
+            \item Le lemme implique la formule de changement de variable.
+        \end{itemize}
+    \end{remarque}
+\end{proof}
+
