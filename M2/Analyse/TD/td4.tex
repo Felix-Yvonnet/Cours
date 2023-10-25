@@ -1,0 +1,76 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[french]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{proof}
+
+% figure support
+\usepackage{import}
+\usepackage{pgfplots}
+\usepackage{xifthen}
+\pdfminorversion=7
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+
+\title{TD4 Analyse}
+\author{Félix Yvonnet}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Ex 8 TD2}
+\begin{enumerate}
+    \item $L_n(b)=\sum\limits_{k=0}^{n} a_kb_k$, $L_n$ clairement linéaire et continue pour Holder : $|L_n(b)|\le \sum\limits_{k=0}^{n} |a_k| |b_k|\le \left( \sum\limits_{k=0}^{n} |a_k|^p \right) ^{\frac{1}{p}}\left( \sum\limits_{k=0}^{n} |b_k|^p \right) ^{\frac{1}{q}}$. On a donc bien la continuité avec $\|L_n\|\le ($ et même en prenant $b_k=\overline{a_k}a_k^{\frac{p}{q}-1} =) \left( \sum\limits_{k=0}^{n} |a_k|^p \right) ^{\frac{1}{p}}$. $L_n$ simplement bornée car pour $b\in l^q$, $L_n(b)$ bornée car $\sum\limits_{}^{} a_nb_n$ converge. Banach-Steinhauss $\Rightarrow $ $\up \|L_n\|<\infty \Rightarrow a\in l^p$
+    \item $T_f:g\mapsto fg$ est $C^0$. $T_{f_n}\underset{}{\longrightarrow} T_f$. Si on borne cette suite alors c'est bon. On prend $f_n=\frac{f}{|f_n|}\min(|f|,n)$ sur $\{f\neq 0\} $ et 0 sinon. Alors $T_{f_n}$ existe (car $f_n$ est bornée donc $\forall g\in L^2,\ f_ng\in L^2$), est continue (de norme $\le n$ car $f_n^2\le n^2$. Autrement, $T_{f_n}(g+\varepsilon )=gf_n+\varepsilon f_n \underset{\varepsilon \to 0}{\longrightarrow} gf_n$) et vu que $f_n \underset{n\to +\infty}{\longrightarrow} f$ alors $T_{f_n} \underset{n\to +\infty}{\longrightarrow} T_f$ simplement. Finalement, Banach-Steinhauss $\Rightarrow $ $T_f$ est continue.
+\end{enumerate}
+
+\section*{Ex 2: Graphes fermés, opérateur possédant un adjoint}
+Si on a un graphe fermé alors $T$ Continue ssi son graphe est fermé. \\
+Soit $(x_{n},T_{x_{n}})\to (x,y)\in H_1\times H_2.$ $z\in H_2:$ $\langleT_{x_{n}},z\rangle_2=\left<x_{n},Sz \right>_1\Rightarrow \left<y,z \right>_2=\left<x,Sz \right>_1=\left<Tx,z \right>$. Comme vrai pour tout $z$ alors $y=Tx.$
+
+
+
+\section*{Ex 1: Existence d'un inverse à droite}
+\begin{enumerate}
+    \item $X=X_1+X_2,$ $\varphi  :\begin{aligned}
+        X_1\times X_2 &\longrightarrow  X\\
+        (v_1,v_2)&\longmapsto v_1+v_2
+    \end{aligned}$ linéaire, surjective, continue pour $\|(v_1,v_2)\|=\|v_1\|+\|v_2\|.$ Par th de l'application ouverte (les espaces sont bien complets) $\exists C>0,\ B_X(0,C)\subset \varphi (B_{X_1\times X_2}(0,1).$ Alors $B_X(0,1)\subset \varphi (B_{X_1\times X_2}(0,\frac{1}{C})$ finalement $\forall v\in X,\ \|v\|=1\Rightarrow \|v_1\|+\|v_2\|\le \frac{1}{C} $. Ainsi $\|v_1\|\le \frac{1}{C}$ donc pour $\frac{v}{\|v\|}$ on retrouve le résultat demandé avec $\tilde{C}=\frac{1}{C}.$
+    \item
+    \begin{enumerate}
+        \item $Y_0$ est un Hilbert car fermé dans un complet donc complet.
+        \item $y\in Y_0$, $G_0(y)=0=G(y)\Rightarrow y\in Ker(G)\cap Ker(G)^\bot=\{0\} $ donc $G_0$  est inductive (th du rang). $Im(\G_0)\subset Im(G),\ z=G(y)\in Im(G),\ y=y_1+y_2,\ y_1\in Ker(G),\ y_2\in Ker(G)^\bot=Y_0.$ $z=G(y)=G(y_2)=G_0(y_2)\Rightarrow z\in Im(G_0).$
+        \item $G_0$ réalise une bijection de $Y_0$ sur $Im(G)$, on ne peut pas appliquer l'isomorphisme de Banach car $Im(G)$ n'est pas nécessairement fermé.
+        \item $Y,Y$ sont complets. $(x_{n},y_n)\in X_0,Y_0$ suite du graphe de $G^{-1} _0\circ F$ ie $y_n=G_0^{-1} \circ F(x_n)$ tq $(x_{n},y_n)\to (x,y)\in X_0,Y_0.$ Alors $G_0(y)=G(y)\leftarrow G(y_n)=G_0(y_n)=F(x_{n})\rightarrow F(x)$. On a donc bien $y=G_0^{-1} \circ F(x)$ donc par le graphe fermé l'application est continue. On prend $\phi = G_0^{-1} \circ F$.
+    \end{enumerate}
+    \item $X=Z,F=Id,\ Im(F)\subset Im(G)$ dès que $G$ est surjective.
+    \item $X=Z,Y=X_1\times X_2,F=Id,G(v_1,v_2)=v_1+v_2.$  alors $G^{-1} : v=v_1+v_2\mapsto (v_1,v_2)$.
+\end{enumerate}
+
+
+\section*{Ex 4: Somme de fermés}
+\begin{enumerate}
+    \item $A\times B$ est compact, $+$ est continue donc $A+B$ est compact comme image par une fonction continue d'un compact.
+    \item $x\in \left( A+B \right) ^c$ pour $a\in A, x-a\not\in B$ (sinon $+a$ dans $A+B$) donc $x-a\in B^c$ ouvert. Par $C^0$ de l'application $-,$ on a $U_a,V_a$ ouverts tq $x\in U_a$ et $a\in V_a$ et $U_a+V_a\subset B^c.$ $A\subset \bigcup\limits_{a\in A} V_a$ recouvrement d'ouverts donc $\exists a_1,\cdots,a_n$ sous recouvrement fini avec $U=\bigcap\limits_{i=1}^nU_{a_i}$ alors $x\in U$ . Finalement $U\cap (A+B)=\emptyset ,$ $(A+B)^c$ ouvert $\Rightarrow A+B$ fermé.
+    \item $A=\mathbb{N} ^-,$ $B=\{-n+\frac{1}{n}\ |\ n\ge 2\} $ Alors $0\in \overline{A+B}$ mais $O\not\in A+B$ donc $A+B$ fermé $\not\Rightarrow A+B$ fermé
+\end{enumerate}
+
+
+\section*{Ex 5: Compactifications du plan euclidien}
+\begin{enumerate}
+    \item On cherche l'intersection et on obtient $i(x,y)=\left( \frac{2x}{x^2+y^2+1}, \frac{2y}{x^2+y^2+1}, \frac{x^2+y^2-1}{x^2+y^2+1} \right) $ $i$ continue de $\mathbb{R} ^2$ dans $S^2\backslash \{N\} .$ alors $i^{-1} (a,b,c)=\left( \frac{a}{1-c},\frac{b}{1-c} \right) $ avec $i^{-1} $ continue. $S^2\backslash \{N\} $ dense dans $S^2.$ C'est ma compactification d'Alexandrov. $i(x_{n},y_n)\to N\Leftrightarrow \|x_{n},y_n\|\to \infty $
+\end{enumerate}
+
+
+\end{document}
