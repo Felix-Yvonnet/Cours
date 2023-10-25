@@ -1,3 +1,5 @@
+\newcommand\dif\partial
+\newcommand\dd{\mathrm{d}}
 \section{Compacité}
 \subsection{Caractérisation topologique}
 \begin{definition}[Axiome de Borel-Lebesgue]
@@ -249,6 +251,7 @@ Soit $(U_i)$ une couverture d’ouverts et $r>0$ le nombre de Lebesgue associé.
     Par construction, $\forall i\in I,\ f_i(X,d_Y)\to (Y,\tilde{d_{Y}}) $ est 1-Lip. La preuve d'Ascoli dans le cas 1-Lip s'applique. ($\prod\limits_{x\in D}^{}Y_x$ compact comme produit de compact avec $D\subset X$ dense). On obtient  que $\overline{\{f_i\ |\ i\in I\} }$ est compact pour $\tilde{d}(f,g)=\max_{x\in X}\tilde{d_Y}(f(x),g(x)).$ donc aussi pour  $d(f,g)=\max_{x\in X}d_Y(f(x),g(x)).$
 \end{proof}
 \begin{propriete}
+	\label{hull}
     Soit $E$ un Banach, $K\subset E.$ Si $\overline{K}$ est compact alors $\overline{Hull(K)}$ est compact. On a noté $Hull(K):=\{\sum\limits_{1\le i\le I}^{} \lambda_ix_i\ |\ I\in \mathbb{N} ^*,\ \lambda_1,\cdots\lambda_I\ge 0,\ \sum\limits_{i=1}^{I} \lambda_i=1\} $ l'enveloppe convexe.
 \end{propriete}
 \begin{proof}
@@ -273,6 +276,7 @@ Soit $(U_i)$ une couverture d’ouverts et $r>0$ le nombre de Lebesgue associé.
 \end{proof}
 \subsection{Point fixe de Brouwer.}
 \begin{theoreme}{Brouwer}
+	\label{brouwer}
     Soit $B:=B'_{\mathbb{R} ^d}(0,1)$ la boule unité fermée de $\mathbb{R} ^d$ et soit $f\in C^0(B,B).$ Alors $f$ admet un point fixe.
 \end{theoreme}
 \begin{proof}
@@ -280,8 +284,9 @@ Soit $(U_i)$ une couverture d’ouverts et $r>0$ le nombre de Lebesgue associé.
     Rappel (changement de variable dans une intégrale générale) : Soit $u,v$ des ouverts de $\mathbb{R} ^d,$ $\varphi :u\to v$ un difféomorphisme et $f:v\to \mathbb{R} $ intégrable. Alors $\int_vf(x)dx=\int_uf(\varphi (x))|det(D\varphi (x)|dx. $\\
     Note : $D\varphi (x)=\left( \frac{\partial \varphi _i}{\partial x_j}(x) \right)_{i,j\in [\![1;d]\!]}\in \mathbb{R} ^{d\times d} $ est la matrice jacobienne de $\varphi .$ \\
     Par hypothèse $\varphi $ est bijective et $D\varphi $ est continue et inversible en tout point.
+\end{proof}
     \begin{lemme}
-        (Peter Lax) : Soit $\varphi \in C^2(\mathbb{R} ^d,\mathbb{R} ^d)$ tq $\varphi (x)=x\forall x\not\in B.$ soit $f\in C^1(\mathbb{R} ^d)$ à support compact. Alors $\int_{\mathbb{R} ^d}f(x)dx=\int_{\mathbb{R} ^d}f(\varphi (x))det(D\varphi (x))dx.$
+        (Peter Lax) : Soit $\varphi \in C^2(\mathbb{R} ^d,\mathbb{R} ^d)$ tel que $\varphi (x)=x\forall x\not\in B.$ soit $f\in C^0(\mathbb{R} ^d)$ à support compact. Alors $\int_{\mathbb{R} ^d}f(x)dx=\int_{\mathbb{R} ^d}f(\varphi (x))det(D\varphi (x))dx.$
     \end{lemme}
     \begin{remarque}
         .
@@ -290,5 +295,455 @@ Soit $(U_i)$ une couverture d’ouverts et $r>0$ le nombre de Lebesgue associé.
             \item Le lemme implique la formule de changement de variable.
         \end{itemize}
     \end{remarque}
+\begin{proof}
+	(Preuve en dimension 2) : La preuve en dimension quelconque se trouve dans le livre de Thomas Alazard.
+	On veut montrer que $\int_{\mathbb{R}^2} f\left( x \right) \mathrm{d} x=\int_{R ^2} f\left(  \phi \left( x \right)  \right) \frac{\partial \phi_1}{ \dif x_1} \frac{ \dif \phi_2}{x_2}\left( x \right) - \frac{ \dif \phi_1}{ \dif x_2} \frac{ \dif \phi_2}{x_1} \dd x $.
+
+	Soit $c>0$ tel que $\text{supp}\left( f \right)  \subset  [-c,c] ^d :=Q.$ On suppose $c\ge 1$
+
+	Posons $g\left( x_1,\ldots, x_d \right) = \int_{-c}^{x_1} f\left( s,x_2,\ldots, x_d  \right) \mathrm{d} x  $
+
+	On a $$f \circ \phi  \left( \partial_1 \phi_1 \dif_2 \phi_2 - \dif_2 \phi_1  \dif_1 \phi_2 \right) = \dif_1 \left( g \circ \phi \right)  \dif_2 \phi_2 - \overbrace{ \dif_2 \left( g \circ \phi \right) \dif_1 \phi_2}^{ \dif_1\left( g \right) \circ \phi \dif_2 \phi_1  + \dif_2 g \circ \phi \dif_2 \phi_2}  $$
+
+	De plus, $\partial_1\left( g \circ \phi \right) = \underbrace{\dif_1 g \circ \phi}_{f \circ \phi} \dif_1 \phi_1 + \dif_2 g \circ \phi \dif_1 \phi_2.$
+	\begin{align*}
+		\int_{Q} f\left(  \phi \left( x \right)  \right) &\frac{\partial \phi_1}{ \dif x_1} \frac{ \dif \phi_2}{x_2}\left( x \right) - \frac{ \dif \phi_1}{ \dif x_2} \frac{ \dif \phi_2}{x_1} \mathrm{d} x = \\
+        &\underbrace{\int_Q \dif_1\left( g \circ \phi \dif_2 \phi_2 \right) - \dif_2 \left( g \circ \phi \dif_1 \phi_2 \right)}_{\mathclap{{\text{ne dépend que des valeurs de $g$ et $\phi$ (et de leur dérivées sur) $\dif G$}}}} - \int_Q g \circ \phi \dif_1 \dif_2 \phi_2 - g \circ \dif_2 \dif_1 \phi_2
+.\end{align*}
+
+\begin{equation*}
+    \int_{x_2 = -c}^{c} \int_{x_1 = -c}^{c} \partial_1\left( g \circ \phi \dif_2 \phi_2 \right) \mathrm{d} x_1 \dd x_2 = \int_{x_2 = -c}^{c} g\left( \underbrace{ \phi\left( c, x_2 \right)}_{\left( c,x_2 \right) } \right)  \dif_2\left( c,x_2 \right) - g(  \underbrace{ \phi\left( -c, x_2 \right) }_{\mathclap{\substack{\left( -c, x_2 \right) \text{ car }\\\phi\left( x \right) = x \text{ dès que }\\\|x\|\ge 1}}} )  \dif_2 \phi\left( -c, x_2 \right)
+\end{equation*}
+	On pose $\phi^0 = id$.
+	Alors sur $\partial Q$ $\begin{cases}
+		\phi^0 = \phi = id \\
+		J_{\phi^0} = J_{\phi} = id_{ \partial Q}.
+	\end{cases}$
+
+	On a donc 
+	\begin{align*}
+		\left( * \right) &= \int_Q f\left( \phi^0 \left(x  \right) \right) \left( \partial_1 \phi_{1}^0\left( x \right) \dif_2 \phi_2 \left( x \right) - \dif_1 \phi^0_2\left(x  \right) \dif_1 \phi_2 \left( x \right) \right) \mathrm{d} x\\
+		&= \int_Q f(x) \mathrm{d} x = \int_{\mathbb{R}^d}f(x) \dd x 
+	.\end{align*}
+\end{proof} 
+\begin{corollaire}
+	Soit $\phi \in C^2 \left( \mathbb{R}^d, \mathbb{R}^d \right) $ tel que $\phi\left( x \right) =x \forall x \not\in B := B'\left( 0,1 \right) $. Alors $B \subset \phi\left( B \right) $.
+\end{corollaire}
+
+\begin{proof}
+		Par l'absurde, supposons $x_0 \in B \setminus \phi\left( B \right) $.
+
+Comme $ \phi \left( x \right) =x$ sur $ \partial B$ par continuité on a $x_0 \in \underbrace{\mathring{B} \setminus \phi(B)}_{\text{ouvert}}$
+
+Soit $\varepsilon>0$ tel que $B\left( x_0, \varepsilon \right) \subset \mathring{B}\setminus \phi\left( B \right) .$
+
+Soit $f \in C^1\left( \mathbb{R}^d  \right) $ telle que $\text{supp} f \subset B\left( x_0, \varepsilon \right) $ et $\int_{\mathbb{R}^d }f =1$.
+
+Alors $0=\int_{\mathbb{R}^d } \underbrace{ f\left( \phi\left( x \right)  \right) }_{=0} \text{det} J_{\phi}\left( x  \right) \text{d} x = \int_{\mathbb{R}^d } f\left( x \right) \text{d} x = 1$.
+
+Si $x \not\in B$, $f\left( \phi\left( x \right)  \right) = f(x) = 0$ car  $\text{supp} f \subset B\left( x_0, \varepsilon \right) \subset B$.
+
+Si $x \in B$, $f\left( \phi\left( x \right)  \right) =0$ car $\text{supp} f \subset  B\left( x_0 \varepsilon \right) \subset B \setminus \phi\left( B \right) $. Contradiction. On conclut $B \subset  \phi\left( B \right) .$
+\end{proof}
+\begin{corollaire}
+	(Non rétraction de la boule sur la sphère)
+
+	Soit $\phi \in C^0\left(B,B  \right) $ avec $B := B'\left( 0,1 \right) $ tel que $\phi\left( x \right) =x \forall x \in  \partial B$. Alors $ \phi\left( B \right) =B$.
+\end{corollaire}
+\begin{proof}
+On pose $\phi\left( x \right) =x, \forall x \in \mathbb{R}^d \setminus B$, ce qui étend $\phi \in C^0 \left( \mathbb{R}^d, \mathbb{R}^d  \right) $.
+
+Soit $\rho \in C^2\left( \mathbb{R}^d, \mathbb{R} \right) $ telle que $\text{supp} \rho \subset B, \int_{B} \rho =1$ et $\int_B x\rho\left( x \right) \mathrm{d} x=0$ (la dernière condition est vraie par exemple si $\rho$ est symétrique).
+
+$$ \phi_\varepsilon\left( x \right) = \left( \rho_\varepsilon * \phi \right)\left( x \right) = \int_{B\left( 0, \varepsilon \right) } \underbrace{\rho_\varepsilon\left( h \right)  \phi\left( x-h \right)}_{(I)} \mathrm{d} h = \int_{\mathbb{R}^d } \underbrace{\phi\left( h \right) \rho_\varepsilon\left( x-h \right)}_{\left( II \right) } \mathrm{d} h.$$
+
+Alors $\phi_{\varepsilon}$ est $C^2$, par dérivation de $\left( II \right) $ sous le signe intégral.
+
+Soit $x \in  \mathbb{R}^d $ tel que $\|x\|\ge 1 +\varepsilon$, alors 
+\begin{align*}
+	\phi_{\varepsilon}\left( x \right) &= \int_{B\left( 0, \varepsilon \right) } \underbrace{\rho_{\varepsilon} \left( h \right), \phi\left( x-h \right)}{ \not\in B\left( 0,1 \right) } \mathrm{d} h\\
+	&= \int_{B\left( 0, \varepsilon \right) } \rho_{\varepsilon}\left( h \right) \left( x-h \right) \mathrm{d} h \\
+	&= x \int_{B\left( 0, \varepsilon \right) } \rho_{\varepsilon}\left( h \right) \mathrm{d} h - \int_{B\left( 0, \varepsilon \right) } \rho_{\varepsilon}\left( h \right) \dd h =x \\
+.\end{align*} 
+
+On a $ \phi_{\varepsilon} \in C^2\left( \mathbb{R}^d \ \mathbb{R}^d  \right) $ et $\phi_{\varepsilon}\left( x \right) =x \forall x \not\in B\left( 0, 1 + \varepsilon \right) $.
+
+Par le résultat précédent $B'\left( 0, 1+ \varepsilon \right) \subset  \phi_{\varepsilon}\left( B'\left( 0, 1 + \varepsilon \right)  \right) $. De plus, $\phi_{\varepsilon}$ converge uniformément vers $\phi$ lorsque $ \varepsilon \to \infty$. Soit $y_* \in B.$ Pour tout $\varepsilon>0$, soit  $x_{eps} \in B'\left( 0, \varepsilon \right) $ tel que $ \phi_{\varepsilon}\left( x_{\varepsilon} \right) = y_{*}$.
+
+Par compacité de de $B'\left( 0,2 \right) $ il existe $\left( \varepsilon_{n} \right) _{n\in \mathbb{N}}$ tendant vers 0, positive et telle que $x_{\varepsilon_n} \to x_* \in B'\left(0,2  \right) $.
+
+Alors $ y_* \phi_{\varepsilon_n}\left( x_{\varepsilon_n} \right) \to \phi\left( x_* \right) $.
+
+On conclut $ \phi\left( x_* \right) = y_*$.
 \end{proof}
 
+\begin{proof}
+	(Théorème de Bouwer)
+
+	Soit $f \in C^0\left( B,B \right) $, $\left( B = B'\left( 0,1 \right)  \right) $.
+	On suppose $f\left( x \right) \neq  x \forall x \in B$, absurde.
+
+	On pose $\phi : B \to  \partial B$ définie par $\{\phi\left( x \right) \} = \dif B \cap \{x + t\left( x-f\left( x \right)  \right) | t\ge 0\} $. alors $\phi $ est une rétractation continue de $B$ sur $\dif B$.
+\end{proof}
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{img1.pdf}
+	\caption{Définition de $\phi$}
+\end{figure}
+\subsection{Variantes et applications de Brouwer}
+
+\begin{theoreme}
+	(Schauder) 
+	Soit $K$ un convexe fermé sur un Banach. Soit $f \in C ^0\left( K,K \right) $ tel que $\overline{f\left( K \right) }$ est compact . Alors $f$ admet un point fixe.
+\end{theoreme}
+
+
+\begin{proof}
+	Prenons $K' := \overline{Hull\left( f\left( K \right)  \right) }$.
+	Alors $K'$ est compact (voir \ref{hull}).
+
+	De plus, $Hull\left( f(x) \right) \subset Hull\left( H \right) = K$ donc $K' = \overline{Hull\left( f\left( K \right)  \right) } \subset K$ car $K$ fermé. Ainsi $f_{|K'} : K' \to K'$ est continue sur un convexe compact fermé non vide.
+
+	Soit $\varepsilon>0$. Soient $x_1,\ldots, x_I \in K'$ tels que $K' \subset \bigcup_{1\le i\le I} B\left( x_i, \varepsilon \right) $.
+	On pose $K_{\varepsilon}= Hull\left( \{x_1,\ldots, x_I\}  \right) $ et \begin{align*}
+		g_{\varepsilon}: K' &\longrightarrow K_{\varepsilon} \\
+		x &\longmapsto g_{\varepsilon}(x) = \frac{ \sum_{i=1}^{I} \phi_{i}\left( x \right) x_i}{\sum_{i=1}^{I} \phi_i\left( x \right) }
+	.\end{align*}
+	avec $\phi_1\left( x \right) := \max\left( 0, \varepsilon - \|x-x_i\| \right) $ (>0 si $x \in  B_{(x_i, \varepsilon)}$.
+
+	Comme $K'\subset \bigcup_{i=1} ^I B\left( x_i, \varepsilon \right) $, or $\sum_{i=1}^{I} \phi_i\left( x \right) >0$ pour tout $x \in K'$ donc $g_{\varepsilon}$ est continue. Ainsi $f_{\varepsilon} K_{\varepsilon}\to  K_{\varepsilon} ; x \mapsto g_{\varepsilon}\left( f\left( x \right)  \right) $ est continue. De plus, $K_{\varepsilon} \subset  \text{vect}\left( x_i |1\le i\le I \right) $ est un convexe compact en dimension finie (suffit pour Brouwer). Par le théorème de Brouwer ( \ref{brouwer}), $f_{\varepsilon}$ admet un point fixe $x_{\varepsilon} \in K_{\varepsilon} \subset K'$. Par compacité de $K'$, il existe une suite $\left( \varepsilon_{n} \right) _{n\in \mathbb{N}}$ positive, tendant vers $0$ et telle que $x_{\varepsilon_n} \to  x_{*} \in K'$.
+
+	Par ailleurs, pour tout $x \in K'$ \begin{align*}
+		\|g_{\varepsilon}\left( x \right) -x\| &\le \frac{\sum_{i=1}^{I} \phi_{i\left( x \right) } \overbrace{\|x-\xi\|}^{\le \varepsilon \text{ si } \phi_{1}\left( x \right) >0}}{\sum_{i=1}^{I} \phi_i\left( x \right) }\\
+						       &\le \frac{ \sum_{i=1}^{I} \phi_i\left( x \right) \varepsilon}{\sum_{i=1}^{I} \phi_i\left( x \right) } =\varepsilon
+	.\end{align*}
+	Donc $\|x_{\varepsilon}- f\left( x_{\varepsilon} \right) \| = \| g_{\varepsilon}\left( f\left( x_{\varepsilon} \right)  \right) - f\left( x_{\varepsilon} \right) \| \le \varepsilon$.
+
+	Ainsi $\|x_{*} - f\left( x_* \right) \| \le \limsup \limits_{n\to \infty } \| f\left( x_{ \varepsilon_n} \right) - x_{\varepsilon_n}\| \le \limsup \limits_{n\to \infty} \varepsilon_n = 0$.
+\end{proof}
+
+\begin{remarque}
+	(Brouwer sur un ensebmle autre que $B'\left( 0,1 \right) $)
+
+	\begin{itemize}
+		\item  Si $A \subset \mathbb{R}^d $ est homéomorpheà $B'\left( 0,1 \right) $ et $f \in C^0\left( A,A \right) $ alors $f$ a un point fixe.
+		\item Si $K \subset \mathbb{R}^d $.
+			\begin{itemize}
+				\item Soit $x_0 \in K, F = \text{vect}\{x-x_0 : x \in K\} $
+					Alors $K$ est homéomorphe à $F \cap B'\left( 0,1 \right) .$ (Admis)
+					Donc $f$ admet un point fixe.
+				\item Approche alternative. Soit $P_K$ la projection orthogonale sur $K$.
+
+					Soit $R>0$ tel que $ K \subset B'\left( 0,R \right) .$ Alors $B'\left( 0,R \right) \to  B'\left( 0,R \right) ; x\mapsto f_{\varepsilon}\left( x \right) $ admet un point fixe $x_0 \in B'\left( 0,R \right) $ .
+
+					On a $x_0 = f\left( P_K\left( x_0 \right)  \right) $, donc $x_0 \in K$, donc $x_0 = P_K\left( x_0 \right) $ donc $x_0 = f\left( x_0 \right) $.
+			\end{itemize}
+	\end{itemize}
+\end{remarque}
+\begin{remarque}
+	Le théorème de Schauder s'étend sur en supposant seulement que $E$ est un espace vectoriel topologique. En particulier, il s'applique aux evtlcs, donc aux topologies faibles.  {\fontencoding{U}\fontfamily{futs}\selectfont\char 49\relax} Il faut que la fonction soit continue par rapport à cette topologie.
+\end{remarque}
+	
+\begin{theoreme}
+	(Cauchy-Arzela-Peano)
+
+	Soit $\Omega \subset \mathbb{R}^d $ ouvert, $x_0 \in  \Omega$.
+
+	Soit $ f \in C^0\left( \R_+^* \times  \Omega, \mathbb{R}^d  \right) $. Alors $\exists  t_0 >0, u \in C^1\left( [0,t_0], \Omega \right) $ tel que $u\left( 0 \right) =x_0$ et $u'\left( t \right) = f\left( t, u\left( t \right)  \right) \forall t \in [0,t_0]$.
+\end{theoreme}
+\begin{proof}
+	Soit $r_0 >0$ tel que $B'\left( x_0, r_0 \right) \subset \Omega$.
+	Soit $t_1 >0$, $C_0 := \sup \{\|f(t,x\| : 0\le t\le t_1, x \in B'\left( x_0, r_0 \right) \} < \infty$.
+	Soit $t_0 >0$ tel que $C_0 t_0 \le r_0.$
+
+	Posons $K= C^0\left( [0,t_0], B'\left( x_0, r_0 \right)  \right) $ convexe fermée.
+
+	Posons $F : K \to  K $ $Fu\left( t \right) := x_0  + \int_{0}^{t} f\left( s,u\left( s \right)  \right) \mathrm{d} s$  pour tout $t \in [0,t_0]$.
+	\begin{itemize}
+		\item $F\left( K \right) \subset K$. En effet, $\|Fu\left( t \right) -x_0\| \le \int_{0}^{t} \underbrace{\|f\left( s,u\left( s \right)  \right) \|}_{\le C_0} \mathrm{d} s \le C_0 t \le C_0t \le r_0$, pour tout $t\in [0, t_0]$.
+			De plus, $Fu \in C^1\left( [0, t_0] \right) $ en tant que primitive, donc est continue.
+
+		\item $F$ est continue.
+			En effet, soit $\omega$ un module d'uniforme continuité de $f$ sur $[0,t_0] \times B'\left( 0,1 \right) $.
+			Alors pour tous $u,v \in K, \forall t \in [0,t_0] \ $ 
+			\begin{align*}
+				\left\|Fu\left( t \right) - Fv\left( t \right) \right\| &\le \int_{0}^{t}  \|f(s,u\left( s \right) ) - f\left( s, v\left( s \right)  \right) \|   \mathrm{d} s\\
+											&\le \int_{0}^{t} \omega\left( \| u\left( s \right) - v\left( s \right) \| \right) \mathrm{d} s\\
+											\le t_0 \omega\left( \|u-v\|_{\infty} \right) 
+			.\end{align*}
+
+			Donc $\|Fu-Fv\|_{\infty}\le  \omega\left( \|u-v\|_{\infty} \right) $, donc $F$ est uniformément continue donc $f$ est continue.
+		\item $\overline{F\left( K \right) }$ est compact.
+
+			En effet, $\forall  u \in K \forall s \in  [0,t_0], \|Fu\left( t \right) -Fv\left( t \right) \| \le \int_{s}^{t} \underbrace{\|f\left( x, u\left( x \right)  \right)}_{\le C_0} \| \mathrm{d} x \le C_0 |t-s|$.
+
+			Donc $j\left( K \right) \subset \{u \in C^0\left( [0,t_0] \ B'\left( x_0, r_0 \right) \right) : u \text{ est } C_0\text{-lip} \} $ compacte par Ascoli.
+
+			Donc $\overline{f\left( K \right) }$ est compact.
+
+			Par le théorème de Schauder, $F$ admet un point fixe, $ u \in C^0\left( [0,t_0], B'\left( x_0, r_0 \right)  \right) $ telle que $u\left( t \right) = x_0 + \int_{0}^{t} f(s, u\left( t \right) ) \mathrm{d} s $
+
+			Donc $u \in C^1$ et $u' = f\left( s, u\left( t \right)  \right) $.
+	\end{itemize}
+\end{proof}
+
+\subsection{Stone-Weierstrass}
+
+\begin{theoreme}
+	Soit $X$ compact $A \subset C^0\left( X, \mathbb{R} \right) $ algèbre (non forcément unitaire) telle que
+	\begin{itemize}
+		\item ($A$ sépare les points) $\forall x\neq y \in X, \exists f \in A, f(x) \neq  f(y)$
+		\item ($A$ ne s'annule pas simultanément en un point) $\forall x \in X, \exists f \in A, f(x) \neq 0$.
+	\end{itemize}
+
+	Alors $\overline{A} = C^0 \left( X,\mathbb{R} \right) $ (norme $\|\cdot \|_{\infty}$ sur $C^0\left(X,\mathbb{R} \right)$ ).
+\end{theoreme}
+
+\begin{lemme}
+$\overline{A}$ est une algèbre complète unitaire.
+\end{lemme}
+\begin{proof}
+	$\overline{A} \subset C^0\left(X,\mathbb{R}\right)$ est bien une algèbre, et est complète comme fermé d'un complet. 
+	Par hypothèse, $\forall x\in X \exists f_x \in A, f_x\left( x \right) \neq 0 $.
+	Posons $V_x := \{y \in X : f_x\left( y \right) \neq 0\} $ qui est ouvert.
+
+	Soit $X = \bigcup_{i=1} ^I V_{x_i}$ une couverture finie de $X$ par compacité, avec $x_1,\ldots,x_I \in X$.
+
+	Alors $f:= \sum_{i=1}^{I} f_i^2 \in A$ et $f>0$ sur $X$.
+
+	Posons $g:= \frac{f}{\|f\|_\infty} \in A$ $0 < g\le 1$ sur $X$.
+
+	Alors $ \mathbf{1} = g \times \frac{1}{g} = g \times \frac{1}{1-(1-g)}  = \sum_{n\in \mathbb{N}}g(1-g)^n$.
+En effet, $\|g\left( 1-g \right) ^n\|_{\infty}\le (1-p)^n$ sommable et $g\left( 1-g \right) = \sum_{k=0}^{\infty} \begin{pmatrix} n \\ k \end{pmatrix} (-1)^k g^{k+1} \in A$.
+
+Ainsi, $\mathbf{1} $ est limite uniforme de sommes partielles qui appartiennent à $A$. Dina $\mathbf{1} in \overline{A}$.
+
+\end{proof}
+
+\begin{lemme}
+	Soit $ f \in A$ telle que $F\le 0$ sur $X$ alors $\sqrt{f} \in A$.
+\end{lemme}
+\begin{proof}
+	On pose $g := \frac{f}{\|f\|_\infty}$. On a $g \in A$ et $g \in C^0\left(X,[0,1]\right)  $.
+	Soit $0< \varepsilon\le \frac{1}{2}$. Alors $\sqrt{\varepsilon+g} = \underbrace{\sqrt{1 + \left( \varepsilon + g -1 \right) } }_{\in [-1 + \varepsilon, \varepsilon \subset_C  ]-1,1[ }=\sum_{n\in \mathbb{N}} \binom{1/2}{n} \underbrace{ \left( \varepsilon + g -1 \right) ^n}_{\|(\varepsilon+g-1)^n\|\le (1-\varepsilon)^n}$ et $\left( \varepsilon+g-1 \right)^n \in A \forall n\ge 0 $ car $\mathbf{1} \in \overline{A}$.
+
+Avec $\begin{pmatrix} \frac{1}{2}\\ n \end{pmatrix} = \frac{\frac{1}{2} (\frac{1}{2} -1) \ldots (\frac{1}{2} - n+1)}{n!}$.
+
+Par convergence normale de la série, $\sqrt{\varepsilon+g} \in \overline{A}$.
+
+Par ailleurs $\sqrt{g} \le \sqrt{\varepsilon+g}  \le \sqrt{\varepsilon} + \sqrt{g} $.
+
+Donc $\|\sqrt{g} - \sqrt{\varepsilon+g} \|_\infty \le \sqrt{\varepsilon} $ donc $\sqrt{g} \in \overline{A}$ par complétude de $\overline{A}$.
+\end{proof}
+
+\begin{corollaire}
+	Soit $f \in A$ alors $|f| = \sqrt{f^2}  \in \overline{A}$.
+
+	Soient $f,g \in A$, alors $\max\left( f,g \right), \min\left( f,g \right) \in \overline{A}$
+
+	Si $1\ge f\ge 0$ sur $X$ $\frac{1}{f} = \frac{1}{1-(1-f)}= \sum_{n\in \mathbb{N}} (1-f)^n \in \overline{A}$
+\end{corollaire}
+\begin{lemme}
+	Soient $V\subset X$ ouvert et $x \in V$.
+	Alors $\exists f \in \overline{A}$, $0\le f\le 1$, $f(x)=1, f(y) = 0, \forall y \not\in V$.
+\end{lemme}
+\begin{proof}
+Soit $y\neq x$. alors $\exists  f_y \in A$, $f_y\left( x \right) \neq  f_{y}\left( u \right)$
+
+On choisit $\alpha,\beta \in \mathbb{R}$ tels que $g_{y} := \alpha f + \beta $ satisfaisant $g_{y}\left( x \right) =1, g_{y}\left( y \right)=-1$.
+On pose $V_g= \{z \in X : f_{y\left( z \right) <0}\} $, ouvert contenant $y$.
+
+Par compacité on dispose de $y_1,\ldots,y_I \in X$ tels que $X = V \cup \bigcup_{i=1} ^I V_{y_i}$. Puis $g\left( z \right)  := \max\left( 0, \min\left( 1, \min \limits_{1\le i\le I} g_{y_i}\left( z \right)  \right)  \right) \in \overline{A}$ convient.
+\end{proof}
+\epigraph{"On a assez de lemme pour avancer"}{\textit{Jean-Marie Mirebeau}}
+
+\begin{proof}
+	(Stone-Weierstrass)
+
+	Soit $f \in C^0\left(X,\mathbb{R}\right)  $ que l'on souhaite approcher. Quitte à considérer $\alpha f + \beta$, avec $\alpha\neq 0, \beta \in \mathbb{R}$ on peut supposer $ 0\le f\le 1$ sur $X$.
+
+	Soit $\varepsilon > 0$.
+
+	$\forall x \in X$, soit $V_x = \{{y \in X : |f\left( x \right) -f\left( y \right) | \le \varepsilon}\} $.
+
+	Par compacité, $\exists x_1,\ldots, x_I \in X, X = \bigcup_{i=1} ^I V_{x_i}$.
+
+Soit $y \in X$ arbitraire. Soit $1\le i\le I$ tel que $y \in V_{x_i}$. Soit $\phi_{y} \in \overline{A}, 0\le \phi_y\le 1$ tel que $\phi_{y} \left( y \right) =1$ et $\text{supp} \phi_y \subset V_{x_i}$.
+
+Posons $W_y := \{z \in X : \phi_y\left( z \right) > 1- \varepsilon\} $, par compacité $\exists y_1,\ldots,y_J$ tel que $X = \bigcup_{i=1} ^J W_{y_j}$.
+
+Posons $g\left( x \right) := \max \limits_{1\le j\le J} \phi_{y_j}\left( x \right) f\left( y_j \right) $.
+
+\begin{itemize}
+	\item On a $g\left( x \right) \le f\left( x \right) + 2 \varepsilon$
+
+		En effet, si $\phi_{y_j}\left( x \right) \neq 0,$ alors $x,y_j \in V_{x_i}$, pour un certain $1\le i\le I$.
+
+		Donc $\phi_{y_j} f\left( y_j \right) \le f\left( y_j \right) \le f\left( x \right) + | f\left( x \right) - f(x_i)| + |f\left( x_i \right) - f\left( y_j \right) |$.
+	\item On a $f\left( x \right) \le g\left( x \right) + 3 \varepsilon$.
+
+		En effet, soit $y_j$ telle que $x \in W_{y_j}$. Soit $1\le i\le I$ tel que $W_{y_j} \subset V_{x_i}$.
+
+		Alors 
+		\begin{align*}
+		g\left( x \right) &\ge \phi_{y_j}\left( x \right) \\
+				  &\ge f\left( y_j \right) \\
+				  &\ge (1-\varepsilon) \left( f(x)- \underbrace{|f\left( x \right) - f\left( x_i \right) |}_{\le  \varepsilon} - \underbrace{|f\left( x_i \right) - f\left( y_j \right) |}_{\le \varepsilon} \right)
+				  &\ge \left( 1-\varepsilon \right) \left( f\left( x \right) - 2 \varepsilon \right)
+				  \ge f\left( x \right) - 3 \varepsilon.
+			  .\end{align*} 
+			  D'où le résultat.
+\end{itemize}
+\end{proof}
+
+\begin{corollaire}
+	Soit $X\subset \mathbb{R}^d $ compact alors $\mathbb{R}[X_1,\ldots,X_d]$ est dense dans $C^0\left(X,\mathbb{R}\right)  $ pour la norme $\|\cdot \|_\infty$.
+\end{corollaire}
+
+\begin{corollaire}
+	(Stone-Weierstrass complexe)
+	Soit $X$ compact $A \subset C^0\left(X,\mathbb{C} \right)  $ une algèbre qui 
+	\begin{itemize}
+		\item (sépare les points) $\forall x \neq y \in X \exists f \in A, f(x) \neq f(y)$
+		\item (ne s'annule pas pas simultanément en un point) $\forall x \in X \exists f \in A f\left( x \right) \neq 0$.
+		\item (stabilité par conjugaison) $\forall f \in A, \overline{f} \in A $
+	\end{itemize}
+	Alors $\overline{A} = C^0\left(X,\mathbb{C} \right)  $.
+\end{corollaire}
+
+\begin{proof}
+	Si $f \in A$ alors $\Re\left( f \right) := \frac{f+\overline{f}}{2}$ et $\Im \left( f \right) = \frac{f-\overline{f}}{2}$ sont dans $A$. Donc $A \cap C^0\left(X,\mathbb{R}\right)  $ satisfait les hypothèses de Stone Weierstrass réel. 
+
+	Donc $\overline{A \cap C^0\left(X,\mathbb{R}\right)  } = C^0\left(X,\mathbb{R}\right)  $.
+
+	Si $f \in C^0\left(X,\mathbb{C} \right), \varepsilon>0 $ alors $\exists  g,h \in A \cap  C^0\left(X,\mathbb{R}\right) \| \Re\left( f \right) -g\|_\infty\le \varepsilon $ et $\| \Im\left( f \right) - h\|_{\infty}\le \varepsilon$. Donc $\|f - (g+ih)\|_\infty\le 2 \varepsilon.$
+
+	D'où la densité.
+\end{proof}
+
+\begin{corollaire}
+	Soit $X \subset \mathbb{C} ^d$ compact.
+	Alors $\mathbb{C} [X_1, \overline{X_1},\ldots, X_d, \overline{X_d}]$ est dense dans $C^0\left(X,\mathbb{C} \right)  $.
+\end{corollaire}
+\begin{remarque}
+	Soit $B = B_{\mathbb{C} }'\left( 0,1 \right), f \in C^0\left(B,\mathbb{C} \right)  $.
+	Sont équivalents : 
+	\begin{enumerate}
+		\item $f \in \overline{\mathbb{C} [X]}$
+		\item $f$ est développable en série entière de rayon de converge $1$.
+		\item $\forall z \in B\left( 0,1 \right) $, $f\left( z \right) = \frac{1}{2 \pi}\int_{0}^{\pi} i\frac{f\left( \text{e}^{it} \right)  i\text{e}^{it}}{\text{e}^{it} -z} \mathrm{d} t$
+	\end{enumerate}
+\end{remarque}
+
+\begin{proof}
+	$2\Rightarrow 1$
+	?
+	$1\Rightarrow 3$
+\newcommand\eit{\text{e}^{it}}
+	\begin{align*}
+		\int_{0}^{\pi} \frac{P\left( \text{e}^{it} \right) i \text{e}^{it}}{\text{e}^{it} -z} \mathrm{d} t &= i \int_{0}^{2\pi} \frac{P\left( \eit \right) }{1 - z \eit} \dd t  \\
+		&= i \int_{0}^{2 \pi} P\left( \eit \right) \sum_{n\ge 0} \text{e}^{int} z^n \mathrm{d} t   \\
+		&= i \sum_{n=0}^{\infty} z^n \int_{0}^{2 \pi} P\left(  \eit \right) \text{e}^{-int} \mathrm{d} t   \\
+		&= 2 \pi \sum_{n=0}^{k} a_n z^n = 2\pi P\left( z \right)  \\
+	.\end{align*}
+	$3\Rightarrow 1$
+
+	Soit $|z| <1$ soit $f\left( z \right) = \frac{1}{2\pi} \int_{0}^{\pi} \frac{ f\left( \eit \right) }{\ldots}  $
+	Le reste de cette démo appartient à l'histoire\ldots
+\end{proof}
+
+
+\subsection{Opérateurs linéaires compacts}
+\begin{definition}
+    Soit $E,F$ evn, $T\in L(E,F)$. On dit que $T$ est compact ssi $\overline{T(B_E(0,1)}$ est compact. On note $L_C(E,F)$ l'ensemble des opérateurs compacts.
+\end{definition}
+
+\begin{remarque}
+    Si $T\in L_C(E,F)$, alors $dim[\underbrace{\ker(Id-T)}_{\mathclap{E_1}}]<\infty $. En effet $\forall x\in B'_{E_1}(0,1),\ (Id-T)x=0, $ donc $Tx=x$ donc $\underbrace{T(B'_{E_1}(0,1))}_{\mathclap{\subset \overline{T(B_E(0,1))}\text{ compact}}}=B'_{E_1}(0,1).$ \\
+    Ainsi $B'_{E_1}(0,1)$ est un fermé donc compact donc $dim(E)<\infty $ par le théorème de Riesz.
+\end{remarque}
+\begin{theoreme}[Alternative de Fredholm]
+    Soit $E$ un Banach, $T\in L_C(E,F)$ tq $\ker(Id-T)=\{0\} .$ Alors $Im(Id-T)=E,$ et $Id-T$ a un inverse continu.
+\end{theoreme}
+\begin{proof}
+    Montrons d'abord que $\underbrace{Im(Id-T)}_{(Id-T)E}$ est fermé.\\
+    Soit $(u_n)$ une suite convergente à valeurs dans $(Id-T)$. $u_n=v_n-Tv_n$, $u_n\to u_*.$ Supposons par l'absurde que $\|v_n\|\to \infty .$ Posons $w_n=\frac{v_n}{\|v_n\|}.$ Alors $v_n=u_n+Tv_n.$ Donc $w_n=\underbrace{\frac{u_n}{\|v_n\|}}_{\substack{\to 0,\text{ car}\\u_n\text{ bornée}}}+\underbrace{Tw_n}_{\substack{\text{à valeur dans}\\\text{$\overline{T(B'_E(0,1))}$ compact}}}$.\\
+    $\exists \varphi  $ extractrice, telle que $Tw_{\varphi (n)}$ converge, $Tw_{\varphi (n)}\to w_*,$ ie $w_{\varphi (n)}=\frac{u_{\varphi (n)}}{\|v_{\varphi (n)}\|}+Tw_{\varphi (n)}\to w_*.$ Donc on a
+     $\left\{\begin{aligned}
+             Tw_{\varphi (n)}&\to w_*\hspace{0.9em} \text{par compacité}\\
+             w_{\varphi (n)}&\to w_* \hspace{0.9em} \text{par l'argument précédent}\\
+         Tw_{\varphi (n)} &\to Tw_* \ \text{par continuité}
+    \end{aligned}\right.$.
+Donc $Tw_*=w_*$ par unicité de la limite, et de plus $\|w_*\|=\lim\limits_{n \to \infty} \|w_n\|=1.$ Ainsi $w_*\in \ker(Id-T)=\{0\} ,$ contradiction! On a donc $v_n$ bornée et $\exists \psi$ extractrice tq $Tv_{\psi(n)}$ converge. Alors par le même raisonnement $v_{\psi(n)}=\underbrace{u_{\psi(n)}}_{\text{cv}}+\underbrace{Tv_{\psi(n)}}_{\text{cv}}$, donc $\underbrace{u_{\psi(n)}}_{\to u_*}=\underbrace{v_{\psi(n)}}_{\to v_*}-\underbrace{Tv_{\psi(n)}}_{Tv_*}.$ Donc $u_*=v_*-Tv_*\in (Id-T)E$ d'où la fermeture de $(Id-T)E$.\\
+Montrons maintenant que $(Id-T)E=E.$ Posons $F_n=\left( Id-T \right) ^nE,\forall n\ge 0. $ Par la première partie, $F_1\subset F_0$ et fermé. Donc c'est un Banach stable par $T$ donc $T\in L_C(F_1)$ par la première partie. $F_2$ est fermé et par récurrence $F_n$ est fermé pour tout $n\ge 0.$ Si par l'absurde, $\underbrace{F_0\backslash F_1}_{E\backslash [(Id-T)E]}\neq \emptyset ,$ choisissons $x_0\in F_0\backslash F_1$. Alors $x_n:=T^nx_0\in F_n\backslash F_{n+1}$ par injectivité de $Id-T.$ [En effet si on avait $x_n\in F_{n+1},$ $\left( Id-T \right) ^nx_0=x_n=\left( Id-T \right) ^{n+1}x_0$ donc $x_0=(Id-T)y\in F_1,$ impossible]. Ainsi $F_{n+1}\not\subset F_n.$ Par le lemme de Riesz, on peut choisir $y_n\in F_n$ tq $\|y_n\|=1$ et $d(y_n,F_{n+1})\ge \frac{1}{2}.$ Pour $m<n$ on a : $Ty_m-Ty_n =y_m+\underbrace{\underbrace{(T-Id)y_m}_{\in F_{m+1}}-\underbrace{Ty_n}_{\in F_n}}_{\in F_{m+1}}$. Donc $\|Ty_m-Ty_n\|\ge d(y_m,F_{m+1})\ge \frac{1}{2}.$ Donc $(Ty_n)$ n'a pas de sous suites convergente, ce qui contredit la compacité de $\overline{T(B(0,1))},$ puisque $\|y_n\|=1.$  \\
+On a montré que $(Id-T)E=E.$ Ainsi $Id-T$ est injective et surjective donc bijective. Par le théorème de Banach, les bijection linéaires continues dans un Banach sont d'inverse continue.
+\end{proof}
+\begin{lemme}
+    Soit $K\in C^0([0,1],\mathbb{R} ),$ posons $\forall f\in C^0([0,1],\mathbb{R} ),\ \mathcal{K}(f)(x):=\int_0^1K(x,y)f(y)dy$. C'est un opérateur compact de  $(C^0([0,1],\mathbb{R} ),\|.\|_\infty )$.
+\end{lemme}
+\begin{proof}
+    Soit $w$ un module de continuité de $K,$ alors $\forall f\in C^0([0,1],\mathbb{R} ),\ \forall x,y\in [0,1], $,
+    \begin{align*}
+        |\mathcal{K}(f)(x)| &\le \int_{0}^{1} K|K(x,y)| |f(y)| dy \\
+        &\le \|K\|_\infty \|f\|_\infty \\
+        |\mathcal{K}(f)(x)-\mathcal{K}(f)(y)| &= |\int_{0}^{1} K(x,z)f(z)dz-\int_{0}^{1} K(x,z)f(z)dz  | \\
+                                              &\le \int_{0}^{1} |\underbrace{K(x,z)-K(y,z)}_{\le w(|x-y| }||f(z)| dz\\
+                                              &\le w(|x-y| )\|f\|_\infty
+    .\end{align*}
+
+    Ainsi $\{\mathcal{K}(f)\ |\ f\in C^0([0,1]),\ \|f\|_\infty \le 1\} $ est uniformément borné et équipotente, donc est relativement compact par le théorème d'alcali. Ainsi $\mathcal{K}$ est un opérateur compact.
+\end{proof}
+\begin{corollaire}
+    Soit $K\in C^0([0,1]^2,\mathbb{R}_+ ),$ $g\in C^0([0,1])$ et $K(x,y)=K(y,x)\forall x,y.  $  Alors $\exists !f\in C^0([0,1]),\ \forall x,\ \int_{0}^{1} K(x,y)\left( f(y)-f(x) \right) dy-f(x)=g(x).  $
+\end{corollaire}
+\begin{proof}
+    Posons $k(x)=\int_{0}^{1} K(x,y)dy .$ L'équation complétée correspond à $\mathcal{K}(f)(x)-(1+k(x))f(x)=g(x).$ C'est à dire $\hat{\mathcal{K}}(f)-f=\hat{g},$ avec $\hat{\mathcal{K}}=(\underbrace{\left( 1+k \right) ^{-1} }_{\text{op compact}}\underbrace{\mathcal{K}}_{\text{op compact}}.$ Donc $\hat{\mathcal{K}}$ est compact comme composée d'un opérateur compact et d'un opérateur continue. Par l'alternative de Fredholm, il suffit de montrer que $\ker(\hat{\mathcal{K}}-Id)=\{0\} .$ Par l'absurde, soit $f\in C^0([0,1])$ tq $\hat{\mathcal{K}}(f)=f,$ ie $\mathcal{K}(f)=(1+k)f.$ \\
+    Donc $\underbrace{\int_{x=0}^{1} \int_{y=0}^{1} K(x,y)\left( f(y)-f(x) \right) dy \cdot f(x)dx}_{=-\frac{1}{2}\int_{0}^{1} \int_{0}^{1} K(x,y)\left( f(x-f(y) \right) ^2dydx \text{ par sym de }K } =\int_0^1 f(x)^2dx $.\\
+    Finalement, $\int f^2\le 0$ donc $f=0$ d'ou l'injectivité.
+\end{proof}
+\begin{definition}
+    Soit $E$ un evn, $T\in L(E,F),$ le spectre de $T$ est $\sigma(T):=\{\lambda\in \mathbb{K}\ |\ \lambda Id-T \text{ n'a pas d'inverse continue}\} $.
+\end{definition}
+\begin{propriete}
+    Soit $E$ un Banach, $T\in L(E,F).$
+    \begin{enumerate}[label=(\roman*)]
+        \item Si $dim(E)=\infty $ alors $0\in \sigma(T)$
+        \item $\forall \lambda\in \sigma(T)\backslash \{0\}, \exists x\in E,\ Tx=\lambda x. $
+        \item $\forall \lambda \in  \sigma(T)\backslash \{0\} ,\ \exists m=m(\lambda),\ \ker(\left( \lambda -T \right) ^m)=\ker\left( (\lambda-T)^{m+1} \right)  $. De plus, $\ker\left( (I-T)^m \right) $ est de dimension finie
+        \item L'ensemble $\sigma(T)$ est dénombrable, et $0$ est le seul point d'accumulation possible.
+    \end{enumerate}
+
+\end{propriete}
+\begin{proof}
+    \begin{enumerate}[label=(\roman*)]
+        \item Si $0\not\in \sigma(T),$ alors $T^{-1} $ existe et est continue. Donc \\
+            $\underbrace{T^{-1} (\overline{T(B(0,1))})}_{\substack{\text{compact comme image}\\ \text{d'un compact par }T^{-1} \text{ $c^0$}}}\supset \underbrace{B'(0,1)}_{\text{fermé}}$. Donc $B'(0,1)$ est compact, donc $dim(E)<\infty $ par le théorème de Riesz.
+        \item Application de l'alternative de Fredholm à $T.$
+        \item Posons $F_n\subsetneq F_{n+1}$, en choisissant $x_n\in F_n$ tq $\|x_n\|=1$ et $d(x_n,F_{n+1)\ge \frac{1}{2}}.$\\
+            Soit $m<n$ $Tx_m-Tx_n=\underbrace{\lambda x_m}_{\in F_m} + \underbrace{(T-\lambda)x_m}_{\in F_{m+1}}-\underbrace{\lambda x_n}_{\in F_n}-\underbrace{(T-\lambda)x_n}_{\in F_{n+1}}. $  Donc $\|Tx_m-Tx_n\|\ge d(\lambda x_m,F_{m+1})\ge \frac{|\lambda |}{2}. $ Donc $(Tx_n)$ n'a pas de sous suite convergente, contredit la compacité de $T.$ Donc $\exists m,\ \ker\left( (\lambda-T)^m \right) =\ker\left( (\lambda-T)^{m+1} \right) $ comme annoncé.\\
+            De plus, $D_\lambda=\ker\left( (\lambda-T)^m \right) $ est stable par $T,$ et $\forall \times \in E_\lambda,\ (\lambda-T)^mx=0, $ donc $\lambda^mx=\underbrace{\sum\limits_{k=0}^{m-1} \left( -1 \right) ^k\lambda^kT^{m-k}x}_{TQ(T)x}$. Donc $B_{E_\lambda}(0,|\lambda| ^m)=\underbrace{\underbrace{TQ(T)}_{\text{op compact}}B_{E_\lambda}(0,|\lambda| ^m}_{\text{d'adhérence compact}}$. Donc $B'_{E_\lambda}(0,|\lambda|^m)$ est compact et $dim(E_\lambda)<\infty .$
+        \item Supposons que $\sigma(T)$ a un point d'accumulation $\lambda x\neq 0.$ Alors on a $\lambda m\to \lambda x$ avec $\lambda m\neq \lambda x.$ On choisit $x_n\neq 0,\ Tx_n=\lambda _x x_n$. On pose $F_n=\{x_1,\cdots,x_n\} ,$ on choisit $y_n\in F_n$ tq $\|y_n\|=1$ et $d(y_n,F_{n+1})\ge \frac{1}{2}.$ par lemme de Riesz. Comme avant on se ramène à $(Ty_n)$ qui n'a pas de sous suite convergente ce qui est contradictoire. \\
+            Par ailleurs, $\sigma(T)\subset B'(0, \vertiii{T})$ pour tout opérateur continue puisque $\left( \lambda I-T \right) ^{-1} =\frac{1}{\lambda}\left( I-T x \right) ^{-1} =\frac{1}{\lambda}\sum\limits_{n\ge 0}^{} \left( \frac{T}{\lambda} \right) ^n$ si $|\lambda| \ge \vertiii{T}$. Ainsi pour tout $\varepsilon >0,$ $\sigma(T)\backslash B_\mathbb{K}(0,\varepsilon )$ est un ensemble borné sans point d'accumulation, donc fini. Donc $\sigma(T)\backslash \{0\} =\bigcup\limits_{n\ge 1} \sigma(T)\backslash B(0,\frac{1}{n})$ est dénombrable.
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}[Propriété d'approximation]
+    Un evn $E$ a la PA si\\
+    $\forall \varepsilon >0,\ \forall K\subset _CE,\ \exists T\in L_f(E,):=\{T\in L(E)\ |\ dim(Im(T))<\infty \} , $ tel que $\forall x\in K,\ \|Tx-x\|\le \varepsilon  $
+\end{definition}
+\begin{ex}
+    Tout espace de Hilbert à la PA. En effet, soit $x_1,\cdots, x_I\in K$ tels que $K\subset \bigcup\limits_{1\le i\le I}B(x_i,\varepsilon ).$ Soit $T$ la projection orthogonale sur $Vect(x_1,\cdots,x_I).$ Alors $T$ est linéaire, continue et $\forall x\in K,\ \|Tx-x\|=\min_{1\le i\le I}\|x_i-x\|\le \varepsilon  $ \\
+    On sait que $L^p(X,\mu)$ pour tout $1\le p\le \infty $ a la PA. \'Egalement,$C^0_b(X)$ a la PA pour tout espace métrique $(X,d).$
+\end{ex}
+\begin{propriete}
+    Soit $E$ un evn et $F$ un espace de Banach. Alors $L_c(E,F)$ est fermé et $L_c(E,F)\supset \overline{L_f(E,F)}$ avec égalité si $F$ a la PA. \\
+    De plus, si $T\in \bar{L_f(E,F)}$, alors $T:\left( B'_E(0,1), \text{faible} \right) \to (F,\|.\|_F)$ est continue.
+\end{propriete}
+\begin{proof}
+    \begin{itemize}
+        \item Fermeture de $L_c(E,F)$. Soit $T\in \overline{L_c(E,F)}, \varepsilon >0$. Soit $T_0\in L_c(E,F)$ tq $\|T-T_0\|\le \varepsilon .$ Comme $K_0=\overline{T_0(B)}$ est compact (avec $B=B_E(0,1)$), il existe $x_1,\cdots,x_n\in K_0$ tq $K_0\subset \bigcup\limits_{i\le  I}B(x_i,\varepsilon ).$ Alors $K=\overline{T(B)}\subset \bigcup\limits_{1\le i\le I} B(x_i,2\varepsilon )$. Ainsi $K$ est un précomact, et un complet cat fermé dans $F$ Banach, donc complet.
+    \item Les opérateurs de rand fini sont compacts. En effet, si $T\in L_f(E,F),$ alors $\overline{T(B)}\subset \underbrace{Im(T)\cap B'_F(0, \vertiii{T})}_{\substack{\text{fermé borné en dim finie}\\\text{donc compact}}}$. Donc $T(B)$ est une partie fermée d'un compact donc compact. Ainsi $L_f(E,F)\subset L_c(E,F)$ fermé et $\overline{L_f(E,F)}\subset L_c(E,F)$.
+    \item Montrons que $L_c(E,F)=\overline{L_f(E,F)}$ si $F$ a la PA. Soit $T\in L_c(E,F),\varepsilon >0.$ Soit $K=\overline{T(B)}$, soit $P\in L_f(F)$ tq $\|Py -y\|\le \varepsilon ,\forall y\in K.  $. Alors $P\circ T$ est de rang fini et $\sup_{x\in B}\|P(Tx)-Tx\|=\vertiii{P\circ T-T}\le \varepsilon $ , donc $T\in L_f(E,F).$
+    \item Continuité faible $\to $ forte. Soit $T\in L_f(E,F),$ soit $f_1,\cdots,f_n$ une base de $Im(T).$ On écrit $T(x)=\sum\limits_{1\le i\le n}^{} f_il_i(T(x))\le \sum\limits_{i=1}^{n} \|f_i\||\underbrace{l_i(T(x))}_{\mathclap{\substack{l_i\circ T\in E^*\\\text{la $i_{\text{eme}}$ coordonnée}}}}| $ Donc $T:\left( E,\left( | \varphi (x)|  \right) _{\varphi \in E^*} \right) \to \left( F,\|.\|_F \right) $ est continue. Soit $T\in \overline{L_f(E,F)}$ et $T_n\in L_f(E,F)$ tq $\vertiii{T-T_n}\to 0.$ Alors $T_n$ est continue pour la topologie faible et converge uniformément vers $T$ donc $T$ est continue.
+    \end{itemize}
+\end{proof}
