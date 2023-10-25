@@ -1,0 +1,95 @@
+\section{Dualité et topologie faible.}
+\subsection{Espaces Hilbertiens, \texorpdfstring{$\mathbb{K}=\mathbb{R} $ ou $\mathbb{C}$.}{Lg} }
+\begin{definition}
+    Soit $\mathcal{H}$ (ou $\mathfrak{H}$ pour les rageux) un $\mathbb{K}$-ev, $\varphi :\mathcal{H}\times \mathcal{H}\to \mathbb{K}$ est sesquilinéaire si
+    \begin{itemize}
+        \item linéarité à droite : $\varphi (x,y+\lambda z)=\varphi (x,y)+\lambda \varphi (x,z)$
+    \item antilinéarité à gauche : $\varphi (x+\lambda y,z)=\varphi (x,z)+\overline{\lambda}\varphi (y,z)$
+    \end{itemize}
+
+    On dit qu'elle est:
+    \begin{itemize}
+        \item symétrique si $\varphi (x,y)=\overline{\varphi (y,x)}$
+        \item positive si $\varphi (x,x)\ge 0$
+        \item définie positive si $\varphi (x,x)=0\Rightarrow x=0$.
+    \end{itemize}
+\end{definition}
+Un espace muni d'une forme sesquilinéaire symétrique définie positive est dit préhilbertien. On note $\left<x,y \right> := \varphi (x,y),$ $\|x\|=\sqrt{\varphi (x,x)} $.
+\begin{remarque}
+    Si $\mathcal{H}$ est préhilbertien, alors pour tout $x,y\in \mathcal{H},$ $$\|x+y\|^2=\|x\|^2+2Re\left( \left<x,y \right> \right) +\|y\|^2$$
+    $$\|x+y\|^2+\|x-y\|^2=2\left( \|x\|^2+\|y\|^2 \right) $$
+    (identité du parallélogramme)
+\end{remarque}
+\begin{propriete}[inégalité de Cauchy Schwartz]
+    Soit $\mathcal{H}$ préhilbertien, alors $\forall x,y\in \mathcal{H},$\\
+    $$|\left<x,y \right>| \le \|x\|\|y\| $$.
+    Avec égalité si et seulement si $x$ et $y$ sont colinéaires.
+\end{propriete}
+\begin{proof}
+    L'égalité est claire si $x$ et $y$ sont colinéaires. On suppose donc $\lambda x+\mu y\neq 0$ pour tout $\lambda,\mu\neq 0$. Soit $\alpha lpha\in \mathbb{C},\|\alpha \|=1$ et $P$ strictement positif sur $\mathbb{R} $ donc de discriminant strictement négatif. ie $|\left<x,y \right>| \le \|x\|\|y\|$ donc ça marche. :)
+\end{proof}
+Un espace de Hilbert est un espace préhilbertien complet.
+
+Soit $\mathcal{H}$ un Hilbert, $K\subset \mathcal{H}$ convexe fermé. Alors $P_K(x):=argmin_{y\in K} \|x-y\|$  existe et est unique pour tout $x\in \mathcal{H}$. De plus on a la caractérisation : $$P=P_k(x)\Leftrightarrow \forall y\in K,\ Re(x)\left<x-p,y-p \right>\le 0 $$.
+Et la propriété$\forall x,y\in \mathcal{H},\ \|P_K(x)-P_k(y)\|^2\le Re\left( \left<x-y,P_K(x)-P_K (y)\right> \right) $ ce qui implique que $P_K$ est 1-Lipschitzienne.
+
+\begin{propriete}[Projection sur un sev fermé]
+    Soit $\mathcal{H}$ un Hilbert, $F\subset \mathcal{H},$ sev fermé. Alors on a la caractérisation
+$$p=P_F(x)\Leftrightarrow p\in F \text{ et }\forall y\in F,\ \left<x-p,y \right> = 0 $$.
+De plus, $P_F+P_{F^\bot}=Id$ où $F^\bot=\{y\in \mathcal{H}\ |\ \forall x\in F,\ \left<x,y \right> = 0 \} .$
+\end{propriete}
+\begin{corollaire}[Théorème de représentation de Riesz]
+    Soit $\mathcal{H}$ un Hilbert, alors $f :\begin{aligned}
+        \mathcal{H} &\longrightarrow \mathcal{H}^* \\
+        x &\longmapsto \left<x,. \right> =:\varphi _x
+    \end{aligned}$ est une bijection isométrique antilinéaire.
+\end{corollaire}
+\begin{proof}
+    On a $\varphi _x\in \mathcal{H}^*$ car $|\varphi _x(y)|=|\left<x,y \right>|\le \|x\|\|y\|$. L'estimation précédente donne  $\|\varphi _x\|_{\mathcal{H}^*}\le \|x\|,$ et en choisissant $y=x$ on obtient $\underbrace{|\varphi _x(x)| }_{\ge \|\varphi _x\|_{\mathcal{H}^*\|x\|_\mathcal{H}}}=\|x\|^2$. L'antilinéarité de $x\mapsto \varphi _x$ découle de la sesquilinéarité de $f.$ \\
+    Montrons la surjectivité. Soit $\varphi \in \mathcal{H}^*\backslash \{0\} ,$ alors $F:=\ker(\varphi )$ est un sev fermé. Soit $x\in \mathcal{H}$ tq $\varphi (x)=1,$ soit $p=P_f(x),$ $v=x-p.$ Alors $\varphi (v)=\varphi (x-p)=1$ et $\left<v,y \right> = 0\forall y\in F.  $ \\
+    De plus $\varphi (z-\varphi (z)v)=0$ par linéarité donc $z-\varphi (z)v\in F=\ker(\varphi).$ Ainsi $\left<v,z-\varphi (z)v \right> = 0$ et $\varphi (z)\|v\|^2=\left<v,z \right>$ donc $\varphi (z)=\frac{\left<v,z \right>}{\|v\|^2}.$
+\end{proof}
+\begin{remarque}
+    La topologie faible et la topologie $*-$faible correspondent sur $\mathcal{H}.$
+\end{remarque}
+
+\subsection{Théorème de Hahn Banach}
+\begin{definition}
+    Un ensemble ordonné $(E,\le )$ est dit inductif si toute partie $F\subset E$ totalement ordonné admet un max dans $E.$
+\end{definition}
+\begin{lemme}[Zorn]
+    Tout ensemble non vide et inductif admet un élément maximal.
+\end{lemme}
+\begin{proof}[Zorn $\Rightarrow$ axiome du choix]
+    Soit $\mathcal{A}$ un ensemble d'ensembles non vide. $\mathcal{B}=\bigcup\limits_{A\in \mathcal{A}} A$. Soit $E=\{f:A\to \mathcal{B}\ |\ A\subset \mathcal{A},\forall a\in A,\ f(a)\in a \} $ l'ensemble des fonctions de choix partiel. $E\neq \emptyset $ car il contient $f:\emptyset \to \mathcal{B}$ l'application triviale.\\
+    Soit $f:A\to \mathcal{B},$ on dit que $f\le f'$ si $A\subset A'$ et $f'_{|A}=f.$ Si $F=\left( f_i \right) $ est totalement ordonnée, $f:A_i\to \mathcal{B}$, on pose $A_*=\bigcup\limits_{i\in I} A_i,$ $f_* :\begin{aligned}
+        A_* &\longrightarrow \mathcal{B} \\
+        x &\longmapsto f_i(x)
+    \end{aligned}$ où $i\in I$ to $x\in A_i.$ Soit $f:A\to \mathcal{B}$ un élément maximal de $E.$ Si par l'absurde $A\neq \mathcal{A}$, soit $\alpha\in \mathcal{A}\backslash A$ et $\beta\in \alpha .$ On pose $f' :\begin{aligned}
+        A\cup \{\alpha\}  &\longrightarrow \mathcal{B} \\
+        ,x\in A &\longmapsto f(x)\\
+        \alpha &\longmapsto \beta
+    \end{aligned}$ qui prolonge strictement $f$ et contredit la maximalité.
+\end{proof}
+On suppose $\mathbb{K}=\mathbb{R} $ dans cette partie.
+\begin{definition}
+    Soit $E$ un $\mathbb{R} -$ev, $\rho:E\to \mathbb{R} $. $\rho$ est dite sous linéaire si
+    $$\rho(x+y)\le \rho(x)+\rho(y)$$
+    $$\rho(\lambda x)\le \lambda\rho(x)$$
+
+\end{definition}
+\begin{ex}
+    Soit $E$ un ev, $E\subset E$ sev, $\rho:F\to \mathbb{R} $ sous linéaire $\varphi _F:F\to \mathbb{R} $ linéaire et tq $\varphi _F\le \rho$ sur $F.$ Alors $\exists \varphi :E\to \mathbb{R}$ linéaire tq $\varphi _{|F}=\varphi _F$ et $\varphi \le \rho$ sur $E.$
+\end{ex}
+
+\begin{proof}
+    Soit $E=\{\varphi :G\to \mathbb{R} \ |\ F\subset G,G \text{sev de}E, \varphi \text{linéaire et}\varphi \le \rho \text{sur }G\} $. $E$ non vide sur $\varphi _F\in E,$ $E$ est ordonné par la relation ($\le $).  $E$ est inductif $\varphi _i:G_i\to \mathbb{R} $ . On pose $G_*=\bigcup\limits_{i \in G_i} $ et $\varphi _* :\begin{aligned}
+        G_* &\longrightarrow \mathbb{R}  \\
+        x &\longmapsto \varphi _i(x)
+    \end{aligned}$.
+    $\varphi _*\le \rho$ sur $G_*$, $\varphi (\lambda x)=\lambda \varphi (x)$ et pour tout $x,y\in G_*,$ tout $i,j\in I$ tq $x\in G_i,y\in G_j$, comme $(\varphi _i)$ totalement ordonné, on a $G_i\subset G_j$ ou l'inverse. Disons $G_i\supset C_j.$ Alors $x,y\in G_i,$ $\varphi_* (x+y)=\varphi _i(x+y)=\varphi _*(x)+\varphi _*(y).$ \\
+    Soit $\varphi :G\to \mathbb{R} $ élément maximal de $E,$ par le lemme de Zorn. Par l'absurde, $G\neq E,$ soit $x\in E\backslash G$, on pose $\psi :\begin{aligned}
+        G\oplus \mathbb{R} _x &\longrightarrow \mathbb{R}  \\
+        y+\lambda x &\longmapsto \varphi (y)+\lambda \alpha
+    \end{aligned}$ où $\alpha $ est bien choisi. On veut $\psi(y+\lambda x)\le \rho(y+\lambda x)$ ie $\varphi (y)+\lambda \alpha \le \rho(y+\lambda x)$. Donc $\sup \varphi (z)-\rho(z-x)\le \alpha \le \inf \rho(y+x)-\varphi (y).$ Or $\forall y,z\in G_*,\ \varphi (z)-\rho(z-x)\le \rho(y+x)-\varphi (y)\Leftrightarrow \underbrace{\varphi (y)+\varphi (z)}_{=\varphi (y+z)}\le \underbrace{\rho(y+z)+\rho(z-x)}_{\ge \rho(y+z)} $ ce qui est vrai donc on peut bien choisir $\alpha $ de sorte à respecter l'inégalité précédente.
+\end{proof}
