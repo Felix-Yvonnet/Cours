@@ -1,0 +1,85 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[french]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{proof}
+
+% figure support
+\usepackage{import}
+\usepackage{pgfplots}
+\usepackage{xifthen}
+\pdfminorversion=7
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+\title{TD6}
+\author{Félix Yvonnet}
+\date{\today}
+
+\begin{document}
+\maketitle
+\section*{Ex1 : Sous espaces fermés de $ \mathcal{C}([0,1])$ formés de fonctions régulières.}
+
+\begin{enumerate}
+    \item Soit $D :\begin{aligned}
+        F &\longrightarrow E \\
+        f &\longmapsto f'
+    \end{aligned}$. $T$ est linéaire et $(f_n,Tf_n)\to (f,y)\in (F\times E).$ $f_n\to f$ unif et $f_n'\to y$ unif. On a alors $y=f'=Tf$ et $(f_n,Tf_n)\to (f,Tf).$ Donc le graphe de $T$ est fermé par caractérisation séquentielle. On applique le thm du graphe fermé cat $T$ linéaire, $E$ de Banach et $F$ aussi car fermé $\Rightarrow T$ est continue !
+
+\item $\mathcal{A}=\{f\in F\ |\ \|f\|_\infty \le 1\} $ les fonctions de $\mathcal{A}$ sont $C-$Lipschitziennes par la question précédente car elles vérifient $\|f'\|_\infty \le C (AF)$ ponctuellement relativement compact. On peut appliquer Ascoli $\Rightarrow A$  est relativement compact dans $E.$ $A$ est fermé car c'est la boule unité fermée \underline{de $F$ qui est fermé}.
+    \item Par Riesz, $F$ est de dimension finie.
+\end{enumerate}
+
+
+
+\section*{Ex2 : Application du théorème de Stone-Weierstrass.}
+\begin{enumerate}
+    \item On applique Stone Weierstrass et ça marche
+    \item Les polynômes à $d$ variables forment une algèbre unitaire. $y\neq z\Rightarrow X(y) \neq X(z)$ pour le poly $P=X$ sépare $y$ et $z.$ $K$ compact de $\mathbb{R} ^d$ donc par Stone Weierstrass les polynômes à $d$ variables sont denses.\\
+        $\exists (a_n)\in K$ dense donc $\theta_n: x\mapsto d(x,a_n)$ est continue. $\mathcal{A}$ est une $\mathbb{R} $ sous algèbre engendrée par les $\theta_n$ et $\mathbb{1}.$ De plus $\mathcal{A}$ sépare les points car $x,y\in K$ tq $f(x)=f(y)$ pour tout $f\in \mathcal{A},$ alors pour $a_n\to x$, $\underset{\to 0}{d(x,a_n)}=\underset{\to d(x,y)}{d(y,a_n)}\Rightarrow x=y$
+\end{enumerate}
+
+\section*{Ex3: Autour de Stone Weierstrass.}
+On note $\mathcal{A}_n=\{f_{K_n}\ |\ f\in \mathcal{A}\} $. Par Stone Weierstrass, $\mathcal{A}_n$ est de,se da,s $\mathcal{C}(K_n,\mathbb{R})$ . Soit $f\in \mathcal{C}(X,\mathbb{R} )$ par densité de $\mathcal{A}_n,$ $\exists f_n\in \mathcal{A}_n $ tq $\|f_{n|K_n}-f_{|K_n}\|_{\infty ,K_n}\le \frac{1}{n+1}$. Soit $K$ compact alors $\exists N\in \mathbb{N}  $ to $K\subset K_n.$ $K\subset \bigcup\limits_{n\ge 0} K_n\subset \bigcup\limits_{n\ge 1} \mathring{K_{n}}\subset \bigcup\limits_{n\ge 0} \mathring{K_n}$. Donc $f_n\to f$ uniformément sur tout compact car $\|f_{n|K}-f_{|K}\|\le \|f_{n|K_n}-f_{|K_n}\|\le \frac{1}{n+1}$.
+
+\section*{Ex4 : Annulation en un point.}
+\begin{enumerate}
+    \item Unicité : s'il y en avait deux on aurait une constante non nulle (car algèbre donc $h(x)+c(h) - (h(x)+c'(h)) = c(h)-c'(h) = 0$.\\
+        Existence : On pose $\mathcal{A}'=\{f+c\ |\ f\in A,\ c\in \mathbb{R} \} .$ Alors $\mathcal{A}'$ sous algèbre,  sépare les points et contient les fcts constantes. Par Stein Weierstrass $\mathcal{A}'$ dense ie $h\in \mathcal{C}(X,\mathbb{R} )\Rightarrow \exists h_n\in \mathcal{A},\ c_n\in \mathbb{R} $ tq $h_n+c_n\to h.$ On aimerait montrer que $c_n\to c$, on cherche donc une sous suite convergente, dans $\mathbb{R} $ cela revient à montrer que la suite $(c_n)$ est bornée. Si par l'absurde $|c_n|\to +\infty $. Alors
+        \begin{align*}
+            h_n+c_n-h &\to 0\\
+            \frac{h_n}{c_n}+1-\frac{h}{c_n}&\to 0
+        .\end{align*}
+        Or $\frac{h}{c}\to 0$ donc on peut s'attendre à $\frac{h_n}{c_n}+1\to 0$. En effet $\|\frac{h_n}{c_n}+1\|\le \|\frac{h_n}{c_n}+1-\frac{h}{c_n}-\frac{h}{c_n}\|\le \|\frac{h_n}{c_n}+1-\frac{h}{c_n}\|+\|\frac{h}{c_n}\|\to 0$ CQFD. Donc $\frac{h_n}{c_n}\to -1\Rightarrow -1\in \mathcal{A}$ car $\mathcal{A}$ est fermé absurde ($\mathcal{A}$ ne contient que 0).
+
+    \item unicité de $c(h).$ \\
+        $\lambda\in \mathbb{R} ,$ $h\in C(X,\mathbb{R} ).$ $\lambda h-\lambda c(h)=\lambda(h-c(h))\in \mathcal{A}.$\\
+        $h+h'-\left( c(h)-c(h') \right) =h-c(h)+h'-c(h')\in \mathcal{A}.$ \\
+        $hh'-c(h)c(h')=\left( h-c(h) \right) \left( h'-c(h') \right) +c(h)\left( h'-c(h') \right) +c(h')\left( h-c(h) \right) \in \mathcal{A}.$
+        \item On veut $|c(h)| \le \|h\|_\infty $. On commence par montrer que $\exists M>0,\ |c(h)| \le M\|h\|_\infty .$ Pour cela on utilise le thm de graphe fermé (car $c:C(X,\mathbb{R} )\to \mathbb{R} $ linéaire car morphisme de d'algèbre $(h_n,c(h_n))\to (h,c)\in C(X,\mathbb{R} )\times \mathbb{R} $  et $h_n-c(h_n)\in \mathcal{A}\to h-c\in \mathcal{A}$ car $\mathcal{A}$ fermé. Ainsi $c=c(h)$ par unicité.
+
+    \item Supp $\forall M>0,\ \exists h\in C(X,\mathbb{R} ),\ |c(h)| > M\|h\|_\infty . $ Alors $M=n\Rightarrow h_n$ tq $|c(h_n)| > n\|h_n\|_\infty $ et $f_n=\frac{h_n}{c(h_n)}\Rightarrow c(f_n)=1$. $\|f_n\|_\infty <\frac{1}{n}$  et $f_n-1\in \mathcal{A}. f_n\to 0/f_n-1\to -1 $ car $\mathcal{A}$ fermé. Si $\exists f\in C(X,\mathbb{R} )$ tq $|c(f)| >\|f\|_\infty $ on a $|\frac{c(f^n)}{\|f^n\|_\infty }|=|\frac{c(f)}{\|f\|}| ^n\to +\infty  $ absurde car le premier est majoré par $M.$
+    \item On pose  $h=f-\frac{m_1+m_2}{2}$ donc $|c(h)|=\frac{m_1+m_2}{2}$ et $\|h\|=\frac{m_2-m_1}{2}$ par q précédente on a  $\frac{m_1+m_2}{2}<\frac{m_2-m_1}{2}$ impossible sauf si $m_1\le 0$ et $m_2\ge 0$.
+    \item Soit $F=\bigcap\limits_{f\in \mathcal{A}} f^{-1} (\{0\} )\neq \emptyset ?$ Si $F=\emptyset $ alors par compacité de $X$ il existe $f_1,\cdots,f_n\in \mathcal{A}$ tq $\bigcap\limits_{i=1}^nf_i^{-1} (\{0\} )=\emptyset . $ On pose $g=f_1^2+\cdots+f_n^2>0\in \mathcal{A}$ absurde par q précédente. \\
+        Ainsi $F\neq \emptyset $ et on a $x_0\in F.$ Au final $F=\{x_0\} $ car sinon $x\neq y\in F\Rightarrow \mathcal{A}$ ne les sépare pas. On a donc $\mathcal{A}\subset \{f\in C(X,\mathbb{R} )\ |\ f(x_0)=0\} $ et réciproquement si $h\in C(X,\mathbb{R} ), h(x_0)=0$ alors $h-c(h)\in \mathcal{A}\Rightarrow -c(h)=\left( h(x_0)-c(h) \right) =0$.
+\end{enumerate}
+
+\section*{Ex6 : Convolution et régularisation.}
+ratio.
+\section*{Ex7 : Application du théorème de Brouwer.}
+\begin{enumerate}
+    \item $C\simeq B'(0,1)$ par topologie algébrique et on applique Brouwer à $h\circ f$. (On me dit aussi à l'oreillette que pour des gens ayant suivi le cours ça s'appelle Schauder). On a $\varphi :B\to B$ avec $\varphi (x)=f(p(x)).$ Alors Brouwer dessus donne un point fixe $x=f(p(x))\Rightarrow p(x)\in C\subset B\Rightarrow p(x)=x$.
+    \item $S$ les points de $\mathbb{R} ^n$ tous termes positifs de norme 1 $\ge 1$ et norme 2 $\le 2$. Le reste laissé en exo
+\end{enumerate}
+
+
+\end{document}
