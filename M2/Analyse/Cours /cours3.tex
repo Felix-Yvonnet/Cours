@@ -386,8 +386,9 @@ On conclut $ \phi\left( x_* \right) = y_*$.
 	On pose $\phi : B \to  \partial B$ définie par $\{\phi\left( x \right) \} = \dif B \cap \{x + t\left( x-f\left( x \right)  \right) | t\ge 0\} $. alors $\phi $ est une rétractation continue de $B$ sur $\dif B$.
 \end{proof}
 \begin{figure}[htpb]
+        % trim={<left> <lower> <right> <upper>}
 	\centering
-	\includegraphics[width=0.8\textwidth]{img1.pdf}
+	\includegraphics[trim={30em 20em 0 30em},clip,width=1.2\textwidth]{img1.pdf}
 	\caption{Définition de $\phi$}
 \end{figure}
 \subsection{Variantes et applications de Brouwer}
@@ -589,7 +590,8 @@ Posons $g\left( x \right) := \max \limits_{1\le j\le J} \phi_{y_j}\left( x \righ
 		g\left( x \right) &\ge \phi_{y_j}\left( x \right) \\
 				  &\ge f\left( y_j \right) \\
 				  &\ge (1-\varepsilon) \left( f(x)- \underbrace{|f\left( x \right) - f\left( x_i \right) |}_{\le  \varepsilon} - \underbrace{|f\left( x_i \right) - f\left( y_j \right) |}_{\le \varepsilon} \right)
-				  &\ge \left( 1-\varepsilon \right) \left( f\left( x \right) - 2 \varepsilon \right)
+				  \\
+      &\ge \left( 1-\varepsilon \right) \left( f\left( x \right) - 2 \varepsilon \right)
 				  \ge f\left( x \right) - 3 \varepsilon.
 			  .\end{align*} 
 			  D'où le résultat.
