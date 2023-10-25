@@ -2,6 +2,6 @@ Cours présenté par Jean-Marie Mirebeau, CNRS et ENS Paris-Saclay, d'après un 
 
 Prise de note : Félix Yvonnet.
 
-Avec l'aide apprécié de Romain Delaunay pour la correction et la mise en page.
+Avec l'aide apprécié de Romain Delaunay pour la correction et la mise en page et Corentin Cournou pour le soutien émotionnel.
 
 Données de cours (RAS), [un seul lien utile](http://math.ens-paris-saclay.fr/version-francaise/formations/formation-en-mathematiques-de-l-ens-paris-saclay/2eme-annee-le-m1-hadamard/resume-des-cours-de-m1-hadamard-site-ens-306767.kjsp?RH=1242812167142) qui permet d'avoir le plan du cours.
