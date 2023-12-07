@@ -1,7 +1,7 @@
 \section{Dualité et topologie faible.}
 \subsection{Espaces Hilbertiens, \texorpdfstring{$\mathbb{K}=\mathbb{R} $ ou $\mathbb{C}$.}{Lg} }
 \begin{definition}
-    Soit $\mathcal{H}$ (ou $\mathfrak{H}$ pour les rageux) un $\mathbb{K}$-ev, $\varphi :\mathcal{H}\times \mathcal{H}\to \mathbb{K}$ est sesquilinéaire si
+    Soit $\mathcal{H}$ (ou $\mathscr {H}$ pour les rageux) un $\mathbb{K}$-ev, $\varphi :\mathcal{H}\times \mathcal{H}\to \mathbb{K}$ est sesquilinéaire si
     \begin{itemize}
         \item linéarité à droite : $\varphi (x,y+\lambda z)=\varphi (x,y)+\lambda \varphi (x,z)$
     \item antilinéarité à gauche : $\varphi (x+\lambda y,z)=\varphi (x,z)+\overline{\lambda}\varphi (y,z)$
@@ -14,7 +14,9 @@
         \item définie positive si $\varphi (x,x)=0\Rightarrow x=0$.
     \end{itemize}
 \end{definition}
+
 Un espace muni d'une forme sesquilinéaire symétrique définie positive est dit préhilbertien. On note $\left<x,y \right> := \varphi (x,y),$ $\|x\|=\sqrt{\varphi (x,x)} $.
+
 \begin{remarque}
     Si $\mathcal{H}$ est préhilbertien, alors pour tout $x,y\in \mathcal{H},$ $$\|x+y\|^2=\|x\|^2+2Re\left( \left<x,y \right> \right) +\|y\|^2$$
     $$\|x+y\|^2+\|x-y\|^2=2\left( \|x\|^2+\|y\|^2 \right) $$
@@ -22,20 +24,28 @@ Un espace muni d'une forme sesquilinéaire symétrique définie positive est dit
 \end{remarque}
 \begin{propriete}[inégalité de Cauchy Schwartz]
     Soit $\mathcal{H}$ préhilbertien, alors $\forall x,y\in \mathcal{H},$\\
-    $$|\left<x,y \right>| \le \|x\|\|y\| $$.
+    $$|\left<x,y \right>| \le \|x\|\|y\| $$
     Avec égalité si et seulement si $x$ et $y$ sont colinéaires.
 \end{propriete}
 \begin{proof}
-    L'égalité est claire si $x$ et $y$ sont colinéaires. On suppose donc $\lambda x+\mu y\neq 0$ pour tout $\lambda,\mu\neq 0$. Soit $\alpha lpha\in \mathbb{C},\|\alpha \|=1$ et $P$ strictement positif sur $\mathbb{R} $ donc de discriminant strictement négatif. ie $|\left<x,y \right>| \le \|x\|\|y\|$ donc ça marche. :)
+    L'égalité est claire si $x$ et $y$ sont colinéaires. On suppose donc $\lambda x+\mu y\neq 0$ pour tout $\lambda,\mu\neq 0$. 
+    Soit $\alpha \in \mathbb{C}$ tel que $| \alpha |=1$ et $P$ strictement positif sur $\mathbb{R} $ donc de discriminant strictement négatif. ie $|\left<x,y \right>| \le \|x\|\|y\|$ donc ça marche. :)
 \end{proof}
+\begin{remarque}
 Un espace de Hilbert est un espace préhilbertien complet.
+\end{remarque}
 
-Soit $\mathcal{H}$ un Hilbert, $K\subset \mathcal{H}$ convexe fermé. Alors $P_K(x):=argmin_{y\in K} \|x-y\|$  existe et est unique pour tout $x\in \mathcal{H}$. De plus on a la caractérisation : $$P=P_k(x)\Leftrightarrow \forall y\in K,\ Re(x)\left<x-p,y-p \right>\le 0 $$.
-Et la propriété$\forall x,y\in \mathcal{H},\ \|P_K(x)-P_k(y)\|^2\le Re\left( \left<x-y,P_K(x)-P_K (y)\right> \right) $ ce qui implique que $P_K$ est 1-Lipschitzienne.
+\begin{remarque}
+    Soit $\mathcal{H}$ un Hilbert et $K\subset \mathcal{H}$ convexe fermé. \\
+    Alors $P_K(x):=argmin_{y\in K} \|x-y\|$  existe et est unique pour tout $x\in \mathcal{H}$. \\
+    De plus on a la caractérisation : $$P=P_k(x)\Leftrightarrow \forall y\in K,\ Re(x)\left<x-p,y-p \right>\le 0 $$
+et la propriété : $\forall x,y\in \mathcal{H},\ \|P_K(x)-P_k(y)\|^2\le Re\left( \left<x-y,P_K(x)-P_K (y)\right> \right) $ ce qui implique que $P_K$ est 1-Lipschitzienne.
+\end{remarque}
+
 
 \begin{propriete}[Projection sur un sev fermé]
-    Soit $\mathcal{H}$ un Hilbert, $F\subset \mathcal{H},$ sev fermé. Alors on a la caractérisation
-$$p=P_F(x)\Leftrightarrow p\in F \text{ et }\forall y\in F,\ \left<x-p,y \right> = 0 $$.
+    Soit $\mathcal{H}$ un Hilbert, $F\subset \mathcal{H}$ un sev fermé. Alors on a la caractérisation :
+$$p=P_F(x)\Leftrightarrow p\in F \text{ et }\forall y\in F,\ \left<x-p,y \right> = 0. $$
 De plus, $P_F+P_{F^\bot}=Id$ où $F^\bot=\{y\in \mathcal{H}\ |\ \forall x\in F,\ \left<x,y \right> = 0 \} .$
 \end{propriete}
 \begin{corollaire}[Théorème de représentation de Riesz]
@@ -47,7 +57,8 @@ De plus, $P_F+P_{F^\bot}=Id$ où $F^\bot=\{y\in \mathcal{H}\ |\ \forall x\in F,\
 \begin{proof}
     On a $\varphi _x\in \mathcal{H}^*$ car $|\varphi _x(y)|=|\left<x,y \right>|\le \|x\|\|y\|$. L'estimation précédente donne  $\|\varphi _x\|_{\mathcal{H}^*}\le \|x\|,$ et en choisissant $y=x$ on obtient $\underbrace{|\varphi _x(x)| }_{\ge \|\varphi _x\|_{\mathcal{H}^*\|x\|_\mathcal{H}}}=\|x\|^2$. L'antilinéarité de $x\mapsto \varphi _x$ découle de la sesquilinéarité de $f.$ \\
     Montrons la surjectivité. Soit $\varphi \in \mathcal{H}^*\backslash \{0\} ,$ alors $F:=\ker(\varphi )$ est un sev fermé. Soit $x\in \mathcal{H}$ tq $\varphi (x)=1,$ soit $p=P_f(x),$ $v=x-p.$ Alors $\varphi (v)=\varphi (x-p)=1$ et $\left<v,y \right> = 0\forall y\in F.  $ \\
-    De plus $\varphi (z-\varphi (z)v)=0$ par linéarité donc $z-\varphi (z)v\in F=\ker(\varphi).$ Ainsi $\left<v,z-\varphi (z)v \right> = 0$ et $\varphi (z)\|v\|^2=\left<v,z \right>$ donc $\varphi (z)=\frac{\left<v,z \right>}{\|v\|^2}.$
+    De plus $\varphi (z-\varphi (z)v)=0$ par linéarité donc $z-\varphi (z)v\in F=\ker(\varphi).$\\
+    Ainsi $\left<v,z-\varphi (z)v \right> = 0$ et $\varphi (z)\|v\|^2=\left<v,z \right>$ donc $\varphi (z)=\frac{\left<v,z \right>}{\|v\|^2}.$
 \end{proof}
 \begin{remarque}
     La topologie faible et la topologie $*-$faible correspondent sur $\mathcal{H}.$
@@ -67,29 +78,552 @@ De plus, $P_F+P_{F^\bot}=Id$ où $F^\bot=\{y\in \mathcal{H}\ |\ \forall x\in F,\
         x &\longmapsto f_i(x)
     \end{aligned}$ où $i\in I$ to $x\in A_i.$ Soit $f:A\to \mathcal{B}$ un élément maximal de $E.$ Si par l'absurde $A\neq \mathcal{A}$, soit $\alpha\in \mathcal{A}\backslash A$ et $\beta\in \alpha .$ On pose $f' :\begin{aligned}
         A\cup \{\alpha\}  &\longrightarrow \mathcal{B} \\
-        ,x\in A &\longmapsto f(x)\\
+        x\in A &\longmapsto f(x)\\
         \alpha &\longmapsto \beta
     \end{aligned}$ qui prolonge strictement $f$ et contredit la maximalité.
 \end{proof}
 On suppose $\mathbb{K}=\mathbb{R} $ dans cette partie.
 \begin{definition}
     Soit $E$ un $\mathbb{R} -$ev, $\rho:E\to \mathbb{R} $. $\rho$ est dite sous linéaire si
-    $$\rho(x+y)\le \rho(x)+\rho(y)$$
-    $$\rho(\lambda x)\le \lambda\rho(x)$$
+    $$\bullet\ \rho(x+y)\le \rho(x)+\rho(y)$$
+    $$\bullet\ \rho(\lambda x)\le \lambda\rho(x)$$
 
 \end{definition}
 \begin{ex}
-    Soit $E$ un ev, $E\subset E$ sev, $\rho:F\to \mathbb{R} $ sous linéaire $\varphi _F:F\to \mathbb{R} $ linéaire et tq $\varphi _F\le \rho$ sur $F.$ Alors $\exists \varphi :E\to \mathbb{R}$ linéaire tq $\varphi _{|F}=\varphi _F$ et $\varphi \le \rho$ sur $E.$
+    Soit $E$ un ev, $E\subset E$ sev, $\rho:F\to \mathbb{R} $ sous linéaire $\varphi _F:F\to \mathbb{R} $ linéaire et tq $\varphi _F\le \rho$ sur $F.$\\
+    Alors $\exists \varphi :E\to \mathbb{R}$ linéaire tq $\varphi _{|F}=\varphi _F$ et $\varphi \le \rho$ sur $E.$
 \end{ex}
 
 \begin{proof}
-    Soit $E=\{\varphi :G\to \mathbb{R} \ |\ F\subset G,G \text{sev de}E, \varphi \text{linéaire et}\varphi \le \rho \text{sur }G\} $. $E$ non vide sur $\varphi _F\in E,$ $E$ est ordonné par la relation ($\le $).  $E$ est inductif $\varphi _i:G_i\to \mathbb{R} $ . On pose $G_*=\bigcup\limits_{i \in G_i} $ et $\varphi _* :\begin{aligned}
+    Soit ??? (conflit de notation E?)\\
+    $E=\{\varphi :G\to \mathbb{R} \ |\ F\subset G,G$ sev de $E, \varphi$ linéaire et $\varphi \le \rho$ sur $G\} $. $E$ est non vide sur $\varphi _F\in E,$ $E$ est ordonné par la relation ($\le $).  $E$ est inductif $\varphi _i:G_i\to \mathbb{R} $ . On pose $G_*=\bigcup\limits_{i \in G_i} $ et $\varphi _* :\begin{aligned}
         G_* &\longrightarrow \mathbb{R}  \\
         x &\longmapsto \varphi _i(x)
     \end{aligned}$.
-    $\varphi _*\le \rho$ sur $G_*$, $\varphi (\lambda x)=\lambda \varphi (x)$ et pour tout $x,y\in G_*,$ tout $i,j\in I$ tq $x\in G_i,y\in G_j$, comme $(\varphi _i)$ totalement ordonné, on a $G_i\subset G_j$ ou l'inverse. Disons $G_i\supset C_j.$ Alors $x,y\in G_i,$ $\varphi_* (x+y)=\varphi _i(x+y)=\varphi _*(x)+\varphi _*(y).$ \\
-    Soit $\varphi :G\to \mathbb{R} $ élément maximal de $E,$ par le lemme de Zorn. Par l'absurde, $G\neq E,$ soit $x\in E\backslash G$, on pose $\psi :\begin{aligned}
+    On a $\varphi _*\le \rho$ sur $G_*$, $\varphi (\lambda x)=\lambda \varphi (x)$ et pour tout $x,y\in G_*,$ tout $i,j\in I$ tq $x\in G_i,y\in G_j$, comme $(\varphi _i)$ totalement ordonné, on a $G_i\subset G_j$ ou l'inverse.\\
+    Disons $G_i\supset C_j.$ Alors $x,y\in G_i,$ $\varphi_* (x+y)=\varphi _i(x+y)=\varphi _*(x)+\varphi _*(y).$ \\
+    Soit $\varphi :G\to \mathbb{R} $ élément maximal de $E,$ par le lemme de Zorn.\\
+    Par l'absurde, $G\neq E,$ soit $x\in E\backslash G$, on pose $\psi :\begin{aligned}
         G\oplus \mathbb{R} _x &\longrightarrow \mathbb{R}  \\
         y+\lambda x &\longmapsto \varphi (y)+\lambda \alpha
-    \end{aligned}$ où $\alpha $ est bien choisi. On veut $\psi(y+\lambda x)\le \rho(y+\lambda x)$ ie $\varphi (y)+\lambda \alpha \le \rho(y+\lambda x)$. Donc $\sup \varphi (z)-\rho(z-x)\le \alpha \le \inf \rho(y+x)-\varphi (y).$ Or $\forall y,z\in G_*,\ \varphi (z)-\rho(z-x)\le \rho(y+x)-\varphi (y)\Leftrightarrow \underbrace{\varphi (y)+\varphi (z)}_{=\varphi (y+z)}\le \underbrace{\rho(y+z)+\rho(z-x)}_{\ge \rho(y+z)} $ ce qui est vrai donc on peut bien choisir $\alpha $ de sorte à respecter l'inégalité précédente.
+    \end{aligned}$ où $\alpha $ est bien choisi.\\
+    On veut $\psi(y+\lambda x)\le \rho(y+\lambda x)$ ie $\varphi (y)+\lambda \alpha \le \rho(y+\lambda x)$.\\
+    Donc $\sup \varphi (z)-\rho(z-x)\le \alpha \le \inf \rho(y+x)-\varphi (y).$ Or \\
+    $\forall y,z\in G_*,\ \varphi (z)-\rho(z-x)\le \rho(y+x)-\varphi (y)\Leftrightarrow \underbrace{\varphi (y)+\varphi (z)}_{=\varphi (y+z)}\le \underbrace{\rho(y+z)+\rho(z-x)}_{\ge \rho(y+z)} $ ce qui est vrai donc on peut bien choisir $\alpha $ de sorte à respecter l'inégalité précédente.
+\end{proof}
+
+\begin{theoreme}[Hahn Banach]
+    Soit $E$ un $\mathbb{R} -$ev, soit $p:E\to \mathbb{R} ,$ sous additive ($p(x+y)\le p(x)+p(y)$ et $p(\lambda x)=\lambda p(x), \lambda>0$). Soit $F\subset E$ sev et $\varphi _F:F\to \mathbb{R} $ linéaire telle que $\varphi_F\le p$ sur $F.$ \\
+    Alors $\exists \varphi :E\to \mathbb{R} $ linéaire, $\varphi _{|F}=\varphi _F$ et $\varphi \le p$ sur $E.$
+\end{theoreme}
+\begin{remarque}
+Soit $(X,\le )$ un ensemble (partiellement) ordonné, $x\in X$ est \underline{maximal} si $\forall y\in X,\ \neg(y>x) $.\\
+    $x$ est \underline{le plus grand élément} si pour tout $y\in X,$ $y\le x.$
+\end{remarque}
+\begin{corollaire}[Prolongement de même norme d'une forme linéaire]
+    Soit $E$ un evn, $F\subset E$ sev, $\varphi _F\in F^*.$ Alors il existe $\varphi \in E^*$ telle que $\varphi _{|F}=\varphi _F$ et $\|\varphi \|_{E^*}=\|\varphi_F \|_{F^*}.$
+\end{corollaire}
+
+\begin{proof}
+    Posons $p :\begin{aligned}
+        E &\longrightarrow \mathbb{R}  \\
+        x &\longmapsto C\|x\|_E
+    \end{aligned}$ avec $C=\|\varphi _F\|_{F^*}=\sup_{\substack{x\in F\\\|x\|_E=1}}|\varphi _F| .$ \\
+    La fonction $p$ est sous additive, et $\varphi _F\le p$ sur $F.$ Par théorème de Hahn Banach, il existe $\varphi :E\to \mathbb{R} $ telle que $\varphi _{|F}=\varphi _F$ et $\varphi \le p$ sur $E.$\\
+    Alors $|\varphi (x)| =\max\left( \varphi (x),\varphi (-x) \right) \le \max\left( p(x),p(-x) \right) =C\|x\|.$ \\
+    Ainsi $\|\varphi \|_{E^*}\le C=\|\varphi _F\|_{F^*}$ ce qui conclut car l'inégalité réciproque est évidente par $\varphi _{|F}=\varphi _F.$
+\end{proof}
+\begin{corollaire}[Critère de densité]
+    Soit $E$ un evn et $F\subset E$ un sev. Alors \hypertarget{crit-densite}{$F$ est dense ssi la seule forme linéaire $\varphi \in E^*$ s'annulant sur $F$ est $\varphi =0.$}
+\end{corollaire}
+\begin{proof}\par\noindent
+    \begin{itemize}
+        \item[$\Rightarrow$] Si $F$ est dense et $\varphi\in E^* $ s'annule sur $F$ alors $\varphi $ s'annule sur $E$ par continuité
+        \item[$\Leftarrow$] On suppose $F$ non dense et on obtient $x_0\in E \backslash F$. On pose $\tilde{F}:=F\oplus \mathbb{R} x_0$ et $\varphi  :\begin{aligned}
+            \tilde{F} &\longrightarrow \mathbb{R}  \\
+            \underset{\in F}{u} + \underset{\in \mathbb{R} }{\lambda}x_0 &\longmapsto \lambda
+        \end{aligned}$ est continue car $\forall u,v\in F,\ \lambda\in \mathbb{R} , $
+        \begin{align*}
+            \|u+\lambda x_0\|&\ge d(u+\lambda x_0, F)\\
+                             &=d(\lambda x_0)\\
+                             &= |\lambda| d(x_0,F).\\
+            \text{donc } |\varphi (u+\lambda x_0)| &=|\lambda| \\
+                                                   &\le \frac{\|u+\lambda x_0\|}{\underbrace{d(x_0,F)}_{>0 \text{ car }x_0\not\in \tilde{F} }}.
+        \end{align*}
+        Par Hahn Banach, il existe $\psi\in E^*$ telle que $\|\psi\|_{E^*}=\|\varphi \|_{\tilde{F}^*}$ et $\psi_{|\tilde{F}}=\varphi .$ On a bien $\psi=0$ sur $F$ et $\psi(x_0)\neq 0$.
+    \end{itemize}
+
+\end{proof}
+\begin{ex}
+    Soit $E$ un evn. Si $E^*$ est séparable alors $E$ aussi.
+\end{ex}
+\begin{proof}
+    Soit $\left( \varphi _n \right) $ une famille dense dans $E^*,$ soit $\left( x_{n} \right) $ une famille de $E$ telle que $\|x_n\|_E=1$ et $\varphi _n(x_n)\ge \frac{\|\varphi _n\|_{E^*}}{2}$. \\
+    Posons
+    \begin{align*}
+        F&=Vect \{x_{n}\ |\ n\in \mathbb{N} \} \\
+         &= \{\sum\limits_{n=0}^{\infty} \lambda_n x_n\ |\ \left( \lambda_n \right) \text{ a support presque nul}\}\\
+         &= \{\sum\limits_{n=0}^{N} \lambda_nx_n\ |\ N\in \mathbb{N} , \lambda_1,\cdots, \lambda_n\in \mathbb{R} \} .
+    \end{align*}
+    $F$ est séparable car $\bigcup\limits_{N\in \mathbb{N} } \mathbb{Q} ^N$ est dénombrable. Montrons que $F$ est dense.\\
+    Soit $\varphi \in E^*$ s'annulant sur $F.$ On suppose que $\varphi \neq 0$ par l'absurde, et donc on peut supposer $\|\varphi \|_{E^*}=1.$ Soit $n\in \mathbb{N} $ tq $\|\varphi _n-\varphi \|_{E^*}\le \frac{1}{4},$ alors:
+    \begin{align*}
+        \varphi (x_n)&\ge \varphi _n(x_n) - \overbrace{\|\varphi -\varphi _n\|_{E^*}}^{\text{car } \|x_n\|_E=1}\\
+                     &\ge \frac{\|\varphi _n\|}{2}-\|\varphi -\varphi _n\|_{E^*}.\\
+                     &\ge \frac{\|\varphi \|-\|\varphi -\varphi _n\|}{2}-\|\varphi -\varphi _n\|\\
+                     &= \frac{\|\varphi \|}{2}-\frac{3}{2}\|\varphi -\varphi _n\|\\
+                     &\ge \frac{1}{2}-\frac{3}{4}\frac{1}{4}\\
+                     &>0
+    \end{align*}
+    On a trouvé $x_{n}\in F$ sur lequel $\varphi $ ne s'annule pas, contradiction ! Ainsi $F$ est dense.
+\end{proof}
+
+\begin{corollaire}[Projection sur un sev de dim finie]
+    Soit $E$ un evn, $F$ un sev de dim finie. Alors $\exists p\in \underbrace{L(E,F)}_{\mathclap{\text{linéaire continue}}} $ projection sur $F.$ On a $Im(p)=F$ et $p^2=p$.
+\end{corollaire}
+\begin{remarque}
+    Le théorème de Kadets-Snobar montre que l'on peut trouver $p$ projection sur $F$ tel que $\|p\|_{L(E)}\le \sqrt{dim(F)}.$
+\end{remarque}
+\begin{proof}
+    Soit $e_1,\cdots, e_n$ base de $F.$ Soit $\varphi _1,\cdots, \varphi _n$ base duale de $F^*.$ \\
+    $\varphi _i(e_j)=\delta_{i,j}.$ Soit $\psi_1,\cdots, \psi_n\in E^*$ telles que $\psi_{i|F}=\varphi _i$ pour tout $i.$ \\
+    On pose $p(x)=\sum\limits_{i=1}^{n} \psi_i(x)e_i.$ On a $p\in L(E)$ et si $x=\sum\limits_{k=1}^{n} \lambda_ke_k\in F$ alors :
+     \begin{align*}
+         p(x)&=\sum\limits_{i=1}^{n} \psi_i(x)e_i\\
+             &=\sum\limits_{i=1}^{n} \varphi _i(x)e_i\\
+             &=\sum\limits_{i=1}^{n} \lambda_ie_i\\
+             &=x.
+    \end{align*}
+\end{proof}
+
+\subsection{Réflexivité}
+\begin{propriete}[éléments conjugué dual]
+    Soit $E$ un evn et $x\in E.$ Alors il existe $\varphi \in E^*$ telle que $\varphi (x)=\|\varphi \|_{E^*}\|x\|_E$ et $\|\varphi \|_{E^*}=\|x\|_E.$
+\end{propriete}
+\begin{proof}
+    Posons $F=\mathbb{R} x$ et $\varphi _F :\begin{aligned}
+        F &\longrightarrow \mathbb{R}  \\
+        \lambda x &\longmapsto \lambda \|x\|_E^2
+    \end{aligned}.$ Par Hahn Banach, il existe $\varphi \in E^*$ telle que $\varphi _{|F}=\varphi _F$ et $\|\varphi \|_{E^*}=\|\varphi _F\|_{F^*}=\frac{|\varphi (x)|}{\|x\|_E}=\|x\|_E $ pour $x\neq 0.$ On note que $\varphi $ convient\ldots
+\end{proof}
+\begin{remarque}
+    Si $E$ est un Hilbert, alors  l'élément conjugué dual est\\ $\varphi (\cdot)=\left<x,\cdot \right>.$
+\end{remarque}
+\begin{remarque}
+    En général, pas d'unicité. Par exemple,  $x=(1,0)\in \left( \mathbb{R} ^2, \|.\|_1 \right) $ admet les conjugués duaux : $\varphi =(1,\lambda)\in \left( \mathbb{R} ^2, \|.\|_\infty \right), |\lambda| \le 1 $.
+\end{remarque}
+\begin{corollaire}[Isométries dans le bidual]
+    Soit $E$ un evn. Posons $\Psi:E\to E^{**}$ définie par $\Psi(\underset{\in E}{x})(\underset{\in E^*}{\varphi }):=\varphi (x).$ C'est une injonction isométrique.
+\end{corollaire}
+\begin{proof}
+    Soit $x\in E,$ $\varphi \in E^*.$ Alors
+    \begin{align*}
+        |\Psi(x)(\varphi )| &=|\varphi (x)|\\
+                            &\le \|\varphi \|_{E^*}\|x\|_E.
+    \end{align*}
+    Donc $\Psi(x)\in E^{**}$ et $\|\Psi(x)\|_{E^{* *}}\le \|x\|_E.$  \\
+    De plus en choisissant pour $\varphi $ un élément conjugué dual de $x$ in a l'égalité et donc $\|\Psi(x)\|_{E^{* *}}=\|x\|_E.$ D'où l'isométrie, et donc l'injection.\\
+    (Si $\Psi(x)=0$ alors $\|x\|=\|\Psi(x)\|=0$).\\
+    On dit que $E$ est réflexif si $\Psi:E\to E^{* * }$ est bijective. Dans ce cas, on peut identifier $E$ et $E^{* *}.$ (Les topologies sont les mêmes. La topologie faible sur $E$ et la topologie *-faible sur $E^{* *}$ sont les mêmes). En particulier, la boule unité fermée de $E$ est faiblement compacte.
+\end{proof}
+\begin{corollaire}
+    La topologie faible sur un evn $E$ est séparée.\\
+    Si $A\subset E$ est faiblement bornée ($\forall \varphi \in E^*, \ \left( \varphi (a) \right) _{a\in A}$ est bornée), alors $A$ est fortement bornée ($A\subset B(0,R)$ pour un certain $R\in \mathbb{R} ^{+*}$).
+\end{corollaire}
+\begin{proof}
+    (Séparation): soit $x_0\in E$ sur lequel toutes les semi normes s'annulent. $\left(\begin{aligned}
+        E &\longrightarrow \mathbb{R}  \\
+        x &\longmapsto |\varphi (x)|
+    \end{aligned},~ \varphi \in E^*\right)$ On choisit $\varphi \in E^*$ un conjugué dual de $x_0,$ alors $|\varphi (x_0)| =\|x_0\|_E$ donc $x=0.$ Le critère de séparation est satisfait.\\
+    Soit $A\subset E$ faiblement borné. Alors $\Psi(A)\subset E^{* *}$ est * faiblement bornée. ($\forall \varphi \in E^*,\ \left( \Psi(x)(\varphi ) \right) _{x\in A}$ est bornée). Par le théorème de Banach Steinhaus, $\Psi(A)$ est borné. Par isométrie, $A$ est borné.\\
+    (Remarque : $E^*$ est toujours complet donc est un Banach)
+
+\end{proof}
+\begin{theoreme}[James, critère de réflexivité]
+    Soit $E$ un Banach, sont équivalents :
+    \begin{enumerate}[label=$(\roman*)$]
+        \item $E$ est réflexif
+        \item $E^*$ est réflexif
+        \item $B'_E(0,1)$ est faiblement compacte
+        \item $\forall \varphi \in E^*,\ \exists x\in B_E'(0,1),\ \varphi (x)=\|\varphi \|_{E^*}. $
+    \end{enumerate}
+\end{theoreme}
+\begin{proof}
+    On admet $(iv)\Rightarrow (i)$ qui est pénible et constitue le cœur du théorème.
+    \begin{itemize}
+        \item ($(i)\Rightarrow (iii)$) car $B'_E(0,1)$ est * faiblement compact (Banach Alaoglu) et car la topologie * faible sur $B'_E(0,1)$ coincide avec la topologie * faible sur $B'_{E^{* *}}(0,1)$.
+        \item ($(iii)\Rightarrow (iv)$) Car $B'_E(0,1)$ est faiblement compact, et $\varphi $ est faiblement continues donc atteint ses bornes. \\
+            Donc $\|\varphi \|_{E^*}=\max \{\varphi (x)\ |\ x\in B'_E(0,1)\} $ est atteint.
+        \item ($(ii)\Rightarrow (i)$) Supposons $\Psi:E\to E^{* *}$ non surjective. Comme $\Psi(E)$ est isométrique à $E,$ il est fermé. Par le critère de densité, il existe $\varphi \in E^{* * *} \backslash \{0\} ,$ s'annulant sur $\Psi(E)$. Si par l'absurde $\varphi =\Psi_{E^*}(\varphi _0)$ avec $\varphi _0\in E^*,$ alors $\varphi _0$ s'annule sur $E$ donc $\varphi _0=0,$ donc $\varphi =0,$ contradiction. \\
+        Ainsi $\varphi $ n'est pas dans l'image de $\Psi_{E^*}:E^*\to E^{* * *}$ et $E$ non réflexif.
+    \end{itemize}
+\end{proof}
+\begin{definition}
+    Un evn $E$ est uniformément convexe ssi \\
+    $\forall \varepsilon >0,\ \exists \delta>0\ \forall x,y\in E,\ \left( \|x\|=\|y\| \text{ et } \|x-y\|>0 \right) \Rightarrow  \frac{\|x+y\|}{2}\le \delta  $
+\end{definition}
+\begin{ex}
+    Un Hilbert est uniformément convexe car \\
+    $\|x+y\|^2+\|x-y\|^2=2\left( \|x\|^2+\|y\|^2 \right) $ \\
+    donc $\frac{\|x+y\|^2}{4}=\frac{1}{2}\left( \|x\|^2+\|y\|^2 \right) -\frac{1}{4}\|x-y\|^2$ d'où $\|\frac{x+y}{2}\|\le \sqrt{1-\frac{\varepsilon}{4}}$ si $\|x\|=\|y\|=1$ et $\|x-y\|=\varepsilon .$
+\end{ex}
+
+\begin{propriete}
+    Soit $E$ un Banach uniformément convexe, $\varphi \in E^* \backslash \{0\} .$ Alors $\exists !x\in B'_E(0,1),\ \varphi (x)=\|\varphi \|_{E^*}.$\\
+    En particulier, $E$ est réflexif (par le théorème de James).
+\end{propriete}
+\begin{proof}
+    On peut supposer $\|\varphi \|=1.$ Soit $(x_{n})\in B'_E(0,1)^\mathbb{N} $ telle que $\varphi (x_{n})\underset{n\to +\infty}{\longrightarrow} 1=\|\varphi \|=\sup_{\|x\|\le 1}|\varphi (x)|$. On peut supposer $\|x_n\|=1$ quitte à construire la suite normalisée qui satisfait la même égalité. Montrons qu'elle est de Cauchy.\\
+    Soit $\varepsilon >0,$ soit $\delta>0$ correspondant dans l'uniforme continuité. Soit $N\in \mathbb{N} $ tel que $\forall n\ge N,\ \varphi (x_{n})>1-\delta. $ Si $m,n\ge N$ alors
+    \begin{align*}
+        1-\delta &<\frac{\varphi (x_{m})-\varphi (x_{n})}{2}\\
+                 &=\varphi (\frac{x_{m}-x_{n}}{2})\\
+                 &\le \underbrace{\|\varphi \|}_{=1}\|\frac{x_{m}-x_{n}}{2}\|\\
+                 &\le 1-\delta \text{ par uniforme convexité si $\|x_m-x_n\|\ge \varepsilon .$ }
+    \end{align*}
+        % trim={<left> <lower> <right> <upper>}
+        \centering
+        \includegraphics[trim={0 10em 0 15em}, clip,width=0.6\textwidth]{img2.png}
+ 
+    Impossible donc $\|x_m-x_n\|\le \varepsilon $, d'où le critère de Cauchy. Donc $(x_n)$ est convergente vers $x_*$ et $\varphi (x_*)=1=\|\varphi \|$ par continuité. D'où l'existence d'un maximiseur. L'unicité découle de l'uniforme convergente.
+\end{proof}
+
+\begin{propriete}[Inégalité de Holder]
+    Soit $(X, \mu)$ un espace mesuré, $f\in L^p(X),$ $g\in L^q(X)$ avec $p,q\in [1,\infty ], \frac{1}{p}+\frac{1}{q}=1$ (dit exposants conjugués). Alors $fg\in L^1(X)$ et $\int fg\le \|f\|_p\|g\|_q$ avec égalité ssi $f=0$ ou $g=0$ ou
+    \begin{itemize}
+        \item (cas $1<p<\infty $ ) $f=\lambda\cdot sign(g)|g|^{\frac{q}{p}} $ avec $\lambda>0$.
+        \item (cas $p=1$) $g=\lambda\cdot sign(f)$ avec $\lambda>0$ presque partout où $|f| >0$ et $|g| \le \lambda$ là où $f=0.$
+    \end{itemize}
+\end{propriete}
+\begin{proof}
+    On suppose $1<p<\infty ,$ le cas $p\in \{1,\infty \} $ étant trivial (on majore $p$ par sa norme et intègre $f$). On a l'inégalité de Young : $\forall a,b\in ]0,\infty [, $
+    \begin{align*}
+        ab&=\exp\left( \frac{1}{p}\ln(a^p)+\frac{1}{q}\ln(b^q) \right) \\
+          &\le \frac{1}{p}\exp\left( \ln(a^p) \right) +\frac{1}{q}\exp\left( \ln(b^q) \right) \\
+          &= \frac{1}{p}a^p+\frac{1}{q}b^q.
+    \end{align*}
+    On a toujours cette inégalité si $a,b\in [0,\infty [.$\\
+    Par homogénéité, quitte à considérer $\frac{f}{\|f\|_p}$ et $\frac{g}{\|g\|_q},$ on peut supposer $\|f\|_p=\|g\|_q=1.$ Le résultat est évidemment trivial pour $f=0$ ou $g=0$. On a alors:
+    \begin{align*}
+        \int_X|fg| &\le \int_X \frac{1}{p}|f| ^p+\frac{1}{q}|g| ^q\\
+                   &= \frac{1}{p}\|f\|_p^p + \frac{1}{q}\|g\|_q^q\\
+                   &= \frac{1}{p}+\frac{1}{q}\\
+                   &=1.
+    \end{align*}
+    D'où l'inégalité de Holder.\\
+
+    Pour le cas d'égalité, par la stricte convexité de l'exponentielle dans l'inégalité de Young, on a égalité ssi $\ln(a^p)=\ln(b^q),$ ie $a^p=b^q,$ \\ie $a=b^{\frac{q}{p}}$. On remarque la nécessité d'avoir $a,b>0.$ On a donc égalité dans Holder ssi  $\frac{f}{\|f\|_p}=\left( \frac{g}{\|g\|_q} \right) ^{\frac{q}{p}}$ et $f$ et $g$ sont de même signe presque partout d'où le résultat.
+\end{proof}
+\begin{propriete}[Inégalité de Clarkson]
+    Soit $(X, \mu)$ un espace mesuré et \\
+    $f,g\in L^p$ avec $1<p<\infty .$ Alors :
+    $$\left\|\frac{f+g}{2}\right\|_p^p+\left\|\frac{f-g}{2}\right\|^p_p\le \frac{1}{2}\|f\|_p^p+\frac{1}{2}\|g\|_p^p.$$
+    Si $p\in \{1,2\} $ alors :
+    $$\left\|\frac{f+g}{2}\right\|_p^p+\left\|\frac{f-g}{2}\right\|^p_p\le \left( \frac{1}{2}\|f\|^p_p +\|g\|^p_p\right)^{\frac{p}{q}}$$
+\end{propriete}
+\begin{proof}
+    On prouvera seulement la première inégalité.\\
+    Soit $a,b\in [0,\infty [,$ $s\ge 1.$ Alors $a^s+b^s\le \left( a+b \right) ^s.$\\
+    En effet, on peut supposer $a+b=1$, quitte à normaliser par ($a+b$). Notons que $a^s\le a$ et $b^s\le b$ car $a,b\le 1.$ Donc $a^s+b^s\le a+b=1=(a+b)^s$.\\
+    On en déduit alors ponctuellement :
+    \begin{align*}
+        |\frac{f+g}{2}| ^p+|\frac{f-g}{2}| ^p \overset{s=\frac{p}{2}\ge 1}&{\le} \left( |\frac{f+g}{2}|^2 + |\frac{f-g}{2}| ^2 \right) ^s\\
+    &=\left( \frac{1}{2}f^2+\frac{1}{2}g^2 \right) ^s\\
+    &\le \frac{1}{2}|f| ^p + \frac{1}{2}|g| ^p &\text{convexité de $x\mapsto |x| ^p$ }
+    .\end{align*}
+    Ainsi $L^p$ est uniformément convexe, si $1<p<\infty .$ Par exemple, si $p\ge 2,$ $\|f\|_p=\|g\|_p=1,$ $\|f-g\|=\varepsilon , $ on a $\|\frac{f+g}{2}\|\le \left( 1-\frac{1}{2^p}\varepsilon ^p \right) ^{\frac{1}{p}}.$
+\end{proof}
+\begin{theoreme}[Dualité dans les espaces de Lebesgue]
+    Soit $(X, \mu)$ un espace mesuré, $1\le p\le \infty $ avec $\frac{1}{q}+\frac{1}{p}=1.$ Pour tout $g\in L^q,$ \\
+    posons $\varphi _g :\begin{aligned}
+        L^p &\longrightarrow \mathbb{R}  \\
+        f &\longmapsto \int_Xfg
+    \end{aligned}$. \\
+    Alors $g\in L^q\mapsto \varphi _g\in \left(L^p\right)^*$ est une injection isométrique, bijective si $p<\infty .$
+\end{theoreme}
+\begin{proof}
+    On a $\varphi _g:L^p\to \mathbb{R} $ est linéaire, par linéarité de l'intégrale, et $\|\varphi _g\|_{\left( L^p \right) ^*}=\|g\|_{L^q}$ par l'inégalité de Holder et son cas d'égalité. D'où l'injection isométrique.\\
+
+Surjectivité si $1<p<\infty .$ Notons $E=\left( L^p \right) ^*,$ $F\subset E$ l'image de $L^q$  ($F=\{\varphi _g\ |\ g\in L^q\} $). $F$ est complet car $L^q$ est complet donc $F$ est fermé. Soit $\varphi \in E^*$ telle que $\varphi =0$ sur $F.$ Montrons que $\varphi =0$ sur $E$ (on aura alors $F$ dense par le \hyperlink{crit-densite}{critère de densité} ainsi $F=E$ car $F$ est fermé et qui conclut.\\
+Comme $L^p$ est uniformément convexe par les inégalités de Clarkson, il est réflexif. Donc $\exists f\in L^p,\ \forall \psi\in \left( L^p \right) ^*=E,\ \varphi (\psi)=\psi(f). $ \\
+Posons $g=sign(f)|f| ^{\frac{p}{q}},$ correspondant au cas d'égalité dans Holder. Alors $g\in L^q=F,$ $\|g\|_q^p=\|f\|_p^p$ et $\int fg=\|f\|_p\|g\|_q=\|f\|_p^{1+\frac{1}{q}}$, d'où $f=0$ puis $\varphi =0.$ CQFD.
+\end{proof}
+\begin{ex}
+    Exemple de non réflexivité : on peut montrer que $\left( l_0^\infty  \right) ^*=l',$ $\left( l' \right) ^*=l^\infty ,$ $\left( l^\infty  \right) ^*\neq l'.$\\
+    Où $l_0^\infty =\{(x_{n})\in \mathbb{R} ^\mathbb{N} \ |\ x_{n}\to 0\} ,$ $l'=\{\left( x_{n} \right) \in \mathbb{R} ^\mathbb{N} \ |\ \sum\limits_{n\in \mathbb{N} }^{} |x_n| <\infty \} $ et $l^\infty =\{(x_n)\in \mathbb{R} ^\mathbb{N} \ |\ \sup_{n\in \mathbb{N} }|x_n| <\infty \} $.
+\end{ex}
+\epigraph{12h50: \itshape "Est-ce que j'ai encore 5 minutes ?"}{Jean-Marie Mirebeau}
+\subsection{Formes géométriques de Hahn Banach}
+\begin{propriete}[Jauge d'un convexe]
+    Soit $E$ un ev, $K\subset E$ un convexe contenant l'origine. On définit $P_K(x)=\inf \{t>0\ |\ \frac{x}{t}\in K\} $ pour tout $x\neq 0$ et $P_K(0)=0.$ Alors $P_K:E\to [0,\infty ]$ satisfait :
+    \begin{align*}
+        P_K(x+y) &\le P_K(x)+P_K(y) &\forall x,y\in E\  \\
+        P_K(\lambda x) &= \lambda P_K(x) &\forall x\in E,\  \forall \lambda>0\
+    .\end{align*}
+    Si $P_K$ est à valeurs finies, c'est une fonction sous additive. \\
+    On a $\{P_K<1\} \subset K\subset \{P_K\le 1\} .$
+\end{propriete}
+\epigraph{12h53\itshape "Bon on commence la preuve"}{Jean-Marie Mirebeau}
+\begin{proof}
+    Soit $x,y\in E$ tels que $P_K(x,y)<\infty $. Soit $s,t>0$ telsq ie $\frac{x}{s}\in K$ et $\frac{y}{t}\in K.$ Alors $\frac{x+y}{s+t}=\frac{x}{s}\frac{s}{s+t}+\frac{y}{t}\frac{t}{s+t}\in K$ par convexité. D'où $P_K(x+y)\le P_K(x)+P_K(y).$\\
+    Les autres propriétés sont claires. Si $P_K(x)<1,$ alors $\exists t<1$, $\frac{x}{t}\in K$ donc $x=\frac{x}{t}t+0*(1-t)\in K$ d'où l'inclusion $\{P_K<1\} \subset K.$
+\end{proof}
+\begin{lemme}
+    Soit $E$ un evn. Si $K$ est ouvert, convexe et contient 0, alors $P_K$ est continue
+\end{lemme}
+\begin{proof}
+    Soit $r>0$ tq $B(0,r)\subset K,$ on a $x\frac{r}{\|x\|}\in B(0,r)$ pour tout $x\neq 0.$ Donc $P_K(x)\le \|x\|/2.$ \\
+    D'où 
+    \begin{align*}
+        P_K(x)-\|k\|/2&\le P_K(x)-P_K(-k)\\
+        &\le P_K(x+k)\\
+        &\le P_K(x)+P_K(k)\\
+        &\le P_K(x)+\|k\|/2.
+    \end{align*}
+    Donc $P_K$ est $\frac{1}{2}$-Lipschitzienne (car $-\frac{\|k\|}{2}\le P_K(x+k)-P_K(x)\le \frac{\|k\|}{2}).$
+\end{proof}
+\begin{theoreme}[Séparation d'un ouvert convexe en un point]
+    Soit $E$ un evn, $K\subset E$ ouvert, convexe contenant  0. Soit $x\in E \backslash K.$ Alors, $\exists \varphi \in E^*$ telle que $\varphi <1$ sur $K$ et $\varphi (x)=1.$
+\end{theoreme}
+\epigraph{12h57: \itshape "Ne vous inquiétez pas, on a bientôt fini là"}{Jean-Marie Mirebeau}
+\begin{proof}
+    Posons $p=P_K$ est sous additive, $F=\mathbb{R} x$ et $\varphi _F :\begin{aligned}
+        F &\longrightarrow \mathbb{R}  \\
+        \lambda x &\longmapsto \lambda
+    \end{aligned}$. On a $p(x)\ge  1$ puisque $x\in K.$ Pour $\lambda\ge 0,$ $\varphi _F(\lambda x)=\lambda\le \lambda p(x) = p(\lambda x).$ Puis pour $\lambda<0$ on a $\varphi _F(\lambda x)=\lambda < 0 \le p(\lambda x).$ Ainsi par théorème de Hahn Banach, il existe $\varphi :E\to \mathbb{R} $ telle que $\varphi _{|F}=\varphi _F$ et $\varphi \le p$ sur $E$. On a bien $\varphi (x)=1$ et pour tout $y\in K$ on a $\varphi (y)\le p(y)<1$ car $K$ est un ouvert.
+\end{proof}
+\begin{theoreme}[Séparation d'un convexe compact et convexe fermé]
+    Soit $E$ un evn, $A\subset E$ un convexe fermé et $B\subset E$ un convexe compact tel que $A,B\neq \emptyset $ et $A\cap B=\emptyset .$ Alors $\exists \varphi \in E^*,\ \sup_A\varphi <1<\inf_B\varphi $. Ie $\varphi $ sépare $A$ et $B$.
+\end{theoreme}
+\epigraph{12h59\itshape "C'est terminé là"}{Jean-Marie Mirebeau}
+\begin{proof}
+    Soit $r=\inf \{\|a-b\| ~|~ a\in A, b\in B\} $. On a $r>0$, en effet par l'absurde si $\|a_n-b_n\|\to 0,$ par compacité $b_{\psi (n)}\to b_*$ comme $\|a_n-b_n\|\to 0,$ on a $b_*\in \overline{A}=A$ contradiction avec $A\cap B=\emptyset .$ \\
+    On pose $K=\{a-b-k\ |\ a\in A,b\in B, \|k\|<r\} ,$ c'est un convexe ouvert. On a $0\not\in K$ sinon on aurait aussi $a-b-k=0$ d'où $\|a-b\|\le \|k\|<r$.\\
+    Soit $x_0\in K,$ alors $x_0\in \left( K+x_0 \right) =\{x_0+k\ |\ k\in K\} .$\\
+    Par le résultat précédent, $\exists \varphi \in E^*,\ \varphi (x_0)=1$ et $\varphi <1$ sur $K+x_0$. Donc $\forall a,b,k,\ 1>\varphi (a-b-k+x_0). $ Soit $\varphi (a)<\varphi (b)+\varphi (k).$ On prend $k=-\frac{x_0}{\|x_0\|}x$ alors $\varphi (k)<0$ d'où $\varphi (a)<\varphi (b)-\delta$ avec $\delta>0.$
+\end{proof}
+\epigraph{13h02: véritable fin du cours}{}
+
+
+\begin{theoreme}[Séparateur d'un convexe et  d'un point]
+    Soit $E$ un evn, $C \subset E$ convexe ouvert contenant 0 et $x\not\in C.$ \\
+    Alors $\exists \varphi \in E^*, $ $\varphi (x)=1,~\varphi <1$ sur $C.$
+\end{theoreme}
+
+\begin{theoreme}[Séparateur d'un convexe fermé et compact]
+     Soit $E$ un evn, $A,B\subset E$ des convexes fermés avec $B$ compact et $A,B\neq \emptyset $.\\
+     Alors, $\exists \varphi \in E^*,\ \sup_A \varphi <\inf_B \varphi .$\\
+     Si $0\in A$, alors on peut supposer $\sup_A \varphi <1<\sup_B \varphi .$
+\end{theoreme}
+
+\begin{minipage}{0.45\textwidth}
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.15, clip, trim={0 15em 0 15em}]{1_ouvert_séparation.png}
+    \caption{Forme linéaire (vert) sépare $x$ de $C$.}
+\end{figure}
+\end{minipage}\hfill
+\begin{minipage}{0.45\textwidth}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.3, clip, trim={0 35em 0 20em}]{1_2fermés_séparés.png}
+    \caption{Forme linéaire (vert) sépare $A$ de $B$.}
+\end{figure}
+\end{minipage}
+
+\subsection{Dualité des ensembles convexes}
+
+\begin{definition}
+    Soit $E$ evn, $C \subset E$ non vide. L'ensemble polaire de $C$ est
+    $$C^\circ=\{\varphi \in E^*\ |\ \forall x\in C,\ \varphi (x)\le 1\}. $$
+\end{definition}
+\begin{ex}
+    Si $C=B'_E(0,1),$ alors $C^\circ =B'_{E^*}(0,1)$.
+\end{ex}
+
+\begin{propriete}[Dualité polaire]
+    Soit $E$ evn et $C \subset E$ non vide. \\
+    Alors  $C \subset \{x\in E,\ |\ \forall \varphi \in C^\circ,\ \varphi (x)\le 1 \} =\Psi ^{-1} \left( C^\circ \right) . $ Avec égalité ssi $E$ est convexe fermé et contient 0. On a noté $\Psi :\begin{aligned}
+        E &\longrightarrow E^* \\
+        x &\longmapsto \left( \varphi \mapsto \varphi (x) \right)
+    \end{aligned}$ l'injection isométrique canonique.
+\end{propriete}
+\begin{proof}
+    Notons $\tilde{C}$ l'ensemble $\Psi ^{-1} \left( C^\circ \right).$ \\
+    
+\underline{\textbf{Inclusion $C \subset \tilde{C}$ : }} Si $x\in C,$ alors $\varphi (x)\le 1$ pour tout $\varphi \in C^\circ$. Donc $x\in \tilde{C}.$ \\
+
+\underline{\textbf{Supposons $C=\tilde{C}$}} : Alors $C$ est convexe, fermé et contient 0, car $\tilde{C}=\bigcap\limits_{\varphi \in C^\circ}  \{x\in E\ |\ \varphi (x)\le 1\} $ est une intersection de convexes fermés et contenant 0.\\
+
+\underline{\textbf{Supposons $C$ convexe fermé et contenant 0 : }} Soit $x_0\in C$, par le théorème de Hahn Banach (géométrique B) il existe $\varphi \in E^*$ telle que : $$\sup_C \varphi <1<\varphi (x_0)$$ 
+Alors $\varphi \in C^\circ$, et donc $x_0\not\in \tilde{C}.$ On a montré $\tilde{C}\subset C$ donc $C=\tilde{C}.$
+\end{proof}
+\begin{corollaire}
+    Soit $E$ un evn, $C \subset E$ convexe. Alors
+    $$C \text{ fermé}\Leftrightarrow C \text{ faiblement fermé.}$$
+\end{corollaire}
+\begin{proof}
+   On peut supposer $0\in C,$ quitte à translater. 
+   
+   \underline{$(\Rightarrow)$ : } Si $C$ est fermé, alors $\tilde{C}=C$ qui est une intersection de parties faiblement fermées $\{x\in E\ |\ \varphi (x)\le 1\} .$ Donc $C$ est faiblement fermé.\\
+   
+   \underline{$(\Leftarrow)$ : } Réciproquement, si $C$ est faiblement fermé, alors il est fermé pour la topologie faible.
+\end{proof}
+\begin{corollaire}
+    Soit $E$ réflexif. Si $C \subset E$ est convexe, fermé et borné, alors il est faiblement compact.
+\end{corollaire}
+\begin{proof}
+    $C$ est faiblement fermé par le corollaire précédent, et est inclus dans $B'_E(0,R)$ qui est faiblement compact par Banach Alaoglu. (La topologie faible sur $E$ s'identifie à la topologie *-faible sur $E^{**}$). Or un fermé d'un compact est un compact dans toutes topologie car $E$ est réflexif.
+\end{proof}
+\begin{definition}
+    Soit $(X,\mathbb{U})$ un espace topologique et $f:X\to ]-\infty , \infty ].$ Alors, on dit que $f$ est semie continue inférieurement (sci) si et seulement si : $$\forall t\in \mathbb{R} ,\ \{x\in X,~f(x)\le t\} \text{ est fermé.}$$
+\end{definition}
+
+\begin{remarque}
+\begin{itemize}
+    \item Si $(f_i)$ sont sci, alors $\sup_{i\in I}f_i$ est sci car $\{\sup_if_i\le t\} =\bigcap\limits_{i\in I} \{f_i\le t\}$.
+    \item Si $f$ et $g$ sont sci, alors $f+g$ est aussi sci car $\{f+g\le t\} =\bigcap\limits_{\alpha \in \mathbb{R} } \left[ \{f\le \alpha \} \cup \{g\le \alpha \}  \right] .$
+    \item $f$ est sci ssu son surgraphe est fermé : $\mathcal{G}:=\{(x,t)\ |\ f(x)\le t\} =\bigcap\limits_{\alpha \in \mathbb{R} } \left[ \left( \{f\le \alpha \} \times ]-\infty , \alpha ] \right) \cup \left( X \times [\alpha ,\infty [ \right)  \right] .$
+\end{itemize}
+\end{remarque}
+
+\begin{propriete}
+    Soit $f:E\to ]-\infty ,\infty ]$ convexe et sci sur un espace $E$ reflexif.
+    \begin{enumerate}
+        \item Supposons $\exists M\in \mathbb{R} ,\ \{f\le M\} $ est borné non vide. Alors $f$ admet un minimiseur.
+        \item Soit $g$ faiblement continue sur $\{f\le M\} $, et telle que $\{f+g\le N\} \subset \{f\le M\} $ où $N,M\in \mathbb{R} $ et ces ensembles sont bornés non vide. Alors $f+g$ a un minimiseur.
+    \end{enumerate}
+\end{propriete}
+\begin{proof}
+    \begin{enumerate}\par\noindent
+        \item L'ensemble des minimiseurs $\bigcap\limits_{\inf f<M'\le M} \{f\le M'\} $ est une intersection décroissante de convexes, fermés, bornés et non vides donc une intersection décroissante de compact non vide pour la topologie *-faible, donc est non vide par les compact emboités.
+        \item Comme $f$ est convexe et sci et $g$ est faiblement continue, alors $f$ et $g$ sont faiblement sci sur $\{f\le M\} $. Or l'ensemble des mininimiseurs $\bigcap\limits_{\inf(f+g)<N'\le N}\{f+g\le N'\} $ est donc une intersection décroissante de parties non vide faiblement fermées de $\{f\le M\} $ qui est faiblement compact. Donc non vide.
+    \end{enumerate}
+\end{proof}
+
+\subsection{Dualité de Legendre Fenchel des fonctions convexes}
+
+\begin{definition}
+    Soit $E$ evn et $f:E\to ]-\infty ,\infty ]$. On définit la fonction conjugué de Legendre-Fenchel de $f$ la fonction  $$f^* : \begin{cases}
+        E^* \to [-\infty,+\infty]\\
+        \varphi \mapsto \sup_{x\in E}\underbrace{\left<\varphi ,x \right>}_{\mathclap{\substack{\text{Crochet de dualité sur }E^*\times E\\=\varphi (x)}}}-f(x)
+    \end{cases}$$
+\end{definition}
+\begin{ex}
+    Soit $f(x)=\frac{1}{2}\|x\|^2_E.$ On a :
+    \begin{align*}
+        f^*(\varphi )&=\sup \{\varphi (x)-\frac{1}{2}\|x\|^2_E\ |\ x\in E\}\\
+                     &=\sup \{t \varphi (x)-\frac{t^2}{2}\ |\ t\in \mathbb{R} ,\ x\in B'_E(0,1)\} \\
+                     &=\sup \{\frac{1}{2}\varphi (x)^2\ |\ x\in B'_E(0,1)\} \\
+                     &=\frac{1}{2}\|\varphi \|^2_{E^*}.
+    \end{align*}
+\end{ex}
+
+Si $f:E\to ]-\infty ,\infty ]$, on pose $Dom(f):=\{x\in E\ |\ f(x)<\infty \} ,$ on dit que $f$ est propre si $Dom(f)\neq \emptyset .$
+
+\begin{lemme}
+    Soit $f:E\to ]-\infty ,\infty ]$ une fonction propre sur un evn.\\
+    Alors $f^*:E^*\to [-\infty ,\infty ]$ est convexe et sci.\\
+    De plus, $f^*$ est propre si et seulement si $f$ admet un minorant affine et continue. Plus précisément $f^*(\varphi )\le -\alpha \Leftrightarrow f\ge \varphi +\alpha .$
+\end{lemme}
+\begin{proof}
+    $f^*$ est convexe et sci comme supremum de $\left[ \begin{aligned}
+        E^* &\longrightarrow \mathbb{R}  \\
+        \varphi  &\longmapsto \varphi (x)-f(x)
+    \end{aligned} \right]_{x\in Dom(x)} ,$ qui sont convexe et sci (car continues). Par ailleur,
+    \begin{align*}
+        f^*(\varphi )\le -\alpha &\Leftrightarrow \forall c\in E,\ \left<\varphi ,x \right>- f(x)\le -\alpha \\
+                                 &\Leftrightarrow \forall x\in E,\ f(x)\ge \varphi (x)+\alpha .
+    \end{align*}
+\end{proof}
+\begin{lemme}
+    Soit $f:E\to ]-\infty ,\infty ]$, convexe et sci sur $E$ evn. Soit $x_0\in E$ et $t_0<f(x_0),$ alors $\exists \alpha \in \mathbb{R} ,\ \varphi \in E^*,\ f\ge \alpha +\varphi $ et $\alpha +\varphi (x_0)>t_0.$
+\end{lemme}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[clip, scale=0.3, trim={8em 28em 0 5em}]{drawing.pdf}
+    \caption{Caption}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{proof}
+    Comme $f$ est convexe sci, son sous graphe $C=\{(x,t)\in E\times \mathbb{R} \ |\ f(x)\le t\} $ est convexe et fermé. De plus $E\times \mathbb{R} $ est un evn et les formes linéaires continues sur $E\times \mathbb{R} $ s'écrivent $(x,t)\mapsto \varphi (x)-\lambda t$ où $\varphi \in E^*$ et $\lambda\in \mathbb{R} .$ Par Hahn Banach, (géométrique B), il existe $\varphi \in E^*, \lambda\in \mathbb{R} $ tel que $\varphi (x)-\lambda t+\delta\le \varphi (x_0)-\lambda t_0$ pour tout $(x,t)\in C$ et $\delta>0.$ \\
+    Si $f(x_0)<\infty ,$ on choisit $x=x_0$ et $t=f(x_0)$ et on obtient $\varphi (x_0)-\lambda f(x_0)+\delta\le \varphi (x_0)-\lambda t_0.$ Donc $0<\underbrace{\delta}_{>0}\le \lambda\underbrace{(f(x_0)-t_0)}_{>0},$ donc $\lambda>0.$ Ainsi $f(x)\ge \frac{\varphi (x-x_0)}{\lambda}+\frac{\delta}{\lambda}+t_0,\forall x\in E. $ C'est le minorant affine souhaité.\\
+    Si $f(x_0)=\infty $, soit $x_1\in Dom(f),$ (si $f=\infty ,$ partout, le résultat est trivial) on a $\varphi (x_1)-\lambda t+\delta\le \varphi (x_0)-\lambda t_0$ pour tout $t\ge f(x_1)$ donc idem $\lambda\ge 0.$ \\
+    Si $\lambda>0,$ on a un minorant affine comme précédemment. Sinon $\lambda=0$, d'où $\varphi (x)+\delta\le \varphi (x_0)$ pour tout $x\in Dom(f)$. Par ailleurs, il existe un minorant affine, par le résultat précédent appliqué en $x,$ $f\ge \psi+\beta,$ où $\psi\in E^*$ et $\beta\in \mathbb{R} .$ \\
+    Alors, $\forall \mu\in [0,\infty [,\ \forall x\in Dom(f),\ f(x)\ge \psi(x)+\beta+\mu\left[ \varphi (x-x_0)+\delta \right] .$ Finalement, pour $\mu$ assez grand, $\psi(x_0)+\beta+\mu\left[ \underbrace{\varphi (x_0-x_0)}_{=0}+\underbrace{\delta}_{>0} \right] >t_0$ ce qui conclut.
+\end{proof}
+
+\epigraph{\textit "L'ensemble est bien droit au lieu d'être un sympathique truc penché"}{Jean-Marie Mirebeau}
+
+
+\begin{theoreme}[Dualité de Legendre Fenchal]
+    Soit $f:E\to ]-\infty ,\infty ]$ une fonction propre sur un evn, admettant un minorant affine (c'est automatique si $f$ est convexe, sci).\\
+    Alors $f^{**}$ est convexe, sci propre et $f^{**}_{|E}\le f$ avec égalité ssi $f$ est convexe sci.
+\end{theoreme}
+\begin{proof}
+    On a vu que $f^*:E^*\to ]-\infty ,\infty ]$ est convexe et sci donc elle admet un minorant affine. Donc $f^{**}:E^{**}\to ]-\infty ,\infty ]$ est convexe, sci et propre.\\
+    Soit $x\in E,$ alors $f^*(\varphi )\ge \varphi (x)-f(x)$ pour tout $\varphi \in E^*,$ donc $f^{**}(\underbrace{x}_{\mathclap{\substack{\text{Vu comme}\\\text{élément de }E^{**}}}})=\sup_{\varphi \in E^*}\underbrace{\varphi (x)-f^*(x)}_{\le f(x)}\le f(x).$\\
+    Supposons maintenant $f$ convexe, sci et montrons $f^{**}_{|E}\ge f.$ Soit $x_0\in E,$ soit $t_0<f(x_0).$ Par le lemme précédent, $\exists \varphi \in E^*, \alpha \in \mathbb{R}, \ f\ge \varphi + \alpha $ et $hi(x_0)+\alpha >t_0.$ Donc $f^*(\varphi )\le -\alpha ,$ donc $f^{**}\ge \varphi (x_0)-f^*(\varphi )\ge \varphi (x_0)+\alpha >t_0.$ D'où $f^{**}(x_0)\ge f(x_0).$
+\end{proof}
+
+
+\begin{lemme}
+    Soit $E$ un Banach et $f:E\to ]-\infty ,\infty ]$ sci convexe.\\
+    Alors $f$ est localement majorée sur $\mathring{Dom}(f)$ [$\forall x\in \mathring{Dom}(f),\ \exists \varepsilon >0,\ \exists M,\ \\f_{|B(x,\varepsilon )}\le M$].
+\end{lemme}
+\begin{proof}
+    On suppose $\mathring{Dom}(f)$ On a $Dom(f)=\bigcup\limits_{n\in \mathbb{N} } \{f\le n\} $  donc par Banach Steinhaus, il existe $n_0\in \mathbb{N} $ tq $\{f\le n_0\} $ est d'intérieur non vide. Donc $\exists x_0\in E,r_0>0\ f_{|B(x_0,r_0)}\le n_0.$ On peut, quitte à transposer, $0\in \mathring{Dom}(f).$ Soit $\delta>0$ tq $-\delta x_0\in Dom(f).$ Alors $f(h)=\left( \left[ x_0+h \frac{1+\delta}{\delta} \right] \frac{\delta}{1+\delta} +(-\delta x_0) \frac{1}{1+\delta}\right) \le \frac{\delta}{1+\delta}f(x_0+h\left( \frac{1+\delta}{\delta} \right))+\frac{1}{1+\delta}f(-\delta x_0)\le \frac{\delta x_0}{1+\delta}+\frac{f(-\delta x_0)}{1+\delta} $ si $|h|\frac{1+\delta}{\delta}\le r_0. $ Donc $f$ est majorée sur $B(0,r_0 \frac{\delta}{1+\delta})$ comme annoncé.
+\end{proof}
+\begin{lemme}
+    Soit $E$ un evn, $f:E\to ]-\infty ,\infty ]$ convexe, $x\in E$ et $r>0.$ Si $f(y)\le f(x)+M$ pour tout $y\in B(x,r)$ alors $|f(x)-f(y)| \le M \frac{|y-x| }{r}$ pour tout $y\in B(x,r)$.\\
+    En particulier, $f$ est $\frac{2M}{r}$-Lipschitzienne sur $B(x,\frac{r}{3}).$
+\end{lemme}
+\begin{proof}
+    Preuve par dessin.\\
+
+Preuve point particulier : soit $y\in B(x,\frac{r}{3}),$ alors $f(y)\ge f(x)-\frac{M}{3}$ par le premier point. Donc $f\le \underbrace{f(y)+\frac{4}{3}M}_{\le f(x)+M}$ sur $B(y,\frac{2r}{3}\subset B(x,r).$ Donc $|f(z)-f(y)| \le \frac{\frac{4}{3}r}{\frac{2}{3}r}=\frac{2r}{3}$ pour tout $z\in B(y,\frac{2r}{3})\supset B(x,\frac{r}{3}).$
+\end{proof}
+\begin{theoreme}[Sous gradient d'une fonction convexe]
+    Soit $E$ un Banach, $f:E\to ]-\infty ,\infty ]$ convexe sci et $x\in \mathring{Dim}(f).$ Alors le sous gradient de $f$ en $x$ est non vide,
+    $$\partial f(x)=\{\varphi \in E^*\ |\ \forall y\in E,\ f(y)\ge f(x)+\varphi (y-x)\} .$$
+\end{theoreme}
+\begin{proof}
+    Posons $D=\mathring{Dom}(f)$. Comme $f_{|D}$ est continue, l'ensemble $C=\{(x,t)\in E\times \mathbb{R} \ |\ f(x)<t\} $ est ouvert. Soit $x_0\in D,$ par Hahn Banach (géométrique A), il existe $\varphi \in E^*,\lambda\in\mathbb{R} $ appliqués à $C$ ouvert convexe et $(x_0,f(x_0))$ (quitte à translater, On peut supposer $0\in C$).\\
+    $\varphi (x)-\lambda t<\varphi (x_0)-\lambda f(x_0)$ pour tout $x\in D, t>f(x)$. En choisissant $x=x_0$ et $t=f(x_0)+1$, on obtient $\varphi (x0)-\lambda \left( f(x_0)+1 \right) <\varphi (x_0)-\lambda f(x_0).$ Donc $\lambda>0.$ Ainsi $\forall x\in D,t>f(x),\ t>\varphi (x-x_0)+f(x_0).$ D'où $f(x)\ge f(x_0)+\varphi (x-x_0)$ pour tout $x\in D.$ Puis $f(x)\ge f(x_0)+\varphi (x-x_0)$ pour tout $x\in E$ car $D$ est ouvert donc un voisinage de $x_0.$ [Soit $x\in E,$ $f((1-t)x_0+tx)\le (1-t)f(x0)+tf(x).$ D'où $f(x)\ge \varphi (x-x_0)+f(x_0)$ ]
+\end{proof}
+\begin{lemme}
+    Soit $E$ evn et $f:E\to ]-\infty ,\infty ]$ convexe. Posons $g(x)=\lim\limits_{y\to x}\inf f(y)=\lim\limits_{\varepsilon \to 0} \inf_{y\in B(x,\varepsilon )}f(y)\in [-\infty ,\infty ] $ et son enveloppe sci [$\{g\le \lambda\} =\overline{\{f\le \lambda\} }$ pour tout $\lambda\in \mathbb{R} $].\\
+    On a l'alternative :
+    \begin{itemize}
+        \item $g>-\infty $ sur $E$, alors $g^*=f^*$
+        \item $\exists x\in E,\ g(x)=-\infty $ alors $g=-\infty $ sur $\overline{Dom(f)}$ et $g=\infty $ ailleurs.
+    \end{itemize}
+\end{lemme}
+\begin{proof}
+    Exercice\ldots
+\end{proof}
+\begin{theoreme}[Dualité de Legendre Fenchel]
+    Soit $E,F$ des Banach,  $f:E\to ]-\infty ,\infty ]$ et $g:F\to ]-\infty ,\infty ]$ convexes. Soit $A\in L(E,F),$ on suppose $\left[ A(Dom(f)) \right] \cap \left[ \mathring{Dom}(f) \right] \neq \emptyset .$ \\
+    Alors $\sup_{y\in F^*}-f^*(-A^Ty)-g^*(y)=\inf_{x\in E}f(x)+g(Ax)$
+\end{theoreme}
+\begin{proof}
+    Notons $\alpha $ la partie gauche et $\beta$ la partie droite de l'égalité. Posons $c(x,y)=\left<y,Ax \right>+f(x)-g^*(y).$ Alors
+    \begin{align*}
+        \inf_{x\in E}c(x,y) &= \inf_{x\in E}\left<A^Ty,x \right>+f(x)-g^*(y)\\
+                            &=-f^*(-A^Ty)-g^*(y).
+    \end{align*}
+    De même,
+    \begin{align*}
+        \sup_{y\in F^*}\left<y,Ax \right>+f(x)-g^*(y) &= g^{**}(\underbrace{Ax}_{\mathclap{\text{vu comme élément de }E^{**}}})+f(x)\\
+                                                      &=g(Ax)+f(x).
+    \end{align*}
+    Donc $\beta=\inf_{x\in E}\sup_{y\in F^*}c(x,y),$ $\alpha =\sup_{y\in F^*}\inf_{x\in E}c(x,y)$. Donc $\alpha \le \beta.$ On veut montrer que $\alpha =\beta,$ c'est à dire qu'il n'y a pas de "saut de dualité".\\
+    On peut supposer $\beta\neq -\infty $ sinon rien à prouver. On a $\beta\neq \infty $ car $A(Dom(f))\cap \mathring{Dom}(f)\neq \emptyset .$\\
+    Définissons $\mathcal{F}:\to ]-\infty ,\infty ]$ telle que $\mathcal{F}(u)=\inf_{x\in E}f(x)+g(Ax+u)$.
+    
+    \epigraph{\itshape "Là, la preuve devient un peu bizarre..."}{Jean-Marie Mirebeau}
+    
+    On a $\mathcal{F}(0)=\beta\in \mathbb{R} $ et $\mathcal{F}$ convexe. On peut montrer que $\mathcal{F}(0)=\liminf_{u\to 0}\mathcal{F}(u).$
 \end{proof}
