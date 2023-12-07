@@ -1,0 +1,542 @@
+\section{Espaces de Sobolev}
+\subsection{Convolution dans les espaces \texorpdfstring{$L^p$}{TEXT}.}
+\begin{propriete}[Inégalité de Jonsen]
+    Soit $(X,\mu)$ un espace probabilisé, $f:\gamma\to \mathbb{R} ^d$ intégrable et $g:]-\infty ,\infty ]$ convexe sci. Alors :
+    $$g\left(\int_Xf(x)d\mu(x)\right)\le \int_Xg(f(x))d\mu(x).$$
+\end{propriete}
+\begin{proof}
+    Soit $\alpha \in \mathbb{R} ,$ $\varphi \in \mathbb{R} ^d$ tq $g(x)\ge \alpha +\left<\varphi ,f(x) \right>$ pour tout $x\in \mathbb{R} ^d.$ Alors
+    \begin{align*}
+        \int g(f(x))d\mu(x)&\ge \int \alpha +\left<\varphi ,f(x) \right>dx\\
+                           &= \alpha +\left<\varphi ,\int f(x)dx \right>
+    \end{align*}
+    On peut supposer $g$ propre donc $g=g^{**}$ est le suprémum d'une famille de minorants affine $g(x)=\sup_{y\in \mathbb{R} ^d}\left<y,x \right> -g^*(y).$\\
+    Donc $\int_Xg(f(x))d\mu(x)\ge  g\left(\int_Xf(x)d\mu(x)\right)$.
+\end{proof}
+\begin{corollaire}
+    Soit $(X,\mu)$ un espace mesuré avec $0<\mu(X)<\infty .$ \\
+    Soit $1\le p\le q\le \infty $ et $f\in L^q(X).$ Alors :
+    $$\mu(X)^{-\frac{1}{p}}\|f\|_p\le \mu(X)^{-\frac{1}{q}}\|f\|_q.$$
+\end{corollaire}
+\begin{proof}
+    On peut supposer $q<\infty .$ On a $\left[ \int_X|f(x)|^p \underbrace{\frac{d\mu(x)}{\mu(x)}}_{\text{Noyau de proba}}  \right]^{\frac{p}{q}}\le \int\left( |f(x)| ^p \right) ^{\frac{q}{p}\frac{d\mu(x)}{\mu(x)}} $ puis Jensen avec $s\in R\to |s| ^{\frac{q}{p}}$ qui est convexe.
+\end{proof}
+\begin{remarque}
+    On pouvait aussi utiliser Hölder. $\int_X|f(x)| ^pd\mu(x)\le \||f| ^p\|_\alpha  \|\mathbbm{1}\|_\beta$ où $\frac{1}{\alpha }+\frac{1}{\beta}=1$. On choisit $\alpha =\frac{q}{p}.$ On obtient :
+    \begin{align*}
+        \int |f| ^pd\mu&\le \left( \int\left( |f| ^p \right) ^\alpha  \right) ^{\frac{1}{\alpha }} \left( \int \mathbbm{1^\beta} \right) ^{\frac{1}{\beta}}\\
+                       &=\left( \int |f| ^p \right) ^{\frac{q}{p}}\mu(X)^{1-\frac{p}{q}}.
+    \end{align*}
+    On en déduit que $L^p(X,\mu)\underbrace{\supset}_{\mathclap{\text{injection continue}}}L^q(X,\mu),$ si $0<\mu(X)<\infty $ et $p\le q.$ \\
+
+    Soit $\Omega \subset  \mathbb{R} ^d $ ouvert et $(K_n)$ une suite exhaustive de compact, i.e. $\bigcup\limits_{n\in \mathbb{N} } K_n=\Omega$ et $K_n\subset _C\mathring{K_{n+1}}.$ Alors $L^p_{loc}(\Omega)$ est un Fréchet pour la famille de semi normes $\left( |f| _n \right) $ où $|f| _n=\|f\|_{L^p(K_n)}.$ \\
+
+    Si  $0\le p\le q\le \infty, $ alors :
+    $$L^1(\Omega)\subset L^q_{loc}(\Omega)\subset L^p_{loc}(\Omega)\subset L^1_{loc}(\Omega).$$
+Par contre $L^q(\Omega)$ et $L^p(\Omega)$ ne sont pas comparable \textit{a priori} si $Leb(\Omega)=\infty $.
+\end{remarque}
+\begin{propriete}[Convolution dans $L^p$]
+    Soit $f\in L^1(\mathbb{R} ^d)$ et $g\in L^p(\mathbb{R} ^d).$ \\
+    Alors l'intégrale $\left( f*g \right) (x):=\int_{h\in \mathbb{R} ^d}f(x-h)g(h)dh$
+    converge pour presque tout $x\in \mathbb{R} ^d$ et $\|\left( f*g \right) \|_p\le \|f\|_1\|g\|_p.$ [I.e. $*:L^1(\mathbb{R} ^d)\times L^p(\mathbb{R} ^d)\to L^p(\mathbb{R} ^d)$ est bilinéaire continue].
+\end{propriete}
+\begin{proof}
+    Supposons d'abord $f,g\ge 0$, $\int f=1$ et $p<\infty .$ Alors :
+    \begin{align*}
+        \left[ \left( f*g \right) (x) \right] ^p &= \left[ \int_{\mathbb{R} ^d}f(h)g(x-h)dh \right] ^p &\text{Changement de variable $h\mapsto x-h$ }\\
+                                                 &\le \int_{\mathbb{R} ^d}f(x)g(x-h)^pdh &\text{Jonsen pour $d\mu(h)=f(h)dh$ et $s\mapsto |s| ^p$  }.
+    \end{align*}
+    Donc
+    \begin{align*}
+        \underbrace{\int\left( f*g \right) (x)^pdx}_{\|f*g\|_p^p}&\le \int_{x\in \mathbb{R} ^d}\int_{h\in \mathbb{R} ^d}^{} f(h)g(x-h)^pdhdx\\
+                                                                 &=\int_{h\in \mathbb{R} ^d}f(f)\underbrace{\int_{x\in \mathbb{R} ^d}g(x-h)^pdxdh}_{\|g\|^p_p} &\text{Fubini}
+    \end{align*}
+    Donc $\|f*g\|^p_p\le \underbrace{\int f}_{=1}\|g\|^p_p$ comme annoncé.\\
+    Par linéarité sur $f,$ le résultat si $\int f\neq 1.$ \\
+
+    Si $f,g$ ne sont pas positives, alors comme $|f| *|g| \in L^p(\mathbb{R} ^d)$ par le raisonnement précédent, on a $\underbrace{\int |f(x-h)| |g(h)| dh}_{\left( |f| *|g|  \right) (x)}<\infty $ pour presque tout $x\in \mathbb{R} ^d.$ Donc $h\mapsto f(x-h)g(h)$ est intégrable presque partout. \\
+    Finalement $\|f*g\|_p\le \||f| *|g| \|_p\le \||f| \|_1\||g| \|_p\le \|f\|_1\|g\|_p.$\\
+    On a utilisé $|f| *|g| (x)\ge |f*g(x)|. $
+\end{proof}
+\begin{remarque}
+    Si $p=\infty ,$ on a :
+    \begin{align*}
+        |f*g(x)| &\le \int f(h)\underbrace{|f(x-h)| }_{\le \|g\|_\infty }dh\\
+                 &\le \|f\|_1\|g\|_\infty .
+    \end{align*}
+    Donc $\|f*g\|_\infty \le \|f\|_1\|g\|_\infty.$
+\end{remarque}
+La convolution $L^1\times L^p\to L^p$ est bilinéaire, continue et commutative si on restreint à $L^1\times L^1\to L^1.$ De plus
+\begin{align*}
+    supp(f*g)&\subset \overline{supp(f)+supp(g)}\\
+             &=\overline{\{x+y\ |\ x\in supp(f),~y\in supp(g)\} }.
+\end{align*}
+Si $f,g\in L^1$ alors on a l'associativité (faites les calculs).\\
+Enfin, si $f\in L^1(\mathbb{R} ^d)$ et $g\in C^1_c(\mathbb{R} ^d),$ alors $\frac{\partial}{\partial x_i}\left( f*g \right) =f*\left( \frac{\partial}{\partial x_i}g \right) $ pour tout $i\in [\![1;d]\!].$
+
+\begin{propriete}
+    Soit $f\in L^1(\mathbb{R} ^d)$ telle que $f\ge 0,$ $\int f=1$ et $g\in L^p(\mathbb{R} ^d),$ $p<\infty .$ Alors
+    $$\|f*g-g\|^p_p\le \int f(h)\|\tau_h g-g\|_p^pdh,$$
+    où $\tau_h g(x)=g(x-h).$
+\end{propriete}
+\begin{proof}
+    \begin{align*}
+        |f*g(x)-g(x)| &=|\int f(h) \left[ g(x-h)-g(x) \right] dh|\\
+                      &\le \int f(h)|g(x-h)-g(x)|^pdh &\text{Jensen}
+    \end{align*}
+    Donc $\int |f*g-g| ^p\le \int f(h)\underbrace{\int |g(x-h)-g(x)|^pdx}_{\|\tau_hg-g\|_p^p}.$
+\end{proof}
+\begin{remarque}
+    Faux si $p=\infty .$ Considérer les fonctions suivantes : ????
+\end{remarque}
+
+\begin{remarque}
+    Rappel: Soit $(X,d,\mu)$ un espace métrique mesuré où $X$ est localement compact et $\mu$ est une mesure borélienne régulière (c'est à dire, $\forall A\subset X$ mesurable, 
+    \begin{align*}
+        \sup \{\mu(k)\ |\ k\subset A, k \text{ compact}\} &=\mu(A)\\
+        &=\inf \{\mu(u)\ |\ u\supset A, U \text{ ouvert}\}.
+    \end{align*}
+    Alors $C^0_c(X)$ est dense dans $L^p(X,\mu)$ pour tout $p<\infty .$
+\end{remarque}
+\begin{proof}
+    On note $E=Vect \{\mathbbm{1}_A\ |\ A\subset X, \text{ mesurable}\} $ l'espace vectoriel des foncions étagées. On sait que $L^p(X,\mu)$ est le complété de $E$ par $\|.\|_p.$ Il suffit donc, étant donné $A\subset X$ mesurable et $\varepsilon >0,$ de construire $f\in C^0_c(X)$ telle que $\|f-\mathbbm{1}_A\|_p<\varepsilon .$ \\
+    On se donne donc $K\subset A\subset U$ avec $K$ compact et $U$ ouvert tq $\mu(U \backslash A)<\varepsilon $ et $\mu(A \backslash K)<\varepsilon .$ Pour tout $x\in K,$ soit $r_x>0$ tq $B'(x,r_x)$ est compact (car $X$ localement compact) et inclus dans $U$ (car ouvert). \\
+    Soit $U'=\bigcup\limits_{1\le i\le I} B(x_i,r_{x_i})$ une couverture finie de $K.$ On note que $\overline{U'}$ est compact. On pose $f(x)=\frac{d(x,X \backslash U')}{d(x,K)+d(x, X \backslash U')}.$ \\
+On a $f_{|K}=1,f_{|X \backslash U'}=0$ et $supp(f)\subset \overline{U'}$ compact.\\
+D'où $\|f-\mathbbm{1}_A\|_p^p\le \mu(U' \backslash K)\le \mu(U \backslash K)\le 2\varepsilon , $ ce qui conclut.
+\end{proof}
+\begin{propriete}
+    Soit $\rho\in L^1(B(0,1), \mathbb{R} ^d), \rho\ge 0,\int \rho=1$.\\
+    Soit $p\in [1,\infty ], \varepsilon >0$. On pose $\rho_\varepsilon (x)=\frac{1}{\varepsilon ^d}\rho(\frac{x}{d}).$ On a $\int \rho_\varepsilon =\int \rho=1$ et $supp(\rho_\varepsilon )\subset \varepsilon\cdot supp(\rho)\subset B'(0,\varepsilon ).$
+    \begin{itemize}
+        \item Pour toute $f\in L^p(\mathbb{R} ^d),$ si $p<\infty $ ($f\in C^0_c(\mathbb{R} ^d)$, $f(x)\underset{|x| \to +\infty}{\longrightarrow} 0$ si $p=\infty $) on a $\|f*\rho_\varepsilon -f\|_p\le w_p(\varepsilon) :=\sup_{|h| \le \varepsilon }\|\tau_hf-\tau_h\|_p$. \\
+        De plus $w_p(\varepsilon )\to 0$ quand $\varepsilon \to 0.$
+        \item Pour tout $K\subset _C\mathbb{R} ^d$ et $f\in L^p_{loc}(\mathbb{R} ^d).$ Si $p<\infty $ [$f\in C^0(\mathbb{R} ^d)$ si $p=\infty $] on a $\|f*\rho_\varepsilon -\rho\|_{L^p(K)}\le w_p^K(\varepsilon ):=\sup_{|h| \le \varepsilon }\|\tau_hf-f\|_p$ et $w_p^K(\varepsilon )\to 0$ quand $\varepsilon \to 0.$
+    \end{itemize}
+\end{propriete}
+\begin{proof}
+    Les inégalités découlent, si $p<\infty ,$ de
+    \begin{align*}
+        \|f*\rho_\varepsilon -f\|_{L^p(A)}^p &\le \int_{\mathbb{R} ^d}\rho_\varepsilon (h)\|\tau_hf-f\|_{L^p(A)}^pdh\\
+                                             &\le \underbrace{\int\rho_\varepsilon }_{=1}\sup_{h\in supp(\rho_\varepsilon )}\|\tau_hf-f\|.
+    \end{align*}
+    En choisissant $A=\mathbb{R} ^d$ ou $A=K$. Les inégalités sont claires dans le cas $p=\infty .$ \\
+    Justifions que $w_p(\varepsilon )\underset{\varepsilon \to 0}{\longrightarrow} 0$ dans le cas $p<\infty .$ (En fait non, flemme). ???
+\end{proof}
+\begin{theoreme}[Fréchet Kolmogorov]
+    Soit $p\in [1,\infty [, \Omega\subset \mathbb{R} ^d$ ouvert et \\
+    $\mathcal{F}\subset L^p(\Omega).$ On suppose :
+    \begin{itemize}
+        \item $\mathcal{F}$ est borné : $\sup \{\|f\|_p\ |\ f\in \mathcal{F}\} <\infty .$
+        \item (Masse évanescente au bord) : \\
+        $\forall \varepsilon >0,\ \exists K\subset _C\Omega,\ \sup_{f\in \mathcal{F}}\|f\|_{L^p(\Omega \backslash K)}<\varepsilon $.
+        \item (Régularité sous transition) : $\forall K\subset _C\Omega,\ \exists w_K$ module de continuité, $\forall f\in \mathcal{F},\ \|\tau_hf-f\|_{L^p(K)}\le w_K(|h| )$ pour tout $|h| \le d(K,\mathbb{R} ^d \backslash \Omega).$
+    \end{itemize}
+    Alors $\mathcal{F}$ est une partie compact de $L^p(\Omega).$
+\end{theoreme}
+\begin{proof}
+    Soit $\varepsilon >0$ fixé comme dans la preuve. Soit $K=K(\varepsilon )$ tel que $\forall f\in \mathcal{F},\ \|f\|_{L^p(\Omega \backslash K)}\le \varepsilon.$ Soit $y\in ]0,d(K,\mathbb{R} ^d \backslash \Omega[,$ tel que $w_K(y)\le \varepsilon .$ Soit $\rho\in C^1(\mathbb{R} ^d),$ $\rho\ge 0,$ $\int\rho=1,$ $supp(\rho)\subset B(0,y).$ \\
+    Posons $\mathcal{G}=\{f_{|K}*\rho\ |\ f\in \mathcal{F}\} .$ On note que $\forall f\in \mathcal{F},\ \underbrace{f_{|K}}_{\mathclap{\in L^p(K)\subset L^1(K)\subset L^1(\mathbb{R} ^d)}}*\overbrace{\rho}^{\in C^1}\in C^1(\mathbb{R} ^d)$ en prolongeant par 0.\\
+    De plus,
+     \begin{align*}
+         \|f_{|K}*\rho\|_\infty &\le \|f_{|K}\|_{L^1(\mathbb{R} ^d)}\overbrace{\|\rho\|_{L^\infty (\mathbb{R} ^d)}}^{\text{finie}=:M}\\
+                                &=\|f\|_{L^1(\mathbb{R} ^d)}M\\
+                                &\le \underbrace{|K| ^{1-\frac{1}{p}}}_{\text{fixé}}\underbrace{\|f\|_{L^p(\mathbb{R} ^d)}}_{\mathclap{\text{borné sur }\mathcal{F}}}.\\
+         \|\frac{\partial }{\partial x_i} \left( f_{|K}*\rho \right) \|_\infty &=\|f_{|K}*\left( \frac{\partial \rho}{\partial x_i}  \right) \|_\infty \\
+   &\le \|f_{|K}\|_{L^1}\|\frac{\partial \rho}{\partial x_i} \|_\infty \\
+   &\le |K|^{1-\frac{1}{p}}\|f\|_p\|\frac{\partial \rho}{\partial x_i} \|_\infty .
+    \end{align*}
+    On a posé abusivement $f_{|K}(x)=\left\{\begin{array}{cc}f(x) &\text{ si }x\in K\\0 & \text{ sinon}\end{array}\right.$. \\
+    Enfin $supp(f_{|K})\subset K+B'(0,\varepsilon )$ compact.\\
+    Ainsi $\mathcal{G}$ est constitué de fonctions :
+    \begin{itemize}
+        \item a support dans un compact fixé.
+        \item bornée uniformément.
+        \item Lipschitzienne uniformément.
+    \end{itemize}
+    Donc $\overline{\mathcal{G}}$ est compact pour $\|.\|_\infty $ par le théorème d'Ascoli. Donc il existe $f_1,\cdots,f_I\in \mathcal{F}$ tels que $\forall f\in \mathcal{F},\ \exists i\in [\![1;I]\!],\ \|f_{|K}*\rho-f_{i|K}*\rho\|_\infty <\varepsilon . $ \\
+    Finalement, soit $f\in \mathcal{F},$ soit $i\in [\![1;I]\!]$ comme ci dessus, alors :
+    \begin{align*}
+        \|f-f_i\|_{L^p}&\le \underbrace{\|f-f_{|K}\|_p}_{\le \varepsilon \text{ par ii}} + \underbrace{\|f_{|K}-f_{|K}*\rho\|_{p}}_{\le w_K(\varepsilon )\le \varepsilon \text{ par ii}} + \underbrace{\|f_{|K}*\rho-f_{i|K}*\rho\|_p}_{\le \varepsilon \text{ par Ascoli et i}}\\
+        &\hspace{3em}+\underbrace{\|f_{i|K}*\rho-f_{i|K}\|_p}_{\le w_K(\cdots)\le \varepsilon \text{par ii}}+\underbrace{\|f_{i|K}-f_i\|_p}_{\le \varepsilon \text{ par ii}}.
+        \|f_{|K}-f_{|K}*\rho\|^p_p \\
+        &\le \int \rho(h)\|f_{|K}-\tau_hf_{|K}\|^p_p\\
+        &\le w_K(\delta)
+    \end{align*}
+    D'où $\overline{\mathcal{F}}$ est compact. (Note du traducteur : $\delta=\varepsilon =y=:\eta$) ???
+\end{proof}
+
+\begin{ex}
+    Soit $K\in L^2([0,1]),$ posons $\mathcal{K} :\begin{aligned}
+        L^2 &\longrightarrow L^2 \\
+        f &\longmapsto \left(x\mapsto \int_{y=0}^{1} K(x,y)f(y)dy\right)
+    \end{aligned}$. Alors, $\mathcal{K}$ est un opérateur compact.
+\end{ex}
+\begin{proof}
+    Posons $I_\varepsilon =[\varepsilon ,1-\varepsilon ]$ et $I=[0,1].$ Alors :
+    \begin{enumerate}[label=\roman*]
+        \item $\left( \mathcal{K}(f)(x) \right) ^2\le \int_{0}^{1} K(x,y)^2dy \int_{0}^{1} f(y)^2dy  $ par Cauchy Schwartz. Donc $\|K(f)\|^2_2\le \|K\|^2_{L^2(I^2)}\|f\|_2^2.$
+        \item $\int_{x\in I \backslash I_\varepsilon }\mathcal{K}(f)(x)^2dx\le \underbrace{\|K\|^2_{L^2((I \backslash I_\varepsilon) \times I)}\|f\|_2^2}_{\underset{\varepsilon \to 0}{\longrightarrow} 0}$
+        \item $|\mathcal{K}(f)(x)-\mathcal{K}(f(x+h)|\le \int_{0}^{1} \left( K(x,y)-K(x+h,y) \right) ^2dy \int_{0}^{1} f(y)^ 2dy .$
+            Soit $\varepsilon >0, |h| <\varepsilon .$
+            \begin{align*}
+                \int_{x\in I_\varepsilon }\left( \mathcal{K}(f)(x)-\mathcal{K}(f)(x+h) \right)^2 dx &\le \int_{x\in I_\varepsilon }\int_{y=0}^1\left( K(x,y)-K(x+h,y) \right) ^2dxdy \int f(y)^2dy\\
+                        &=\underbrace{\|K-\tau_{(h,0)}K\|^2_{L^2(I_\varepsilon \times I)}\|f\|^2_2}_{\underset{\varepsilon \to 0}{\longrightarrow} 0}.
+            \end{align*}
+            (Densité des fonctions continues dans $L^2(I)$). \\
+            $\{\mathcal{K}(f)\ |\ f\in L^2, \|f\|\le 1\} $ est précompact par Fréchet Kolmogorov.
+    \end{enumerate}
+\end{proof}
+
+\subsection{Convolution de distributions et espaces de Sobolev}
+\begin{definition}[Distribution associée à une fonction]
+    Soit $\Omega\subset \mathbb{R} ^d$ un ouvert et $f\in L^1_{loc}(\Omega),$ on définit pour tout $\varphi \in D(\Omega),$ $U_f(\varphi )=\int_\Omega f \varphi $.\\
+    Alors $U_f\in D(\Omega)^*$ est une distribution d'ordre 0 et $f\in L^1_{loc}\to U_f$ est continue et injective.
+\end{definition}
+\begin{proof}
+    Soit $K\subset _C\Omega$ et $\varphi \in D_K(\Omega)=\{\psi\in D(\Omega)\ |\ supp(\psi)\subset K\} .$ Alors $U_f(\varphi )\le \underbrace{\|f\|_{L^1(K)}}_{{\substack{\text{bornée car }f\in L^1_{loc}\\\text{et }K \text{ compact}}}}\ \underbrace{\|\varphi \|_{L^\infty (K)}}_{{\substack{\text{pas de dérivée}\\\text{de }\varphi }}}$.\\
+    La topologie sur $D(\Omega)^*$ est celle de la convergence *-faible. \\
+    \underline{Injectivité :} Soit $K\subset \Omega$ compact et $\varepsilon >0$ tq $K':=K+B't_0,\varepsilon )\subset \Omega.$ Soit $\rho\in D(\mathbb{R} ^d), p\ge 0,\int p=1.$ Alors pout tout $\varphi \in D_K(\Omega),$ $\rho_\varepsilon *\varphi \in D_{K'}(\Omega)$ et
+    \begin{align*}
+        U_f(\rho_\varepsilon *\varphi ) &= \int f(x)\left( \rho_\varepsilon *\varphi  \right) (x)dx\\
+                                        &= \int \int f(x)\rho_\varepsilon (x-h)\varphi (h)dhdx\\
+                                        &= \int \left( f*\overline{\rho_\varepsilon } \right) (h)\varphi (h)dh &\text{où $\overline{\rho_\varepsilon }(z)=\rho_\varepsilon (-z)$ }.
+    \end{align*}
+    Si $U_f=0$ en tant que distribution, alors $U_f(\rho_\varepsilon *\varphi )=0$ peut importe le $\varphi \in D_K(\Omega).$ Donc $\int\left( f*\overline{\rho_\varepsilon } \right) (h)\varphi (h)dh=0$ puis $f*\overline{\rho_\varepsilon }$ est nul sur $K.$ Comme $f*\overline{\rho_\varepsilon }\to f$ dans $L^1_{loc}$ on obtient que $f=0.$ CQFD.
+\end{proof}
+\begin{definition}[Dérivation d'une distribution]
+     Soit $\Omega\subset \mathbb{R} ^d$ un ouvert. Si $T\in D(\Omega)^*,$ on définit $\left<\partial_\alpha  T,\varphi  \right> =\left( -1 \right)^{|\alpha | }\left<T, \partial_\alpha \varphi  \right>. $ \\
+     Cette définition est continue sur les distributions et prolonge la distribution des fonctions usuelle $\partial_\alpha U_f=U_{\partial_\alpha f}$ pour $f\in C^k(\Omega)$ et $|\alpha | \le k.$
+\end{definition}
+\begin{definition}
+    Soit $\Omega\subset \mathbb{R} ^d$ un ouvert, $s\in \mathbb{N} $ et $p\in [1,\infty ].$ On pose $W ^{s,p}(\Omega):=\{\underbrace{f\in L^p(\Omega)}_{\mathclap{L^p\subset L^1_{loc}\subset D(\Omega)^*}}\ |\ \forall |\alpha | \le s,\ \underbrace{\partial_\alpha f\in L^p(\Omega)}_{\mathclap{\substack{\text{La dérivée en tant}\\ \text{que distribution}}}}\} $ On suppose que la dérivée est est représentée par un choix de $L^p$ qui est unique car précédent. (???)\\
+    Muni de la norme $\|f\|_W^p:=\sum\limits_{|\alpha | \le s}^{} \|\partial_\alpha f\|_{L^p(\Omega)} $ et $\|f\|_{W^{s,\infty }}=\max \|\partial_\alpha f\|_\infty $.
+\end{definition}
+\begin{propriete}
+    $W^{s,p}(\Omega)$ est un Banach pour tout $s$ et $p.$ Si $p=2,$ c'est un Hilbert.
+\end{propriete}
+\begin{proof}
+    Soit $f_n\in W^{s,p},$ une suite de Cauchy. Alors $\partial_\alpha f$ est aussi une suite de Cauchy pour tout $|\alpha | \le s.$ On note $f^\alpha $ sa limite.\\
+    Alors $f_n\to f^0,$ $\partial_\alpha f_n\to f^\alpha $ dans $L^p,$ donc aussi dans $L^1_{loc}$ puis dans $D(\Omega)^*.$ Or $\partial_\alpha f_n\to \partial_\alpha f^0$ dans $D(\Omega)^*$ par continuité de la dérivation. \\
+    Donc $\partial_f^0=f^\alpha $ dans $D(\Omega)^*$ donc dans les autres aussi. Ainsi $f^0\in W^{s,p}(\Omega)$ et $\|f_n-f^0\|\to 0.$
+\end{proof}
+\begin{propriete}[Convolution d'une distribution]
+    Soit $T\in D(\mathbb{R} ^d)^*$ et \\
+    $\varphi , \psi\in D(\mathbb{R} ^d).$ On définit $\left( T*\varphi  \right) (\psi):=T(\overline{\varphi }*\psi)$ où $\overline{\varphi }(z)=\varphi (-z).$\\
+    Alors $T*\varphi $ est une distribution et cette définition prolonge la convolution des fonctions : $\partial_\alpha (T*\varphi )=(\partial_\alpha T)*\varphi =T*\left( \partial_\alpha \varphi  \right) .$\\
+    De plus, $T*\varphi $ est représentée par la fonction $C^\infty $ $x\in \mathbb{R} ^d\mapsto T(\varphi (x-.))$
+\end{propriete}
+\begin{propriete}
+    Si $f\in W^{s,p}(\mathbb{R} ^d)$ et $\rho\in D(\mathbb{R} ^d)$ tel que $\rho>0$ et $\int\rho=1.$\\
+    Alors $f*\rho_\varepsilon \underset{\varepsilon \to 0}{\longrightarrow} f$ dans $W^{s,p}.$\\
+    On en déduit que $D(\mathbb{R} ^d)$ est dense dans $W^{s,p}(\mathbb{R} ^d).$
+\end{propriete}
+\begin{proof}
+    D'une part $\|\partial_\alpha \left( f*\rho_\varepsilon  \right) -\partial_\alpha f\|_p=\|\left( \partial_\alpha  \right) *\rho_\varepsilon -\partial_\alpha f\|_p \underset{\varepsilon \to 0}{\longrightarrow} 0.$ Posons $H\in  C^\infty (\mathbb{R} )$ tq $H=0$ sur $]-\infty ,0]$ et $H=1$ sur $[1,\infty [.$
+\end{proof}
+
+\begin{definition}
+    Soit $\Omega\subset \mathbb{R} ^d$ un ouvert. Il est dit régulier ssi :
+    \begin{align*}
+        &\forall x,\in \partial\Omega,\ \exists U\ \text{voisinage de }x,~ V\text{ voisinage de }0,\\
+        &\varphi \in C^0(U,V) \text{ difféomorphisme, tq }\varphi (0)=0 \text{ et } \varphi (U\cap \Omega)=V\cap \left( ]0,\infty [\times \mathbb{R} ^d \right) 
+    \end{align*}
+\end{definition}
+
+\begin{theoreme}[Prolongement dans les espaces de sobolev, admis]
+    Soit $\Omega\subset \mathbb{R} ^d$ un ouvert régulier, $s\in \mathbb{N} ,$ $p\in [1,\infty ].$ \\
+    Alors il existe $P:W^{s,p}(\Omega)\to W^{s,p}(\mathbb{R} ^d)$ linéaire et  continue telle que $\left( P_u \right) _{|\Omega}=u$ pour tout $u\in W^{s,p}(\Omega).$ \\
+    De plus $\|P_u\|_{W^{s,p}(\mathbb{R} ^d)}\le C(\Omega,p,s)\|u\|_{W^{s,p}(\Omega)}.$
+\end{theoreme}
+\begin{corollaire}
+    Soit $\Omega\subset \mathbb{R} ^d$ un ouvert régulier, $s\in \mathbb{N} ,$ $p\in [1,\infty [.$ \\
+    Alors $\{\varphi _{|\Omega}\ |\ \varphi \in D(\mathbb{R} ^d)\} $ est dense dans $W^{s,p}(\Omega).$
+\end{corollaire}
+\begin{proof}
+    Soit $u\in W^{s,p}(\Omega).$ Comme $D(\mathbb{R} ^d)$ est dense dans $W^{s,p}(\mathbb{R} ^d),$ il existe $\left( \varphi _n \right) \in D(\mathbb{R} ^d)^\mathbb{N} $ tq $\|\varphi _n-P_u\|_{W^{s,p}(\mathbb{R} ^d)}\underset{n\to +\infty}{\longrightarrow} 0.$ Donc :\\
+    $\|\varphi _{n|\Omega}-u\|_{W^{s,p}(\Omega)}=\|\left( \varphi _n-P_u \right) _{\Omega}\|_{W^{s,p}(\Omega)}\le \|oni_n-P_u\|_{W^{s,p}(\mathbb{R} ^d)}\to 0.$
+\end{proof}
+\begin{remarque}
+    $D(\mathbb{R} ^d)$ et $D(\Omega)$ sont séparable pour tout ouvert $\Omega\subset \mathbb{R} ^d,$ donc également tout espace dans lequel il est dense.
+\end{remarque}
+\begin{theoreme}[Problème de Poisson, $\Delta u=f$]
+    Soit $\Omega\subset \mathbb{R} ^d$ un ouvert et $f\in L^2(\Omega).$ Alors
+    \begin{itemize}
+        \item Conditions au bord de Neumann : \\
+        $\exists !u\in H^1(\Omega),\ \forall v\in H^1(\Omega),\ Q(u,v)=L(v)$ \\
+            Où $Q(u,v):=\int_\Omega\left( \left<\nabla u(x),\nabla v(x) \right>+u(x)v(x) \right) dx$ et $L(v):=\int_\Omega fv$.
+        \item Conditions au bord de Dirichlet :\\
+        $\exists !u\in H_0^1(\Omega),\ \forall v\in H_0^1(\Omega),\ Q(u,v)=L(v)$
+    \end{itemize}
+    Rappel :
+    \begin{itemize}
+        \item $H^1(\Omega)=W^{1,2}(\Omega)=\{f\in L^2(\Omega)\ |\ \nabla f\in L^2(\Omega,\mathbb{R} ^d)\} $ muni de la norme $\|u\|_{H^1_0}:=\sqrt{\|\nabla u\|^2_2+\|u\|_2^2}$
+        \item $H_0^1(\Omega)=\overline{D(\Omega)}^{\|.\|_{H^1(\Omega)}}.$ muni de la norme $\|u\|_{H^1_0}:=\sqrt{\|\nabla u\|^2_2+\|u\|_2^2}$
+    \end{itemize}
+\end{theoreme}
+\begin{remarque}[Formulation forte]
+    Si $u,v$ et $\Omega$ sont "suffisamment" réguliers, alors par la formule de Stokes.\\
+    \begin{align*}
+        \int_\Omega div(\nabla u\cdot v)&\overset{Stokes}{=}\int_{\partial \Omega}v\big<\nabla u, \underbrace{n_{\partial \Omega}}_{\mathclap{\text{normale extérieure}}} \big>\\
+                                        &=\int_\Omega \left( \Delta u\cdot v+\left<\nabla u,\nabla v \right> \right) &\text{distribution d'un produit}
+    \end{align*}
+    
+    \epigraph{"Ça va ?"}{Random personne à l'extérieur}
+    \epigraph{"Oui"}{Jean-Marie Mirebeau}
+    On en déduit que "formellement"
+    \begin{itemize}
+        \item La solution de Poisson avec condition aux bornes de Neumann satisfait $\Delta u=f$ dans $\Omega$ et $\left<\nabla u,n_{\partial \Omega} \right> = 0$ sur $\partial \Omega.$
+        \item La solution de Poisson avec condition aux bornes de Dirichlet satisfait $\Delta u=f$ dans $\Omega$ et $u=0$ sur $\partial \Omega.$
+    \end{itemize}
+\end{remarque}
+\begin{proof}
+    Existence et unicité pour un problème de Poisson :\\
+    On sait que $H^1(\Omega)$ est un Hilbert pour la norme \\
+    $\|u\|_{H^1(\Omega)}=\sqrt{\|u\|_{L^2(\Omega)}^2+\|\nabla u\|_{L^2(\Omega)}^2}=\sqrt{Q(u,u)}.$ \\
+    De plus $|L(v)| =|\int_\Omega fv| \le \|f\|_{L^2(\Omega)}\|v\|_{L^2(\Omega)}\le \|f\|_2\|v\|_{H^1}.$ \\
+    Donc $L$ est une forme linéaire continue sur $H^1.$ \\
+    Par le théorème de représentation de Riez, $\exists !u\in H^1(\Omega),\ Q(u,.)=L(.).$ De même, $H_0^1(\Omega)$ est un fermé de $H^1(\Omega)$ donc un Hilbert pour la même norme. On applique à nouveau le théorème de représentation de Riez et le résultat tombe.
+\end{proof}
+
+\subsection{Injection de Sobolev, cas sous critique}
+\begin{proposition}
+    Soit $f\in \underbrace{C'_c(\mathbb{R} ^d)}_{\mathclap{C'\text{ à support compact}}}, ~x\in \mathbb{R} ^d$. Alors :\\
+    $$\underbrace{|\mathbb{S}_{d-1}| }_{\mathclap{\substack{\text{Volume de la}\\\text{sphère unité}\\\text{de }\mathbb{R} ^d}}} f(x)=\int_{y\in \mathbb{R} ^d}\left<\nabla f(x-y), \frac{y}{\|y\|^d} \right>dy.$$
+\end{proposition}
+\begin{proof}
+    On peut supposer $x=0.$ Soit $R>0$ tq $supp(f)\subset B(0,R).$ On a :\\
+    $|\mathbb{S}_{d-1}| f(0)=\int_{\mathbb{S}_{d-1}}\left[f(Rz)-f(0)\right]d\mu(z)=(*)$ car $f(Rz)=0$ car $supp(f)\subset B(0,R)$ et $d\mu(z)$ est la mesure surfacique de $\mathbb{S}_{d-1}$.\\
+    On rappel que $\forall x,y\in \mathbb{R} ^d,\ f(y)-f(x)=\int_0^1\left<\nabla f\left( \left( 1-t \right) x+ty \right) , y-x \right>dt.$ \\
+    Donc
+    \begin{align*}
+        (*) &= \int_{\mathbb{S}_{d-1}}\int_{0}^{R} \left<\nabla f(rz),z \right>dr~d\mu(z)\\
+            &=\int_{\mathbb{S}_{d-1}}\int_{0}^{R} \left<\nabla f(rz), \underbrace{\frac{rz}{\|rz\|^d}}_{\text{car }\|z\|=1} \right> \underbrace{r^{d-1}dr~d\mu(z)}_{\substack{\text{mesure de Lebesgue}\\\text{sur }B(0,R)}}\\
+            &= \int_{B(0,R)}\left<\nabla f(y),\frac{y}{\|y\|} \right>dy &\substack{\text{changement de}\\\text{variable en}\\\text{coordonnée polaire}}\\
+            &=\int_{B(0,R)}\left<\nabla f(0-y), \frac{y}{\|y\|}dy \right> &\text{continuité de $\frac{y}{\|y\|}$ }
+    \end{align*}
+\end{proof}
+\begin{corollaire}
+    La fonction $g$ suivante satisfait $-\Delta g=\delta_0$ ou  sous des distributions : $g(x)=c_d
+    \begin{cases}
+        -|x| &\text{si }d=1\\
+        -\ln(\|x\|) &\text{si }d=2\\
+        \frac{1}{\|x\|^{d-2}} &\text{si }d\ge 3
+    \end{cases}$ où $\underbrace{c_d>0}_{=\alpha d|\mathbb{S}_d| }$ est une constante.
+\end{corollaire}
+\begin{proof}
+Soit $\varphi \in D(\mathbb{R} ^d),$ alors
+
+\begin{align*}
+    \left<\Delta g,\varphi  \right>_{D'\times D}&\overset{\mathclap{\text{def }\Delta}}{=}\hspace{1em}\left<\Delta g,\varphi  \right>_{D'\times D}\\
+    &\overset{\mathclap{\text{def }\Delta}}{=}\hspace{1em}\sum\limits_{i=1}^{d} \left<\frac{\partial^2g}{\partial x_i^2}, \varphi  \right>_{D'\times D}\\
+    &\overset{\mathclap{\substack{\text{def dérivation au}\\\text{sens des distributions}\\\text{}}}}{=}\hspace{3em}\sum\limits_{i=1}^{d} \left( -1 \right) ^2\left<g, \frac{\partial^2 \varphi }{\partial x_i^2} \right> \\
+    &= \int_{\mathbb{R} ^d}g(x)\Delta \varphi (x)dx\\
+    &=\lim\limits_{\delta \to 0} \int_{B(0,R) \backslash B(0,\delta)}g(x)\Delta \varphi (x)dx
+\end{align*}
+    Or, pour $\delta>0$ et $R>0$ tq $supp(\varphi )\subset B(0,R),$
+    \begin{align*}
+        \int_{B(0,R) \backslash B(0,\delta)}g(x)\Delta \varphi (x)dx &= \int_{B(0,R) \backslash B(0,\delta)}div\left( g \nabla \varphi  \right) -\nabla g\nabla \varphi \\
+            &= \int_{\partial B(0,\delta)} g(x)\left<\nabla \varphi (x), \frac{-x}{\|x\|} \right>d\mu(x)\\
+            &\hspace{8em}+\int_{\partial B(0,R)}g(x)\left<\nabla \varphi (x), \frac{x}{\|x\|} \right>d\mu(x) \\
+            &\hspace{8em}+ \int_{B(0,R) \backslash B(0,\delta)}\left<\nabla g(x),\nabla \varphi (x) \right>dx\\
+            &= \Theta(\delta) + 0 - \alpha d \int_{B(0,R) \backslash B(0,\delta)}  \left<\nabla \varphi (x),\frac{x}{\|x\|} \right>dx\\
+            &\underset{\delta\to 0}{\longrightarrow} \alpha d|\mathbb{S}_{d-1}| \varphi (0)
+    \end{align*}
+    par le lemme précédent.\\
+    Si $g(x)=f(\|x\|),$ $f\in C^1,$ alors $\nabla g(x)=f'(\|x\|)\frac{x}{\|x\|}$ pour tout $x\neq 0$. \\
+    Ici $\nabla g(x)=\frac{x}{\|x\|}\times
+    \begin{cases}
+        1 &\text{si }d=1\\
+        1 &\text{si }d=2\\
+        d-2 &\text{si }d\ge 3
+    \end{cases}$
+\end{proof}
+\begin{remarque}
+    Posons $h(x)=\|\frac{x}{\|x\|^d}\|=\frac{1}{\|x\|^{d-1}}$. Alors $h$ n'appartient à aucun espace $L^p$. Problèmes en 0 si $p\ge \frac{d}{d-1}$ et en $\infty $ si $p\le \frac{d}{d-1}$. \\
+    Puisque $\int_{|x| \ge 1}\frac{1}{|x| ^\alpha }dx<\infty $ ssi $\alpha >d$ alors $\int_{0<|x| \le 1}\frac{1}{|x| ^\alpha }dx<\infty $ ssi $\alpha <d$.\\
+    En effet $\int_{r<|x| R}\frac{1}{|x| ^\alpha }dx=|\mathbb{S}_{d-1}|\int_{r}^{R} \frac{1}{|s| ^\alpha }s^{d-1}ds  $ en passant en polaire.
+\end{remarque}
+\begin{definition}[Norme $L^p$ faible]
+     Soit $(X,\mu)$ un espace mesuré $f:X\to \mathbb{R} $ mesurable et $p\in [1,\infty [.$ On pose $\|f\|^p_{p,w}:=\sup_{t>0}t^p\mu \{|f| \ge t\} $.\\
+     Attention, ce n'est pas une vraie norme mais $\|f+g\|\le C\left( \|f\|+\|g\| \right) $.\\
+     On a pour tout $t>0,$ $\int|f| ^pd\mu\ge  \int t^p\mathbbm{1}_{\{|f| \ge t\}} d\mu=t^p\mu \{|f| \ge t\} .$ \\
+     Donc $\|f\|_p\ge \|f\|_{p,w}.$
+\end{definition}
+\begin{ex}
+    $h\in L^{\frac{d}{d-1},w}(\mathbb{R} ^d).$ En effet, 
+    \begin{align*}
+        Leb \{h\ge t\} &=Leb \{x\in \mathbb{R} ^d\ |\ \frac{1}{\|x\|^{d-1}}\ge t\} \\
+        &=Leb \{x\in \mathbb{R} ^d\ |\ \|x\|\le t^{\frac{-1}{d-1}}\}\\
+        &=Leb B(0,t^{\frac{-1}{d-1}})\\
+        &=|B(0,1)| \left( t^{\frac{-1}{d-1}} \right) ^d\\
+        &=|B(0,1)| t^{\frac{-d}{d-1}}
+    \end{align*}
+\end{ex}
+
+\begin{theoreme}[Inégalités de Young]
+    Soit $p,q,r\in [1,\infty ]$ tq $1+\frac{1}{r}=\frac{1}{p}+\frac{1}{q}.$ Alors :
+    $$\|f*g\|_r\le \|f\|_p\|g\|_q,\ \forall f\in L^p(\mathbb{R} ^d)\ g\in L^q(\mathbb{R} ^d)$$
+    On rappelle que $f*g\in L^r.$ De plus, si $p,q,r\in ]1,\infty [$ alors
+    $$\|f*g\|_r\le \|f\|_p\|g\|_{q,w}.$$
+\end{theoreme}
+\begin{proof}
+    Admis.
+\end{proof}
+\begin{theoreme}[Injection de Sobolev, cas sous critique]
+    Soit $s\in \mathbb{N} $ et $p\in [1,\infty [$ tels que $s,p<d.$ Définissons $p^*\ge p$ par $\frac{1}{p^*}=\frac{1}{p}-\frac{s}{d}.$ \\
+    Alors :
+    $$W^{s,p}(\mathbb{R} ^d)\subset L^{p^*}(\mathbb{R} ^d)$$\\
+    et $\|f\|_{L^{p^*}(\mathbb{R} ^d)}\le C(r,d,p)\sum\limits_{|\alpha | =s}^{} \|\partial^\alpha f\|_{L^p(\mathbb{R} ^d)},\ \forall f\in W^{s,p}(\mathbb{R} ^d)$
+\end{theoreme}
+\begin{proof}
+    On montre seulement le cas $p>1$ ($p=1$ trop dur, du à Gagliardo-Nirenberg). \\
+    Par récurrence immédiate, on peut supposer $s=1$.\\
+    On a vu que $\forall f\in C^1_c(\mathbb{R} ^d), $ on a
+    \begin{align*}
+        f&= \nabla f*V &\text{où $V(y)=\frac{y}{\|y\|^d}$ }\\
+         &= \sum\limits_{n=1}^{d} \frac{\partial f}{\partial x_i} *V_i &\text{où } V_i(y)=\frac{y_i}{\|y\|}.
+    \end{align*}
+    On note que $V_i\in L^{\frac{d}{d-1}}(\mathbb{R} ^d)$ pour tout $i\in [\![1;d]\!].$ \\
+    Par l'inégalité de Young,
+    \begin{align*}
+        \|f\|_r &\le \sum\limits_{i=1}^{d} \|\frac{\partial f}{\partial x_i} \|_p\underbrace{\|V_i\|_{\frac{d}{d-1},w}}_{<\infty }\\
+                &\le C \sum\limits_{|\alpha | =1}^{} \|\partial_\alpha f\|_p
+    \end{align*}
+    Avec $\cancel{1}+\frac{1}{r}=\frac{1}{p}+\frac{\cancel{d}-1}{d}$ soit $\frac{1}{r}=\frac{1}{p}-\frac{1}{d}$ soit $r=p^*.$ \\
+    Par densité de $C_c^1(\mathbb{R} ^d)$ dans $W^{1,p}(\Omega),$ et par continuité de la convolution : $ \begin{aligned}
+         L^p&\longrightarrow L^r \\
+        g &\longmapsto g*V_i
+    \end{aligned}$ (inégalité de Young), on a pour tout $f\in W^{1,p}(\mathbb{R} ^d)$,\\ $f=\nabla f*V$ et $\|f\|_r\le C \sum\limits_{|\alpha | =1}^{} \|\partial_\alpha f\|_p.$
+\end{proof}
+\begin{remarque}[Invariance par changement d'échelle]
+    Soit $f\in D(\Omega)$ et $\lambda>0.$ Posons $f_\lambda(x)=f(\lambda x).$\\
+    Alors $\|f_\lambda\|_p=\lambda^{-\frac{d}{p}}$ et $\|\partial _\alpha f_\lambda\|=\lambda^{s-\frac{d}{p}}\|\partial_\alpha  f\|_p $ où $|\alpha | _1=s$, c'est à dire $\alpha _1+\cdots+\alpha _d=s$.\\
+    En effet,
+    \begin{align*}
+        \|f_\lambda\|^p_p &= \int_{\mathbb{R} ^d}|f(x)| ^pdx\\
+                          &\overset{\substack{y=\lambda x\\dy=\lambda^ddx}}{=} \int_{\mathbb{R} ^d}|f(u)| ^ddy\lambda^{-d}.
+    \end{align*}
+    Et $\partial_\alpha f_\lambda(x)=\lambda^s \partial_\alpha f(\lambda x)$, d'où la seconde identité.\\
+    Si $f\in D(\mathbb{R} ^d),$ alors $f_\lambda\in W^{s,p}(\mathbb{R} ^d)$ pour $\lambda>0$ et donc $\lambda^{-\frac{d}{p^*}}\|f\|_{p^*}=\|f_\lambda\|_{p^*}\le C(s,d,p)\sum\limits_{|\alpha | =s}^{} \|\partial_\alpha  f_\lambda\|_p=C\lambda^{s-\frac{d}{p}}$.\\
+Donc $c\lambda^{-\frac{d}{p^*}}\le C\lambda^{s-\frac{d}{p}}$. Puis $\lambda ^{\frac{d}{p}-s-\frac{d}{p^*}}\le \frac{C}{c}$ donc $\frac{d}{p}-s-\frac{d}{p^*}=0$ et $\frac{1}{p^*}=\frac{1}{p}-\frac{s}{d}.$
+\end{remarque}
+\begin{theoreme}
+    Soit $\Omega\subset \mathbb{R} ^d$ un ouvert régulier, $s\in \mathbb{N} $ et $p\in [1,\infty [$ avec $sp<d.$ Alors $W^{s,p}(\Omega)\subset L^{p^*}(\Omega)$ avec $\frac{1}{p^*}=\frac{1}{p}-\frac{s}{d}$ et $\|f\|_{L^{p^*}}\le C(\Omega,s,p)\|f\|_{W^{s,p}(\Omega)}.$
+\end{theoreme}
+\begin{proof}
+    Par composition :$$W^{s,p}(\Omega)\overset{\substack{\text{prolongement}\\\text{linéaire}\\\text{continue}\\\text{}}}{\longrightarrow}W^{s,p}(\mathbb{R} ^d)\overset{\substack{\text{injection}\\\text{de Sobelev}\\\text{}}}{\longrightarrow} L^{p^*}(\mathbb{R} ^d)\overset{\substack{\text{restriction}\\\text{}}}{\longrightarrow}L^{p^*}(\Omega)$$
+\end{proof}
+
+\subsection{Injection de Sobelev sur-critique}
+
+\begin{proposition}
+    Pour toute fonction $f\in C^1(\mathbb{R} ^d),$ $x\in R^d$ et $R>0,$ on a :
+    $$\int_{B(x,R)}|f(x)-f(y)| dy\le \frac{r^d}{d}\int_{B(0,R)}\|\nabla f(x-y)\|\frac{dy}{\|y\|^{d-1}}$$
+\end{proposition}
+\begin{proof}
+    Idée : On peut supposer $x=0$ quitte à translater $f.$
+    \begin{align*}
+        \int_{B(0,R)}|f(x)-f(y)| dy &= \int_{B(0,R)}\left( \int_0^1\left<\nabla f(ty),y \right>dt \right) dy\\
+                                    &\le \int_{B(0,R)}\int_0^1\|\nabla f(ty)\|\|y\|dt ~dy\\
+                                    &= \int_{B(0,R)}\int_0^1\int_{\mathbb{S}_{d-1}}\|\nabla f(\underbrace{trz}_{\mathclap{\substack{s=tr\\ds=rdt}}})\|\|rz\|dt~r^{d-1}dr~dz\\
+                                    &= \int_{\mathbb{S}_{d-1}}\int_{r=0}^{R} \int_{s=0}^{r} \|\nabla f(sz)\|r^{d-1}ds~dr~dz\\
+                                    &\le \int_{\mathbb{S}_{d-1}}\int_{s=0}^{R} \frac{\|\nabla f(sz)\|}{\|sz\|^{d-1}}s^{d-1}ds~dz \underbrace{\int_{r=0}^{R} r^{d-1}dr}_{\frac{R^d}{d}}\\
+                                    &=\frac{R^d}{d}\int\frac{\|\nabla f(y)\|}{\|y\|^{d-1}}dy
+    \end{align*}
+\end{proof}
+\begin{remarque}
+    Soit $h(x)=\frac{1}{\|x\|^{d-1}}$, $x\in \mathbb{R} ^d$ et $1\le q\le \frac{d}{d-1}.$ Alors
+    \begin{align*}
+        \|h\|^q_{L^q(B(0,R))}&=|\mathbb{S}_{d-1}|\int_0^\frac{R_1}{r^{(d-1)q}}r^{d-1}dr\\
+                             &= |\mathbb{S}_{d-1}|\int_0^Rr^{(d-1)(1-q)}dr\\
+                             &= |\mathbb{S}_{d-1}|\underbrace{\frac{R^{(d-1)(1-q)+1}}{1+(d-1)(1-q)}}_{>0}.
+    \end{align*}
+\end{remarque}
+
+\begin{theoreme}[Injection de Sobelev sur-critique]
+    Soit $p>d,$ alors toute fonction $f\in W^{s,p}(\mathbb{R} ^d)$ admet un représentant continue qui satisfait \\
+    $\|f\|_\alpha  \le C(p,d)\|f\|_{W^{1,p}}$ et $|f(x)-f(y)| \le |x-y| ^\alpha \|\nabla f\|_pC(p,d)$ pour tout $x,y\in \mathbb{R} ^d.$
+\end{theoreme}
+\begin{proof}
+    On suppose d'abord que $f\in C^1(\mathbb{R} ^d)$. Soit $x\neq $, $r=|x-y| $, $B_*=B(\frac{x+y}{2},\frac{r}{2)}$ et $f_*=\frac{1}{|B_*|}\int_{B_*}f.$ Alors :
+    \begin{align*}
+        \hspace{1em}\underbrace{|B_*|}_{\mathclap{\substack{=\left( \frac{r}{2} \right) ^d|B(0,1)|  }}}|f(x)-f_*| &\le \int_{B_*}|f(x)-f(z)| dz\\
+                          &\le \int_{B(x,r)}|f(x)-f(z)|dz &B_*\subset B(0x,r)\\
+                          &\overset{\mathclap{\substack{\text{lemme}\\\text{precedent}}}}{\le}\hspace{1.5em} \frac{r^d}{d}\int_{B(x,r)}\|\nabla f(x-z)\|\frac{dz}{\|z\|^{d-1}}\\
+                          &\overset{\mathclap{\text{Holder}}}{\le}\hspace{1em} \frac{r^d}{d}\|\nabla f\|_{L^p(B(x,r))}\|h\|_{L^q(B(0,r))}.
+    \end{align*}
+    Avec $\frac{1}{p}+\frac{1}{q}=1.$\\
+    Donc $|f(x)-f_*| \le C(d)\|\nabla f\|_p\left[ \frac{r^{(d-1)(1-q)+1}}{(d-1)(1-q)+1} \right] \le C(d,p)\|\nabla f\|_pr^2$. \\
+    Or $\frac{(d-1)(1-q)+1}{\underbrace{q}_{\mathclap{\substack{=\frac{p}{p-1}}}}}=1-\frac{d}{p}=\alpha .$ \\
+    D'où
+    \begin{align*}
+        |f(x)-f(y)| \le |f(x)-f_*| +|f_*-f(y)|\le 2C(d)\|\nabla f\|_p|x-y| ^\alpha .
+    \end{align*}
+    D'où l'estimation Holderienne.\\
+    De plus,
+     \begin{align*}
+         |f(x)| &\le |f(x)-\frac{1}{|B(x,1)|}\int_{B(x,1)}f|+ \frac{1}{|B(x,1)| }\int_{B(x,1)}|f|\\
+                &\le C\|\nabla f\|_{L^p}+C'\|f\|_{L^1(B(x,1))}\\
+                &\le  C\|\nabla f\|_{L^p}+C'|B(x,1)| ^{1-\frac{1}{p}}\|f\|_{L^p(B(x,1))}\\
+                &\le  C\|\nabla f\|_{L^p}+\tilde{C}\|f\|_{W^{1,p}(\mathbb{R} ^d)}.
+    \end{align*}
+    On a montré une injection continue $\left( C^1_c(\mathbb{R} ^d),\|.\|_{W^{1,p}(\mathbb{R} ^d)} \right) \to \left( C_b^\alpha (\mathbb{R} ^d), \|.\|_\alpha  \right) $. Par densité, elle s'étend à $W^{1,p}(\mathbb{R} ^d).$
+\end{proof}
+\begin{corollaire}
+    Soit $\Omega\subset \mathbb{R} ^d$ un ouvert régulier et $p>d.$\\
+    Alors $W^{1,p}(\Omega)\subset C^\alpha _b(\Omega)$ avec $\alpha =1-\frac{d}{p}.$ \\
+    De plus, $\forall f\in W^{1,p}(\Omega),$ on a $\|f\|_\infty \le C\|f\|_{W^{1,p}(\Omega)}$ et pour tout $x,y\in \Omega,$ $|f(x)-f(y)| \le C|x-y| ^\alpha \|f\|_{W^{1,p}(\Omega)}$ avec $C=C(\Omega,p).$
+\end{corollaire}
+\begin{proof}
+    Par complétion :
+    $$W^{1,p}\longrightarrow W^{1,p}(\mathbb{R} ^d)\longrightarrow C^\alpha _b(\mathbb{R} ^d)\longrightarrow C^\alpha _b(\Omega).$$
+\end{proof}
+
+
+\subsection{Théorème de Rellich, injection compact}
+\epigraph{12h49 : "Bon un dernier point"}{Jean-Marie Mirebeau}
+\begin{lemme}[inégalité d'interpolation $L^p$ ]
+    Soit $p_0,p_1\in [1,\infty ],$ $\theta\in [0,1]$ et $p_\theta\in [1,\infty ]$ définit par $\frac{1}{p_\theta}=\frac{1-\theta}{p_0}-\frac{\theta}{p_1}$ Alors pour tout $f$ mesurable :
+    $$\|f\|_{_\theta}\le \|f\|_{P_0}^{1-\theta}\|f\|_{p_1}^\theta$$
+\end{lemme}
+\begin{proof}
+    Appliquer Holder aux exposants conjugués $\frac{p_0}{(1-\theta)p_\theta}$ et $\frac{p_1}{\theta p_\theta}$
+\end{proof}
+
+\begin{theoreme}[Rellich]
+    Soit $\Omega\subset \mathbb{R} ^d$ un ouvert borné régulier et $p\in [0,\infty ].$ La boule unité fermée de $W^{1,p}(\Omega)$ est :
+    \begin{itemize}
+        \item (Cas sous critique, $p<d$) : compact dans $L^q(\Omega)$ pour tout $q\in [1,p^*[$ où $\frac{1}{p^*}=\frac{1}{p}-\frac{1}{d}$
+        \item (Cas critique, $p=d$) : compact dans $L^q(\Omega)$ pour tout $q\in [1,\infty [$
+        \item (Cas sur critique, $p>d$) : compact dans $C^0(\Omega).$
+    \end{itemize}
+\end{theoreme}
+\begin{proof}
+    Le cas sur critique découle du théorème d'Ascoli puisque les éléments de $B=B'_{W^{1,p}}(0,1)$ sont uniformément bornés et $\alpha -$Holder.\\\\
+    Le cas critique découle du cas sous critique et de l'observation :\\
+    $W^{s,p}(\Omega)\subset W^{s,p'}(\Omega)$ si $p\ge p'.$\\\\
+    Le cas sous critique s'établit \textit{via} Fréchet Kolmogorov. Critère à vérifier : masse évanescente au bord et régularité sous translation.
+    \begin{itemize}
+        \item Soit $K\subset _C\Omega$ compact, comme $q<p^*$ ou $x,$
+            \begin{align*}
+                |\Omega \backslash K| ^{-\frac{1}{q}}\|f\|_{L^q(\Omega \backslash K)} &\le  |\Omega \backslash K|^{-\frac{1}{p^*}}\|f\|_{L^{p^*}(\Omega \backslash K)}\\
+          &\le C|\Omega \backslash K| ^{-\frac{1}{p^*}}\underbrace{\|f\|_{W^{1,p}(\Omega)}}_{\le 1}
+            \end{align*}
+            D'où $\|f\|_{L^q(\Omega \backslash  K)}\le C|\Omega \backslash K| ^{\frac{1}{q}-\frac{1}{p^*}}\to 0$ quand $|\Omega \backslash K| \to 0$
+        \item Soit $K\subset _C\Omega$ et $h\in \mathbb{R} ^d$ tq $K+B(0,|h| )\subset \Omega$ alors
+            \begin{align*}
+                \|\tau_h f-f\|_{L^q(K)} &\le  \|\tau_hf-f\|_{L^1(K)}^\alpha \|\tau_hf-f\|_{L^{p^*}}^{1-\alpha }\\
+                                        &\le  C\underbrace{|h| ^{\alpha }}_{\underset{|h|\to 0}{\longrightarrow} 0}\hspace{0.5em}\underbrace{\|\nabla f\|^\alpha _{L^1(\Omega)}}_{\text{borné pour }f\in B}\hspace{0.5em}\underbrace{\|f\|_{L^{p^*}(\Omega)}}_{\text{borné pour }f\in B}
+            \end{align*}
+    \end{itemize}
+\end{proof}
+
+\begin{remarque}
+    Rien à voir mais des retours sur le dm
+     \begin{itemize}
+         \item $C^0(X,\mathbb{R} )$ non compact, utiliser Ascoli
+         \item $D_d^{++}\subset S_d$ n'est pas fermé
+            \item $AB^{-1} $ n'est pas symétrique en général pour $A,B$ symétrique
+        \item $\times ^T$ est de rang 1 avec vecteur propre $\frac{x}{\|x\|}$ et valeurs propres $\|x\|^2$ pour $x\neq 0$.
+     \end{itemize}
+\end{remarque}
