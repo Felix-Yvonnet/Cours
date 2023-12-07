@@ -12,14 +12,14 @@ Un espace topologique est une paire $(X, \mathbb{U})$, où $X$ est un ensemble e
 \end{definition}            
             
 \begin{remarque}
-si $\mathcal{U}=\emptyset $ alors $\bigcap\limits_{u\in \mathcal{U}} u = \emptyset $. En revanche l'intersection vide n'est pas définie
+si $\mathcal{U}=\emptyset $ alors $\bigcup\limits_{u\in \mathcal{U}} u = \emptyset $. En revanche l'intersection vide n'est pas définie
 \end{remarque}
 \begin{remarque}
 Un fermé est le complémentaire d'un ouvert. Les ensembles $\emptyset$ et $X$ sont fermés. Les fermés sont stable par union finie et intersection quelconque. On notera $\overline{\mathbb{U}}$ l'ensemble des fermés construits par les complémentaires des ouverts de $\mathbb{U}$.
 \end{remarque}
 
 \begin{definition}
-Soit $A\subset X$ où $(X,\mathbb{U})$ est un espace topologique. On définit l'intérieur $\overset{\circ}{A}:=\bigcap\limits_{\substack{F \in \overline{\mathbb{U}} \\ A\subset F}}F$
+Soit $A\subset X$ où $(X,\mathbb{U})$ est un espace topologique. On définit l'intérieur $\overset{\circ}{A}:=\bigcup_{\substack{O\in \mathbb{U}\\O\subset A}}O$ et l'adhérence $\overline{A}:=\bigcap\limits_{\substack{F \in \overline{\mathbb{U}} \\ A\subset F}}F$
 \end{definition}
 On note que $X\backslash\mathring{A}=\overline{X\backslash A}$ et $X\backslash\overline{A} =\overbrace{X\backslash A}^{\circ}$
 
@@ -28,12 +28,12 @@ On note que $X\backslash\mathring{A}=\overline{X\backslash A}$ et $X\backslash\o
     Soit $X$ un ensemble muni des topologies $\mathbb{U}$ et $\mathbb{V}$. On dit que $\mathbb{U}$ est \textbf{plus fine} que $\mathbb{V}$ si $\mathbb{U}\supset\mathbb{V}$
 \end{definition}
 \begin{ex}
-    la topologie \textbf{discrète} définie par $\mathbb{U}=\mathcal{P}(X)$ est la topologie la plus fine sur $X$. la topologique la moins fine sur $X$ est donnée par la topologie grossière : $\mathbb{U}=\{\emptyset, X\}$
+    la topologie \textbf{discrète} définie par $\mathbb{U}=\mathcal{P}(X)$ est la topologie la plus fine sur $X$. La topologie la moins fine sur $X$ est donnée par la topologie \textbf{grossière} : $\mathbb{U}=\{\emptyset, X\}$
 \end{ex}
 
 \begin{definition}
-     Soit $X$ ensemble et $\mathcal{F}_0\subset \mathcal{P}(X)$. La topologie $\mathbb{U}$ la moins fine (ou la plus grossière) contenant $\mathcal{F}_0$ est définie par : \\
-     $\mathbb{U}_{\mathcal{F}_0}=\bigcap_{\substack{{\mathcal{F}_0 \subset \mathbb{U}'} \\ {\mathbb{U}' \text{ topologie sur } X}}} \mathbb{U}' = \{X\} \cup \{ \bigcup_{\text{quelconque}} \bigcap_{\text{finie}} U ~|~ U \in \mathcal{F}_0\}$. 
+     Soit $X$ ensemble et $\mathcal{F}_0\subset \mathcal{P}(X)$. La topologie $\mathbb{U}$ la moins fine (ou la plus grossière) contenant $\mathcal{F}_0$ est définie par :
+     $$\mathbb{U}_{\mathcal{F}_0}\ =\ \bigcap_{\mathclap{\substack{{\mathcal{F}_0 \subset \mathbb{U}'} \\ {\mathbb{U}' \text{ topologie sur } X}}}} \mathbb{U}' \ =\  \{X\} \cup \{ \bigcup_{\text{qcq}} \ \bigcap_{\text{finie}} U ~|~ U \in \mathcal{F}_0\}.$$
      
 $\mathbb{U}_{\mathcal{F}_0}$ est bien une topologie en tant qu'intersections de topologies.
 \end{definition}
@@ -74,7 +74,7 @@ D'où le résultat.
     Si $X_i=X, \forall i\in I$, alors $\prod\limits_{i\in I}X=X^I$ est l'ensemble des fonctions de $I$ dans $X$. La topo produit sur $X^I$ correspond à la convergence simple. $f_n\underset{n\to \infty }{\longrightarrow} f\Leftrightarrow \forall i\in I,\ f_n(i)\to f(i)$
 \end{ex}
 
-\subsection{ Voisinages :}
+\subsection{Voisinages}
 \begin{definition}[Voisinage]
     Soit $(X,\mathbb{U})$ un espace topologique et $x\in X$. Un voisinage $V$ de $x$ est une partie $V\subset X$ tq $\exists U\in \mathbb{U},\ x\in U \subset V$. De manière équivalente $V$ est une voisinage de $x$ si et seulement si : $x \in \mathring{V}$.\\
      On note $\mathcal{V}_x$ l'ensemble des voisinages de $x\in X$.
@@ -84,7 +84,7 @@ D'où le résultat.
 $\forall A\subset X,$ On définit l'adhérence $\overline{A}=\{x\in X|\forall V\in \mathcal{V}_x,\ A\cap V\neq \emptyset  \}$, l'intérieur $\mathring{A}=\{x\in X|\exists V\in \mathcal{V}_x,\ V\subset A\}$
 \end{definition}
 \begin{definition}
-    une partie $W_x\subset \mathcal{V}_x$ est une \textbf{base de voisinage} ssi \\$\forall V\in \mathcal{V}_x, \ \exists W\in W_x,\ (x \in )~W\subset V$. I.e. les éléments de $W_x$ sont plus fins que $\mathcal{V}_x$.
+    une partie $W_x\subset \mathcal{V}_x$ est une \textbf{base de voisinage} ssi \\$\forall V\in \mathcal{V}_x, \ \exists W\in W_x,\ (x \in )~W\subset V$.
 \end{definition}
 \begin{definition}
      une topologie $\mathbb{U}$ de $X$ est :
@@ -128,10 +128,10 @@ On rappelle que $Adh((x_{n}))= \bigcap\limits_{N\in \mathbb{N} }\overline{\{x_{n
      on note que $Adh(x_{n})=\{x\in X|\forall v\in \mathcal{V}_x,\ \{n\in \mathbb{N}\ |\ x_{n}\in V\} \text{ est infini} \}$. La preuve suit comme précédemment en choisissant $(V_n)$ base de voisinages $\searrow$ pour l'inclusion et $x_{\sigma(n)}\in \mathcal{V}_x$ avec $\sigma$ strictement croissante.
 \end{proof}
 
-\subsection{ Séparation :}
+\subsection{Séparation}
 \begin{definition}
     Un espace topologique est \textbf{séparé} ssi $\forall x,y\in X,\\ x\neq y\Rightarrow \exists u,v\in \mathbb{U},\ x\in u, y\in v, u\cap v=\emptyset $.\\
-Si $(X,\mathbb{U})$ est séparé, alors toute suite a au plus une limite (Haussdorff, $T_2$).\\
+Si $(X,\mathbb{U})$ est séparé, alors toute suite a au plus une limite (Hausdorff, $T_2$).\\
 
 \end{definition}
 \begin{definition}
@@ -154,7 +154,7 @@ La suite $(n)_{n\in \mathbb{N} }$ converge vers tous les points de $\mathbb{N} $
 De même, une suite de point qui n'est continue dans aucun ensemble algébrique propre converge vers tt point de $\mathbb{C}^d$ pour Zariski.
 \end{ex}
 
-\subsection{ Continuité :}
+\subsection{ Continuité}
 \begin{definition}
         Soit $(X,\mathbb{U})$ un espace topologique. Une application $f:X\to Y$ est continue en $x\in X$ si et seulement si $\forall W\in \mathcal{V}_{f(x)}, \ f^{-1}(W)\in \mathcal{V}_x$. (ie $\forall W\in \mathcal{V}_{f(x)},\ \exists V\in \mathcal{V}_x,\ f(V)\subset W$). On dit que $f$ est continue si pour tout $x\in X$, $f$ est continue en $x$. \\
 
@@ -177,10 +177,10 @@ La composition de fonctions continues est continue, l'image par une fonction con
 
 \subsection{Espace métrique}
 \begin{definition}
-    $(X,d)$ espace métrique où $d:X\times X\to \mathbb{R} $ est application distance, ci elle satisfait :
+    On dit qu'une paire $(X,d)$ est un espace métrique, avec $d:X\times X\to \mathbb{R} $ une application distance, si elle satisfait :
     \begin{enumerate}
         \item (Positivité) $\forall x,y \in X,\ d(x,y) \geq 0$
-        \item(Séparation) $\forall x,y\in X, ~ d(x,y)=0\Leftrightarrow x=y$).
+        \item(Séparation) $\forall x,y\in X, ~ d(x,y)=0\Leftrightarrow x=y$.
         \item (Symétrie) $\forall Ax,y\in X,\ d(x,y)=d(y,x)$
         \item (Inégalité triangulaire) $\forall x,y,z\in X,\ d(x,z)\le d(x,y)+d(y,z)$
     \end{enumerate}
@@ -196,7 +196,7 @@ La composition de fonctions continues est continue, l'image par une fonction con
 
 Les topologies associées à un espace métrique est celle induite par la base d'ouverts $\{B(x,r)|x\in X,r>0\} $.
 
-\begin{remarque}.
+\begin{remarque}
 Attention à ne pas confondre les deux définitions suivantes : 
     \begin{itemize}
         \item $(X,\mathbb{U})$ est \underline{séparable} $\Leftrightarrow \exists A\subset X $ dénombrable $\overline{A}=X$.
@@ -207,7 +207,7 @@ Attention à ne pas confondre les deux définitions suivantes :
 On peut utiliser dans un espace métrique les caractérisations séquentielles de l'adhérence et sur les fonctions continues.
 
 \begin{definition}
-    Un \textbf{module de continuité} est une application\\$\mathbb{R} ^+\to [0,\infty ]$, telle que $w(x)\underset{x\to 0}{\longrightarrow} 0$
+    Un \textbf{module de continuité} est une application\\$w:\mathbb{R} ^+\to [0,\infty ]$, telle que $w(x)\underset{x\to 0}{\longrightarrow} 0$
 \end{definition}
 
 \begin{definition}
@@ -216,7 +216,7 @@ Soit $(X,d_X)$ et $(Y,d_Y)$ des espaces métriques, une fonction $f:X\to Y$ est 
 \begin{itemize}
     \item \textbf{continue} en $x\in X$ ssi il existe $w_x$ un module de continuité tq \\$ \forall y\in X,\ d_Y(f(x),f(y))\le w_x(d_X(x,y))$.
 \item \textbf{uniformément continue} ssi il existe $w$ un module de continuité tq $\forall x,y\in X,\ d_Y(f(x),f(y))\le w(d_X(x,y))$.
-\item \textbf{Lipschitzienne} ssi $\exists C \geq 0\ ,\ \forall x,y\in X,\ d(f(x),f(y))\le Cd_x(x,y)$ $(w=CId)$.
+\item \textbf{Lipschitzienne} ssi $\exists C \geq 0\ ,\ \forall x,y\in X,\ d_Y(f(x),f(y))\le Cd_X(x,y)$ $(w=CId)$.
 \item \textbf{$ \alpha$-Holderienne} pour $ 0<\alpha<1$  ssi $\exists C \geq 0,\ \forall x,y\in X,\\ d_Y(f(x),f(y))\le Cd_X(x,y)^\alpha$ $(w=CId^\alpha)$.
 \end{itemize}
 
@@ -227,7 +227,7 @@ Soit $(X,d_X)$ et $(Y,d_Y)$ des espaces métriques, une fonction $f:X\to Y$ est 
     Si $w$ est un module de continuité,
     \begin{itemize}
         \item $\tilde{w}(r):=\sup_{0\le s\le r} w(s)$ est un module de continuité croissant et $\tilde w\ge w$
-        \item $\hat{w}(r);=\frac{1}{2} \int_0^{2r}\tilde{w}(s)ds$ est un module de continuité croissant et continue et $\hat{w}(r)\ge \tilde{w}(r)\ge w(r)$.
+        \item $\hat{w}(r):=\frac{1}{2} \int_0^{2r}\tilde{w}(s)ds$ est un module de continuité croissant et continue et $\hat{w}(r)\ge \tilde{w}(r)\ge w(r)$.
     \end{itemize}
 
     On peut toujours se ramener à un module de continuité croissant et continue
@@ -236,7 +236,7 @@ Soit $(X,d_X)$ et $(Y,d_Y)$ des espaces métriques, une fonction $f:X\to Y$ est 
 \subsection{Espaces vectoriels normés (evn)}
 \noindent Contexte : $\mathbb{K}=\mathbb{R}$ ou $\mathbb{C}$
 \begin{definition}
-    une evn est une paire ($E,\|.\|)$ où $E$ est un $\mathbb{K}$ espace vectoriel et $\|.\|$ est une norme sur $E$. La norme $\|.\|$ satisfait :
+    Un espace vectoriel normé (EVN) est une paire ($E,\|.\|)$ où $E$ est un $\mathbb{K}$ espace vectoriel et $\|.\|$ est une norme sur $E$. La norme $\|.\|$ satisfait :
     \begin{itemize}
         \item (Positivité) $\forall x\in E,\ \|x\|\ge 0$
         \item (Homogénéité) $\forall c\in E,\ \forall  \lambda\in \mathbb{K},\ \|\lambda x\|=|\lambda|\|x\|$
@@ -258,13 +258,14 @@ En particulier $E^*=L_c(E,\mathbb{K})$ l'espace vectoriel des formes linéaires 
 \begin{ex}
     Soit $(X,d)$ un espace métrique, alors $C_b(X,\mathbb{K})$, l'espace des fonctions \textbf{continues bornées} de $X$ dans $\mathbb{K}$, est un evn pour la norme $\|f\|_\infty :=\sup\|f(x)\|$.\\
     De même, pour $ 0<\alpha <1$, l'espace des fonctions \textbf{$\alpha$-Hölderienne} (continues) \textbf{bornées} $C^\alpha_b(X)$ est un evn muni de la norme : \\
-    $\|f\|_{C^\alpha_b }:=\|f\|_\infty +\|f\|_{C^\alpha }$ où $\|f\|_{C^\alpha }:=\sup \frac{\|f(x)-f(y)\|}{d(x,y)^\alpha }$.
+    $\|f\|_{C^\alpha_b }:=\|f\|_\infty +|f|_{C^\alpha }$ où $|f|_{C^\alpha }:=\sup \frac{\|f(x)-f(y)\|}{d(x,y)^\alpha }$.
 \end{ex}
-Ces normes peuvent aussi s'appliquer aux fonctions Lipschitziennes.
+Ces normes peuvent aussi s'appliquer aux fonctions Lipschitziennes (cas $\alpha = 1$).
 
 \begin{ex}
-    Soit $\Omega\subset \mathbb{R} ^d$ ouvert et $n\in \mathbb{N} $. $C^\alpha _b(\Omega)$[underscore b pour bornée] est un evn pour la norme \ldots\\
-    $C^n_b(\overline{\Omega})$ muni de la même norme est constitué des $f\in C^n_b(\Omega)$ tq $\partial_\alpha f$ s'étend continuellement à $\Bar{\Omega}$. [Rem : on peut montrer qu'elles admettent une extension continue a un voisinage de $x$].
+    Soit $\Omega\subset \mathbb{R} ^d$ ouvert et $n\in \mathbb{N} $. $C^n _b(\Omega)$ est un evn pour la norme $\| f \|_{C^n } = \sum_{|\alpha|\leq n } \| \partial_\alpha f \|_\infty$, où $\alpha \in \mathbb{N}^d$ et $|\alpha| = \sum |\alpha_i|$. Ici chaque $\alpha_i$ représente l'ordre de dérivation selon la $i$-ième coordonnée. \\
+    
+    $C^n_b(\overline{\Omega})$ muni de la même norme est constitué des $f\in C^n_b(\Omega)$ telles que $\partial_\alpha f$ s'étend continuellement sur $\overline{\Omega}$ quelque soit $\alpha$ dans $\mathbb{N}^d$ avec $|\alpha| \leq n $. 
 \end{ex}
 
 \begin{definition}[Espaces $L^p$]
@@ -310,8 +311,8 @@ Pour $I$ une famille quelconque, on note $\mathcal{P}_f(I)$ l'ensemble des parti
     Une semi norme est une application $|.|:E\to \mathbb{R}^+ $ positive et homogène, satisfaisant l'inégalité triangulaire (pas de séparation).
 \end{remarque}
 
-\begin{remarque}
-    .\begin{itemize}
+\begin{remarque}\par\noindent
+    \begin{itemize}
     \item La topologie n'est pas automatiquement séparée.
     \item Tout evn est un evtlc avec une famille $(|.|_i)_{i\in I}$ réduite à un élément $\|.\|$.
 \end{itemize}
@@ -324,7 +325,7 @@ Pour $I$ une famille quelconque, on note $\mathcal{P}_f(I)$ l'ensemble des parti
    $$ |u(x)|_j^F \le C \sum\limits_{i\in I_0} |x|_i^E$$
 \end{proposition}
 
-En particulier une forme linéaire $u:E\to \mathbb{K} $ est continue ssi $\exists I_0 \in \mathcal{P}_f(I),\ \exists C > 0,\ \forall x\in E\ \|u(x)\|\le C \sum\limits_{i\in I_0} |x|_i^E$.
+En particulier une forme linéaire $u:E\to \mathbb{K} $ est continue ssi $\exists I_0 \in \mathcal{P}_f(I),\ \exists C > 0,\ \forall x\in E\ |u(x)|\le C \sum\limits_{i\in I_0} |x|_i^E$.
 
 \begin{proof}
    Supposons $u$ continue. Soit $j\in J$, on a un voisinage de $0_F$ \\$W:=\{y\in E\ |\ |y|_j^F<1\} $. 
@@ -350,20 +351,21 @@ En particulier une forme linéaire $u:E\to \mathbb{K} $ est continue ssi $\exist
     Soit $E$ un evtlc séparé muni d'une famille dénombrable de semi normes $(|.|_{n \in \mathbb{N}})$. Alors la topologie de $E$ est métrisable pour la distance $$d(x,y):=\sum\limits_{n\in \mathbb{N} }^{} \min(2^{-n}, |x-y|_n)$$
 \end{propriete}
 \begin{proof}
-    Tout d'abord, $d$ définit bien une distance car $E$ est supposé séparé (voir Lemme 1 ci-dessous).
+    Tout d'abord, $d$ définit bien une distance car $E$ est supposé séparé (voir Lemme \ref{Lemme 1} ci-dessous).
     
     Montrons que les bases de voisinage de l'origine $(B_d(0,\varepsilon )_{\varepsilon >0})$ (pour les boules données par la distance $d$) et $\left(U_{0_E,I_0}^\eta\right)$ (où $U_{0_E,I_0}^\eta := \{x\in E| \forall i\in I_0,\ |x|_i<\eta \}$), pour $I_0 \in \mathcal{P}_f(I),\eta>0$ sont équivalentes.\\
     
-    Soit $\varepsilon >0$ et $N$ tq $2^{-N}<\varepsilon /3$. On considère $V=\{x\in E|\forall n<N,\ |x|_n<\frac{\varepsilon}{3N} \} (= U_{0_E,\llbracket 0, N-1 \rrbracket}^{\varepsilon/3N})$. Alors : 
+    Soit $\varepsilon >0$ et $N$ tq $2^{-N}<\varepsilon /3$.\\
+    On considère $V=\{x\in E|\forall n<N,\ |x|_n<\frac{\varepsilon}{3N} \} (= U_{0_E,\llbracket 0, N-1 \rrbracket}^{\varepsilon/3N})$. Alors : 
     $$\forall x\in V,\ d(x,0)<\sum\limits_{n=0}^{N-1} \frac{\varepsilon}{3N}+\sum\limits_{n=N}^{\infty} 2^{-n}=\varepsilon /3+2^{-N} \cdot 2\le \varepsilon $$\\
-    Réciproquement : pour un certain voisinage de $0_E$ de la forme $V=\{x\in E|\forall n\in I_0,\ |x|_n<\varepsilon \} (= U_{0_E,I_0}^\varepsilon$, alors en notant $N = \max I_0$ et $\varepsilon ' = \min(2^{-N-1},\varepsilon)$, on a $B(0,\varepsilon ' ) \subset V$. D'où l'équivalence des topologies.
+    Réciproquement : pour un certain voisinage de $0_E$ de la forme $V=\{x\in E|\forall n\in I_0,\ |x|_n<\varepsilon \} (= U_{0_E,I_0}^\varepsilon)$, en notant $N = \max I_0$ et $\varepsilon ' = \min(2^{-N-1},\varepsilon)$, on a $B(0,\varepsilon ' ) \subset V$. D'où l'équivalence des topologies.
     
 \end{proof}
 
 
 La topologie est engendrée par la base d'ouverts : $\{y\in E|\forall i\in I_0,\ |x-y|_i<\varepsilon  \} $ où $x\in E, I_0\subset I$ est fini et $\varepsilon >0$. Si on fixe $x$, on obtient une base de voisinage de $x$.
 
-\begin{lemme}
+\begin{lemme}\label{Lemme 1}
     Un evtlc $(E,|.|_i)$ est séparé si et seulement si : \\
     $\forall x\in E, \ (\forall i\in I,\ |x|_i=0)\Rightarrow x=0  $ \\
     si et seulement si : \\
@@ -403,18 +405,18 @@ Soit $\Omega\subset \mathbb{R} ^d$ ouvert et $(\Omega_i)$ une suite d'ouverts tq
     On peut poser $\Omega_n:=\{x\in B(0,n)|\forall y\in \mathbb{R} ^d\backslash \Omega,\ |x-y|>\frac{1}{n} \} $.
 \end{remarque}
 
-Pour tout $n\in \mathbb{N} , \alpha \in \mathbb{N} ^d$ et $f:\Omega\to R$ assez régulière, on pose $|f|_{n,\alpha }:=\sup_{x\in \overline{\Omega_n}}|\partial_\alpha f(x)$ où $\partial_{\alpha _1,\cdots, \alpha _d}f:=\frac{\partial ^{|\alpha|}f}{\partial_{\alpha_1}^{\alpha _1}\cdots\partial_{\alpha _d}^{\alpha _d} } $. Alors $\forall k\in \mathbb{N} , (C^k(\Omega),(|.|_{n,\alpha })^{|\alpha |\le k}_{n\in \mathbb{N} }  $. Est séparé et métrisable car $\mathbb{N} \times\mathbb{N} ^d$ est dénombrable.
+Pour tout $n\in \mathbb{N} , \alpha \in \mathbb{N} ^d$ et $f:\Omega\to R$ assez régulière, on pose $|f|_{n,\alpha }:=\sup_{x\in \overline{\Omega_n}}|\partial_\alpha f(x)|$ où $\partial_{\alpha _1,\cdots, \alpha _d}f:=\frac{\partial ^{|\alpha|}f}{\partial_{\alpha_1}^{\alpha _1}\cdots\partial_{\alpha _d}^{\alpha _d} } $. Alors $\forall k\in \mathbb{N} , \left(C^k(\Omega),(|.|_{n,\alpha })^{|\alpha |\le k}_{n\in \mathbb{N} }\right)  $. Est séparé et métrisable car $\mathbb{N} \times\mathbb{N} ^d$ est dénombrable.
 
 \begin{ex}
     Classe $D(\Omega)$ des fonctions test : Soit $\Omega\subset \mathbb{R} ^d$ ouvert, $D(\Omega)=\{f\in \mathcal{C}^\infty (\Omega)| supp f\subset _C\Omega\} $
 \end{ex}
 
-Pour tout $w,\ \eta\in C^0(\Omega,\mathbb{R} _+)$ on pose sur $f\in D(\Omega)$. $|f|_{w,\eta}:=\sup_{x\in \Omega, \alpha \le \eta(x)}|w(x)| |\partial^\alpha f(x)|$. \\
+Pour tout $w,\ \eta\in C^0(\Omega,\mathbb{R} _+)$ on pose sur $f\in D(\Omega)$: $|f|_{w,\eta}:=\sup_{x\in \Omega, \|\alpha\| \le \eta(x)}|w(x)| |\partial^\alpha f(x)|$. \\
 
 Alors $D(\Omega)$ est un ouvert et evtlc :) .
 
 L'espace $D^*(\Omega)$ des formes linéaires continues sur $D(\Omega)$ est appelé espace des distributions. \\
-$\forall \varphi \in D^*(\Omega),\ \exists w,\eta\in C^0(\Omega,\mathbb{R} ^+), \ \forall f\in D(\Omega),\ |\underbrace{\varphi (f)}_{\mathclap{\substack{\text{parfois noté}\\<\varphi ,f>_{D^*\times D}}}}| \hspace{2em}\le \hspace{2em} \underbrace{|f|_{w, \eta}}_{\mathclap{\substack{\text{En principe, }\\ C\max_{1\le i\le I}|f|_{w_i , \eta_i} \\\text{ mais on peut se ramener} \\\text{à une seule}}}}$
+$\forall \varphi \in D^*(\Omega),\ \exists w,\eta\in C^0(\Omega,\mathbb{R} ^+), \ \forall f\in D(\Omega),\ |\underbrace{\varphi (f)}_{\mathclap{\substack{\text{parfois noté}\\<\varphi ,f>_{D^*\times D}}}}| \hspace{2em}\le \hspace{2em}C \underbrace{|f|_{w, \eta}}_{\mathclap{\substack{\text{En principe, }\\ C\max_{1\le i\le I}|f|_{w_i , \eta_i} \\\text{ mais on peut se ramener} \\\text{à une seule}}}}$
 
 Une distribution $\varphi $ est d'ordre fini $k\in \mathbb{N} $ si $\exists w\in C^0(\Omega,\mathbb{R} _+),\ \forall f\in D(\Omega),\ |\varphi (f)|\le |f|_{w,k} $.
 \begin{ex}
@@ -422,7 +424,8 @@ Une distribution $\varphi $ est d'ordre fini $k\in \mathbb{N} $ si $\exists w\in
     \begin{itemize}
         \item \textbf{Masse de Dirac} $\varphi (f)=f(0)$ est d'ordre 0
         \item Si $g\in L_{loc}(\Omega),$ alors $\varphi (f):=\int_\Omega fg$ est une distribution. \\
-            Si $d=1$, $\varphi $ est d'ordre 1. En effet soit $G$ une primitive de $g$ s'annulant en 0 (si 0$\in \Omega)$. \\Alors $\int_{t_0}^{t_1}f(t)g(t)dt=[fG]_{t_0}^{t_1}-\int_{t_0}^{t_1}f'(t)G(t)dt$. On choisit $t_0,t_1$ tq $supp(f)\subset [t_0,t_1].$ \\Alors $|\varphi (f)|=\int_{t_0}^{t_1}|f'(t)| |G(t)|dt$ On pose $\eta=1 $, $w(t)=z(t)\sup|G(s)|$ (à vérifier)
+            Si $d=1$, $\varphi $ est d'ordre 1. En effet soit $G$ une primitive de $g$ s'annulant en 0 (si 0$\in \Omega)$. \\Alors $\int_{t_0}^{t_1}f(t)g(t)dt=[fG]_{t_0}^{t_1}-\int_{t_0}^{t_1}f'(t)G(t)dt$. On choisit $t_0,t_1$ tq $supp(f)\subset [t_0,t_1].$ \\
+            Alors $|\varphi (f)|\le\int_{t_0}^{t_1}|f'(t)| |G(t)|dt$ On pose $\eta=1 $, $w(t)=z(t)\sup|G(s)|$ (à vérifier)
         \item $\varphi (f)=f'(0)$ est une distribution d'ordre 1
         \item $\varphi (f)=\sum\limits_{n\in \mathbb{N} }^{} f^{(n)}(n)$ est une distribution d'ordre $\infty $ avec $\eta=Id, w=Id$.
         \item  \textbf{Classe de Schwartz} (compatible avec la transformée de Fourier et métrisable) : on pose pour tout $n\in \mathbb{N} , \alpha \in \mathbb{N} ^d,f\in C^\infty (\mathbb{R} ^d)$, $|f|_{n, \alpha }:=\sup_{x\in \mathbb{R} ^d}(1+|x|^2)^{\frac{n}{2}}|\partial_\alpha f(x)|$. Toutes les dérivées décroissent plus vite que n'importe quelle paissance négative. evtlc métrisable séparable\ldots
@@ -432,7 +435,7 @@ Une distribution $\varphi $ est d'ordre fini $k\in \mathbb{N} $ si $\exists w\in
 \end{ex}
 \begin{proposition}
     Métrisabilité de la boule unité pour la topologie $*$-faible :\\
-    Soit $E$ un evn séparable, soit$(x_{n})$ une suite dense dans $B'_E(0,1)$ et soit $B:=B'_{E^*}(0,1)$. Alors la topologie $*$-faible sur $B$ est métrisable poir la distance $d(u,v):=\max_n\min(2^{-n}, |u(x_{n})-v(x_{n})|)$
+    Soit $E$ un evn séparable, soit$(x_{n})$ une suite dense dans $B'_E(0,1)$ et soit $B:=B'_{E^*}(0,1)$. Alors la topologie $*$-faible sur $B$ est métrisable pour la distance $d(u,v):=\max_n\min(2^{-n}, |u(x_{n})-v(x_{n})|)$
 \end{proposition}
 
 \begin{remarque}
