@@ -4,7 +4,7 @@
 \begin{definition}
 Une suite $(x_{n})$ dans un espace métrique $(X,d)$ est de Cauchy si et seulement si :
 $$\forall \varepsilon >0,\ \exists N\in \mathbb{N} ,\ \forall p,q\ge N,\ d(x_p,x_q)\le \varepsilon $$\\
-De manière équivalente : $d(x_p,x_q)\le \varepsilon _{\min p,q}$ avec $\varepsilon _n \xrightarrow[n\to +\infty]{} 0$.\\
+De manière équivalente : $d(x_p,x_q)\le \varepsilon _{\min p,q}$ avec $\varepsilon _n \underset{n\to +\infty}{\longrightarrow} 0$.\\
 
 \end{definition}
 
@@ -24,7 +24,7 @@ Toutes suites convergente est de Cauchy.
 \end{lemme}
 
 
-\begin{remarque}
+\begin{remarque}\par\noindent
 \begin{itemize}
     \item un evn complet est appelé un (espace de) Banach. \\
     
@@ -43,7 +43,7 @@ Soit $(E,\|.\|)$ un evn. Sont équivalents :
 \begin{proof}
     Supposons $E$ complet. Soit $(y_n)$ le terme général d'une série absolument convergente. 
     On définit $x_N:=\sum\limits_{n\le N}^{} y_n$, $\varepsilon _n:=\sum\limits_{n>N}^{} \|y_n\|$. 
-    Alors $\varepsilon _n \xrightarrow[n\to +\infty]{} 0$ comme reste d'une série sommable, et $\forall p\le q,\ \\
+    Alors $\varepsilon _n \underset{n\to +\infty}{\longrightarrow} 0$ comme reste d'une série sommable, et $\forall p\le q,\ \\
     \|x_p-x_q\|=\|\sum\limits_{r=p+1}^{q} y_r\|\le \sum\limits_{r=p+1}^{q} \|y_r\|\le \varepsilon _p = \varepsilon_{\min p,q} $ donc les sommes partielles satisfont le critère de Cauchy donc convergent.\\
     
     \textbf{Réciproquement :} si $(x_{n})$ de Cauchy, $\|x_p-x_q\|\le \varepsilon _{\min p,q}$ où \\
@@ -71,7 +71,7 @@ Soit $(E,\|.\|)$ un evn. Sont équivalents :
     Soit $(f_n)$ de Cauchy et $(f_n^\alpha)=\partial_\alpha f_n$. Alors c'est aussi de Cauchy dans $C^0_b(X)$ donc cv vers $f^\alpha $. Soit $\alpha \in \mathbb{N} ^d$ avec $|\alpha |< k$ $x\in \Omega,\ 1\le i\le d$. Justifions que $\partial/\partial_{x_i}f^\alpha (x)=f^{\alpha+e_i}(x) $ avec $e_i$ la base canonique. Soit $p>0$ tq $[x,x+pe_i]\subset \Omega$, alors $f^\alpha _n(x+pe_i)-f^\alpha _n(x)=\int_0^pf_n^{\alpha +e_i}(x+te_i)dt$ car $\frac{\partial}{\partial_{x_i}}f_n^\alpha =f_n^{\alpha +e_i}$.\\
     Par cv uniforme, on a pareil mais sans \\
     $f^\alpha(x+pe_i)-f^\alpha(x)=\int_0^pf^{\alpha}(x+te_i)dt$ continument dérivable / p.\\
-    Finalement $\|f_n-f^0\|=\sum\limits_{|\alpha |\le k}^{} \|\partial_\alpha f_n-\partial_\alpha f^0\|=\sum\limits_{}^{} \|f_n^\alpha -f^\alpha \| \xrightarrow[n\to +\infty]{} 0$ car $\partial _\alpha f^0=f^\alpha $.
+    Finalement $\|f_n-f^0\|=\sum\limits_{|\alpha |\le k}^{} \|\partial_\alpha f_n-\partial_\alpha f^0\|=\sum\limits_{}^{} \|f_n^\alpha -f^\alpha \| \underset{n\to +\infty}{\longrightarrow} 0$ car $\partial _\alpha f^0=f^\alpha $.
 \end{proof}
 
 \begin{ex}
@@ -83,22 +83,22 @@ Soit $(E,\|.\|)$ un evn. Sont équivalents :
 
 
 \begin{ex}
-    $C^\infty _b(\Omega)$ muni de $(\|.\|_n)_n$   où $\|f\|_n:=\max_{|\alpha |\le n}\|\partial _\alpha f\|_{\infty }$ est Fréchet.
+    $C^\infty _b(\Omega)$ muni de $(|.|_n)_n$   où $|f|_n:=\max_{|\alpha |\le n}\|\partial _\alpha f\|_{\infty }$ est Fréchet.
 \end{ex}
 \begin{proposition}
     $\mathcal{D}_k(\Omega)$   où $k\subset _C\Omega$, compact et $\Omega$  ouvert. $\mathcal{D}_K(\Omega):=\{f\in \mathcal{D}(\Omega)|supp(f)\subset K\} $  est un espace fermé de l'ensemble initial. De plus la topologie induite sur $\mathcal{D}_K(\Omega)$ par $(\mathcal{D}(\Omega),(|.|_{w, \eta}$) et $(C^\infty _b(\Omega),\cdots)$ est la même.
 \end{proposition}
 \begin{proof}
-    Fermeture : Si $f_n \xrightarrow[n\to +\infty]{} f$ avec $f_n\in \mathcal{D}_\alpha (\Omega)$ pour la topo $C^\infty _c$ alors en particulier $f_n \xrightarrow[n\to +\infty]{} f$ uniformément donc $supp(f)\subset K$.\\
+    Fermeture : Si $f_n \underset{n\to +\infty}{\longrightarrow} f$ avec $f_n\in \mathcal{D}_\alpha (\Omega)$ pour la topo $C^\infty _c$ alors en particulier $f_n \underset{n\to +\infty}{\longrightarrow} f$ uniformément donc $supp(f)\subset K$.\\
     Posons $supp(f):=\overline{\{x\in \Omega|f(x)\neq 0\}}$.\\
     Mêmes topologies suivantes : $\|f\|_n\le |f_{w, \eta}|$ en prenant $w=1, \eta=n$. $|f|_{w, \eta}|\le C\|f\|_n, \forall f\in \mathcal{D}_K(\Omega),$ en prenant $C=\max_{x\in K}w(x)$, on peut borner les semi normes d'une famille par une cte $x$ un max d'un nombre fini de semi normes de l'autre donc les mêmes topos.
 \end{proof}
 \begin{proposition}
     Soit $\varphi $  une forme linéaire sur $\mathcal{D}(\Omega)$. Sont équivalent :
-    \begin{itemize}
+    \begin{enumerate}
         \item $\varphi $  est continue sur $\mathcal{D}(\Omega)$, ie $\exists w, \eta\in C^\infty (\Omega,\mathbb{R} ^+),\ \forall f\in \mathcal{D}(\Omega),\ |\varphi (f)|\le |f|_{w, \eta} $
         \item $\varphi $  est continue sur $D_K(\Omega)$  ie $\forall K\subset _C\Omega,\ \exists w_k, \eta_K\in \mathbb{R} ^+\times \mathbb{N} ,\ \forall f\in \mathcal{D}_K(\Omega),\ |\varphi (f)|\le w_K\|f\|_{\eta_K}  $
-    \end{itemize}
+    \end{enumerate}
     De plus, $\varphi $  est d'ordre fini $k\in \mathbb{N} $  ssi on peut choisir $\eta=k$, de manière équivalente, $\eta_K=k,\forall K\subset _C\Omega $.
 \end{proposition}
 \begin{remarque}
@@ -106,6 +106,7 @@ Soit $(E,\|.\|)$ un evn. Sont équivalents :
 \end{remarque}
 
 \begin{lemme}[Quelques fonctions $C^\infty $]
+\label{lemme4}
 
 Les fonctions suivantes sont $\mathcal{C}^\infty$ :
 \begin{enumerate}
@@ -114,12 +115,12 @@ Les fonctions suivantes sont $\mathcal{C}^\infty$ :
                 \mathbb{R} &\to \mathbb{R} \\
                 x&\mapsto 0 \text{ si } x<0, e^{-\frac{1}{x}} \text{ sinon}
             \end{aligned}$
-        \item La fonction $\psi_1x\mapsto \int_0^x\psi_0(t)\psi_0(1-t)dt$ est $C^\infty $, vaut 0 sur $]-\infty ,0]$  vaut une constante sur $[1,\infty [$. $H:=\frac{\psi_1}{\psi_1(1)} $  est une application de la fonction de Heaviside
+        \item La fonction $\psi_1:x\mapsto \int_0^x\psi_0(t)\psi_0(1-t)dt$ est $C^\infty $, vaut 0 sur $]-\infty ,0]$  vaut une constante sur $[1,\infty [$. $H:=\frac{\psi_1}{\psi_1(1)} $  est une application de la fonction de Heaviside
         \item La fonction $\psi_2:x\in \mathbb{R} ^d\mapsto \psi_0(1-\|x\|^2)$ est $C^\infty $  positive, radiale, à support égal à $B'_{\mathbb{R} ^d}(0,1)$. Souvent utilisée comme noyau de convolution pour régulariser les filtres.
         \item Soit $K\subset_CU$, $K$ compact, $U\subset \mathbb{R} ^d$ ouvert. Alors $\exists \psi\in C^\infty (\mathbb{R} ^d),$, $\psi=1$ sur $K$et $supp(f)\subset U$
     \end{enumerate}
 \end{lemme}
-\begin{proof}
+\begin{proof}\par\noindent
     \begin{enumerate}
         \item Classique
         \item facile
@@ -131,25 +132,51 @@ Les fonctions suivantes sont $\mathcal{C}^\infty$ :
 \end{proof}
 
 \begin{lemme}
-Soit $f,g\in C^\infty (\mathbb{R} ^d), \alpha \in \mathbb{N} ^d$  alors $\partial_\alpha (fg)=\sum\limits_{\beta\le \alpha }^{} {\alpha \choose \beta} \partial_\beta f\partial_{\alpha -\beta}g$ où ${\alpha \choose \beta}:=\prod\limits_{1\le i\le d}^{} {\alpha _i \choose \beta_i}$
+Soit $f,g\in C^\infty (\mathbb{R} ^d), \alpha \in \mathbb{N} ^d$  alors $\partial_\alpha (fg)=\sum\limits_{\beta\le \alpha } \binom{\alpha}{\beta} \partial_\beta f\partial_{\alpha -\beta}g$ où $\binom{\alpha}{\beta}:=\prod\limits_{1\le i\le d}^{} \binom{\alpha _i}{\beta_i}$
 \end{lemme}
 \begin{proof}
-    Cas où $\alpha =(n,0,\cdots,0)$ alors $\frac{\partial^n}{\partial x_1^^n}(fg)=\sum\limits_{0\le k\le n}^{} {n \choose k} \frac{\partial^k}{\partial x_i^k}f\frac{\partial^{n-k}}{\partial x_i^{n-k}}g$ par récurrence immédiate.\\
-    Passage de $(\alpha _1,\cdots, \alpha _{k-1},0\cdots,0)=\alpha _*$ à $(\alpha _1,\cdots\,a_k,0\cdots,0)$. Récurrence sur $k$.\\
-    $\partial_{\alpha }(fg)=\frac{\partial^{\alpha _k}}{\partial x_k^{\alpha _k}}=\sum\limits_{\beta_*\le \alpha _*}^{} {\alpha _* \choose \beta_*}\cdots$ Par HR et linéarité de la dérivation. \\
-    Puis on utilise ${\alpha _0 \choose \beta_0}{\alpha _k \choose \beta_k}={\alpha \choose\beta}$ et le résultat tombe.
+    Traitons d'abord le cas où $\alpha =(n,0,\cdots,0)$ $(*)$.
+    Alors $\frac{\partial^n}{\partial x_1^n}(fg)=\sum\limits_{0\le k\le n}^{} \binom{n}{k} \frac{\partial^k}{\partial x_1^k}f\frac{\partial^{n-k}}{\partial x_1^{n-k}}g$ par une récurrence immédiate.\\
+
+    Ensuite, on montre par récurrence que la formule est vraie pour tout $\alpha$ de la forme $(\alpha_1,\ldots,\alpha_k,0,\ldots,0)$.
+    
+    \underline{Initialisation} : Cas $(*)$ (déjà traité)
+
+    \underline{Hérédité} : Soit $\alpha = (\alpha_1,\ldots,\alpha_{k+1},0,\ldots,0)$, et $\alpha^* = (\alpha_1,\ldots,\alpha_k,0,0,\ldots,0)$. On a :
+
+    $\partial_{\alpha }(fg)=\frac{\partial^{\alpha _k}}{\partial x_k^{\alpha _k}} \partial_{\alpha^*} (fg)\underset{\text{HR}}{=}\sum\limits_{\beta_*\le \alpha _*} \binom{\alpha _*}{\beta_*} \frac{\partial^{\alpha_k}}{\partial x_k^{\alpha_k}}\left( \partial_{\beta^*} f \partial_{\alpha^*-\beta^*} g \right)$.
+
+    
+    Enfin, en remarquant que pour $\beta \leq \alpha$, $\binom{\alpha^*}{\beta^*}\binom{\alpha _k }{\beta_k}=\binom{\alpha}{\beta}$, on obtient en développant la dernière dérivée le résultat souhaité.
+
+    On obtient bien par récurrence le résultat souhaité.
 \end{proof}
 \begin{proof}
-    (Critère de continuité des distributions) : Soit $(\Omega_n)$  tq $\overline{\Omega_n}\subset _C\Omega_{n+1}$, tous ouvert et formant une partition de $\Omega$. Soit $(\gamma_n)$  tq $\gamma_n\in C^\infty , \gamma_n=1$ sur [?,?] et $supp(\gamma_n)\subset \Omega_n$. Supp (ii : $\mathcal{D}_K(\Omega)\cdots$  ). Soit $w_n, \eta_n$
-    tq $\forall f\in \mathcal{D}(\Omega),\ supp(f)\subset \overline{\Omega}\Rightarrow |\varphi (f)|\le w_n\|f\|_{\eta_n}. $  Soit $f\in \mathcal{D}(\Omega).$  Alors $f=\sum\limits_{n\in \mathbb{N} }^{=} f(\gamma_n-\gamma_{n+1}:=\beta_n)$ avec $\gamma_{-1}=0$. De plus cette somme a un nombre fini de termes non nuls.
-    En effet, $\exists N,\ \forall n\ge N,\ supp(f)\subset \Omega_n, $ par compacité de supp(f). Donc $\forall n\ge N+1,f(\underbrace{\gamma_n-\gamma_{n-1}}_{\text{nul sur }\overline{\Omega_{n-1}}})=0$
-    Par linéarité, $|\varphi (f)|\le \sum\limits_{n\in \mathbb{N} }^{} |\varphi (f_{\beta_n})|\le \sum\limits_{n\in \mathbb{N} }^{} w_n\|f\beta_n\|_{\eta_n}$
-    (car $supp(\beta_n)\subset \Omega_{n+1}\backslash \Omega_{n-1})\le \sum\limits_{n\in \mathbb{N} }^{} w_{n+1}$
-$\sup_{\alpha \le  \eta_{n+1}, x\in \Omega_{n+1}\backslash \Omega_{n-1}}|\partial_\alpha (f\beta_n)(x)|\le \sum\limits_{n\in \mathbb{N} }^{}$
-$\underbrace{\tilde{w_{n+1}}}_{\text{dépend des }\|\partial_{\alpha , \beta_n}\|}\sup\cdots(paseuletempsd'ecrire)\le \sup_{n\in \mathbb{N}, \alpha \le \eta_{n+1},x\in \Omega_{+1}\backslash \Omega_{n-1} }\hat{w_{n+1}}|\partial_\alpha f(x)|$
-    avec $\hat{w_{+1}}:=C_\alpha (1+n)^\alpha \tilde{w_{n+1}}$ \\
-$\le |f|_{w, \eta}$  où $w, \eta$  vérifient $w(x)\ge w_n$ si $x\not\in \Omega_{n-2}, \eta(x)\ge \eta_n$ si de même.\\
-Par ex $w(x)=\sum\limits_{n\in \mathbb{N} }^{\infty} w_n(\underbrace{1-\gamma_{n-3}}_{\text{vaut 1 hors de $\Omega_{n-2}$}})$
+    (Critère de continuité des distributions) : Soit $(\Omega_n)_n$ des ouverts formant une partition de $\Omega$ et tels que $\overline{\Omega_n}\subset _C\Omega_{n+1}$.
+    Soit $(\gamma_n)_n$  telle que $\gamma_n\in C^\infty , \gamma_n=1$ sur $\Omega_n$ et $supp(\gamma_n)\subset \Omega_{n+1}$ (de telles fonctions $\gamma_n$ existe via le lemme \ref{lemme4}). 
+
+    \medskip
+    
+    Supposons 2. Soit $w_n, \eta_n$ tels que $\forall f\in \mathcal{D}(\Omega),\ supp(f)\subset \overline{\Omega}\Rightarrow |\varphi (f)|\le w_n\|f\|_{\eta_n}. $  Soit $f\in \mathcal{D}(\Omega).$  Alors $f=\sum\limits_{n\in \mathbb{N} } (\underbrace{\gamma_n-\gamma_{n+1}}_{\substack{{:=\beta_n}\\{\text{Supp}(\beta_n)\subset \Omega_{n+1}}}}) f $ avec $\gamma_{-1}=0$. De plus cette somme a un nombre fini de termes non nuls.
+    En effet, $\exists N,\ \forall n\ge N,\ supp(f)\subset \Omega_n, $ par compacité de supp$(f)$. Donc $\forall n\ge N+1,f \cdot (\underbrace{\gamma_n-\gamma_{n-1}}_{\text{nul sur }\overline{\Omega_{n-1}}})=0$.
+    Par linéarité,
+
+    \begin{align*}
+        |\varphi (f)| &\le \sum\limits_{n\in \mathbb{N} }^{} |\varphi (f \cdot \beta_n)| \\
+        &\le \sum\limits_{n\in \mathbb{N} }^{} w_n\|f \cdot \beta_n\|_{\eta_n} \text{ (car supp}(\beta_n)\subset \Omega_{n+1}\backslash \Omega_{n-1}) \\
+        &\le \sum\limits_{n\in \mathbb{N} }^{} w_{n+1}\sup_{ \substack{{\alpha \le  \eta_{n+1}} \\ {x\in \Omega_{n+1}\backslash \Omega_{n-1}}} }|\partial_\alpha (f\beta_n)(x)|\\
+        &\le \sum_{n\in \mathbb{N} }\underbrace{\tilde{w}_{n+1}}_{\text{dépend des }\|\partial_{\alpha} \beta_n\|} \sup_{ 
+\substack{{\alpha \leq \eta_{n+1}} \\ { x \in \Omega_{n+1}\backslash \Omega_{n-1}} }} |\partial _\alpha f(x)|_n \\
+        &\le \sup_{\substack{{n\in \mathbb{N}} \\ {\alpha \le \eta_{n+1}} \\ {x\in \Omega_{n+1}\backslash \Omega_{n-1} } } }\underset{(*_1)}{\hat{w}_{n+1}}|\partial_\alpha f(x)| \\
+        &\le \underset{(*_2)}{|f|_{w, \eta}}
+    \end{align*}
+    
+    $(*_1)$ : $\hat{w}_{n+1}:=C_\alpha (1+n)^\alpha \tilde{w}_{n+1}$ 
+
+    \medskip
+    
+    $(*_2)$ : $w, \eta$  vérifient $w(x)\ge w_n$, et $ \eta(x)\ge \eta_n$ si $x\not\in \Omega_{n-2}$.
+ Par exemple, $w(x)=\sum\limits_{n\in \mathbb{N} }^{\infty} w_n(\underbrace{1-\gamma_{n-3}}_{\text{vaut 1 hors de $\Omega_{n-2}$}})$ convient.
 \end{proof}
 
 
@@ -160,16 +187,18 @@ Par ex $w(x)=\sum\limits_{n\in \mathbb{N} }^{\infty} w_n(\underbrace{1-\gamma_{n
     Cas particulier : fct Lipschitziennes bornées / Hölderienne bornées.
 \end{ex}
 
-\subsection{Prolongements :}
-\begin{propriete}[Prolongement des fonctions uniformément continues] : Soit $X,Y$ des espaces métriques complets, $A\subset X$ une partie dense, $f:A\to Y$ uniformément continue. Alors $f$ admet une unique extension continue $F:X\to Y$ (qui se trouve être uniformément continue).
+\subsection{Prolongements}
+\begin{propriete}[Prolongement des fonctions uniformément continues] Soit $X,Y$ des espaces métriques complets, $A\subset X$ une partie dense, $f:A\to Y$ uniformément continue. Alors $f$ admet une unique extension continue $F:X\to Y$ (qui se trouve être uniformément continue).
 \end{propriete}
 \begin{proof}
-    \textbf{Construction} : on def $f(x):=\lim f(x_n)$ où $x_{n}\in A$ et $x_{n}\to x$. $(x_{n})cv\Rightarrow (x_{n})$ est de Cauchy $\Rightarrow f(xn)$ est de Cauchy $\Rightarrow f(x_{n})cv$ \\
+    \textbf{Construction} : on définit $f(x):=\lim f(x_n)$ où $x_{n}\in A$ et $x_{n}\to x$. $(x_{n})$ converge $\Rightarrow (x_{n})_n$ est de Cauchy $\Rightarrow (f(x_n))_n$ est de Cauchy $\Rightarrow f(x_{n})$ converge \\
     \textbf{Bonne définition} : Si $x_{n},y_n \to x,x$ alors $d(x_{n},y_n)\to 0$ donc \\$d(f(x_{n}),f(y_n))\to 0$ par uniforme continuité de $f$. Finalement \\$\lim f(x_{n})=\lim f(y_n).$ \\
-\textbf{Continuité uniforme} : supposons $x_{n}\to x, y_n\to y$ alors $d(\lim f(x_{n}), \lim f(y_n))=\lim d(f(x_{n}),f(y_n))\le \lim w(d(x_{n},y_n))=w(d(x,y))$. On peut supposer $w$ continue donc le résultat tombe.\\
-    Unicité : parmi les fct continues, découle de la construction.
+\textbf{Continuité uniforme} : supposons $x_{n}\to x, y_n\to y$ alors
+$$d(\lim f(x_{n}), \lim f(y_n))=\lim d(f(x_{n}),f(y_n))\le \lim w(d(x_{n},y_n))=w(d(x,y))$$
+On peut supposer $w$ continue donc le résultat tombe.\\
+    Unicité : parmi les fonctions continues, découle de la construction.
 \end{proof}
-\begin{remarque} [Extension de Tietze] : Si $f$ uniformément continue sur $A\subset X$ qcq, on a toujours une extension à priori pas unique. OPS(on peut supposer) $w$ croissant et sous additif. $F(x):=\inf_{y\in A}f(y)w(d(x,y))$
+\begin{remarque} [Extension de Tietze] Si $f$ uniformément continue sur $A\subset X$ quelconque, on a toujours une extension à priori pas unique. On peut supposer(on peut supposer) $w$ croissant et sous additif. $F(x):=\inf_{y\in A}f(y)w(d(x,y))$
 \end{remarque}
 \begin{remarque}
     En pratique $X$ et $Y$ sont souvent des Banach, $f$ est une application linéaire continue de $A\subset X$ dense dans $Y$.
@@ -202,7 +231,7 @@ Alors $\varphi :\begin{aligned}Im(i_A)&\longrightarrow Im(\tilde{i_A}) \\ x&\lon
     Donc $(x_{n})$ satisfait le critère de Cauchy donc cv vers une limite $x_*.$ $d(x_N,x_*)\le K^N\frac{d(x_0,x_1)}{1-K}$. Ainsi $d(x_*,f(x_*))=\lim d(x_{n},x_{n+1)})=0$.
 \end{proof}
 \begin{remarque}
-    (Stabilité) : Si $f$ est $K-$lipschitzienne avec $K<1$, si $\|f-g\|_\infty \le \varepsilon $ et si $x_\varepsilon $ est un point fixe de $g$, alors $d(\underbrace{x_\varepsilon }_{\text{pt fixe de }g},\underbrace{x_*}_{\text{pt fixe de }f})\le \frac{d(x_\varepsilon ,f(x_\varepsilon ))}{1-K}\le \frac{\varepsilon}{1-K}$
+    (Stabilité) : Si $f$ est $K-$lipschitzienne avec $K<1$, si $\|f-g\|_\infty \le \varepsilon $ et si $x_\varepsilon $ est un point fixe de $g$, alors $d(x_\varepsilon,\underbrace{x_*}_{\mathclap{\substack{\text{pt fixe} \\\text{de }f}}})\le \frac{d(x_\varepsilon ,f(x_\varepsilon ))}{1-K}\le \frac{\varepsilon}{1-K}$
 \end{remarque}
 \begin{theoreme}[Cauchy Lipschitz] 
 
@@ -251,7 +280,7 @@ $|F_u(t)-F_v(t)|\le \int_0^{\frac{1}{2}}|u(t-t^2)-v(t-t^2)|dt\le \frac{1}{2}\|u-
 \end{ex}
 
 \subsection{Théorème de Baire}
-\begin{lemme}[Fermés emboités] : Soit $(X,d)$ un espace métrique complet et $(F_n)$ une suite de fermés de $X$ tq $F_{n+1}\subset F_n$ et $diam(F_n)\to 0.$ $diam(F_n):=\sup_{x,y\in F_n}d(x,y)$. Alors $\bigcap\limits_{n\in \mathbb{N} } F_n=\{x_*\} $ pour un certain $x_*\in X.$
+\begin{lemme}[Fermés emboités] Soit $(X,d)$ un espace métrique complet et $(F_n)$ une suite de fermés de $X$ tq $F_{n+1}\subset F_n$ et $diam(F_n)\to 0.$ $diam(F_n):=\sup_{x,y\in F_n}d(x,y)$. Alors $\bigcap\limits_{n\in \mathbb{N} } F_n=\{x_*\} $ pour un certain $x_*\in X.$
 \end{lemme}
 \begin{proof}
     Soit $x_{n}\in F_n$ arbitraire. Alors $\forall N,\ \forall p,q\ge N,\ d(x_p,x_q)\le diam(F_N).  $ donc $(x_{n})$ est de Cauchy. Sa limite $x_*$ appartient à chaque disque $F_n$ par fermeture donc $x_*\in \cap F_n.$ De plus si $y_*\in \cap F_n$ alors $\forall n,\ d(x_{n},y_*)\le diam(F_n)\to 0 $ donc $x_*=y_*$.
@@ -270,13 +299,13 @@ $|F_u(t)-F_v(t)|\le \int_0^{\frac{1}{2}}|u(t-t^2)-v(t-t^2)|dt\le \frac{1}{2}\|u-
 \end{ex}
 
 \begin{corollaire}
-    Soit $(\gamma,d)$ un espace métrique complet et $(F_n)$ une suite de fermé d'intérieur vide. Alors $\bigcup\limits_{n\in \mathbb{N} } F_n$ est d'intérieur vide.
+    Soit $(X,d)$ un espace métrique complet et $(F_n)$ une suite de fermé d'intérieur vide. Alors $\bigcup\limits_{n\in \mathbb{N} } F_n$ est d'intérieur vide.
 \end{corollaire}
 
 Terminologie de Baire
 \begin{itemize}
     \item Une intersection dénombrable d'ouverts est un $G_{\delta}$
-    \item Une union dénombrable de germés est un $F_\sigma$
+    \item Une union dénombrable de fermés est un $F_\sigma$
     \item Un ensemble qui contient un $G_{\delta}$ dense est dit gras
     \item Un ensemble contenu dans un $F_\sigma$ d'intérieur vide est dit maigre
 \end{itemize}
@@ -304,7 +333,7 @@ Terminologie de Baire
     Comme annoncé.
 \end{proof}
 \begin{corollaire}
-    Soit $E,F$ des Banach et $u_n\in L_c(E,F).$ On suppose $u_n(x)\xrightarrow[n\to +\infty]{} u(x)$ pour tout $x\in E.$ Alors $u$ est linéaire continue. (ie Une limite simple de fonctions linéaire continues est linéaire continue.)
+    Soit $E,F$ des Banach et $u_n\in L_c(E,F).$ On suppose $u_n(x)\underset{n\to +\infty}{\longrightarrow} u(x)$ pour tout $x\in E.$ Alors $u$ est linéaire continue. (ie Une limite simple de fonctions linéaire continues est linéaire continue.)
 \end{corollaire}
 \begin{proof}
     La linéarité de $u$ découle de la limite simple : $u(\lambda x+y)=\lim u_n(\lambda x+y)=\lim \lambda u_n(x)+u_n(y)=\lambda u(x)+u(y)$.\\
@@ -329,13 +358,14 @@ Terminologie de Baire
          L_N(f)&=\int_0^{2\pi}f(t)\underbrace{\sum\limits_{|n|\le N}^{} e^{-i nt}}_{\mathclap{D_n(t)}}dt\\
          D_n(t)&=e^{-i Nt}\frac{1-e^{i(2N+1)t}}{1-e^{it}}\\
                &=\frac{\sin \left( \frac{1}{2}(2N+1)t \right) }{\sin\left( \frac{1}{2}t \right) }
-     \end{align*}.
-     On munit $C^0$ de $\|\|_\infty $ qui en fait un complet. Donc $\vertiii{D_n}=\sup_{\|f\|_\infty \le 1}\int_0^{2\pi}f(t)D_n(t)dt=\int_0^{2\pi}|D_n(t)|dt$ en appliquant le sugne de $D_n$.\\
+     .\end{align*}
+     On munit $C^0$ de $\|\|_\infty $ qui en fait un complet. \\
+     Donc $\vertiii{D_n}=\sup_{\|f\|_\infty \le 1}\int_0^{2\pi}f(t)D_n(t)dt=\int_0^{2\pi}|D_n(t)|dt$ en appliquant le signe de $D_n$.\\
       \begin{align*}
           \vertiii{L_N}&=\int_{-\pi}^\pi\frac{/|\sin\left( \frac{1}{2}(2N+1)t \right) }{|\sin \frac{t}{2}|}dt\\
                        &\ge \int_{-\pi}^\pi |\sin\left((2N+1)\frac{t}{2}\right)|\frac{dt}{t} &\text{car $|\sin t|\le |t|$ }\\
                        &= 2\int_0^{2N+1)\frac{\pi}{2}}|\sin s|\frac{ds}{s} &\text{par symétrie}
-     \end{align*}.
+     .\end{align*}
      Diverge car $\int _0^\infty \frac{|\sin s|}{s}ds=\infty .$ (découper l'intégrale selon $\bigcup\limits_{k\in \mathbb{N} } [k\pi,(k+1)\pi[.$ \\
      Ainsi $(\vertiii{L_n}$ est bien bornée. Donc par contraposée de Banach-Steinhaus $\exists f\in E=(C^0(\Pi,\mathbb{C}),\|.\|_\infty ),\ \sup_{n\in \mathbb{N} }|L_n(f)|=\infty .$
 \end{proof}
@@ -347,14 +377,14 @@ Terminologie de Baire
     Soit $m\in \mathbb{N} $ fixé. Posons $E_k:=\{x\in E\ |\ \forall u\in A,\ |u(x)|'_m\le k \}  $. Alors $E_k$ est fermé et comme avant on a l'union fait l'ensemble non vide. Par Baire il y a un $E_k$ non d'intérieur vide. Par symétrie et continuité il continent un voisinage de 0. Donc $\exists N(m), r>0,\ \{x\in E\ |\ \forall n\le N(m),\ |x|_n<r \} \subset E_k.$ On en déduit $|u(x)|_m'\le \frac{k}{r}\max_{n\le N(m)}|x|_m.$ Noter que $\frac{k}{r}$ et $N(m)$ sont indépendant de $u\in A.$ On en déduit l'équicontinuité en 0 puis en tout point par linéarité. Rappelons $d_F(x,y)=\max_{m\in \mathbb{N} }\min(2^{-m},|x-y|_m')$ et $d_E(x,y)=\max_{m\in \mathbb{N} }\min(2^{-m},|x-y|_m)$.
 \end{proof}
 \begin{theoreme}[Application ouverte, Banach]
-    Soit $E,F$ Banach et $u\in L(_cE,F)$ surjective. Alors $u$ est ouverte, ie $\underbrace{u(O) \text{est un ouvert}}_{\mathclap{\text{1}}}$ dans $F$ pour tout ouvert $O$ de $E$.\\
+    Soit $E,F$ Banach et $u\in L_c(E,F)$ surjective. Alors $u$ est ouverte, ie $\underbrace{u(O) \text{est un ouvert}}_{\mathclap{\text{1}}}$ dans $F$ pour tout ouvert $O$ de $E$.\\
     Ou, de manière équivalente :
     \begin{enumerate} \setcounter{enumi}{1}
         \item $\exists C,\ \forall y\in F,\ \exists x\in E,\ y=u(x) $ et $\|x\|\le C\|y\|$
         \item $\exists r>0,\ B_F(0,r)\subset u(B_E(0,1))$.
     \end{enumerate}
 \end{theoreme}
-\begin{proof}.
+\begin{proof}\par\noindent
 \begin{itemize}
     \item[$1\Rightarrow 3$] $u(B_E(0,1))$ est un ouvert car image d'un ouvert et continent 0 donc continent un voisinage de 0 dans $F$.
     \item[$3\Rightarrow 1$] Soit $U$ ouvert de $E$ et $x\in U.$ Soit $\varepsilon >0$ tq $B_E(x,\varepsilon )\subset U.$ Alors 
@@ -363,13 +393,13 @@ Terminologie de Baire
         &=u(x)+\varepsilon u(B_E(0,1))\\
         &\supset u(x)+\varepsilon B_F(0,r)\\
         &=B_F(u(x),\varepsilon r)
-    \end{align*}.
+    .\end{align*}
     \item[$3\Rightarrow 2$] Soit $y\in E\backslash \{0\} ,$ alors $\frac{y}{\|y\|}\frac{r}{2}\in B(0,r).$ Donc $\frac{y}{\|y\|}\frac{r}{2}=u(x_*)$ pour un $x_*\in B(0,1).$ Donc $y=u(\underbrace{\frac{2}{r}\|y\|x_*}_{\mathclap{x}})$ et $\|x\|\le \frac{2}{r}\|y\|.$
     \item[$2\Rightarrow 3$] Soit $r=\frac{1}{C},$ si $y\in B(0,r),$ alors $\exists x\in B(0,1),\ y=u(x).$
 \end{itemize}
 Preuve du point 2 à partir des hypothèses. Par surjectivité,
 ${\bigcup\limits_{n\in \mathbb{N}} \overline{u(B_E(0,n))}=F.}$ Par Baire, $\exists n,\ \overline{u(B_E(0,n))}$ est d'intérieur non vide. Par symétrie et continuité, $\exists r>0,\ B_F(0,r)\subset \overline{u(B_E(0,n))}.$ Donc $\forall y\in B_F(0,r),\ \forall \varepsilon >0,\ \exists x\in B_E(0,n),\ \|y-u(x)\|<\varepsilon .$ Par homogénéité $\forall y\in  F,\ \forall \varepsilon >0,\ \exists x\in E,\ \|y-u(x)\|<\varepsilon $ et $\|x\|_E\le C\|y\|_F$ pour $C=\frac{2n}{r}$.\\
-Soit $y_0\in F\backslash \{0\} $ dont on veut construire un antécédent. On choisit $x_0\in E$ tq $\|x_0\|\le C\|y_0\|$ et $\|y_0-u(x_0)\|\le \frac{\|y_0\|}{2}.$ On pose $y_1=y_0-u(x_0).$ OPS $y_1\neq 0$ sinon on a bien un antécédent. Par récurrence on construit $(y_n),(x_n)$ tq $\|x_n\|\le C\|y_n\|$ et $\|y_n-u(x_n)\|\le \|y_n\|/2.$ On a $y_{n+1}=y_n-u(x_n).$ Alors $\|y_n\|\le 2^{-n}\|y_0\|$ par récurrence et $\|x_n\|\le C_2^{-n}\|y_0\|.$ Or $\sum\limits_{n=0}^{N} x_n\to x_*$ par complétude de $E.$ Par ailleur
+Soit $y_0\in F\backslash \{0\} $ dont on veut construire un antécédent. On choisit $x_0\in E$ tq $\|x_0\|\le C\|y_0\|$ et $\|y_0-u(x_0)\|\le \frac{\|y_0\|}{2}.$ On pose $y_1=y_0-u(x_0).$ On peut supposer $y_1\neq 0$ sinon on a bien un antécédent. Par récurrence on construit $(y_n),(x_n)$ tq $\|x_n\|\le C\|y_n\|$ et $\|y_n-u(x_n)\|\le \|y_n\|/2.$ On a $y_{n+1}=y_n-u(x_n).$ Alors $\|y_n\|\le 2^{-n}\|y_0\|$ par récurrence et $\|x_n\|\le C_2^{-n}\|y_0\|.$ Or $\sum\limits_{n=0}^{N} x_n\to x_*$ par complétude de $E.$ Par ailleur
 \begin{align*}
     y_n&=y_{n-1}-u(x_{n-1})\\
        &=y_{n-2}-u(x_{n-1}+x_{n-2})\\
@@ -404,7 +434,7 @@ Donc $\|y_0-u(\sum\limits_{k<n}^{} x_k)\|=\|y_n\|\to 0$ et $\to \|y_0-u(x_*)\|$.
         \item[$1\Rightarrow 2$] $\mathcal{G}(u)=\{(x,y)\in E\times F\ |\ y-u(x)=0\} $. Or $\varphi  :\begin{aligned}
             E\times F &\longrightarrow F \\
             (x,y) &\longmapsto y-u(x)
-        \end{aligned}$ est continue donc $\mathcal{G}(u)=\varphi ^{-1} (\{O_F)\} $ est fermé.
+        \end{aligned}$ est continue donc $\mathcal{G}(u)=\varphi ^{-1} (\{0_F)\} $ est fermé.
     \item[$2\Rightarrow 1$] $\mathcal{G}(u)$ est un sous espace vectoriel fermé de $E\times F$ donc c'est un Banach pour la norme $\|.\|_{E\times F}.$ De plus l'application $\varphi : \begin{aligned}
          \mathcal{G}(u)\times F&\longrightarrow E \\
          (x,u(x))&\longmapsto x
@@ -412,3 +442,5 @@ Donc $\|y_0-u(\sum\limits_{k<n}^{} x_k)\|=\|y_n\|\to 0$ et $\to \|y_0-u(x_*)\|$.
     \end{itemize}
 
 \end{proof}
+
+Ce théorème permet de prouver plus facilement la continuité d'une fonction. \'Etant donné une application linéaire $T,$ on peut appliquer la caractérisation séquentielle des fermés sans avoir à montrer la convergence. En effet il suffit de supposer que $(x_n, Tx_n)\underset{n\to\infty}{\rightarrow}(x,y)$ et montrer que $Tx=y$ pour avoir la continuité de $T.$
